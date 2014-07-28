@@ -130,3 +130,9 @@ something like a type conversion can't be done is called an "exception
 traceback". If an exception happens during non-interactive execution of
 a Python program the program will halt rather than return you to the
 `>>>` prompt. Exception handling will be covered later.
+
+---
+
+Note: direct quotations in this document are from the O'Reilly School of
+Technology course,
+[Python 1: Beginning Python](http://www.oreillyschool.com/individual-courses/python1/).
