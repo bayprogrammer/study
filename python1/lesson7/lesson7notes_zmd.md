@@ -15,8 +15,8 @@ E: 11:40 2014-07-07 (UTC-7) [75]
 <dd>string containing literal text and replacement fields</dd>
 <dt>replacement field</dt>
 <dd>
-    fields denotated by {} in string to be replaced by arguments
-    to format() method on format string
+    fields denotated by `{}` in string to be replaced by arguments
+    to `format()` method on format string
 </dd>
 </dl>
 
