@@ -3,11 +3,18 @@
 #
 # multuple.py
 #
+# by Zeb DeOs, August 2014
+# for completion of O'Reilly School of Technology
+# Lesson 7, Objective 1
+#
 
-"""TODO: Document
+"""Nicely print out the products of a series of factors.
+
+   The factors are hard-coded; no factor is larger than 99 (and thus no
+   product is larger than 9801).
 """
 
-data = (
+FACTORS = (
     (2, 7),
     (1, 9),
     (23, 98),
@@ -16,11 +23,11 @@ data = (
     (23, 87),
 )
 
-# We assume no factor is larger than 99; 99 * 99 == 9801, thus:
-factor_width = 2   # factor never wider than 2 chars
-product_width = 4  # product never wider than 4 chars
+factor_width = 2
+product_width = 4
+format_string = "{{:{}}} = {{:{}}} x {{:{}}}".format(
+    product_width, factor_width, factor_width)
 
-for x, y in data:
-    z = x * y
-    # TODO: Properly format
-    print("{} = {} x {}".format(z, x, y))
+for factor_a, factor_b in FACTORS:
+    product = factor_a * factor_b
+    print(format_string.format(product, factor_a, factor_b))
