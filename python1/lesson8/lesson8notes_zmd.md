@@ -32,3 +32,24 @@ enumerate object, you can unpack both values at once, like so:
 
     for x, y in enumerate(['perl', 'python', 'javascript', 'ruby']):
         print(x, y)
+
+## while loops for data validation
+
+One can use a `while True: ...` construct to continuously loop over a
+pattern requesting the user to input data but only breaking out of the
+loop once valid input is provided.
+
+## loops and dictionaries
+
+.items() dict method returns a generator which produces two-tuples of
+the key-value pairs for each original dict element. Useful to unpack in
+a for loop:
+
+    for key, value in some_dict:
+        # do something with key and value
+        print(key, value)
+
+`del` statement can be used to remove items from a dictionary based on
+its key. e.g. `del mydict['mykey']`
+
+<!-- LEFT OFF: A More Complex Example -->
