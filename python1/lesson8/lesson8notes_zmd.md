@@ -52,4 +52,4 @@ a for loop:
 `del` statement can be used to remove items from a dictionary based on
 its key. e.g. `del mydict['mykey']`
 
-<!-- LEFT OFF: A More Complex Example -->
+> Good programmers build applications out of smaller code pieces.
