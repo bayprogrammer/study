@@ -53,3 +53,9 @@ a for loop:
 its key. e.g. `del mydict['mykey']`
 
 > Good programmers build applications out of smaller code pieces.
+
+---
+
+Note: direct quotations in this document are from the O'Reilly School of
+Technology course,
+[Python 1: Beginning Python](http://www.oreillyschool.com/individual-courses/python1/).
