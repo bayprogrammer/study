@@ -4,3 +4,6 @@ Moe
 Groucho
 Chico
 Harpo
+A child of five could understand this. Fetch me a child of five.
+Room service? Send up a larger room.
+Hello, world
