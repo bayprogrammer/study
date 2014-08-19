@@ -93,7 +93,29 @@ example is that of a database storage system.
 > databases use the relational model, but there are also hierarchical,
 > object, network, and flat-file models.
 
-LEFT OFF: Creating a File-Based To-Do List (sample code entry)
+## Binary Data
+
+Many types of files are better suited to a binary format (such as audio
+and photos) and the computer can store such things more efficiently in a
+binary encoding than a text-based encoding. We can view such data
+manually using a hex editor. We can write programs that read and write
+binary data from files as well. Working with binary data in python is as
+'byte strings'.
+
+    .read()   # read entire file from current position
+    .read(n)  # read n bytes from current location
+    .tell()   # tell the length of the file in bytes
+    .seek(n)  # move cursor to n location
+    .seek(0)  # 'rewind' to beginning of file
+
+When `read()` returns no more bytes, it means you've reached the end of
+the file (Python will just return an empty bytestring once it's
+completed traversing the file, no matter how many bytes you request).
+
+> each byte [in a *byte string*] is eight bits, so the *ordinal value*
+> of characters is in the range 0 to 255.
+
+LEFT OFF: Files for Miles
 
 ---
 
