@@ -18,7 +18,7 @@ append to the file (e.g. 'w' for write).
 Opening a file for reading (use the 'r' flag) returns an interable file
 object, which lines you can loop over.
 
-    f.open('funnies.txt', 'r')
+    f = open('funnies.txt', 'r')
 
     f.read()  # or
     f.readline()  # or
