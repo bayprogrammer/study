@@ -115,7 +115,9 @@ completed traversing the file, no matter how many bytes you request).
 > each byte [in a *byte string*] is eight bits, so the *ordinal value*
 > of characters is in the range 0 to 255.
 
-LEFT OFF: Files for Miles
+> Files are the basis of most computer-based information storage,
+> so there is a huge amount of literature that covers how to store
+> various types on [sic] information in files.
 
 ---
 
