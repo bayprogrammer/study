@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# file: amoratization.pl
+# file: amortization.pl
 # author: Zeb DeOs (zebdeos@bayprogrammer.com)
 # rev. 12/9/2010 zmd
 # reference: http://money.howstuffworks.com/personal-finance/debt-management/credit-card8.htm
@@ -20,16 +20,16 @@ sub main
     my ($apr, $bal, $pay) = @_;
     unless ($apr && $bal && $pay)
     {
-        print "usage: amoratization.pl apr balance monthly_payment\n";
+        print "usage: amortization.pl apr balance monthly_payment\n";
         return;
     }
 
     # Compute the monthly interest rate
     my $monthly_interest_rate = ($apr / 12) / 100;
     
-    my @amoratization_table = calc_all($monthly_interest_rate, $bal, $pay);
+    my @amortization_table = calc_all($monthly_interest_rate, $bal, $pay);
     
-    out_table(@amoratization_table);
+    out_table(@amortization_table);
 }
 
 # calc(apr, bal, pay) computes the finance charge and resulting principle
@@ -46,12 +46,12 @@ sub calc
     return ($bal, $finance_charge, $principle_paid);
 }
 
-# calc_all(apr, bal, pay) computes an amoratization table and returns an array
+# calc_all(apr, bal, pay) computes an amortization table and returns an array
 sub calc_all
 {
     my ($monthly_interest_rate, $bal, $pay) = @_;
 
-    my @amoratization_table;
+    my @amortization_table;
     my $payment_number = 0;
 
     # TODO: Make sure payment is sufficient to reduce principle!!!
@@ -62,7 +62,7 @@ sub calc_all
         $payment_number++;
         ($bal, $finance_charge, $principle_paid) =
             calc($monthly_interest_rate, $bal, $pay);
-        push @amoratization_table,
+        push @amortization_table,
             [
                 $payment_number, 
                 a_round($principle_paid),
@@ -75,10 +75,10 @@ sub calc_all
     {
         # Pay whatever's left; no finance charge or remaining balance
         $payment_number++;
-        push @amoratization_table, [$payment_number, a_round($bal), 0, 0];
+        push @amortization_table, [$payment_number, a_round($bal), 0, 0];
     }
     
-    return @amoratization_table;
+    return @amortization_table;
 }
 
 sub out_table
