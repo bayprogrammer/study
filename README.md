@@ -9,5 +9,5 @@ little calculator utility.  The goal is to be able to run the calculator with
 different variables for interest and payment amounts to see how it affects the
 payment schedules.
 
-This is a *WORK IN PROGRESS*, and I know that calculations are not yet correct.
+This is a **WORK IN PROGRESS**, and I know that calculations are not yet correct.
 Do not use in current state except to to experiment with it.
