@@ -2,6 +2,10 @@
 
 ## javascript
 
+Book or resource                                                                                                                 | Page    | Percent Complete
+----------------                                                                                                                 | ------- | ----------------
+Haverbeke, Marijn. *Eloquent JavaScript*. 2nd ed. San Francisco: No Starch Press, 2015. PDF File.                                |  41/427 |              10%
+
 ### backbone.js
 
 ### angular.js
