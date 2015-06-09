@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 // Define function to determine if number is even or odd;
-// rather than using Boolean(n % 2), we must use recursion;
+// rather than using `!Boolean(n % 2)`, we must use recursion;
 // make it function with negative as well as positive input.
 // (exercise from Eloquent JavaScript, 2nd ed.; ch. 3, p. 56)
 
