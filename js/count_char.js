@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 // 1. Define a function to count the number of "B"s in a given string.
-// 2. TODO: Define a function to count the number of a given char in a string.
+// 2. Define a function to count the number of a given char in a string.
 // (exercise from Eloquent JavaScript, 2nd ed.; ch. 3, p. 56)
 
 // To use in node:
@@ -12,15 +12,15 @@
 // // => 5
 
 function countChar(str, chr){
-  // TODO: implement
+  count = 0;
+  for (var i = str.length - 1; i >= 0; i--)
+    if (chr == str.charAt(i))
+      count++;
+  return count
 }
 
 function countBs(str){
-  count = 0;
-  for (var i = str.length - 1; i >= 0; i--)
-    if ("B" == str.charAt(i))
-      count++;
-  return count
+  return countChar(str, "B");
 }
 
 exports.countBs = countBs;
