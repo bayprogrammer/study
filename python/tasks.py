@@ -1,44 +1,51 @@
 #!/usr/bin/python3
 
 # Implement a simple in-memory task object hierarchy using standard
-# Python container prototcols/interfaces.
-
-# TODO:
-# [ ] TaskList behaves like a Python list (or maybe dict?)
-# [ ] TaskList contains 0 or more Task instances
-# [ ] Task contains details for a single Task instance
-# [ ] Task has an attribute, sub_tasks, which is an instance of TaskList
+# data structures.
 
 class Task(object):
-    def __init__(self, task_list, name):
-        self.name = name
-        self.task_list = task_list
+    def __init__(self, name, tags=None, categories=None, projects=None,
+                 tasks=None):
+        self.name = (name or [])
+        self.tags = (tags or [])
+        self.categories = (categories or [])
+        self.projects = (projects or [])
+        self.tasks = (tasks or [])
 
-    def __repr__(self):
-        return self.name
+        self.root = False
+        if name == "root":
+            self.root = True
 
-    def save(self):
-        # TODO: should add or update task in self.task_list
-        pass
-
-class TaskList(list):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-    def new(self, name):
-        task = Task(task_list=self, name=name)
-        self.append(task)
+    def add(self, *args, **kwargs):
+        task = Task(*args, **kwargs)
+        self.tasks.append(task)
         return task
 
-    def index(self, value, start=None, stop=None):
-        index = 0;
-        for task in self:
-            if task.name == value:
-                return index
-            index += 1
-        return ValueError('Task ' + value + ' not found')
+    def hierarchy(self, indent_width="  ", depth=0):
+        indent = ""
+        if depth:
+            indent += indent_width * depth
+
+        hier = ""
+        if not self.root:
+            hier += "{}{}\n".format(indent, self.name)
+            depth += 1
+            for task in self.tasks:
+                hier += task.hierarchy(indent_width, depth)
+            depth -= 1
+        else:
+            for task in self.tasks:
+                hier += task.hierarchy(indent_width, depth)
+        return hier
+
+    def print_hier(self, indent_width="  "):
+        print(self.hierarchy(indent_width).strip())
+
+    def __repr__(self):
+        return '<Task ({}): {}>'.format(id(self), self.name)
 
 if __name__ == '__main__':
-    task_list = TaskList()
-    task_list.new('get the milk')
-    t = task_list.new("buy today's newspaper")
+    root = Task('root')
+    root.add('get the milk')
+    t = root.add("buy today's newspaper")
+    t = root.tasks[0].add("drive to the store")
