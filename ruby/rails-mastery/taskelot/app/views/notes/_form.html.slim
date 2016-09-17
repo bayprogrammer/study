@@ -1,0 +1,7 @@
+= form_for([@todo, @todo.notes.build]) do |f|
+  div
+    strong = f.label :note
+    br
+    = f.text_area :note
+  div
+    = f.submit

@@ -1,0 +1,15 @@
+h2 = @todo.title
+
+p
+  strong Tags:
+  = @todo.tags
+
+h3 Notes
+
+= render @todo.notes
+
+= render 'notes/form'
+
+hr
+
+= link_to 'Edit this TODO', edit_todo_path(@todo)

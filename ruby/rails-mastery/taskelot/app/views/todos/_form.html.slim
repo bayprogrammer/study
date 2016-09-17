@@ -1,0 +1,24 @@
+= form_for @todo do |f|
+
+  - if @todo.errors.any?
+
+    div id="error_explaination"
+
+      h2
+        | #{pluralize(@todo.errors.count, "error")}
+          prohibited this TODO from being saved:
+
+      ul
+        - @todo.errors.full_messages.each do |msg|
+          li = msg
+
+  div
+    = f.label :title
+    = f.text_field :title
+
+  div
+    = f.label :tags
+    = f.text_area :tags
+
+  div
+    = f.submit
