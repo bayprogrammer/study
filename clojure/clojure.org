@@ -1,0 +1,52 @@
+* books
+** TODO Clojure for the Brave and True
+:PROPERTIES:
+:subtitle : learn the ultimate language and become a better programmer
+:authors  : Daniel Gigginbotham
+:publisher: No Starch Press
+:city     : San Francisco
+:year     : 2015
+:url      : 
+:END:
+*** DONE Forward by Alan Dipert
+    CLOSED: [2016-01-23 Sat 15:04]
+*** DONE Acknowledgments
+    CLOSED: [2016-01-23 Sat 15:05]
+*** DONE Introduction
+    CLOSED: [2016-01-23 Sat 15:23]
+*** TODO Part I: Environment Setup
+**** DONE Chapter 1: Building, Running, and the REPL
+     CLOSED: [2016-01-23 Sat 16:16]
+- prefix notation for the win!!
+#+BEGIN_EXAMPLE
+$ lein new app clojure-noob
+$ cd clojure-noob
+$ lein run
+$ lein uberjar
+$ lein repl
+#+END_EXAMPLE
+**** TODO Chapter 2: How to Use Emacs, and Excellent Clojure Editor :mark:13:configuration:
+- emacs for the double-win!!!!!
+*** TODO Part II: Language Fundamentals
+**** TODO Chapter 3: Do Things: A Clojure Crash Course
+**** TODO Chapter 4: Core Functions in Depth
+**** TODO Chapter 5: Functional Programming
+**** TODO Chapter 6: Organizing Your Project: A Librarian's Tale
+**** TODO Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
+**** TODO Chapter 8: Writing Macros
+*** TODO Part III: Advanced Topics
+**** TODO Chapter 9: The Sacred Art of Concurrent and Parallel Programming
+**** TODO Chapter 10: Clojure Metaphysics: Atoms, Refs, Vars, and Cuddle Zombies
+**** TODO Chapter 11: Mastering Concurrent Processes with core.async
+**** TODO Chapter 12: Working with the JVM
+**** TODO Cahpter 13: Creating and Extending Abstractions with Multimethods, Protocols, and Records
+*** TODO Appendix A: Building and Developing with Leiningen
+*** TODO Appendix B: Boot, the Fancy Clojure Build Framework
+*** TODO Farewell
+** TODO Programming Clojure
+** TODO Mastering Clojure Macros
+** TODO Clojure Applied
+** TODO Web Development with Clojure
+* papers
+* questions
+* observations

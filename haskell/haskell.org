@@ -1,0 +1,147 @@
+* books
+** TODO Learn You a Haskell for Great Good!
+:PROPERTIES: 
+:subtitle : A Beginners Guide
+:authors  : Meran Lipovaca
+:publisher: No Starch Press
+:city     : San Francisco
+:year     : 2011
+:url      : https://www.nostarch.com/lyah.htm
+:END:      
+*** DONE Introduction
+    CLOSED: [2016-02-06 Sat 13:53]
+*** TODO Chapter 1: Starting Out
+- Left off top of pg. 3 (ch 1)
+- For granola, going to focus on using Rust, so focusing on Rust for a
+  while probably before returning to Haskell (zmd 6-Feb-2016)
+*** TODO Chapter 2: Believe the Type
+*** TODO Chapter 3: Syntax in Functions
+*** TODO Chapter 4: Hello Recursion!
+*** TODO Chapter 5: Higher-Order Functions
+*** TODO Chapter 6: Modules
+*** TODO Chapter 7: Making Our Own Types and Type Classes
+*** TODO Chapter 8: Input and Output
+*** TODO Chapter 9: More Input and More Output
+*** TODO Chapter 10: Functionally Solving Problems
+*** TODO Chapter 11: Applicative Functors
+*** TODO Chapter 12: Monoids
+*** TODO Chapter 13: A Fistful of Monads
+*** TODO Chapter 14: For a Few Monads More
+*** TODO Chapter 15: Zippers
+** TODO Real World Haskell
+:PROPERTIES:
+:subtitle : Code You Can Believe In
+:authors  : Bryan O'Sullivan, Don Stewart, and John Goerzen
+:publisher: O'Reilly Media
+:city     : Sebastopol
+:year     : 2008
+:url      : http://book.realworldhaskell.org/
+:END:
+*** TODO Preface
+*** TODO Chapter 1: Getting Started
+*** TODO Chapter 2: Types and Functions
+*** TODO Chapter 3: Defining Types, Streamlining Functions
+*** TODO Chapter 4: Functional Programming
+*** TODO Chapter 5: Writing a Library: Working with JSON Data
+*** TODO Chapter 6: Using Typeclasses
+*** TODO Chapter 7: I/O
+*** TODO Chapter 8: Efficient File Processing, Regular Expressions, and Filename Matching
+*** TODO Chapter 9: I/O Case Study: A Library for Searching the Filesystem
+*** TODO Chapter 10: Code Case Study: Parsing a Binary Data Format
+*** TODO Chapter 11: Testing and Quality Assurance
+*** TODO Chapter 12: Barcode Recognition
+*** TODO Chapter 13: Data Structures
+*** TODO Chapter 14: Monads
+*** TODO Chapter 15: Programming with Monads
+*** TODO Chapter 16: Using Parsec
+*** TODO Chapter 17: Interfacing with C: The FFI
+*** TODO Chapter 18: Monad Transformers
+*** TODO Chapter 19: Error Handling
+*** TODO Chapter 20: Systems Programming in Haskell
+*** TODO Chapter 21: Using Databases
+*** TODO Chapter 22: Extended Example: Web Client Programming
+*** TODO Chapter 23: GUI Programming with gtk2hs
+*** TODO Chapter 24: Concurrent and Multicore Programming
+*** TODO Chapter 25: Profiling and Optimization
+*** TODO Chapter 26: Advanced Library Design: Building a Bloom Filter
+*** TODO Chapter 27: Sockets and Syslog
+*** TODO Chapter 28: Software Transactional Memory
+*** TODO Appendix A: Installing GHC and Haskell Libraries
+*** TODO Appendix B: Characters, Strings, and Escaping Rules
+** TODO [[http://www.yesodweb.com/book-1.4][Developing Web Applications with Haskell and Yesod]]
+:PROPERTIES:
+:subtitle : 
+:authors  : Michael Snoyman
+:publisher: O'Reilly / Self Published Revisions
+:city     : 
+:year     : 
+:url      : 
+:END:
+*** TODO Basics
+**** TODO Introduction
+**** TODO Haskell
+**** TODO Basics
+**** TODO Shakespearean Templates
+**** TODO Widgets
+**** TODO Yesod Typeclass
+**** TODO Routing and Handlers
+**** TODO Forms
+**** TODO Sessions
+**** TODO Persistent
+**** TODO Deploying your Webapp
+*** TODO Advanced
+**** TODO RESTful Content
+**** TODO Yesod’s Monads
+**** TODO Authentication and Authorization
+**** TODO Scaffolding and the Site Template
+**** TODO Internationalization
+**** TODO Creating a Subsite
+**** TODO Understanding a Request
+**** TODO SQL Joins
+**** TODO Yesod for Haskellers
+*** TODO Examples
+**** TODO Initializing data in the foundation datatype
+**** TODO Blog: i18n, authentication, authorization, and database
+**** TODO Wiki: markdown, chat subsite, event source
+**** TODO JSON Web Service
+**** TODO Case Study: Sphinx-based Search
+**** TODO Visitor counter
+**** TODO Single process pub-sub
+**** TODO Environment variables for configuration
+**** TODO Route attributes
+*** TODO Appendices
+**** TODO monad-control
+**** TODO Web Application Interface
+**** TODO Settings Types
+**** TODO http-conduit
+**** TODO xml-conduit
+** TODO Parallel and Concurrent Programming in Haskell
+:PROPERTIES:
+:subtitle : Techniques for Multicore and Multithreaded Programming
+:authors  : Simon Marlow
+:publisher: O'Reilly Media
+:city     : Sebastopol
+:year     : 2013
+:url      : 
+:END:
+*** TODO Preface
+*** TODO Chapter 1: Introduction
+*** TODO Part I. Parallel Haskell
+**** TODO Chapter 2: Basic Parallelism: The Eval Monad
+**** TODO Chapter 3: Evaluation Strategies
+**** TODO Chapter 4: Dataflow Parallelism: The Par Monad
+**** TODO Chapter 5: Data Parallel Programming with Repa
+**** TODO Chapter 6: GPU Programming with Accelerate
+*** TODO Part II. Concurrent Haskell
+**** TODO Chapter 7: Basic Concurrency: Threads and MVars
+**** TODO Chapter 8: Overlapping Input/Output
+**** TODO Chapter 9: Cancellation and Timeouts
+**** TODO Chapter 10: Software Transactional Memory
+**** TODO Chapter 11: Higher-Level Concurrency Abstractions
+**** TODO Chapter 12: Concurrent Network Servers
+**** TODO Chapter 13: Parallel Programming Using Threads
+**** TODO Chapter 14: Distributed Programming
+**** TODO Chapter 15: Debugging, Tuning, and Interfacing with Foreign Code
+* papers
+* questions
+* observations

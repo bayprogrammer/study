@@ -1,0 +1,14 @@
+* books
+** Title
+:PROPERTIES:
+:subtitle : 
+:authors  : 
+:publisher: 
+:city     : 
+:year     : 
+:url      : 
+:END:
+*** 
+* papers
+* questions
+* observations

@@ -1,0 +1,17 @@
+* books
+** Title (turn into hyperlink direct to resource)
+   :subtitle : 
+   :authors  : 
+   :publisher: 
+   :city     : 
+   :year     : 
+   :url      : 
+*** DONE Preface
+*** DONE Introduction
+*** DONE Chapter 1: Chapter Title
+**** Note Headline
+Note content
+*** TODO Chapter 2: Chapter Title
+* papers
+* questions
+* observations

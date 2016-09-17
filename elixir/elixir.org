@@ -1,0 +1,47 @@
+* books & docs
+** TODO Programming Elixir
+:PROPERTIES:
+:subtitle : Functional, Concurrent, Pragmatic, Fun
+:authors  : Dave Thomas
+:publisher: Pragmatic Bookshelf
+:city     : Dallas, Texas
+:year     : 2014
+:url      : 
+:END:
+*** TODO Forword
+*** TODO A Vain Attempt at Justification
+*** TODO Chapter 1: Take the Red Pill
+*** TODO Chapter 2: Pattern Matching
+*** TODO Chapter 3: Immutability
+*** TODO Chapter 4: Elixir Basics
+*** TODO Chapter 5: Anonymous Functions
+*** TODO Chapter 6: Modules and Named Functions
+*** TODO Chapter 7: List and Recursion
+*** TODO Chapter 8: Dictionaries: Maps, HashDicts, Keywords, Sets, and Structs
+*** TODO Chapter 9: An Aside--What Are Types?
+*** TODO Chapter 10: Processing Collections--Enums and Stream
+*** TODO Chapter 11: Strings and Binaries
+*** TODO Chapter 12: Control Flow
+*** TODO Chapter 13: Organizing a Project
+*** TODO Chapter 14: Working with Multiple Processes
+*** TODO Chapter 15: Nodes--The Key to Distributing Services
+*** TODO Chapter 16: OTP: Servers
+*** TODO Chapter 17: OTP: Supervisors
+*** TODO Chapter 18: OTP: Applications
+*** TODO Chapter 19: Tasks and Agents
+*** TODO Chapter 20: Macros and Code Evaluation
+*** TODO Chapter 21: Linking Modules: Behavio(u)rs and Use
+*** TODO Chapter 22: Protocols--Polymorphic Functions
+*** TODO Chapter 23: More Cool Stuff
+*** TODO Appendix A1: Exceptions: raise and try, catch and throw
+*** TODO Appendix A2: Type Specifications and Type Checking
+** TODO Getting Started Guide
+** TODO Metaprogramming Elixir
+** TODO Plug Documentation
+** TODO Phoenix Docs
+** TODO Programming Phoenix
+* papers
+* blogs
+* questions
+* observations
+* tools, libs, and frameworks

@@ -1,0 +1,144 @@
+* books
+** TODO C Programming Language, The (2nd. Ed.)
+:PROPERTIES:
+:subtitle : 
+:authors  : Brian W. Kernighan, Dennis M. Ritchie
+:publisher: Prentice Hall PTR
+:city     : Upper Saddle River
+:year     : 1988
+:url      : 
+:END:
+*** DONE Preface
+*** DONE Introduction
+*** TODO Chapter 1: A Tutorial Introduction
+**** 1.1 - 1.4
+- "The only way to learn a new programming language is by writing
+  programs in it."
+- "hello, world"
+- functions and variables
+- [X] Exercise 1-1
+- [X] Exercise 1-2
+- character string, string constant, [string literal]
+- variable, declaration
+- type declaration for variable `int fahr;`
+- basic data types:
+  - int
+  - float
+  - char
+  - short
+  - long
+  - double
+- compound and complex data types:
+  - arrays
+  - structures
+  - pointers
+  - functions
+- assignment statement (after declaration statements)
+- integer division truncates, drops fractional part from result
+- ints automatically cast to floats in certain contexts, especially
+  when one of the numbers to be operated on is a float; good to use
+  float literals even for integral value-literals for clarity to a
+  human audience
+- [X] Exercise 1-3
+- [X] Exercise 1-4
+- variable of type
+- expression of type
+- expression of type can be used where variable of type could be used
+- for: init, compare, mutate
+- [X] Exercise 1-5
+- Symbolic Constant
+  - #define name replacement text
+  - e.g. `#define   LOWER  0`
+  - no terminating semicolon
+**** 1.5 Character Input and Output
+- text stream: sequence of characters divided into lines
+  - each line zero or more characters followed by newline char
+- getchar(), putchar()
+- [X] Exercise 1-6
+  - flow control resolves 0 to false, and 1 (or non-zero) to true
+- [X] Exercise 1-7
+- semicolon by itself is the "null statement", can be used where a
+  statement is needed for grammar of C but only a noop is needed
+  (sounds sort of like Python's `pass`
+- 'a'
+  - character constant, evaluates to numeric value of encoded character
+  - e.g. '\n' returns numeric value of newline character, not the
+    string itself; another way to express an integer
+- it's clear K&R was written with an expectation that a character is
+  the size of a single byte, no? don't think ANSI C, as covered in
+  K&R, is aware of unicode characters. But bytestreams are still a
+  fundamental thing. But if you're counting characters in a unicode
+  document, you'd need to take care to account for multi-byte
+  characters; I don't know how you'd do that; must be a library that
+  helps?
+- [X] Exercise 1-8
+- [X] Exercise 1-9
+- [ ] Exercise 1-10
+*** TODO Chapter 2: Types, Operators, and Expressions
+*** TODO Chapter 3: Control Flow
+*** TODO Chapter 4: Functions and Program Structure
+*** TODO Chapter 5: Pointers and Arrays
+*** TODO Chapter 6: Structures
+*** TODO Chapter 7: Input and Output
+*** TODO Chapter 8: The UNIX System Interface
+*** TODO Appendix A: Reference Material
+*** TODO Appendix B: Standard Library
+*** TODO Appendix C: Summary of Changes
+** TODO 21st Century C, 2nd. Ed.                                   :wishlist:
+Recommended by @jws: https://alpha.app.net/jws/post/66328095
+Available: http://shop.oreilly.com/product/0636920033677.do
+* papers
+* questions
+* observations
+** interpreters, compilers, and runtimes
+It seems to me that C is a language compiled, but the programmer is
+expected to utilize the standard library, which is implemented in
+terms of the runtime provided by the OS directly (especially in the
+UNIX context). Other runtimes and virtual machines provide their own
+"Min-OS" as a platform independent API and rich standard library. C
+expects a standard library to be present, and the standard library can
+be implemented on each platform to provide the standardized API to
+call OS-specific services. With C, the kernel and OS services are the
+runtime, basically, right? But each platform must have its native
+runtime exposed through the API of the standard library for portable C
+programs to be writable.
+** Unix: Linux AND BSD
+It's not enough to me to be able to write C code for Linux. I want to
+write safe and secure code that compiles nicely on the BSDs as well
+(and don't wish to intentionally exclude any other POSIX system,
+including OpenIndiana or OS X).
+
+That's a tall order, however, and my resources are currently thin. I
+have K&R, but no books specific to writing portable C code (beyond
+what K&R covers). For example, how do I know what are cross-platform
+(of *nixes) system calls? How do I do portable networking or sockets
+programming?
+
+I cannot afford a bunch more books for C and Unix programming, though
+I know other books do exist. Instead, I think I will maintain a little
+army of virtual machines running each of the major BSDs for testing my
+code on, and for access to the documentation.
+
+Possibly I can grab a copy of the POSIX standards, but those are not
+licensed freely, so I'm not sure I want to bother.
+
+I cannot afford an OS X box, so I don't plan to really spend time
+testing for OS X, but if I were to write something others want to run
+on OS X (doesn't seem likely) then I'd have to have those others
+contribute patches specific to OS X, if needed. Basically the same for
+Solaris-style OSes, though in principle I could also run an
+OpenIndiana VM as well. Windows and Cygwin aren't priorities, though I
+will not intentionally make my code hard to use for users of Windows;
+I'm not going to sacrifice features common to *Nix platforms for the
+sake of Windows.
+
+But the Linux kernel, as well as the BSDs, are very very well
+documented. I'm also pretty sure Linux (or GNU) has a manpage that
+provides suggestions on writing portable code.
+
+Another thing that'd hugely important to me is writing *secure*
+code. Paying close attention to the papers and ABI of OpenBSD (and all
+the BSDs to some degree) should help me write secure C code, but I
+don't think I have the means, or problems to solve yet, to really
+learn to write complex C programs that are secure (so I won't write
+them, or if I need to, I will learn how to do so properly).

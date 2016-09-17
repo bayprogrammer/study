@@ -1,0 +1,11 @@
+task :default => [:dev]
+
+task :dev => [".gems"]
+
+task :clean do
+  sh "rm -rf .gems"
+end
+
+file ".gems" do
+  sh "rbenv exec gem install rails"
+end

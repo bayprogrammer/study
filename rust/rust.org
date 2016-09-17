@@ -1,0 +1,308 @@
+* books
+** TODO The Rust Programming Language
+*** DONE Chapter 1. Introduction
+    CLOSED: [2016-02-06 Sat 15:11]
+*** DONE Chapter 2. Getting Started
+    CLOSED: [2016-02-06 Sat 16:45]
+- rust-mode for Emacs
+- Rustacean
+- Rust programs always use .rs for their file extension
+- function call ending with ! is a macro call instead of a normal
+  function call (e.g. println!() is a macro call)
+- Cargo: rust's build system and package manager
+- main.rs with main function -- like C/C++ -- entrypoint to executable
+- use lib.rs for the toplevel file of your library project
+  - convention used by Rust projects and default for Cargo
+- Cargo expects your code inside src/, with toplevel for files like README
+- Cargo.toml
+- $ cargo build && ./target/debug/hello_world
+- $ cargo run  # equiv to above
+- $ cargo build --release  # build release version
+- $ cargo new hello_world --bin
+- There is an official Cargo guide, this will be useful later
+*** DONE Chapter 3. Learn Rust
+    CLOSED: [2016-02-15 Mon 16:32]
+**** DONE Chapter 3.1. Guessing Game
+     CLOSED: [2016-02-13 Sat 16:02]
+- let foo = bar;
+- let mut guess = String::new()
+- let binds variable, and the left hand side of the assignment is
+  actually a Rust pattern [does Rust support pattern matching?]
+- Rust variables are immutable by default (thus the mut keyword to
+  introduce a mutable variable explicitly, which is the exceptional
+  case, not the common case, for variables) [Love this!]
+- :: 'associated function' (like a static method)
+- 'method' on instance of type (instead of 'associated function'
+- &mut String (pass mutable String object by reference)
+- crates.io
+- the stuff that's available by default is called the prelude, similar
+  to Haskell
+- extern crate rand;
+- Basically like `use` but for external libs brought in through crates
+- use rand::Rng;
+- Traits provide methods on different types. The Rng trait will let us
+  use the gen_range method on our rand object.
+- loop { ... } // infinite loop
+- pattern matching a Result in a let statement (error handling method)
+**** DONE Chapter 3.2. Dining Philosophers
+     CLOSED: [2016-02-13 Sat 20:34]
+- sruct -- define data type
+- impl  -- define associate function for given data type
+- String vs &str
+- .to_string() on string reference to create copy of referenced string
+  as String
+- ::new() is a conventional name for your type's contructor associated
+  function
+- Vec<T> : created via vec![...] macro
+- for p in &philosophers { ... }  // iterate over a vector, Python style!
+- regular associated method is more like a class method (e.g. new),
+  but methods take an explicit reference to &self
+- Philosopher::new( ... ) // associated "class" method
+- let p = Philospher::new(...) ; p.eat() // [instance] method
+- `_` type placeholder
+- |a, b| { ... }  // lambda, closure
+- move || {}  // move takes ownership of any bindings closed over
+- .collect() the result of .map() (specify type annotation at beginning)
+- dereference elements from a vector using `usize` values
+- using the _name prefix with underscore alerts the Rust compiler that
+  we don't intend to use the names we've bound, even though we've
+  bound them, so it won't throw compiler warnings for things that
+  we've intentionally done
+- Arc == atomic reference type (needed to share object accross threads
+- Book claimed that two threads could run in the example code at once;
+  think it's mistaken, because of how the locking orders, only one
+  person could have two forks at once, and all others block until one
+  other finishing, leaving only one thread active at a time. I hate it
+  when books do that.
+**** DONE Chapter 3.3. Rust Inside Other Languages
+     CLOSED: [2016-02-15 Mon 16:32]
+- did not enter any of the demo code, but did read the chapter
+*** TODO Chapter 4. Syntax and Semantics
+**** DONE Chapter 4.1. Variable Bindings
+     CLOSED: [2016-02-15 Mon 17:14]
+- type inference
+- explicit type
+- i32 : signed 32 bit integer
+- u32 : unsigned 32 bit integer
+- you can rebind a name, shadowing the original, but I think that
+  means you're creating a new binding with the same name; that is
+  different than mutating the same binding to point to a different
+  value in memory.
+- you cannot use a variable prior to initialization (compile time
+  error to try)
+- variable binding shadowing is not the same as mutating an existing
+  variable binding
+  - This can be seen more clearly by shadowing a binding inside a
+    nested block (doesn't affect the binding by that name in the outer
+    scope)
+  - "Shadowing and mutable bindings may appear as two sides of the
+    same coin, but they are two distinct concepts that can't always be
+    used interchangeably."
+  - shadowing allows changing mutability of existing name in scope
+    (you can rebind the name to the existing value by as mutable)
+**** DONE Chapter 4.2. Functions
+     CLOSED: [2016-02-16 Tue 19:17]
+- arguments to function are similar to let, including type annotations;
+- unlike with let, you MUST be explicit about the types your function
+  accepts as parameters
+- Rust functions return one value, you delcare the type:
+    fn foo(x: i32) -> i32
+- Last line is return value; leave off the semi colon from that final
+  expression that should return a value (else empty tuple)
+- [this isn't something I care for in Rust; should be consistent one
+  way or the other with semicolons and return--but whatever]
+- let binding is statement, not expression
+- assigning value into existing binding is an expression returning
+  empty tuple (value assigned may only have a single owner...)
+**** DONE Chapter 4.3. Primitive Types
+     CLOSED: [2016-02-16 Tue 20:05]
+- bool (true, false)
+- char (single unicode scalar, four bytes), character surrounded by
+  single quotes
+- numeric types:
+  - i8
+  - i16
+  - i32
+  - i64
+  - u8
+  - u16
+  - u32
+  - u64
+  - isize
+  - usize
+  - f32
+  - f64
+- array (fixed sized list of elements of same type)
+  - let a = [0; 20]; // a: [i32; 20] each element initialized to zero
+  - a.len();
+  - zero indexed, bracketed subscript: `a[1] // second element`
+  - "array access is bounds-checked at run-time"
+- slice - view into subset of existing data
+  - foo&[1..4] // amper -- b/c similar to reference
+- str -- primitive string type; unsized type; most useful as a
+  reference type
+- tuples
+  - heterogenious ordrered list of fixed size
+  - pattern match via destructuring list in let statement,
+    multi-assignment
+  - (0,); // single value tuple, distinct from (0)
+  - index via dot notation, not []: tuple.1 // second element
+- function type (functions have types); you can define a variable to
+  point to existing function giving the functions type:
+  - let x: fn(i32) -> i32 = foo; // where foo is a function of same type
+**** DONE Chapter 4.4. Comments
+     CLOSED: [2016-02-16 Tue 20:15]
+- // line comment
+- /// doc comment
+- //! doc comment (alt style, for crates, modules, or functions)
+- doc comment is similar to python's docstring format, markdown
+- rustdoc
+- embedding "doctest" type comments
+**** DONE Chapter 4.5. if
+     CLOSED: [2016-02-16 Tue 20:19]
+- if, else if, else
+- if is condition and can be on the right hand side of assignment
+- if without else always results in () as value
+**** DONE Chapter 4.6. Loops
+     CLOSED: [2016-02-16 Tue 21:11]
+- loop
+- while
+  - prefer when unknown number of iterations needed; prefer loop over
+    while true for endless loop
+- for
+  - for var in expression { ... }
+  - (not C-style for; more like Python's)
+  - expression, must be convertable to iterator via IntoIterator
+  - can enumerate over ranges, iterators
+  - for (i, j) in (5..10).enumerate() { ... }
+- break, continue, return (early from function)
+- break/continue from inner-most by deafult, can use loop labels where
+  specificity is necessary
+**** DONE Chapter 4.7. Ownership
+     CLOSED: [2016-02-17 Wed 20:48]
+- "Rust ensures that there is exactly one binding to any given resource"
+- creating a copy of a copyable variable is not the same as creating a
+  second binding to the same resource
+- you can create copies for types that implement the Copy trait
+- "All primitive types implement the Copy trait"
+**** DONE Chapter 4.8. References And Borrowing
+     CLOSED: [2016-02-18 Thu 21:13]
+- borrowing a reference to an object is different than taking
+  ownership of that same object
+- return of borrowed object when borrowing context goes out of scope
+- "A binding that borrows something does not deallocate the resource
+  when it goes out of scope."
+- references are immutable by default, just like other things
+- &T
+- &mut T
+- *y // deference mutable reference by prefixing asterisk
+- Reference Rules:
+  - "one or more references (&T) to a resource, [OR]"
+  - "exactly one mutable reference (&mut T)"
+- "References must not live longer than the resource they refer to."
+- "resources within the same scope are freed in the opposite order
+  they were declared"
+**** TODO Chapter 4.9. Lifetimes
+- lifetimes "describe the scope that a reference is valid for"
+- implicit lifetimes vs explicit lifetimes
+- "A function can have 'generic parameters' between the <>s, of which
+  lifetimes are one kind."
+- &'a mut i32 // "a mutable reference to an i32 with the lifetime of 'a'.
+- must use explicit lifetimes for structs which contain references
+**** TODO Chapter 4.10. Mutability
+**** TODO Chapter 4.11. Structs
+**** TODO Chapter 4.12. Enums
+**** TODO Chapter 4.13. Match
+**** TODO Chapter 4.14. Patterns
+**** TODO Chapter 4.15. Method Syntax
+**** TODO Chapter 4.16. Vectors
+**** TODO Chapter 4.17. Strings
+**** TODO Chapter 4.18. Generics
+**** TODO Chapter 4.19. Traits
+**** TODO Chapter 4.20. Drop
+**** TODO Chapter 4.21. if let
+**** TODO Chapter 4.22. Trait Object
+**** TODO Chapter 4.23. Closures
+**** TODO Chapter 4.24. Universal Function Call Syntax
+**** TODO Chapter 4.25. Crates and Modules
+**** TODO Chapter 4.26. `const` and `static`
+**** TODO Chapter 4.27. Attributes
+**** TODO Chapter 4.28. `type` aliases
+**** TODO Chapter 4.29. Casting between types
+**** TODO Chapter 4.30. Associated Types
+**** TODO Chapter 4.31. Unsized Types
+**** TODO Chapter 4.32. Operators and Overloading
+**** TODO Chapter 4.33. Deref coercions
+**** TODO Chapter 4.34. Macros
+**** TODO Chapter 4.35. Raw Pointers
+**** TODO Chapter 4.36. `unsafe`
+*** TODO Chapter 5. Effective Rust
+**** TODO Chapter 5.1. The Stack and the Heap
+**** TODO Chapter 5.2. Testing
+**** TODO Chapter 5.3. Conditional Compilation
+**** TODO Chapter 5.4. Documentation
+**** TODO Chapter 5.5. Iterators
+**** TODO Chapter 5.6. Concurrency
+**** TODO Chapter 5.7. Error Handling
+**** TODO Chapter 5.8. Choosing your Guarantees
+**** TODO Chapter 5.9. FFI
+**** TODO Chapter 5.10. Borrow and AsRef
+**** TODO Chapter 5.11. Release Channels
+**** TODO Chapter 5.12. Using Rust Without the Standard Library
+*** TODO Chapter 6. Nightly Rust
+**** TODO Chapter 6.1. Compiler Plugins
+**** TODO Chapter 6.2. Inline Assembly
+**** TODO Chapter 6.3. No stdlib
+**** TODO Chapter 6.4. Intrinsics
+**** TODO Chapter 6.5. Lang items
+**** TODO Chapter 6.6. Advanced linking
+**** TODO Chapter 6.7. Benchmark Tests
+**** TODO Chapter 6.8. Box Syntax and Patterns
+**** TODO Chapter 6.9. Slice Patterns
+**** TODO Chapter 6.10. Associated Constants
+**** TODO Chapter 6.11. Custom Allocators
+*** Chapter 7. Glossary
+*** Chapter 8. Syntax Index
+*** Chapter 9. Bibliography
+:PROPERTIES: 
+:subtitle : 
+:authors  :
+:publisher: 
+:city     :
+:year     :
+:url      : https://doc.rust-lang.org/book/
+:END:      
+** TODO Rust by Example
+:PROPERTIES: 
+:subtitle :
+:authors  :
+:publisher:
+:city     :
+:year     :
+:url      : http://rustbyexample.com/
+:END:      
+*** TODO
+** TODO The Rustonomicon
+*** TODO 1. Introduction
+*** TODO 2. Meet Safe and Unsafe
+*** TODO 3. Data Layout
+*** TODO 4. Ownership
+*** TODO 5. Type Conversions
+*** TODO 6. Uninitialized Memory
+*** TODO 7. Ownership Based Resource Management
+*** TODO 8. Unwinding
+*** TODO 9. Concurrency
+*** TODO 10. Implementing Vec
+*** TODO 11. Implementing Arc and Mutex
+:PROPERTIES: 
+:subtitle :
+:authors  :
+:publisher:
+:city     :
+:year     :
+:url      : https://doc.rust-lang.org/nomicon/
+:END:      
+*** TODO
+* papers
+* questions
+* observations

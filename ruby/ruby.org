@@ -1,0 +1,285 @@
+* books
+** TODO Programming Ruby 1.9 and 2.0
+:PROPERTIES:
+:subtitle : The Pragmatic Programmers' Guide
+:authors  : Dave Thomas, Chad Fowler, Andy Hunt
+:publisher: Pragmatic Bookshelf
+:city     : Dallas, Texas
+:year     : 2013
+:url      : 
+:END:
+*** DONE Foreword
+*** DONE Preface
+*** DONE Road Map
+*** DONE Chapter 1: Getting Started
+*** DONE Chapter 2: Ruby.new
+*** DONE Chapter 3: Classes, Objects, and Variables
+    CLOSED: [2015-12-08 Tue 18:54]
+*** DONE Chapter 4: Containers, Blocks, and Iterators
+- each
+- collect (map)
+- find
+- .with_index
+- "f".succ #=> "g"
+- Enumerable (module, mixin)
+- inject
+- "Enumerators Are Generators and Filters"
+- Ruby 2 supports lazy infinite generators via lazy enumerators
+  - Enumerator#lazy
+- 1.9 has greedy generators requiring work-arounds for certain methods
+  (so as to not attempt to consume an infinite series from a
+  generator)
+- .select
+- class method: can be called independent of instance
+- *args (like Python, splat)
+- block_given? (check if block given to your method)
+- File.open
+- f = lambda { |n| n*n }  # or lambda do |n| n*n end
+- f = -> n { n*n }  # param parens optional
+- def foo a, b, &c
+    # &c is the passed in block, can work with it as a variable
+    @cool_block = c
+    @cool_block.call(a, b)  # or @cool_block.(a, b)
+  end
+- you can pass Procs as arguments to a method:
+  def foo(a, b)
+    a.call
+    b.call
+  end
+  foo(-> { ... }, -> { ... })
+- regular ruby methods are not closures, but lambdas/procs/blocks are
+  - thus lambdas/procs/blocks are more powerful than methods
+- inspect method (foo.inspect)
+- "Containers, blocks, and iterators are core concepts in Ruby."
+*** DONE Chapter 5: Sharing Functionality: Inheritance, Modules, and Mixins :skimmed:
+    CLOSED: [2016-01-16 Sat 21:50]
+- super() send message to parent class for method of same name invoked
+  within
+- if you inherit from a base class, and define your own initialize
+  class, you may want to call super() to call the parent class version
+  (unless you don't need to)
+- modules - group methods, classes, and constants; providing a
+  namespacing mechanism and the facility by which we get mixins in
+  Ruby
+- MyModule.foo(MyModule::BAR)
+- require 'mymodule.rb'
+- class Foo
+    include MyModule  # mixin methods from module into class
+  end
+- module MyModule
+    def MyModule.module_method
+      # not mixed in, for stand-alone utilties perhaps (callable directly)
+    end
+
+    def module_instance_method
+      # can be mixed in, cannot be called directly from module
+    end
+  end
+- I should pay close attention: class methods are defined similarly:
+  class MyFoo
+    def MyFoo.bar
+      # class method, invoke directly, not from instances
+    end
+
+    def baz
+      # isntance method, invoke from instance, not directly
+    end
+  end
+- looks like "::" and "." can be used interchangably, at least for
+  accessing members of classes and modules; but I think the convention
+  is to use "." to access methods, and "::" to access constants
+- `include` has nothing to do with files; all about referring to
+  modules (use `require` or `load` to load code from external files)
+- include creates references to, but doesn't copy, the module's
+  instance methods; module instance methods can be swapped at runtime
+  and new behavior immediately inherited by users of those mixin
+  methods
+- Ruby standard mixin: `Comparable`
+- "a mixin is like a partial class definition"
+- Enumerable module -- mixin for supporting collection methods
+  (traverse, sort, etc.)
+- I really like Ruby's idea of allowing you to create classes that
+  exhibit standard collection and other api behavior via the use of
+  standard module mixins. In Python to do such things you have to
+  implement a bunch of magic methods on your classes. Much less
+  elegant than Ruby IMO.
+- Apparently you can open a class back up to include mixins or add
+  (maybe also redefine) methods:
+  class Array
+    include Summable
+  end
+- mixin methods can access member methods of instances of your class
+  in which they're used as if they were native member methods
+- module mixin methods can create and access instance variables
+  (e.g. @foo, which resides on self, the instance)
+- `<<` append/concatenate operator?
+- but beware using instance variables direclty; your module's use of
+  them may conflict with the classes use; better to rely on accessor
+  methods for the instances your mixins interact with, or store state
+  on the Module directly and key it based on object ID somehow (see
+  pickage p. 93)
+- "In general, a mixin that requires its own state is not a mixin--it
+  should be written as a class."
+- name resolution: first immediate class, then mixins (last first),
+  then superclasses and their mixins
+- mixins + metaprogramming > inheritance
+- reserve inheritance for "is a" relationships; not "has a" or "uses
+  a"
+*** TODO Chapter 6: Standard Types                                  :skimmed:
+- arrays, hashes, procs
+- numbers, strings, ranges, regular expressions
+- numbers: integers, floating-point, rational, complex
+- integers: stored in Fixnum or Bignum
+- can define integers with other bases: 0-prefixed for octal, 0d for
+  decimal (default), 0x for hex, 0b for binary. Underscores ignored
+  (like in Perl); can be used like commas often used by people when
+  writing large numbers
+- numbers with decimal points or exponents: Float (double)
+- rational numbers (fractions, ratios; exact): Rational
+  Rational(3, 4) ; Rational("3/4")
+- `mathn` library
+- Complex(1, 2)
+- -34.abs
+- looping with integer iterators: times, upto, downto
+- Numeric#step
+- get Enumerable returned by leaving off the block
+- Strings are sequences of chars (1.8 and earlier, sequence of 8 bit BYTES!)
+- Strings can encode binary data
+- single-quote escapes: '\\' and '\''
+- many escape sequences for double-quoted strings, including the likes of \n
+- "#{ expr }"
+- Can interpole global vars, class vars, and instance vars with # w/o {}
+  surrounding
+- %q, %Q ability to deliminate string with other chars (with analogy
+  to ' and " with regards to case); can dispens with Q if wanting the
+  double-quote style; delminiate similar to with perl.
+- <<HEREDELIM
+- <<-HEREDELIM can end heredoc with whitespace preceding
+- unless specified, 1.9 defaults to US-ASCII encoding, 2.0 to UTF-8
+- override the encoding from all strings in file
+  #encoding: utf-8
+- 
+*** TODO Chapter 7: Regular Expressions                             :skimmed:
+*** TODO Chapter 8: More About Methods                              :skimmed:
+*** TODO Chapter 9: Expressions                                     :skimmed:
+*** TODO Chapter 10: Exceptions, catch, and throw                   :skimmed:
+*** TODO Chapter 11: Basic Input and Output                         :skimmed:
+*** TODO Chapter 12: Fibers, Threads, and Processes                 :skimmed:
+*** TODO Chapter 13: Unit Testing                                   :skimmed:
+- MiniTest::Unit is a rewrite of Test::Unit, and replaced the latter
+  in post 1.8 releases of Ruby
+- Test::Unit itself was written by Nathaniel Talbott!
+- MiniTest has a Test::Unit compatibility mode, which sufficiently
+  covers Test::Unit's API, and can be more convenient to use
+- Your test class can group cases; inherit from Test::Unit::TestCase
+- test case methods must begin with test to be discovered (discovery
+  via reflection)
+- LEFT OFF p.182 (beginning of code sample at bottom continuing to next page)
+*** TODO Chapter 14: When Trouble Strikes!                          :skimmed:
+*** TODO Chapter 15: Ruby and Its World                             :skimmed:
+*** TODO Chapter 16: Namespaces, Source Files, and Distribution     :skimmed:
+*** TODO Chapter 17: Character Encoding                             :skimmed:
+*** TODO Chapter 18: Interactive Ruby Shell                         :skimmed:
+*** TODO Chapter 19: Documenting Ruby                               :skimmed:
+*** TODO Chapter 20: Ruby and the Web                               :skimmed:
+*** TODO Chapter 21: Ruby and Microsoft Windows                     :skimmed:
+*** TODO Chapter 22: The Ruby Language                              :skimmed:
+*** TODO Chapter 23: Duck Typing                                    :skimmed:
+*** TODO Chapter 24: Metaprogramming                                :skimmed:
+*** TODO Chapter 25: Reflection, ObjectSpace, and Distributed Ruby  :skimmed:
+*** TODO Chapter 26: Locking Ruby in the Safe                       :skimmed:
+*** TODO Chapter 27: Built-in Classes and Modules
+*** TODO Chapter 28: Standard Library
+*** Appendix A1: Support
+*** Bibliography
+** TODO Agile Web Development with Rails 4
+** TODO Why's (Poignant) Guide to Ruby
+** TODO Ruby Wizardry
+:PROPERTIES:
+:subtitle : 
+:authors  : 
+:publisher: 
+:city     : 
+:year     : 
+:url      : 
+:END:
+** TODO Ruby Programming Language, The
+** TODO Ruby by Example
+** TODO Build Awesome Command-Line Applications in Ruby 2
+** TODO Wicked Cool Ruby Scripts
+** TODO Confident Ruby
+** TODO Exceptional Ruby
+** TODO Ruby Best Practices
+** TODO Effective Ruby                                                :paper:
+** TODO Crafting Rails 4 Applications
+** TODO Ruby Under a Microscope
+* tutorials and blogs
+** TODO Getting Started with Rails (4)
+:PROPERTIES:
+:subtitle : 
+:authors  : 
+:publisher: 
+:city     : 
+:year     : 
+:url      : http://guides.rubyonrails.org/getting_started.html
+:END:
+- Rails is UGLY, I don't like it
+- Both Django and Flask are SOOOO much more elegant, I can't stand
+  Rails
+- It's abstractions are gaudy and over the top, needless complexity
+  for the simplest things
+- index, show, edit, create, update, destroy
+- but we must learn; maybe once we learn it, we will like it; if not,
+  we're still better off for having learned (if for nothing else,
+  being better at our jobs)
+- Rails: controllers, actions (request handlers)
+  - e.g. welcome#index
+- resource: collection of similar objects
+  - CRUD over resources: Create, Read, Update, Destroy
+- Rails feels like Indirection Driven Development. How could anyone
+  prefer this over Django, Flask, or Sinatra?
+- LEFT OFF <h1>New Article</h1> just above 5.2 The first form.
+- YUCK.
+** TODO Getting Started with Rails (5 Beta 2/ Edge)
+:PROPERTIES:
+:subtitle : 
+:authors  : 
+:publisher: 
+:city     : 
+:year     : 
+:url      : http://edgeguides.rubyonrails.org/getting_started.html
+:END:
+- 
+* papers
+* questions
+** .with_index
+- how does it work?
+- how is it we can chain it with the likes of each?
+- can we write our own iterators that can be used with with_index?
+* observations
+* web frameworks
+- https://rack.github.io/
+- http://rubyonrails.org/
+- http://www.sinatrarb.com/
+- http://padrinorb.com/
+- http://ramaze.net/
+- http://alisnic.github.io/nyny/
+- http://guilleiguaran.github.io/nancy/
+- http://cuba.is/
+- http://www.ruby-grape.org/
+- https://github.com/patriciomacadden/hobbit
+- https://github.com/crepe/crepe
+- https://github.com/luislavena/brooklyn
+- https://github.com/kballenegger/kenji
+** references:
+- http://codecondo.com/12-small-ruby-frameworks/
+* concurrency
+- https://github.com/ruby-concurrency/concurrent-ruby
+- https://celluloid.io/
+- http://rubyeventmachine.com/
+* functional ruby
+- https://github.com/jdantonio/functional-ruby
+- https://github.com/immutable-ruby/immutable-ruby
+- https://github.com/mbj/anima
+- https://github.com/concord/concord-ruby
+- https://github.com/dkubb/adamantium

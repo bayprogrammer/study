@@ -1,0 +1,48 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/zebdeos/shuttle/studies/c/c.org
+
+
+* TODO Chapter 1: A Tutorial Introduction
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-11-28 Sat 17:42
+  :ARCHIVE_FILE: ~/shuttle/studies/c/c.org
+  :ARCHIVE_OLPATH: books/C Programming Language, The (2nd. Ed.)
+  :ARCHIVE_CATEGORY: c
+  :ARCHIVE_TODO: TODO
+  :END:
+- "The only way to learn a new programming language is by writing
+  programs in it."
+- "hello, world"
+- functions and variables
+- [X] Exercise 1-1
+- [X] Exercise 1-2
+- character string, string constant, [string literal]
+- variable, declaration
+- type declaration for variable `int fahr;`
+- basic data types:
+  - int
+  - float
+  - char
+  - short
+  - long
+  - double
+- compound and complex data types:
+  - arrays
+  - structures
+  - pointers
+  - functions
+- assignment statement (after declaration statements)
+- integer division truncates, drops fractional part from result
+- ints automatically cast to floats in certain contexts, especially
+  when one of the numbers to be operated on is a float; good to use
+  float literals even for integral value-literals for clarity to a
+  human audience
+- [X] Exercise 1-3
+- [X] Exercise 1-4
+- variable of type
+- expression of type
+- expression of type can be used where variable of type could be used
+- for: init, compare, mutate
+- [X] Exercise 1-5
