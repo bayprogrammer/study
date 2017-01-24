@@ -19,8 +19,6 @@ app = Proc.new do |env|
       [%r{^/env/?$},     [:get], :echo_env]
     ]
 
-    # TODO(zmd): handlers should return response hash to use to set status
-    #     code, headers, and response strings
     Flimsy.router(env, routes, handlers).(env)
 end
 
