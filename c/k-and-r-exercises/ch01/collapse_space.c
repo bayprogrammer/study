@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Exercise 1-9 */
+/* Exercise 01-09 - collapse_space.c */
 
 /* collapse duplicate blanks in input */
 int main() {

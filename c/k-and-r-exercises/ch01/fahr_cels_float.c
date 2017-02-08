@@ -1,6 +1,6 @@
 #ipnclude <stdio.h>
 
-/* Exercise 1-3 */
+/* Exercise 01-03 - fahr_cels_float.c */
 
 /* print Fahrenheit-Celsius table
     for fahr - 0, 20, ..., 300; floating-point version */

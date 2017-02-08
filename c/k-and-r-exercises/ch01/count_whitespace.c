@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Exercise 1-8 */
+/* Exercise 01-08 - count_whitespace.c */
 
 /* count blanks, tabs, and newlines */
 int main() {

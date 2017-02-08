@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Exercises 1-1, 1-2 */
+/* Exercise 01-01, 01-02 - hello.c */
 
 int main()
 {

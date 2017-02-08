@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Exercise 1-4 */
+/* Exercise 01-04 - cels_to_fahr.c */
 
 int main() {
   float cels, fahr;

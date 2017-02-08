@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-/* Exercise 1-12: split input into words and echo them one per line */
+/* Exercise 01-12 - split_words.c */
+/* split input into words and echo them one per line */
 
 int main() {
     int c;

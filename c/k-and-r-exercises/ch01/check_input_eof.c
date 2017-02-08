@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Exercise 1-6 */
+/* Exercise 01-06 - check_input_eof.c */
 
 int main() {
   int c;

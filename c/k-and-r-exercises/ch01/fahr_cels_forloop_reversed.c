@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* K&R Exercise 1-5 */
+/* Exercise 01-05 - fahr_cels_forloop_reversed.c */
 
 /* printFahrenheit-Celsius table */
 int main() {
