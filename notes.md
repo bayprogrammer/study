@@ -246,4 +246,49 @@ Need to check out c99sh as well, making this even better:
 
 ## Chapter 2: Debug, Test, Document
 
-*TODO(zmd): left off here on 4-Mar-2017*
+`-g` flag to compile programs with debug symbols. `-O0` can make debugging
+easier, because optimization can shift and rewrite code quite a bit.
+
+Program compiled with debug symbols can be executed using the debugger:
+
+```
+$ gdb myprogram
+```
+
+Which starts you off in the debugger prompt.
+
+.gdbinit
+
+```
+set print thread-events off
+```
+
+I wonder, as I mess with `gdb` macros to print a GLib linked list (and having
+spent all day, 11-Mar-2017, obsessing about low level programming languages
+like C, C++, and Rust, whether it's better to Handmade all the things in C or
+C++ or Rust (use few libraries beyond platform-specific underlying APIs); to
+use C++ and its rich STL, stdlib, and Boost; or stick with C and use a the
+whole suite of standard, Linux, Posix, and Gnome libraries.
+
+I observe C is very manual, not only in its facilities for memory management,
+but also in its level of available abstraction. That is, C offers few
+abstractions (preprocessor macros and organizing code using prefixes instead of
+proper namespaces) leading to all kinds of needless verbosity. It is also to
+make really bad mistaks in C, leaving things to blow up at runtime (leading to
+issues like Heartbleed and Cloudbleed).
+
+Finally today I observe that C (according to TIOBE) is in a freefall in terms
+of popularity; perhaps this is closely linked with the constant reports of
+major security issues caused by poorly programmed C programs. Programs that
+would be much harder to write in Rust, or even modern C++ (especially with the
+awesome tooling coming out of the clang project, and other stuff like unit
+testing, valgrind, etc.)
+
+Despite the not-popularity of it, I still feel like I must master both C and
+C++. Rust is certainly something I will keep my eye on, and Lord-willing, may
+even end up learning. But stuff I care about is already written right now in C
+and C++, and someone needs to be able to program those languages to be able to
+help take care of it.
+
+*NOTE(zmd): current only page 49 as of 11-Mar-2017 (working on my own macro to
+print the whole glib linked list)*
