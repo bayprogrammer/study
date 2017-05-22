@@ -35,6 +35,8 @@ function findGlobal(root) {
 
 ns('bayprogrammer.p5.setupCanvas', (function() {
 
+  // TODO: make it possible to set canvas dimensions
+
   return function (margin, ...canvas_bg) {
     createCanvas(windowWidth - margin, windowHeight - margin);
     background(...canvas_bg);
@@ -77,6 +79,8 @@ ns('bayprogrammer.p5.setupCanvas', (function() {
     bodyEle.style.padding = '0';
     bodyEle.style.width = '100%';
   };
+
+  // TODO: make it possible to set canvas dimensions
 
   return function(margin, ...canvas_bg) {
     _w = () => windowWidth - margin;
