@@ -1,4 +1,4 @@
-// Random Boxes r2017-05-21; by @bayprogrammer (Zeb DeOs).
+// Random Boxes r2017-05-21b; by @bayprogrammer (Zeb DeOs).
 
 const { setupCanvas } = bayprogrammer.p5;
 const { Box, populateBoxes, showBoxes } = bayprogrammer.p5.RandomBoxes;
@@ -13,5 +13,5 @@ function setup() {
 }
 
 function draw() {
-  showBoxes(populateBoxes(boxes));
+  showBoxes(populateBoxes(boxes, NBOXES, DIM, DIM));
 }

@@ -18,9 +18,9 @@ ns('bayprogrammer.p5.RandomBoxes.Box', (function() {
 
 ns('bayprogrammer.p5.RandomBoxes.populateBoxes', (function() {
 
-  return function(boxes) {
-    for (var i = 0; i < NBOXES; i++) {
-      boxes[i] = new Box(random(width), random(height), DIM, DIM)
+  return function(boxes, n, w, h) {
+    for (var i = 0; i < n; i++) {
+      boxes[i] = new Box(random(width), random(height), w, h)
     }
 
     return boxes;
@@ -32,7 +32,7 @@ ns('bayprogrammer.p5.RandomBoxes.populateBoxes', (function() {
 ns('bayprogrammer.p5.RandomBoxes.showBoxes', (function() {
 
   return function(boxes) {
-    for (var i = 0; i < NBOXES; i++) {
+    for (var i = 0; i < boxes.length; i++) {
       boxes[i].show();
     }
 
