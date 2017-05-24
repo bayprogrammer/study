@@ -1,48 +1,12 @@
-function ns(ns, obj, root) {
-  root = findGlobal(root);
+ns('bayprogrammer.p5.setupCanvas', () => (_, ...bg) => {
+  createCanvas(windowWidth, windowHeight); background(...bg) });
 
-  var target;
-  var parent = root;
-  var segments = ns.split('.');
+function ns(n, iife) { var p = window, s = n.split('.'), t = s.splice(-1);
+                       s.forEach(k => p = (p[k] = p[k] || {})); p[t] = iife() }
 
-  for (var i = 0; i < segments.length; i++) {
-    if (i == segments.length - 1) {
-      target = segments[i];
-    } else {
-      parent[segments[i]] = parent[segments[i]] || {};
-      parent = parent[segments[i]];
-    }
-  }
+/** internal boilerplate *****************************************************/
 
-  parent[target] = obj;
-}
-
-function findGlobal(root) {
-  if (!root) {
-    if (window !== undefined) {
-      root = window;
-    } else if (global !== undefined) {
-      root = global;
-    } else {
-      throw 'Unable to find global object!';
-    }
-  }
-
-  return root;
-}
-
-ns('bayprogrammer.p5.setupCanvas', (function() {
-
-  return function (margin, ...canvas_bg) {
-    createCanvas(windowWidth - margin, windowHeight - margin);
-    background(...canvas_bg);
-  };
-
-})());
-
-/** internal versions ********************************************************/
-
-ns('bayprogrammer.p5.setupCanvas', (function() {
+ns('bayprogrammer.p5.setupCanvas', () => {
 
   var _w;
   var _h;
@@ -83,10 +47,10 @@ ns('bayprogrammer.p5.setupCanvas', (function() {
     createCanvas(_w(), _h());
     _setupStyle(margin, canvas_bg);
 
-    findGlobal().windowResized = () => {
+    windowResized = () => {
       resizeCanvas(_w(), _h());
       _setupStyle(margin, canvas_bg);
     };
   };
 
-})());
+});

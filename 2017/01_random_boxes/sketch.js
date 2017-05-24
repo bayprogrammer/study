@@ -1,17 +1,17 @@
-// Random Boxes r2017-05-21b; by @bayprogrammer (Zeb DeOs).
+document.addEventListener('DOMContentLoaded', () => {
+  ns('bayprogrammer.p5.RandomBoxes.sketch', () => {
 
-const { setupCanvas } = bayprogrammer.p5;
-const { Box, populateBoxes, showBoxes } = bayprogrammer.p5.RandomBoxes;
+    // Random Boxes r2017-05-21e; by @bayprogrammer (Zeb DeOs).
 
-const DIM = 50;
-const NBOXES = 20;
+    const { setupCanvas } = bayprogrammer.p5;
+    const { populateBoxes, showBoxes } = bayprogrammer.p5.RandomBoxes;
 
-var boxes = [];
+    const DIM = 50;
+    const NBOXES = 20;
+    var boxes = [];
 
-function setup() {
-  setupCanvas(50, 50, 80, 100);
-}
+    window.setup = () => setupCanvas(50, 50, 80, 100);
+    window.draw  = () => showBoxes(populateBoxes(boxes, NBOXES, DIM, DIM));
 
-function draw() {
-  showBoxes(populateBoxes(boxes, NBOXES, DIM, DIM));
-}
+  });
+});
