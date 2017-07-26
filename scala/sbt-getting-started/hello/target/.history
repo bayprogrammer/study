@@ -1,0 +1,99 @@
+run
+repl
+exit
+help
+reload
+hello
+reload
+hello
+reload
+hello
+name
+show hello
+reload
+foo_bar
+reload
+foo_bar
+reload
+foo_bar
+fooBar
+reload
+show hello
+show fooBar
+inspect name
+inspect fooBar
+reload
+scalacOptions
+reload
+run
+scalacOptions
+inspect scalacOptions
+inspect tree comple
+inspect tree compile
+inspect name
+reload
+run
+hello
+fooBar
+reload
+fooBar
+reload
+inspect fooBar
+inspect name in fooBsr
+inspect name in fooBar
+inspect name
+inspect *:fooBar::name
+*:fooBar::name
+fooBar::name
+*:fooBar::name
+rleoad
+reload
+inspect name
+name
+*::name
+*name
+*::*::name
+*:*::name
+Global
+name
+inspect name
+*/*:name
+sbt tasks
+tasks
+console
+reload
+console
+compile
+inspect compile
+compile:name
+na
+name
+inspect test:fullClasspath
+fullClasspath
+inspect test:fullClasspath
+inspect fullClasspath
+inspect test:fullClasspath
+inspect fullClasspath
+inspect compile:fullClasspath
+console
+rujn
+run
+rebuild
+reload
+run
+fooBar
+hello
+rebuild
+reload
+run
+console
+show libraryDependencies
+show test:libraryDependencies
+show */*::test:libraryDependencies
+show */*:test::libraryDependencies
+show test:libraryDependencies
+show test:dependencyClasspath
+show compile:dependencyClasspath
+console
+plugins
+console
