@@ -1,0 +1,4 @@
+[root]
+name = "conways-game-of-life"
+version = "0.1.0"
+
