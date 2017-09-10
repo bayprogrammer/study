@@ -1,0 +1,1 @@
+/home/zebdeos/code/codestudies/rust/the-rust-programming-language-2ed/projects/coins/target/debug/coins: /home/zebdeos/code/codestudies/rust/the-rust-programming-language-2ed/projects/coins/src/main.rs
