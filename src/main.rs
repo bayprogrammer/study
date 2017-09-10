@@ -1,11 +1,38 @@
-const GRID_SIZE: usize = 10*10;
+const GRID_STRIDE: usize = 10;
+const GRID_ROWS: usize   = 10;
+const GRID_SIZE: usize   = GRID_ROWS * GRID_STRIDE;
 
-#[allow(unused_mut,unused_variables)]
 fn main() {
-    let mut game_grid: [bool; GRID_SIZE] = [true; GRID_SIZE];
+    let mut game_grid = new_game_grid();
 
+    print_game_grid(&mut game_grid);
+
+    println!("");
+
+    tick_game_grid(&mut game_grid);
+    print_game_grid(&mut game_grid);
+}
+
+// TODO(zmd): can we make a custom array type and implement the following as
+//     methods on it?
+
+fn new_game_grid() -> [bool; GRID_SIZE] {
+    [true; GRID_SIZE]
+}
+
+fn tick_game_grid(grid: &mut[bool; GRID_SIZE]) {
     let mut i = 0;
-    for x in game_grid.iter() {
+    for x in grid.iter_mut() {
+        if i % 3 == 0 {
+            *x = false;
+        }
+        i += 1;
+    }
+}
+
+fn print_game_grid(grid: &[bool; GRID_SIZE]) {
+    let mut i = 0;
+    for x in grid.iter() {
         if *x {
             print!("# ")
         } else {
@@ -13,7 +40,7 @@ fn main() {
         }
 
         i += 1;
-        if (i > 0) && (i % 10 == 0) {
+        if (i > 0) && (i % GRID_STRIDE == 0) {
             print!("\n");
         }
     }
