@@ -15,7 +15,8 @@ int main() {
 }
 
 void printPerson(Person* person) {
-	// dereference object pointed to by person, then access it's members
-	printf("Name: %s\n", (*person).name);
-	printf(" Age: %i\n", (*person).age);
+	// arrow syntax allows accessing members of pointer to struct
+	// (automatically dereferencing the pointer)
+	printf("Name: %s\n", person->name);
+	printf(" Age: %i\n", person->age);
 }
