@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <errno.h>
 
 /* TODO(zmd): general stuff to do:
    - makefile
@@ -14,7 +15,7 @@
 
 #define INITIAL_BUFFER_SIZE 10
 
-// based on buffer used in dvtm
+// based on buffer (Register) used in dvtm
 typedef struct {
 	char *data;
 	size_t used;
@@ -29,14 +30,16 @@ Buffer* Buffer_new() {
 	Buffer* buffer = (Buffer *)malloc(sizeof(Buffer));
 	if (buffer) {
 		buffer->data = (char *)malloc(INITIAL_BUFFER_SIZE);
-		if (!buffer->data) {
+		if (buffer->data) {
+			buffer->used = 0;
+			buffer->size = INITIAL_BUFFER_SIZE;
+		} else {
+			// malloc failed for data
 			free(buffer);
 			buffer = NULL;
 		}
-	} // else buffer null from malloc failure
 
-	buffer->used = 0;
-	buffer->size = INITIAL_BUFFER_SIZE;
+	} // else buffer null from malloc failure
 
 	return buffer;
 }
@@ -68,7 +71,15 @@ Buffer* Buffer_read(Buffer *buffer, int filedes) {
 	ssize_t nbytes_read;
 	while (nbytes_read = read(filedes, Buffer_append_addr(buffer), Buffer_bytes_avail(buffer))) {
 		printf("Read %i from pipe...\n", nbytes_read);
-		if (nbytes_read == -1) break;  // failed to read from pipe
+		if (nbytes_read == -1) {
+			if (errno == EINTR) {
+				printf("Signal interrupted us, try again...\n");
+				continue;  // just signal interrupted us
+			}
+
+			printf("Couldn't read, giving up.\n");
+			break;             // couldn't read, give up
+		}
 
 		buffer->used += nbytes_read;
 		if (buffer->used == buffer->size) {
@@ -107,6 +118,9 @@ int main() {
 		dup2(filedes[PIPE_WRITE], STDOUT_FILENO);
 		close(filedes[PIPE_READ]);
 
+		// TODO(zmd): close any other inherited file descriptors?
+		//     (if/when this pattern used in utility function)
+
 		//char *args[] = { "xsel", "-ob", NULL };
 		//execvp("xsel", args);
 		execvp("xsel", (char *[]) { "xsel", "-ob", NULL });
@@ -121,9 +135,6 @@ int main() {
 
 		int chd_status;
 		wait(&chd_status);
-
-		// TODO(zmd): error handling if read failed? (don't want to use
-		//     buf if it's invalid?)
 
 		if (buf && buf->size > 0 && buf->size > buf->used) {
 			// TODO(zmd): @Highpriority: figure out best way to add
