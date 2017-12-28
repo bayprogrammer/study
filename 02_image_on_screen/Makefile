@@ -1,6 +1,11 @@
-OBJS = hello_image.cpp
+hello_image: hello_image.cpp game.o
+	g++ -ansi -std=c++0x \
+	    -Wall -Wextra -Wpedantic -Werror \
+	    hello_image.cpp -lSDL2 -g -o hello_image game.o
 
-OBJ_NAME = hello_image
+game.o: game.h game.cpp
+	g++ -c game.cpp
 
-all : $(OBJS)
-	g++ $(OBJS) -w -lSDL2 -o $(OBJ_NAME)
+clean:
+	rm hello_image
+	rm game.o
