@@ -5,8 +5,7 @@
 CC	= g++
 CFLAGS	= -std=c++0x -Wpedantic -Wall -Wextra -Werror
 LDFLAGS	=
-LDLIBS	=
-#LDLIBS	= -lSDL2
+LDLIBS	= -lSDL2
 
 all: pong
 
