@@ -3,6 +3,13 @@
 
 Player::Player(SDL_Renderer *renderer) {
   texture = nullptr;
+
+  //srcRect;
+  destRect.h = 64;
+  destRect.w = 64;
+  destRect.x = 0;
+  destRect.y = 0;
+
   SDL_Surface *tmpSurface = IMG_Load("player.png");
 
   if (tmpSurface) {
@@ -14,6 +21,15 @@ Player::Player(SDL_Renderer *renderer) {
 Player::~Player() {
   cleanup();
   std::cout << "Destroyed Player instance.\n";
+}
+
+void Player::update() {
+  destRect.x += 1;
+  destRect.y += 2;
+}
+
+void Player::render(SDL_Renderer *renderer) {
+  SDL_RenderCopy(renderer, texture, NULL, &destRect);
 }
 
 void Player::cleanup() {

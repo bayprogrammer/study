@@ -19,6 +19,11 @@ private:
   int width;
   int height;
 
+  int fps;
+  int frameDelay;
+  unsigned long int frameStart;
+  int frameTime;
+
   bool running;
 
   SDL_Window   *window;

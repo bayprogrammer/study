@@ -13,8 +13,15 @@ public:
 
   SDL_Texture *texture;
 
+  SDL_Rect srcRect;
+  SDL_Rect destRect;
+
   Player(SDL_Renderer *renderer);
   ~Player();
+
+  void update();
+
+  void render(SDL_Renderer *renderer);
 
   void cleanup();
 

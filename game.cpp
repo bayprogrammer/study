@@ -7,6 +7,11 @@ Game::Game() {
   width = 800;
   height = 640;
 
+  fps = 60;
+  frameDelay = 1000 / fps;
+  frameStart = 0;
+  frameTime = 0;
+
   running = false;
 
   window   = nullptr;
@@ -63,14 +68,17 @@ void Game::run() {
   printTitle();
 
   while (running) {
-    std::cout << counter << std::endl;
+    frameStart = SDL_GetTicks();
 
     input();
     update();
     render();
 
-    ++counter;
-    SDL_Delay(1000 / 60);
+    frameTime = SDL_GetTicks() - frameStart;
+
+    if (frameDelay > frameTime) {
+      SDL_Delay(frameDelay - frameTime);
+    }
   }
 
   std::cout << "Game loop exiting.\n";
@@ -91,13 +99,14 @@ void Game::input() {
 }
 
 void Game::update() {
-  // TODO(zmd): update game objects' state!
+  player->update();
+  ++counter;
 }
 
 void Game::render() {
   SDL_RenderClear(renderer);
 
-  SDL_RenderCopy(renderer, player->texture, NULL, NULL);
+  player->render(renderer);
 
   SDL_RenderPresent(renderer);
 }
