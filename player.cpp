@@ -1,7 +1,10 @@
 #include "player.h"
 
 
-Player::Player(SDL_Renderer *renderer) {
+Player::Player(int gWidth, int gHeight, SDL_Renderer *renderer) {
+  gameWidth = gWidth;
+  gameHeight = gHeight;
+
   texture = nullptr;
 
   //srcRect;
@@ -9,6 +12,9 @@ Player::Player(SDL_Renderer *renderer) {
   destRect.w = 64;
   destRect.x = 0;
   destRect.y = 0;
+
+  xVelocity = 4;
+  yVelocity = 4;
 
   SDL_Surface *tmpSurface = IMG_Load("player.png");
 
@@ -24,8 +30,16 @@ Player::~Player() {
 }
 
 void Player::update() {
-  destRect.x += 1;
-  destRect.y += 2;
+  destRect.x += xVelocity;
+  destRect.y += yVelocity;
+
+  if ((destRect.x <= 0) || ((destRect.x + destRect.w) >= gameWidth)) {
+    xVelocity *= -1;
+  }
+
+  if ((destRect.y <= 0) || ((destRect.y + destRect.h) >= gameHeight)) {
+    yVelocity *= -1;
+  }
 }
 
 void Player::render(SDL_Renderer *renderer) {
