@@ -14,8 +14,6 @@ private:
 
   std::string title;
 
-  // TODO(zmd): look up how to set as class constants? (or at least read-only
-  //     after initial set?)
   int width;
   int height;
 
@@ -29,7 +27,11 @@ private:
   SDL_Window   *window;
   SDL_Renderer *renderer;
 
-  Player *player;
+  // TODO(zmd): Entity <- {Ball, Player} (not via inheritance, but other form
+  //     of composition?)
+  // TODO(zmd): Ball *ball;
+  Player *player;  // TODO(zmd): Paddle *player
+  // TODO(zmd): Paddle *ai
 
   int counter;
 

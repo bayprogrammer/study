@@ -4,13 +4,13 @@
 Game::Game() {
   title = std::string("Pong");
 
-  width = 800;
+  width  = 800;
   height = 640;
 
-  fps = 60;
+  fps        = 60;
   frameDelay = 1000 / fps;
   frameStart = 0;
-  frameTime = 0;
+  frameTime  = 0;
 
   running = false;
 
@@ -54,7 +54,7 @@ bool Game::init() {
 
   SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
-  player = new Player(width, height, renderer);
+  player = new Player(renderer, width, height);
   if (!player) {
     cleanup();
     return false;
@@ -106,7 +106,7 @@ void Game::update() {
 void Game::render() {
   SDL_RenderClear(renderer);
 
-  player->render(renderer);
+  player->render();
 
   SDL_RenderPresent(renderer);
 }

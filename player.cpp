@@ -1,13 +1,26 @@
 #include "player.h"
 
 
-Player::Player(int gWidth, int gHeight, SDL_Renderer *renderer) {
-  gameWidth = gWidth;
-  gameHeight = gHeight;
+Player::Player(SDL_Renderer *const ren,
+               const int &gameW,
+               const int &gameH) :
+  renderer(ren),
+  gameWidth(gameW),
+  gameHeight(gameH) {
 
   texture = nullptr;
+  // TODO(zmd): need texture loading routine (TextureLoader::loadTexture()?)
+  SDL_Surface *tmpSurface = IMG_Load("player.png");
+  if (tmpSurface) {
+    texture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+    SDL_FreeSurface(tmpSurface);
+  }
 
-  //srcRect;
+  srcRect.h = 64;
+  srcRect.h = 64;
+  srcRect.x = 0;
+  srcRect.y = 0;
+
   destRect.h = 64;
   destRect.w = 64;
   destRect.x = 0;
@@ -16,12 +29,7 @@ Player::Player(int gWidth, int gHeight, SDL_Renderer *renderer) {
   xVelocity = 4;
   yVelocity = 4;
 
-  SDL_Surface *tmpSurface = IMG_Load("player.png");
-
-  if (tmpSurface) {
-    texture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-    SDL_FreeSurface(tmpSurface);
-  }
+  std::cout << "Constructed Player instance.\n";
 }
 
 Player::~Player() {
@@ -42,7 +50,7 @@ void Player::update() {
   }
 }
 
-void Player::render(SDL_Renderer *renderer) {
+void Player::render() {
   SDL_RenderCopy(renderer, texture, NULL, &destRect);
 }
 
