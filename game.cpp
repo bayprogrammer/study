@@ -18,6 +18,8 @@ Game::Game() {
   renderer = nullptr;
 
   player = nullptr;
+  ai     = nullptr;
+  ball   = nullptr;
 
   counter = 0;
 
@@ -54,8 +56,14 @@ bool Game::init() {
 
   SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
-  player = new Player(renderer, width, height);
-  if (!player) {
+  // TODO(zmd): struct for room dimensions? (rather than passing in width and
+  //     height refs?)
+  // TODO(zmd): @Cleanup: how we're calculating starting positions sucks. Move
+  //     the Paddle dependent part of the calculation inside the Paddle class.
+  player = new Paddle(renderer, width, height,           10, height-32-20);
+  ai     = new Paddle(renderer, width, height, width-128-10, 20);
+  ball   = new Ball(renderer, width, height);  // TODO(zmd): start pos like with Paddle?
+  if (!player || !ai || !ball) {
     cleanup();
     return false;
   }
@@ -100,6 +108,8 @@ void Game::input() {
 
 void Game::update() {
   player->update();
+  ai->update();
+  ball->update();
   ++counter;
 }
 
@@ -107,6 +117,8 @@ void Game::render() {
   SDL_RenderClear(renderer);
 
   player->render();
+  ai->render();
+  ball->render();
 
   SDL_RenderPresent(renderer);
 }
@@ -119,6 +131,16 @@ void Game::cleanup() {
   if (player) {
     delete player;
     player = nullptr;
+  }
+
+  if (ai) {
+    delete ai;
+    ai = nullptr;
+  }
+
+  if (ball) {
+    delete ball;
+    ball = nullptr;
   }
 
   if (renderer) {

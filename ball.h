@@ -5,10 +5,11 @@
 #include <SDL2/SDL_image.h>
 
 
-// TODO(zmd): rename to Ball, b/c, that's what this is ending up as
-class Player {
+class Ball {
 
 private:
+
+  // TODO(zmd): @Cleanup @Duplication with Paddle
 
   SDL_Renderer *const renderer;
 
@@ -23,20 +24,24 @@ private:
   int xVelocity;
   int yVelocity;
 
-  // TODO(zmd): bool loadTexture(const **textureName);
+  // TODO(zmd): bool loadTexture(const char **textureName);
 
 public:
 
-  Player(SDL_Renderer *const ren,
+  Ball(SDL_Renderer *const ren,
          const int &gameW,
          const int &gameH);
 
-  ~Player();
+  ~Ball();
+
+  // TODO(zmd): @Cleanup @Duplication with Paddle
 
   void update();
 
   void render();
 
   void cleanup();
+
+  // TODO(zmd): std::string Ball::toString();
 
 };

@@ -9,15 +9,16 @@ LDLIBS	= -lSDL2 -lSDL2_image
 
 all: pong
 
-pong: main.o game.o player.o
-	$(CC) $(LDFLAGS) -o pong main.o game.o player.o $(LDLIBS)
+pong: main.o game.o paddle.o ball.o
+	$(CC) $(LDFLAGS) -o pong main.o game.o paddle.o ball.o $(LDLIBS)
 
 main.o: main.cpp
 game.o: game.cpp game.h
-player.o: player.cpp player.h
+paddle.o: paddle.cpp paddle.h
+ball.o: ball.cpp ball.h
 
 clean:
-	rm -f pong main.o game.o player.o
+	rm -f pong main.o game.o paddle.o ball.o
 
 .SUFFIXES: .cpp .o
 .cpp.o:

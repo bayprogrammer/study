@@ -5,7 +5,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "player.h"
+#include "paddle.h"
+#include "ball.h"
 
 
 class Game {
@@ -29,9 +30,9 @@ private:
 
   // TODO(zmd): Entity <- {Ball, Player} (not via inheritance, but other form
   //     of composition?)
-  // TODO(zmd): Ball *ball;
-  Player *player;  // TODO(zmd): Paddle *player
-  // TODO(zmd): Paddle *ai
+  Paddle *player;
+  Paddle *ai;
+  Ball   *ball;
 
   int counter;
 
