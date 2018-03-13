@@ -1,49 +1,81 @@
 #!/usr/bin/env ruby
 
-RESET = "\u001b[0m"
-COLORS = {
-  :black => "\u001b[30m",
-  30     => "\u001b[30m",
+module ANSI
 
-  :red => "\u001b[31m",
-  31   => "\u001b[31m",
 
-  :green => "\u001b[32m",
-  32     => "\u001b[32m",
+  module Color
 
-  :yellow => "\u001b[33m",
-  33      => "\u001b[33m",
+    BASIC_COLORS = {
+      30 => "\u001b[30m",
+      31 => "\u001b[31m",
+      32 => "\u001b[32m",
+      33 => "\u001b[33m",
+      34 => "\u001b[34m",
+      35 => "\u001b[35m",
+      36 => "\u001b[36m",
+      37 => "\u001b[37m",
+    }
 
-  :blue => "\u001b[34m",
-  34    => "\u001b[34m",
+    COLOR_NAMES = {
+      :black   => 30,
+      :red     => 31,
+      :green   => 32,
+      :yellow  => 33,
+      :blue    => 34,
+      :magenta => 35,
+      :cyan    => 36,
+      :white   => 37
+    }
 
-  :magenta => "\u001b[35m",
-  35       => "\u001b[35m",
+    def self.[](key)
+      if key.is_a?(Symbol)
+        BASIC_COLORS[COLOR_NAMES[key]]
+      else
+        BASIC_COLORS[key]
+      end
+    end
 
-  :cyan => "\u001b[36m",
-  36    => "\u001b[36m",
+  end
 
-  :white => "\u001b[37m",
-  37     => "\u001b[37m",
-}
 
-def putsc(color, text)
-  print COLORS[color]
-  puts text
-  print RESET
+  module Effect
+  end
+
+
+  module Control
+    CONTROL_CODES = {
+      :reset => "\u001b[0m"
+    }
+
+    def self.[](key)
+      CONTROL_CODES[key]
+    end
+  end
+
+
+  def self.putsc(color, text)
+    print ANSI::Color[color]
+    puts text
+    print ANSI::Control[:reset]
+  end
+
+
+  def self.printc(color, text)
+    print ANSI::Color[color]
+    print text
+    print ANSI::Control[:reset]
+  end
+
+
 end
 
-def printc(color, text)
-  print COLORS[color]
-  print text
-  print RESET
-end
 
-puts "#{COLORS[:blue]}Hello Ruby #{RUBY_VERSION}#{RESET}"
-putsc :green, "Hello, dude."
-printc :blue, "H"
-printc :green, "e"
-printc :cyan, "l"
-printc :magenta, "l"
-printc :yellow, "o"
-putsc :red, " BEN!!!"
+
+ANSI.putsc :blue, "Hello Ruby #{RUBY_VERSION}"
+ANSI.putsc :green, "Hello, dude."
+ANSI.printc :blue, "H"
+ANSI.printc :green, "e"
+ANSI.printc :cyan, "l"
+ANSI.printc :magenta, "l"
+ANSI.printc :yellow, "o"
+ANSI.putsc :red, " BEN!!!"
