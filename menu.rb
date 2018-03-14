@@ -53,29 +53,59 @@ module ANSI
   end
 
 
-  def self.putsc(color, text)
-    print ANSI::Color[color]
-    puts text
-    print ANSI::Control[:reset]
-  end
-
-
-  def self.printc(color, text)
-    print ANSI::Color[color]
-    print text
-    print ANSI::Control[:reset]
-  end
-
-
 end
 
 
+# TODO(zmd): these will become convenience mixin methods
+def black(str)
+  color(:black, str)
+end
 
-ANSI.putsc :blue, "Hello Ruby #{RUBY_VERSION}"
-ANSI.putsc :green, "Hello, dude."
-ANSI.printc :blue, "H"
-ANSI.printc :green, "e"
-ANSI.printc :cyan, "l"
-ANSI.printc :magenta, "l"
-ANSI.printc :yellow, "o"
-ANSI.putsc :red, " BEN!!!"
+def red(str)
+  color(:red, str)
+end
+
+def green(str)
+  color(:green, str)
+end
+
+def yellow(str)
+  color(:yellow, str)
+end
+
+def blue(str)
+  color(:blue, str)
+end
+
+def magenta(str)
+  color(:magenta, str)
+end
+
+def cyan(str)
+  color(:cyan, str)
+end
+
+def white(str)
+  color(:white, str)
+end
+
+def color(color, str)
+  ANSI::Color[color] + str + reset
+end
+
+def reset()
+  ANSI::Control[:reset]
+end
+
+puts blue("Hello Ruby #{RUBY_VERSION}")
+puts green("Hello, dude.")
+print(
+     blue("H"),
+    green("e"),
+     cyan("l"),
+  magenta("l"),
+   yellow("o"),
+          " ",
+      red("BEN!!!"),
+          "\n"
+)
