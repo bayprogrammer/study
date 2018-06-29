@@ -1,21 +1,21 @@
 #!/usr/bin/env ruby
 
 ANSI_TABLE = {
-  :hide_cursor => "\u001b[?25l",
-  :show_cursor => "\u001b[?12l\u001b[?25h",
-  :reset   => "\u001b[0m",
+  :hide_cursor => "\e[?25l",
+  :show_cursor => "\e[?12l\e[?25h",
+  :reset   => "\e[0m",
   :newline => "\n",
   :return  => "\r",
-  :back    => "\u001b[1D",
-  :bold    => "\u001b[1m",
-  :black   => "\u001b[30m",
-  :red     => "\u001b[31m",
-  :green   => "\u001b[32m",
-  :yellow  => "\u001b[33m",
-  :blue    => "\u001b[34m",
-  :magenta => "\u001b[35m",
-  :cyan    => "\u001b[36m",
-  :white   => "\u001b[37m"
+  :back    => "\e[1D",
+  :bold    => "\e[1m",
+  :black   => "\e[30m",
+  :red     => "\e[31m",
+  :green   => "\e[32m",
+  :yellow  => "\e[33m",
+  :blue    => "\e[34m",
+  :magenta => "\e[35m",
+  :cyan    => "\e[36m",
+  :white   => "\e[37m"
 }
 
 SYMBOLS = [
@@ -41,8 +41,14 @@ def rand_color
   COLORS[(rand * 6).to_i]
 end
 
+running = true
+
+Signal.trap('INT') do
+  running = false
+end
+
 print ansi(:hide_cursor)
-loop do
+while running
   80.times do |n|
     c = rand_color
 
@@ -55,6 +61,8 @@ loop do
     print ansi(:back)
     print c
     print "#"
+
+    break unless running
   end
 
   print ansi(:return)
