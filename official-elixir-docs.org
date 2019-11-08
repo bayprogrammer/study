@@ -1,0 +1,85 @@
+* TODO Official Documentation
+
+** [[https://elixir-lang.org/getting-started/introduction.html][Guides]]
+
+*** TODO Getting Started
+
+**** TODO 1. Introduction
+
+**** TODO 2. Basic types
+
+**** TODO 3. Basic operators
+
+**** TODO 4. Pattern matching
+
+**** TODO 5. case, cond, and if
+
+**** TODO 6. Binaries, strings, and charlists
+
+**** TODO 7. Keyword lists and maps
+
+**** TODO 8. Modules and Functions
+
+**** TODO 9. Recursion
+
+**** TODO 10. Enumberables and streams
+
+**** TODO 11. Processes
+
+**** TODO 12. IO and the file system
+
+**** TODO 13. alias, require, and import
+
+**** TODO 14. Module attributes
+
+**** TODO 15. Structs
+
+**** TODO 16. Protocols
+
+**** TODO 17. Comprehensions
+
+**** TODO 18. Sigils
+
+**** TODO 19. try, catch, and rescue
+
+**** TODO 20. Typespecs and behaviors
+
+**** TODO 21. Debugging
+
+**** TODO 22. Erlang libraries
+
+**** TODO 23. Where to go next
+
+*** TODO Mix and OTP
+
+**** TODO 1. Introduction to Mix
+
+**** TODO 2. Agent
+
+**** TODO 3. GenServer
+
+**** TODO 4. Supervisor and Application
+
+**** TODO 5. Dynamic supervisors
+
+**** TODO 6. ETS
+
+**** TODO 7. Dependencies and umbrella projects
+
+**** TODO 8. Task and gen_tcp
+
+**** TODO 9. Doctests, patterns and with
+
+**** TODO 10. Distributed tasks and tags
+
+**** TODO 11. Configuration and releases
+
+*** TODO Meta-Programming in Elixir
+
+**** TODO 1. Quote and unquote
+
+**** TODO 2. Macros
+
+**** TODO 3. Domain-specific languages
+
+** [[https://elixir-lang.org/docs.html][Reference Documentation]]

@@ -1,3 +1,32 @@
 * Elixir Studies
 
-Let us learn Elixir.
+Let us learn Elixir (and Erlang).
+
+#+begin_quote
+You wanna know how I did it? This is how I did it, Anton. I never
+saved anything for the swim back!
+
+-Vincent (Gattaca, 1997)
+#+end_quote
+
+** Hype
+
+- [[https://www.youtube.com/watch?v=uKfKtXYLG78][Erlang the Movie]]
+
+- [[https://www.youtube.com/watch?v=uKfKtXYLG78][Elixir: The Documentary]]
+
+** Reading
+
+- [[./official-elixir-docs.org][Official Elixir Docs]]
+
+- Official Erlang Docs
+
+** Videos
+
+** Study Projects
+
+- camas.ex
+
+- org-viewer
+
+- rb.ex
