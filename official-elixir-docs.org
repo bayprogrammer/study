@@ -1,12 +1,231 @@
 * TODO Official Documentation
 
-** [[https://elixir-lang.org/getting-started/introduction.html][Guides]]
+** TODO [[https://elixir-lang.org/getting-started/introduction.html][Guides]]
 
 *** TODO Getting Started
 
-**** TODO 1. Introduction
+**** DONE 1. Introduction
+     CLOSED: [2019-11-07 Thu 18:12]
 
 **** TODO 2. Basic types
+
+     :POSITION: https://elixir-lang.org/getting-started/basic-types.html#booleans
+
+- Floats in Elixir are 64-bit doubles.
+
+- Elixir functions are idenified by name /and/ arity (number of
+  params).
+
+- Use ~h~ with the function name to access its documentation.
+
+#+begin_src comint
+Erlang/OTP 21 [erts-10.3.5.5] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hip
+e]
+
+Interactive Elixir (1.9.0) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> 1
+1
+iex(2)> 0x1F
+31
+iex(3)> 1.0
+1.0
+iex(4)> true
+true
+iex(5)> :atom
+:atom
+iex(6)> "elixir"
+"elixir"
+iex(7)> [1, 2, 3]
+[1, 2, 3]
+iex(8)> {1, 2, 3]
+** (SyntaxError) iex:8: unexpected token: ]. The "{" at line 8 is missing terminator "}"
+
+iex(8)> {1, 2, 3}
+{1, 2, 3}
+iex(9)> 1 + 2
+3
+iex(10)> 5 * 5
+25
+iex(11)> 10 / 2
+5.0
+iex(12)> 10 // 2
+** (SyntaxError) iex:12: syntax error before: '/'
+
+iex(12)> div(10, 2)
+5
+iex(13)> div(11, 2)
+5
+iex(14)> 11 / 2
+5.5
+iex(15)>
+nil
+iex(16)> 11 / 2
+5.5
+iex(17)> div(11, 2)
+5
+iex(18)> div 11, 2
+5
+iex(19)> rem 10, 3
+1
+iex(20)> 0b1010
+10
+iex(21)> 0o777
+511
+iex(22)> 0x1F
+31
+iex(23)> 1.0
+1.0
+iex(24)> 1.0e-10
+1.0e-10
+iex(25)> round(3.58)
+4
+iex(26)> trunc(3.58)
+3
+iex(27)> h round/1
+
+                               def round(number)
+
+  @spec round(float()) :: integer()
+  @spec round(value) :: value when value: integer()
+
+guard: true
+
+Rounds a number to the nearest integer.
+
+If the number is equidistant to the two nearest integers, rounds away from
+zero.
+
+Allowed in guard tests. Inlined by the compiler.
+
+## Examples
+
+    iex> round(5.6)
+    6
+
+    iex> round(5.2)
+    5
+
+    iex> round(-9.9)
+    -10
+
+    iex> round(-9)
+    -9
+
+    iex> round(2.5)
+    3
+
+    iex> round(-2.5)
+    -3
+
+iex(28)> h +/2
+
+                                def left + right
+
+  @spec integer() + integer() :: integer()
+  @spec float() + float() :: float()
+  @spec integer() + float() :: float()
+  @spec float() + integer() :: float()
+
+guard: true
+
+Arithmetic addition.
+
+Allowed in guard tests. Inlined by the compiler.
+
+## Examples
+
+    iex> 1 + 2
+    3
+
+iex(29)> h +/3
+No documentation for Kernel.+/3 was found
+iex(30)> h +/1
+
+                                   def +value
+
+  @spec +value :: value when value: number()
+
+guard: true
+
+Arithmetic unary plus.
+
+Allowed in guard tests. Inlined by the compiler.
+
+## Examples
+
+    iex> +1
+    1
+
+iex(31)> h
+
+                                  IEx.Helpers
+
+Welcome to Interactive Elixir. You are currently seeing the documentation for
+the module IEx.Helpers which provides many helpers to make Elixir's shell more
+joyful to work with.
+
+This message was triggered by invoking the helper h(), usually referred to as
+h/0 (since it expects 0 arguments).
+
+You can use the h/1 function to invoke the documentation for any Elixir module
+or function:
+
+    iex> h(Enum)
+    iex> h(Enum.map)
+    iex> h(Enum.reverse/1)
+
+You can also use the i/1 function to introspect any value you have in the
+shell:
+
+    iex> i("hello")
+
+There are many other helpers available, here are some examples:
+
+  • b/1            - prints callbacks info and docs for a given module
+  • c/1            - compiles a file
+  • c/2            - compiles a file and writes bytecode to the given path
+  • cd/1           - changes the current directory
+  • clear/0        - clears the screen
+  • exports/1      - shows all exports (functions + macros) in a module
+  • flush/0        - flushes all messages sent to the shell
+  • h/0            - prints this help message
+  • h/1            - prints help for the given module, function or macro
+  • i/0            - prints information about the last value
+  • i/1            - prints information about the given term
+  • ls/0           - lists the contents of the current directory
+  • ls/1           - lists the contents of the specified directory
+  • open/1         - opens the source for the given module or function in
+    your editor
+  • pid/1          - creates a PID from a string
+  • pid/3          - creates a PID with the 3 integer arguments passed
+  • port/1         - creates a port from a string
+  • port/2         - creates a port with the 2 non-negative integers passed
+  • ref/1          - creates a reference from a string
+  • ref/4          - creates a reference with the 4 integer arguments
+    passed
+  • pwd/0          - prints the current working directory
+  • r/1            - recompiles the given module's source file
+  • recompile/0    - recompiles the current project
+  • runtime_info/0 - prints runtime info (versions, memory usage, stats)
+  • v/0            - retrieves the last value from the history
+  • v/1            - retrieves the nth value from the history
+
+Help for all of those functions can be consulted directly from the command line
+using the h/1 helper itself. Try:
+
+    iex> h(v/0)
+
+To list all IEx helpers available, which is effectively all exports (functions
+and macros) in the IEx.Helpers module:
+
+    iex> exports(IEx.Helpers)
+
+This module also includes helpers for debugging purposes, see IEx.break!/4 for
+more information.
+
+To learn more about IEx as a whole, type h(IEx).
+
+#+end_src
 
 **** TODO 3. Basic operators
 
@@ -82,4 +301,4 @@
 
 **** TODO 3. Domain-specific languages
 
-** [[https://elixir-lang.org/docs.html][Reference Documentation]]
+** TODO [[https://elixir-lang.org/docs.html][Reference Documentation]]
