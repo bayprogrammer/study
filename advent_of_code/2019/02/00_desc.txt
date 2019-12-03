@@ -1,0 +1,33 @@
+--- Day 2: 1202 Program Alarm ---
+
+Source: https://adventofcode.com/2019/day/2
+
+Comma separated list of integers represent a program and its data. Index the
+data starting at zero. Each group of four integers represents an instruction:
+
+  - op code
+  - address of input register 1
+  - address of input register 2
+  - address of output register
+
+Op codes:
+
+  -  1: add inputs, store result in output register
+  -  2: multiply inputs, store result in output register
+  - 99: program should halt
+
+After executing one op code, move forward to the next instruction (e.g start at
+0, then move on to 4, etc.), evaluate that, and continue in this manner until
+the program halts.
+
+  - 1,9,10,3,2,3,11,0,99,30,40,50 -> 3500,9,10,70,2,3,11,0,99,30,40,50
+  - 1,0,0,0,99 -> 2,0,0,0,99
+  - 2,3,0,3,99 -> 2,3,0,6,99
+  - 2,4,4,5,99,0 -> 2,4,4,5,99,9801
+  - 1,1,1,4,99,5,6,0,99 -> 30,1,1,4,2,5,6,0,99
+
+Use this computer to resume execution of the sample program by first replacing
+the value at position 1 (the second element) with the value 12, and the value
+at position 2 (the third element) with the value 2. With those substitions
+applied to the input program execute the program and report what the value is
+in register 0 when it halts.
