@@ -3,19 +3,18 @@
 #
 #   $ irb
 #   > require './computer.rb'
-#   > orig_prog = open('./01_input.txt', 'r') { |f| f.readline }.strip.split(',').map { |si| si.to_i }
-#   > fixed_prog = orig_prog.dup
-#   > fixed_prog[1] = 12
-#   > fixed_prog[2] = 2
-#   > c = Computer.new(fixed_prog.dup)
+#   > program = open('./01_input.txt', 'r') { |f| f.readline }.strip.split(',').map { |si| si.to_i }
+#   > c = Computer.new(program)
+#   > c[1] = 12
+#   > c[2] =  2
 #   > c.run!
-#   > c2 = Computer.new(fixed_prog.dup)
-#   > c2.running? && c2.step!
-#   > c2.running? && c2.step!
-#   > c2.running? && c2.step!
-#   > c2.running? && c2.step!
-#   > c2.running? && c2.step!
-#   > ...
+#   > c[0]
+#   > ga = GravAssistInterface.new(program)
+#   > ga[12, 2]
+#   > ga.find(19690720)
+#   > ga.answer(19690720)
+#
+# Completed by Zeb DeOs on 2 Dec 2019.
 #
 class Computer
 
@@ -25,29 +24,49 @@ class Computer
 
   class InvalidOperation < ComputerError; end
 
+  # opcode => [op_sym, instruction_size]
+  OPCODES = {
+     1 => [:op_add,   4],
+     2 => [:op_mult,  4],
+    99 => [:op_stop!, 1]
+  }
+
   def initialize(program)
-    @memory = program
-    @op_reg = 0
+    @rom = program
+    reset!
+  end
+
+  def reset!
+    @memory = @rom.dup
     @running = true
+
+    @instruction_pointer = 0
+    read_instruction!
+
+    self
   end
 
   def inspect
     {
+      memory: @memory.dup,
       running: @running,
-      op_reg: @op_reg,
-      current_instruction: current_instruction,
-      memory: @memory.dup
+
+      instruction_pointer: @instruction_pointer,
+      op_register: @op_register,
+      param_registers: @param_registers,
+      param_values: @param_registers.map { |p| self[p] },
+      instruction_size: @instruction_size
     }
   end
 
-  def [](register)
-    valid_address!(register)
-    @memory[register]
+  def [](address)
+    valid_address!(address)
+    @memory[address]
   end
 
-  def []=(register, value)
-    valid_address!(register)
-    @memory[register] = value
+  def []=(address, value)
+    valid_address!(address)
+    @memory[address] = value
   end
 
   def run!
@@ -57,10 +76,9 @@ class Computer
   end
 
   def step!
-    opcode, input_reg_a, input_reg_b, output_reg = current_instruction
-    dispatch(opcode, input_reg_a, input_reg_b, output_reg)
-
+    execute!
     advance!
+    read_instruction!
 
     self
   end
@@ -71,42 +89,73 @@ class Computer
 
   private
 
-  def stop!
-    @running = false
+  def valid_address!(address)
+    raise(SegFault) if @memory[address].nil?
   end
 
-  def valid_address!(register)
-    raise(SegFault) if @memory[register].nil?
+  def read_instruction!
+    opcode = self[@instruction_pointer]
+    @op_register, @instruction_size = OPCODES[opcode]
+
+    if @op_register.nil? || @instruction_size.nil?
+      raise(InvalidOperation, "#{opcode} is not a valid opcode")
+    end
+
+    _, *@param_registers = @memory.slice(
+      @instruction_pointer, @instruction_size)
   end
 
-  def current_instruction
-    # It ain't a SegFault until you try to dereference an invalid pointer :-D
-    @memory.slice(@op_reg, 4)
+  def execute!
+    send(@op_register, *@param_registers)
   end
 
   def advance!
-    next_op_reg = @op_reg + 4
+    @instruction_pointer += @instruction_size
+  end
 
-    if @memory.size >= next_op_reg
-      @op_reg = next_op_reg
-    else
-      # program counter overflow behavior not specified, so let's wrap around
-      # (and allow, therefore, for the clever Intcode programmer to construct
-      # loops)
-      @op_reg = 0
+  def op_stop!
+    @running = false
+  end
+
+  def op_add(term_a_pointer, term_b_pointer, output_pointer)
+    self[output_pointer] = self[term_a_pointer] + self[term_b_pointer]
+  end
+
+  def op_mult(factor_a_pointer, factor_b_pointer, output_pointer)
+    self[output_pointer] = self[factor_a_pointer] * self[factor_b_pointer]
+  end
+
+end
+
+
+class GravAssistInterface
+
+  def initialize(program)
+    @computer = Computer.new(program)
+  end
+
+  def call(noun, verb)
+    @computer.reset!
+
+    @computer[1] = noun
+    @computer[2] = verb
+    @computer.run!
+    @computer[0]
+  end
+  alias_method :[], :call
+
+  def find(target)
+    (0...99).each do |noun|
+      (0...99).each do |verb|
+        r = call(noun, verb)
+        return [noun, verb] if r == target
+      end
     end
   end
 
-  def dispatch(opcode, input_reg_a, input_reg_b, output_reg)
-    case opcode
-    when 1
-      self[output_reg] = self[input_reg_a] + self[input_reg_b]
-    when 2
-      self[output_reg] = self[input_reg_a] * self[input_reg_b]
-    when 99
-      stop!
-    else
-      raise InvalidOperation, "#{opcode} is not a valid opcode"
-    end
+  def answer(target)
+    noun, verb = find(target)
+    (100 * noun) + verb
   end
+
 end

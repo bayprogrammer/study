@@ -2,6 +2,8 @@
 
 Source: https://adventofcode.com/2019/day/2
 
+--- Part 1 ---
+
 Comma separated list of integers represent a program and its data. Index the
 data starting at zero. Each group of four integers represents an instruction:
 
@@ -31,3 +33,50 @@ the value at position 1 (the second element) with the value 12, and the value
 at position 2 (the third element) with the value 2. With those substitions
 applied to the input program execute the program and report what the value is
 in register 0 when it halts.
+
+--- Part 2 ---
+
+Generalize the computer such that each op has zero or more paramaters. Each op
+and its parameters make up an instruction, and each instruction's head is
+pointed to by the current program pointer. Each instruction's operation defines
+the numbers of parameters it accepts, and the size of an instruction is the
+size taken by the operator and its parameters (so 1 + n params).
+
+As the execution advances, the instruction pointer is moved forward by the
+length of the instruction (and thus this advance distance varies depending on
+the instruction type).
+
+Additionally, provide a mechanism by which you can easily reset the state of
+the computer.
+
+Use the computer to run the program from the input again, with the following
+additional understanding of it's functionality: memory addresses 1 and 2 are
+inputs. Address 1 is the program's `noun`, and address 2 is the program's
+`verb`.  The output `result` is placed in address 0 at the end of the program's
+execution (address 0 starts out as an opcode and beginning of the first
+instruction).
+
+Using this understanding of the nature of the program, use your computer and
+the program to find the `noun` and `verb` pair which produces the `result`
+which equals `19690720`. Use 0 to 99 (inclusive) as the noun and verb inputs
+used for the search. That that noun and verb and produce the answer which is
+`(100 * noun) + verb`. For example, if the noun was 12, and the verb 2, the
+answer would be 1202.
+
+-------------------------------------------------------------------------------
+
+--- Zeb's Notes ---
+
+This exercise reminds me of the Computerphile videos about the EDSAC computer,
+especially how it was programmed and bootstrapped:
+
+  - Bootstrapping EDSAC: Initial Orders - Computerphile
+      (https://www.youtube.com/watch?v=nc2q4OOK6K8)
+  - EDSAC Simulator - Computerphile
+      (https://www.youtube.com/watch?v=lXJ-tYqPARg)
+
+Also reminiscent of CARDIAC
+  (https://www.cs.drexel.edu/~bls96/museum/cardiac.html).
+
+I MUST come back and reimplement these exercises in functional style; using
+Scala and immutable data structures to implement this would be a blast!
