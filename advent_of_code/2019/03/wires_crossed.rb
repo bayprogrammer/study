@@ -39,11 +39,11 @@ module WiresCrossed
 
   class Wire
 
-    attr_reader :directions
     attr_reader :points
 
     def initialize(*directions)
       @points = points_from_directions(directions).freeze
+      @bounds = nil
     end
 
     def to_a
@@ -56,6 +56,20 @@ module WiresCrossed
 
     def to_s
       'o'
+    end
+
+    def bounds
+      unless @bounds
+        xs = points.map { |p| p.x }
+        ys = points.map { |p| p.y }
+
+        @bounds = [
+          Point[xs.min, ys.max],  # bottom left
+          Point[xs.max, ys.min]   # top right
+        ]
+      end
+
+      @bounds
     end
 
     private
@@ -87,6 +101,18 @@ module WiresCrossed
       points
     end
 
+    #
+    # TODO(zmd): Wire#& -- I want:
+    #
+    #     panel = wire_1 & wire_2 & wire_3
+    #     panel.central_port.nearest(panel.intersections)
+    #
+    #   to just work
+    #
+    #   wire  & panel -> panel
+    #   panel & wire  -> panel
+    #   panel & panel -> panel
+    #
 
     #
     # [P[0, 0], P[0, -7], P[6, -7], P[6, -3], P[2, -3]]
@@ -96,14 +122,14 @@ module WiresCrossed
     #                   V
     #
     # [
-    #   ['+', '-', '-', '-', '-', '-', '+'],
-    #   ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-    #   ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-    #   ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-    #   ['|', ' ', '-', '-', '-', '-', '+'],
-    #   ['|', ' ', ' ', ' ', ' ', ' ', ' '],
-    #   ['|', ' ', ' ', ' ', ' ', ' ', ' '],
-    #   ['o', ' ', ' ', ' ', ' ', ' ', ' ']
+    #   '+', '-', '-', '-', '-', '-', '+',
+    #   '|', ' ', ' ', ' ', ' ', ' ', '|',
+    #   '|', ' ', ' ', ' ', ' ', ' ', '|',
+    #   '|', ' ', ' ', ' ', ' ', ' ', '|',
+    #   '|', ' ', '-', '-', '-', '-', '+',
+    #   '|', ' ', ' ', ' ', ' ', ' ', ' ',
+    #   '|', ' ', ' ', ' ', ' ', ' ', ' ',
+    #   'o', ' ', ' ', ' ', ' ', ' ', ' '
     # ]
     #
     def array_from_points
@@ -112,26 +138,69 @@ module WiresCrossed
       prev = points.first
       last = points.last
 
-      points.each do |point|
-        x, y = point
-        # TODO(zmd) <-- LEFT OFF HERE: figure out angle, calculate char based on prev, last, and angle
-        char = point_char(point, prev, last)
-        # TODO(zmd): insert_point_into_array!(array)
+      # TODO(zmd): trace_points(array.&:[]=) or something?
+      trace_points do |idx, char|
+        array[idx] = char
       end
 
       # TODO(zmd): ensure any gaps in the array have been turned into ' '
-      # TODO(zmd): maybe switch to a custom data structure: Grid (which can worry about how to generate the array at the end filling in the gaps and doing any reverse magic it needs to, or else figuring out bounds ahead of time and then pre-allocating the buffer to fit; etc.)
+
+      # TODO(zmd): maybe switch to a custom data structure: Grid (which can
+      #   worry about how to generate the array at the end filling in the gaps
+      #   and doing any reverse magic it needs to, or else figuring out bounds
+      #   ahead of time and then pre-allocating the buffer to fit; etc.)
 
       array
     end
 
-    def point_char(point, prev, last)
-      return 'o' if point == prev
-      # TODO(zmd): finish me!
+    #
+    # TODO(zmd): need way to translate back and forth from array index and
+    #   point instance
+    #
+    #   going to need to know what the array index is of Point[0, 0]
+    #
+    #   also need to be able to calculate a range based on the bounds
+    #
+    def trace_points(&block)
+      traverse_points do |prev_p, curr_p, next_p|
+        char = point_char(prev_p, curr_p, next_p)
+
+        # TODO(zmd): @LeftOffHere: I don't know how to do what I'm attempting
+        #   to do here; need to work it out on graph paper
+        target_length = ((bottom_left.x.abs + top_right.x.abs) *
+                         (bottom_left.y.abs + top_right.y.abs))
+        puts target_length
+        (0...target_length).each do |idx|
+          block.call(idx, char)
+        end
+      end
+    end
+
+    def bottom_left
+      @bottom_left ||= bounds[0]
+    end
+
+    def top_right
+      @top_right ||= bounds[1]
+    end
+
+    def traverse_points(&block)
+      points.each_with_index do |curr_p, index|
+        prev_p = points[index-1] || curr_p
+        next_p = points[index+1]
+
+        block.call(prev_p, curr_p, next_p)
+      end
+    end
+
+    def point_char(prev_p, curr_p, next_p)
+      # TODO(zmd): write me!
       '$'
     end
 
-    def insert_point_into_array!(array)
+    def insert_point_into_array!(array, point, char)
+      # TODO(zmd): write me! (look up the absolute index based on the stride
+      #   and point position)
     end
 
   end

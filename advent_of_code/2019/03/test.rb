@@ -77,14 +77,21 @@ class TestWiresCrossed < Minitest::Test
     [P[0, 0], P[8, 0], P[8, -5], P[3, -5], P[3, -2]]
   end
 
+  def wire_1_bounds
+    [
+      P[0,  0],
+      P[8, -5]
+    ]
+  end
+
   def wire_1_array
     [
-      [' ', ' ', ' ', '+', '-', '-', '-', '-', '-', '+'],
-      [' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|'],
-      [' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|'],
-      [' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|'],
-      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|'],
-      ['o', '-', '-', '-', '-', '-', '-', '-', '-', '+']
+      ' ', ' ', ' ', '+', '-', '-', '-', '-', '-', '+',
+      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
+      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
+      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
+      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|',
+      'o', '-', '-', '-', '-', '-', '-', '-', '-', '+'
     ]
   end
 
@@ -109,16 +116,23 @@ class TestWiresCrossed < Minitest::Test
     [P[0, 0], P[0, -7], P[6, -7], P[6, -3], P[2, -3]]
   end
 
+  def wire_2_bounds
+    [
+      P[0,  0],
+      P[6, -7]
+    ]
+  end
+
   def wire_2_array
     [
-      ['+', '-', '-', '-', '-', '-', '+'],
-      ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-      ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-      ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-      ['|', ' ', '-', '-', '-', '-', '+'],
-      ['|', ' ', ' ', ' ', ' ', ' ', ' '],
-      ['|', ' ', ' ', ' ', ' ', ' ', ' '],
-      ['o', ' ', ' ', ' ', ' ', ' ', ' ']
+      '+', '-', '-', '-', '-', '-', '+',
+      '|', ' ', ' ', ' ', ' ', ' ', '|',
+      '|', ' ', ' ', ' ', ' ', ' ', '|',
+      '|', ' ', ' ', ' ', ' ', ' ', '|',
+      '|', ' ', '-', '-', '-', '-', '+',
+      '|', ' ', ' ', ' ', ' ', ' ', ' ',
+      '|', ' ', ' ', ' ', ' ', ' ', ' ',
+      'o', ' ', ' ', ' ', ' ', ' ', ' '
     ]
   end
 
@@ -157,9 +171,18 @@ class TestWiresCrossed < Minitest::Test
     assert_equal(wire_2_points, wire_2.points)
   end
 
+  def test_wire_bounds
+    assert_equal(wire_1_bounds, wire_1.bounds)
+    assert_equal(wire_2_bounds, wire_2.bounds)
+  end
+
   def test_wire_to_a
-    assert_equal(wire_1_array, wire_1.to_a)
-    assert_equal(wire_2_array, wire_2.to_a)
+    assert_equal(wire_1_array.length, wire_1.to_a.length)
+    assert_equal(wire_2_array.length, wire_2.to_a.length)
+
+    flunk("TODO(zmd): finish me!")
+    #assert_equal(wire_1_array, wire_1.to_a)
+    #assert_equal(wire_2_array, wire_2.to_a)
   end
 
   def test_wire_to_s
@@ -170,7 +193,7 @@ class TestWiresCrossed < Minitest::Test
 
   # TODO(zmd): panel_display
 
-  # wire_3_display = %Q(
+  # panel_display = %Q(
   #   +-----+
   #   |     |
   #   |  +--X-+
