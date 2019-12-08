@@ -86,12 +86,12 @@ class TestWiresCrossed < Minitest::Test
 
   def wire_1_array
     [
-      ' ', ' ', ' ', '+', '-', '-', '-', '-', '-', '+',
-      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
-      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
-      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', ' ', '|',
-      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|',
-      'o', '-', '-', '-', '-', '-', '-', '-', '-', '+'
+      ' ', ' ', ' ', '+', '-', '-', '-', '-', '+',
+      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', '|',
+      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', '|',
+      ' ', ' ', ' ', '|', ' ', ' ', ' ', ' ', '|',
+      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|',
+      'o', '-', '-', '-', '-', '-', '-', '-', '+'
     ]
   end
 
@@ -180,9 +180,8 @@ class TestWiresCrossed < Minitest::Test
     assert_equal(wire_1_array.length, wire_1.to_a.length)
     assert_equal(wire_2_array.length, wire_2.to_a.length)
 
-    flunk("TODO(zmd): finish me!")
-    #assert_equal(wire_1_array, wire_1.to_a)
-    #assert_equal(wire_2_array, wire_2.to_a)
+    assert_equal(wire_1_array, wire_1.to_a)
+    assert_equal(wire_2_array, wire_2.to_a)
   end
 
   def test_wire_to_s

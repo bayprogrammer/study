@@ -115,6 +115,8 @@ module WiresCrossed
     #
 
     #
+    # TODO(zmd): switch to symbols and nils?
+    #
     # [P[0, 0], P[0, -7], P[6, -7], P[6, -3], P[2, -3]]
     #
     #                   |
@@ -162,18 +164,23 @@ module WiresCrossed
     #   also need to be able to calculate a range based on the bounds
     #
     def trace_points(&block)
+      target_length = width * height
+
       traverse_points do |prev_p, curr_p, next_p|
         char = point_char(prev_p, curr_p, next_p)
 
-        # TODO(zmd): @LeftOffHere: I don't know how to do what I'm attempting
-        #   to do here; need to work it out on graph paper
-        target_length = ((bottom_left.x.abs + top_right.x.abs) *
-                         (bottom_left.y.abs + top_right.y.abs))
-        puts target_length
         (0...target_length).each do |idx|
           block.call(idx, char)
         end
       end
+    end
+
+    def width
+      @width ||= bottom_left.x.abs + top_right.x.abs + 1
+    end
+
+    def height
+      @height ||= bottom_left.y.abs + top_right.y.abs + 1
     end
 
     def bottom_left
