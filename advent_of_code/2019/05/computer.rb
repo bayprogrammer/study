@@ -1,8 +1,4 @@
 #
-# example usage:
-#
-#   TODO(zmd): write me
-#
 # Completed by Zeb DeOs on TBD.
 #
 class Computer
@@ -15,21 +11,26 @@ class Computer
 
   # opcode => [op_sym, instruction_size]
   OPCODES = {
-     1 => [:op_add,   4],
-     2 => [:op_mult,  4],
-    99 => [:op_stop!, 1]
+     1 => [:op_add,    4],
+     2 => [:op_mult,   4],
+     3 => [:op_input,  2],
+     4 => [:op_output, 2],
+    99 => [:op_stop!,  1]
   }
 
   def self.parse(program_s)
     program_s.strip.split(',').map { |si| si.to_i }
   end
 
-  def self.new_from_s(program_s)
-    new(parse(program_s))
+  def self.new_from_s(program_s, **options)
+    new(parse(program_s), **options)
   end
 
-  def initialize(program)
+  def initialize(program, **options)
     @rom = program
+    @stdin = options.fetch(:stdin, $stdin)
+    @stdout = options.fetch(:stdout, $stdout)
+
     reset!
   end
 
@@ -128,37 +129,12 @@ class Computer
     self[output_pointer] = self[factor_a_pointer] * self[factor_b_pointer]
   end
 
-end
-
-
-class GravAssistInterface
-
-  def initialize(program)
-    @computer = Computer.new(program)
+  def op_input(dest_pointer)
+    self[dest_pointer] = @stdin.gets.strip.to_i
   end
 
-  def call(noun, verb)
-    @computer.reset!
-
-    @computer[1] = noun
-    @computer[2] = verb
-    @computer.run!
-    @computer[0]
-  end
-  alias_method :[], :call
-
-  def find(target)
-    (0...99).each do |noun|
-      (0...99).each do |verb|
-        r = call(noun, verb)
-        return [noun, verb] if r == target
-      end
-    end
-  end
-
-  def answer(target)
-    noun, verb = find(target)
-    (100 * noun) + verb
+  def op_output(src_pointer)
+    @stdout.puts(self[src_pointer])
   end
 
 end

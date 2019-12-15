@@ -32,6 +32,28 @@ class TestWiresCrossed < Minitest::Test
     }
   ]
 
+  class StdIn
+    def initialize(*input)
+      @input = input.map { |e| e.to_s }
+    end
+
+    def gets
+      @input.pop
+    end
+  end
+
+  class StdOut
+    attr_reader :output
+
+    def initialize
+      @output = []
+    end
+
+    def puts(output)
+      @output << output
+    end
+  end
+
   def test_basic_functionality
     TEST_PROGRAMS.each do |states|
       c = Computer.new_from_s(states[:start])
@@ -110,11 +132,16 @@ class TestWiresCrossed < Minitest::Test
   end
 
   def test_input_op
-    flunk
+    c = Computer.new_from_s('3,3,99,0', stdin: StdIn.new(44))
+    c.run!
+    assert_equal(44, c[3])
   end
 
   def test_output_op
-    # TODO(zmd): implement me
+    stdout = StdOut.new
+    c = Computer.new_from_s('4,3,99,42', stdout: stdout)
+    c.run!
+    assert_equal(42, stdout.output.pop)
   end
 
 end
