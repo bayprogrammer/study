@@ -1,18 +1,7 @@
 #
 # example usage:
 #
-#   $ irb
-#   > require './computer.rb'
-#   > program = open('./01_input.txt', 'r') { |f| f.readline }.strip.split(',').map { |si| si.to_i }
-#   > c = Computer.new(program)
-#   > c[1] = 12
-#   > c[2] =  2
-#   > c.run!
-#   > c[0]
-#   > ga = GravAssistInterface.new(program)
-#   > ga[12, 2]
-#   > ga.find(19690720)
-#   > ga.answer(19690720)
+#   TODO(zmd): write me
 #
 # Completed by Zeb DeOs on TBD.
 #
