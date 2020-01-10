@@ -3,19 +3,21 @@ require 'pp'
 
 module Daft
 
-  class Method
+  class Punk
     attr_reader :name
     attr_reader :args
     attr_reader :kwargs
     attr_reader :block
+    attr_reader :klass
     attr_reader :oblock
     attr_reader :return_type
 
-    def initialize(method_name, args, kwargs, block)
+    def initialize(method_name, args, kwargs, block, klass)
       @methods_name = method_name
       @args = args
       @kwargs = kwargs
       @block = block
+      @klass = klass
     end
 
     def >>(return_type)
@@ -29,7 +31,7 @@ module Daft
   end
 
   def method_missing(method_name, *args, **kwargs, &block)
-    Method.new(method_name, args, kwargs, block)
+    Punk.new(method_name, args, kwargs, block, self)
   end
 
   def punk(method, &oblock)
@@ -38,12 +40,5 @@ module Daft
     method
   end
 
-end
-
-class HarderBetterFasterStronger
-  extend Daft
-
-  punk foo(bar: String) >> String do
-  end
-
+  alias_method :defn, :punk
 end
