@@ -39,7 +39,26 @@
   message = "Hello, world."
   js.global.message = message
 
-  print(message)
+  function lp(times, block)
+    function inner(a, times, block)
+      if a == times then
+        return nil
+      end
+      block()
+      inner(a + 1, times, block)
+    end
+
+    inner(0, times, block)
+  end
+
+  lp(10, function()
+    print(message)
+  end)
+
+  -- looks like tco is a thing in fengari, excellent.
+  --lp(-1, function()
+  --  print("Will it ever end...?")
+  --end)
 </script>
 
 </body></html> <!-- ======================================================= -->
