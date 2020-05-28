@@ -34,7 +34,12 @@
 <div id="mySketch"></div>
 
 <script type="application/lua">
-  print("Hello, world.")
+  js = require "js"
+
+  message = "Hello, world."
+  js.global.message = message
+
+  print(message)
 </script>
 
 </body></html> <!-- ======================================================= -->
