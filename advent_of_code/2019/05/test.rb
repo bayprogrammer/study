@@ -144,4 +144,20 @@ class TestWiresCrossed < Minitest::Test
     assert_equal(42, stdout.output.pop)
   end
 
+  def test_immediate_mode
+    c = Computer.new_from_s('1101,3,3,5,99,0')
+    c.run!
+    assert_equal(6, c[5])
+  end
+
+  def test_mixed_mode
+    c = Computer.new_from_s('101,3,3,5,99,0')
+    c.run!
+    assert_equal(8, c[5])
+
+    c = Computer.new_from_s('1001,4,3,5,99,0')
+    c.run!
+    assert_equal(102, c[5])
+  end
+
 end

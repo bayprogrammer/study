@@ -18,6 +18,14 @@ class Computer
     99 => [:op_stop!,  1]
   }
 
+  def self.parse_opcode(opcode_int)
+    # TODO(zmd): get out the opcode (rightmost, up to 2 digits)
+    # TODO(zmd): strip out the opcode (rightmost 2 digits)
+    # TODO(zmd): left pad with 0s op param modes, based on number of params for opcode
+
+    # TODO(zmd): return opcode and param modes
+  end
+
   def self.parse(program_s)
     program_s.strip.split(',').map { |si| si.to_i }
   end
@@ -98,18 +106,26 @@ class Computer
   def read_instruction!
     return unless running?
 
-    opcode = self[@instruction_pointer]
+    opcode, modes = parse_opcode(self[@instruction_pointer])
     @op_register, @instruction_size = OPCODES[opcode]
 
     if (@op_register.nil? || @instruction_size.nil?)
       raise(InvalidOperation, "#{opcode} is not a valid opcode")
     end
 
+    # TODO(zmd): account for modes, store mode in @param_register for each
+    #   param
     _, *@param_registers = @memory.slice(
       @instruction_pointer, @instruction_size)
   end
 
+  def parse_opcode(instruction_code)
+    self.class.parse_opcode(instruction_code)
+  end
+
   def execute!
+    # TODO(zmd): the dest op handler knows which params are read and which are
+    #   write; this now matters (write params will never be in immediate mode)
     send(@op_register, *@param_registers)
   end
 
