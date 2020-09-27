@@ -10,15 +10,16 @@ Publisher: Dover Publications, Inc., Mineola, New York
 [*] Note to Instructors                                             25-Aug-2020
 [*] Acknowledgements                                                25-Aug-2020
 [*] Contents                                                        25-Aug-2020
-[*] 1. Functions and Data                                           26-Aug-2020
-[ ] 2. Lists                                                          -   -
-[ ] 3. EVAL Notation                                                  -   -
-[ ] 4. Conditionals                                                   -   -
-[ ] 5. Variables and Side Effects                                     -   -
-[ ] 6. List Data Structures                                           -   -
-[ ] 7. Applicative Programming                                        -   -
-[ ] 8. Recursion                                                      -   -
-[ ] 9. Input/Output                                                   -   -
+[*]  1. Functions and Data                                          26-Aug-2020
+>>> NEXT 2 Advanced Topics / 2.16 Unary Arithmetic with Lists
+[ ]  2. Lists                                                         -   -
+[ ]  3. EVAL Notation                                                 -   -
+[ ]  4. Conditionals                                                  -   -
+[ ]  5. Variables and Side Effects                                    -   -
+[ ]  6. List Data Structures                                          -   -
+[ ]  7. Applicative Programming                                       -   -
+[ ]  8. Recursion                                                     -   -
+[ ]  9. Input/Output                                                  -   -
 [ ] 10. Assignment                                                    -   -
 [ ] 11. Iteration and Block Structure                                 -   -
 [ ] 12. Structures and the Type System                                -   -
