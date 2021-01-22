@@ -1,0 +1,3 @@
+http://www.lua.org/pil/24.1.html
+https://www.oreilly.com/library/view/creating-solid-apis/9781491986301/ch01.html
+https://github.com/tylerneylon/APIsWithLua
