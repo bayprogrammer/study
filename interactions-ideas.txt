@@ -1,0 +1,34 @@
+$ tl
+> open default
+OK
+> push water the flowers
+OK
+> push accelerate the drivers
+OK
+> add articulate the splines
+OK
+> list
+1 accelerate the drivers
+2 water the flowers
+3 articulate the splines
+> 2 done
+OK
+> list
+1 accelerate the drivers
+2 articulate the splines
+> list done
+1 water the flowers
+> 1 ready
+OK
+> list done
+[EMPTY]
+> list
+1 accelerate the drivers
+2 articulate the splines
+3 water the flowers
+> pop
+OK
+> list
+1 articulate the splines
+2 water the flowers
+> 
