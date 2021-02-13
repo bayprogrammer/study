@@ -1,33 +1,69 @@
 #!/usr/bin/env ruby
 
+require 'set'
+
+
 # TODO(zmd): gemspec, etc. (proper project structure)
 # TODO(zmd): file per module
-# TODO(zmd): defcmd helper "class macro"
+# TODO(zmd): tests!
+# TODO(zmd): rdoc!
+# TODO(zmd): Taskelot::CLI
+# TODO(zmd): text editor delegation support
+# TODO(zmd): @StretchGoal: metadata & descriptions / notes
+# TODO(zmd): @StretchGoal: rudimentary line-based text editor? (for comments)
 module Taskelot
+  # TODO(zmd): extract Commandable to stand-alone gem, once I've worked it out
+  #   well for Taskelot
   module Commandable
     module InstanceMethods
-      def register_command(cmd, &block)
-        cmd_lookup[cmd] ||= block
-      end
-
       def dispatch_command(cmd, *args)
-        cmd_lookup[cmd].call(*args)
+        cmd_str = cmd.to_s
+
+        if cmd_sym = defcmd_registry[cmd_str]
+          send(cmd_sym, *args)
+        else
+          case cmd
+          when ''
+            send(:_nothing, *args)
+          when nil
+            send(:_ctrl_d, *args)
+          else
+            send(:_unknown, *args)
+          end
+        end
       end
 
-      def cmd_lookup
-        @cmd_lookup ||= {}
+      def _nothing(*_args)
+      end
+
+      def _ctrl_d(*_args)
+        raise NotImplementedErrors, "Please define the :_ctrl_d command to implement."
+      end
+
+      def _unknown(*_args)
+        raise NotImplementedErrors, "Please define the :_unknown command to implement."
+      end
+
+      def defcmd_registry
+        self.class.defcmd_registry
       end
     end
-
-    # TODO(zmd): NEXT: this is all wrong; not thinking clearly about what is
-    #   bound at class construction vs. instance time.
 
     module ClassMethods
       def defcmd(key, &block)
+        key_sym = key.to_sym
+        key_str = key.to_s
+
+        defcmd_registry[key_str] = key_sym
+
+        define_method(key_sym, &block)
+      end
+
+      def defcmd_registry
+        @@defcmd_registry ||= {}
       end
     end
 
-    # TODO(zmd): provide a defcmd class macro
     def self.included(m)
       m.include(InstanceMethods)
       m.extend(ClassMethods)
@@ -35,14 +71,19 @@ module Taskelot
   end
 
   class Taskelot::App
+    include Commandable
+
     def self.start()
       new().run()
     end
 
+    # TODO(zmd): remove once run & running helpers defined in Commandable
     def initialize()
       @running = false
     end
 
+    # TODO(zmd): move to Commandable
+    # TODO(zmd): add helpers for running= running?
     def run()
       @running = true
       while @running
@@ -51,12 +92,22 @@ module Taskelot
       end
     end
 
+    # TODO(zmd): no need for private declaration here
     private
 
+    # TODO(zmd): move to Commandable
+    # TODO(zmd): customizeable prompt (controllable by command, dynamically)
     def read_input()
       print '> '
+
       if (line = gets)
-        line.split()
+        line = line.strip
+
+        if line.length == 0
+          [line]
+        else
+          line.split()
+        end
       else
         []
       end
@@ -75,17 +126,13 @@ module Taskelot
       puts 'Goodbye.'
     end
 
-    defcmd :_nothing do
-      print "\n"
-    end
-
     defcmd :_unknown do
       puts '?'
     end
 
     defcmd :_ctrl_d do
       puts "quit"
-      dispatch(:quit)
+      dispatch_command(:quit)
     end
   end
 end
