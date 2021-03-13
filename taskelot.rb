@@ -33,15 +33,28 @@ module Taskelot
         end
       end
 
+      def running?
+        @running = false unless defined?(@running)
+        @running
+      end
+
+      def start!
+        @running = true
+      end
+
+      def stop!
+        @running = false
+      end
+
       def _nothing(*_args)
       end
 
       def _ctrl_d(*_args)
-        raise NotImplementedErrors, "Please define the :_ctrl_d command to implement."
+        raise NotImplementedError, "Please define the :_ctrl_d command to implement."
       end
 
       def _unknown(*_args)
-        raise NotImplementedErrors, "Please define the :_unknown command to implement."
+        raise NotImplementedError, "Please define the :_unknown command to implement."
       end
 
       def defcmd_registry
