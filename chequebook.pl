@@ -1,6 +1,8 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
-get '/' => { text => "Hello, world." };
+my $config = app->plugin('Config');
+
+get '/' => { text => $config->{greeting} };
 
 app->start;
