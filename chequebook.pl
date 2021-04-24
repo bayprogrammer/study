@@ -31,4 +31,11 @@ get '/' => sub ($c) {
   $c->render(text => $greeting);
 };
 
+# $ curl -X POST 'http://localhost:3000/greetings?greeting=Perl+is+fun'
+post '/greetings' => sub ($c) {
+  my $new_greeting = $c->req->query_params->param('greeting');
+  $c->pg->db->insert('greetings', {greeting => $new_greeting});
+  $c->render(text => "Added '$new_greeting'.");
+};
+
 app->start;
