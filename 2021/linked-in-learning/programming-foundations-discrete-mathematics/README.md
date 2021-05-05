@@ -9,13 +9,13 @@
 
 ### Introduction
 
-* [ ] Welcome
-* [ ] What you should know
-* [ ] Using the exercise files
+* [X] Welcome
+* [X] What you should know
+* [X] Using the exercise files
 
 ### 1. Discrete Math Uses
 
-* [ ] Basics of discrete mathematics
+* [X] Basics of discrete mathematics
 * [ ] Discrete math for programming
 * [ ] Real-world discrete math
 * [ ] Abstract discrete math
@@ -100,5 +100,33 @@
 
 ### What you should know
 
+* Algebra
+* Take notes
+* Practice
+* Paper & pencil
+* Do exercises
+
 ### Using the exercise files
+
+## 1. Discrete Math Uses
+
+### Basics of discrete mathematics
+
+* Study of math that falls outside calculus
+  - Calculus is study of continuous math concepts
+  - Discrete is study of, well, discrete concepts
+    - Separable, countable, qualified objects
+* e.g. Analog vs. digital
+* Core concepts
+  - Logic: identify predicates, formatting conditional statements,
+    adding quantifiers, logical operations
+  - Set theory: enumerate groups of data: infinite and finite sets
+  - Number theory: using integers/natural numbers to enumerate sets of
+    data
+  - Graph theory: model pair-wise relationships b/w objects
+  - Combinatorics: study of finite countable discrete structures
+    - used in number theory, graph theory, probability theory
+    - e.g. study of sequences such as fibonacci
+    - involves mathematical reasoning combined with creativity and
+      problem solving
 
