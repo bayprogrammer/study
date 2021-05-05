@@ -1,6 +1,6 @@
 # Programming Foundations: Discrete Mathematics
 
-[LinkedIn Learning course][1] by [Peggy Fisher][1]
+[LinkedIn Learning course][1] by [Peggy Fisher][2]
 
 [1]: https://www.linkedin.com/learning/programming-foundations-discrete-mathematics
 [2]: https://www.linkedin.com/learning/instructors/peggy-fisher
