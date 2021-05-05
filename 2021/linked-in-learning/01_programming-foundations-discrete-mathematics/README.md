@@ -7,15 +7,15 @@
 
 ## Table of Contents
 
-### Introduction
+### [Introduction](#introduction)
 
-* [X] Welcome
-* [X] What you should know
-* [X] Using the exercise files
+* [X] [Welcome](#welcome)
+* [X] [What you should know](#what-you-should-know)
+* [X] [Using the exercise files](#using-the-exercise-files)
 
-### 1. Discrete Math Uses
+### 1. [Discrete Math Uses](#1-discrete-math-uses)
 
-* [X] Basics of discrete mathematics
+* [X] [Basics of discrete mathematics](#basics-of-discrete-mathematics)
 * [ ] Discrete math for programming
 * [ ] Real-world discrete math
 * [ ] Abstract discrete math
