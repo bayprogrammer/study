@@ -25,7 +25,7 @@
 
 * [X] [Objects as sets](#objects-as-sets)
 * [X] [Set notation](#set-notation)
-* [ ] [Set operations](#set-operators)
+* [ ] [Set operations](#set-operations)
 * [ ] Power sets
 * [ ] Sequences and sums
 * [ ] Recursion
