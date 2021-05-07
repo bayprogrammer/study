@@ -307,7 +307,7 @@
     - "A complement"
     - A with line over it [I used U+0100], or A raised to the power of C
       - alternatives that come to my mind (not sure the degree of validity,
-        will have to double-check later for proper lofi annotations:
+        will have to double-check later for proper lofi annotations):
         - `A^C` _as power, not as XOR_
         - `A**C` _as in Python and Ruby_
         - `pow(A, C)`
