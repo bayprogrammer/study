@@ -25,7 +25,7 @@
 
 * [X] [Objects as sets](#objects-as-sets)
 * [X] [Set notation](#set-notation)
-* [ ] Set operations
+* [ ] [Set operations](#set-operators)
 * [ ] Power sets
 * [ ] Sequences and sums
 * [ ] Recursion
@@ -281,3 +281,39 @@
         element of the set of integers Z such that x is greater than 0"
       - qualification is necessary as Z includes both negative and positive
       - this shows the set of all natural numbers [in terms of Z]
+
+### Set operations
+
+* Set Intersection
+  - A∩B
+    - "A intersects B"
+  - {x.x∈A and x∈B}
+    - "The result of the intersection of sets A and B is the set of all values
+      x, such that x is an element of A, and x is an element of B"
+* Set Union
+  - A∪B
+    - "A union B"
+  - {x.x∈A or x∈B or both}
+    - "[The result of the union of sets A and B is] the set of all values x,
+      where x is an element of A, or x is an element of B, or both."
+* Set Difference
+  - A-B
+    - "Elements in set A minus the elements in set B"
+  - {x.x∈A and x∉B}
+    - "[The result of the difference of sets A and B is] the set of all values
+      x, such that x is an element of set A, and x is not an element of set B."
+* Set Complement
+  - Ā or A<sup>C</sup>
+    - "A complement"
+    - A with line over it [I used U+0100], or A raised to the power of C
+      - alternatives that come to my mind (not sure the degree of validity,
+        will have to double-check later for proper lofi annotations:
+        - `A^C` _as power, not as XOR_
+        - `A**C` _as in Python and Ruby_
+        - `pow(A, C)`
+  - {x.x∉A}
+    - "A complement is the set of all values x, such that x is not in the set
+      A"
+  - Anything except for the values that are in set A
+* Universe of Discourse
+  - _LEFT OFF HERE 7-May-2021, time index `01:38`_
