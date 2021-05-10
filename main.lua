@@ -7,16 +7,31 @@ if false then
   end
 end
 local x = 0
+local y = 0
+local dx = 200
+local dy = 100
+local W = 600
+local H = 450
 love.load = function()
   x = 0
   return nil
 end
 love.update = function(dt)
-  print(dt)
-  x = (x + (100 * dt))
+  if (x > W) then
+    dx = -200
+  elseif (x < 0) then
+    dx = 200
+  end
+  if (y > H) then
+    dy = -100
+  elseif (y < 0) then
+    dy = 100
+  end
+  x = (x + (dx * dt))
+  y = (y + (dy * dt))
   return nil
 end
 love.draw = function()
-  return love.graphics.rectangle("line", x, 50, 200, 150)
+  return love.graphics.rectangle("line", x, y, 200, 150)
 end
 return love.draw

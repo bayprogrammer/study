@@ -6,14 +6,30 @@
     (love.graphics.rectangle :fill 100 200 50 80)))
 
 (var x 0)
+(var y 0)
+(var dx 200)
+(var dy 100)
+
+(local W 600)
+(local H 450)
 
 (fn love.load []
   (set x 0))
 
 (fn love.update [dt]
-  (print dt)
-  (set x (+ x (* 100 dt))))
+  (if
+    (> x W)
+      (set dx -200)
+    (< x 0)
+      (set dx 200))
+  (if
+    (> y H)
+      (set dy -100)
+    (< y 0)
+      (set dy 100))
+  (set x (+ x (* dx dt)))
+  (set y (+ y (* dy dt))))
 
 (fn love.draw []
   ;;                        mode   x  y   w   h
-  (love.graphics.rectangle :line   x 50 200 150))
+  (love.graphics.rectangle :line   x  y 200 150))
