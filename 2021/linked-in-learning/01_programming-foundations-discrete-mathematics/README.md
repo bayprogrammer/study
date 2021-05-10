@@ -25,8 +25,8 @@
 
 * [X] [Objects as sets](#objects-as-sets)
 * [X] [Set notation](#set-notation)
-* [ ] [Set operations](#set-operations)
-* [ ] Power sets
+* [X] [Set operations](#set-operations)
+* [ ] [Power sets](#power-sets)
 * [ ] Sequences and sums
 * [ ] Recursion
 * [ ] Cardinality, disjointness, and partitions
@@ -231,44 +231,44 @@
 
 * Sample Sets
   - elements separated by series of commas enclosed in curly brackets
-    - {a, b, c, d, e}
+    - { a, b, c, d, e }
   - sets can be empty:
-    - {}
+    - { }
     - ∅
   - sets can have one element
-    - {1}
+    - { 1 }
   - limited number [finite set]
-    - {1, 2, 3, 4, 5, 6, 7, 8, 9}
+    - { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
   - unlimited number (infinite set)
-    - {1, 2, 3, 4, ...}
+    - { 1, 2, 3, 4, ... }
 * Cardinality
   - number of items in a set
   - denoated with symbol often used for absolute values
     - |A|
       - "the cardinality of set A"
-  - empty set: {} or ∅
+  - empty set: { } or ∅
   - element of a set
-    - x∈A
+    - x ∈ A
       - "x is an element of set A"
 * Subset Definition
-  - A⊆B
+  - A ⊆ B
     - "if every element in set A is also an element of set B then A is a subset
       of B"
-  - if A⊆B and there is an element of B that is not A, then A is a proper
+  - if A ⊆ B and there is an element of B that is not A, then A is a proper
     subset of B
   - example:
-    - B = {2, 4, 6, 8, 10}
-    - A = {2, 4, 6}
+    - B = { 2, 4, 6, 8, 10 }
+    - A = { 2, 4, 6 }
     - therefore A⊆B
       - A is subset of B or equal to B
-    - A∈B: A is proper subset of B
+    - A ∈ B: A is proper subset of B
   - Let A = {a, b, c, d}
-    - a⊆B
-    - f∉A
+    - a ⊆ B
+    - f ∉ A
       - f is not an element of the set A
-    - Red ∈ {Red, Orange, Yellow, Green, Blue, Indigo, Violet}
+    - Red ∈ { Red, Orange, Yellow, Green, Blue, Indigo, Violet }
       - the symbol Red is in the set of the colours of the rainbow
-    - {Red} ∉ {Red, Orange, Yellow, Green, Blue, Indigo, Violet}
+    - { Red } ∉ { Red, Orange, Yellow, Green, Blue, Indigo, Violet }
       - the *set* of one element Red is not in the set of the colours of the
         rainbow
 * Set of Natural Numbers
@@ -276,7 +276,7 @@
     the set being defined
   - we understand the set of natural numbers being those that start at 1 and go
     on to infinity; it can be defined as:
-    - N = { x∈Z | x>0 }
+    - N = { x ∈ Z | x > 0 }
       - "Define the set N as the set of all arbitary values x that are an
         element of the set of integers Z such that x is greater than 0"
       - qualification is necessary as Z includes both negative and positive
@@ -285,21 +285,21 @@
 ### Set operations
 
 * Set Intersection
-  - A∩B
+  - A ∩ B
     - "A intersects B"
-  - {x.x∈A and x∈B}
+  - { x.x ∈ A and x ∈ B }
     - "The result of the intersection of sets A and B is the set of all values
       x, such that x is an element of A, and x is an element of B"
 * Set Union
-  - A∪B
+  - A ∪ B
     - "A union B"
-  - {x.x∈A or x∈B or both}
+  - { x.x ∈ A or x ∈ B or both }
     - "[The result of the union of sets A and B is] the set of all values x,
       where x is an element of A, or x is an element of B, or both."
 * Set Difference
   - A-B
     - "Elements in set A minus the elements in set B"
-  - {x.x∈A and x∉B}
+  - { x.x ∈ A and x ∉ B }
     - "[The result of the difference of sets A and B is] the set of all values
       x, such that x is an element of set A, and x is not an element of set B."
 * Set Complement
@@ -311,9 +311,44 @@
         - `A^C` _as power, not as XOR_
         - `A**C` _as in Python and Ruby_
         - `pow(A, C)`
-  - {x.x∉A}
+  - { x.x ∉ A }
     - "A complement is the set of all values x, such that x is not in the set
       A"
   - Anything except for the values that are in set A
 * Universe of Discourse
-  - _LEFT OFF HERE 7-May-2021, time index `01:38`_
+  - let U be unviersal set; set A is set of all elements in U not in A
+  - example:
+    - U = { Z }, E = { x ∈ Z | x = 2i }
+    - find the complement of E
+    - venn diagram
+* Set Identity Laws
+  - used in set proofs
+  - set theory
+  - Distributive Law: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)
+  - Complement Law: A ∪ Ā = U
+  - Identity Law: A ∩ U = A
+    - "set A intersects the universal set (U) at set A"
+* Prove: (A ∩ B) ∪ (A ∩ B̄) = A
+  - "A intersects B union A intersects B-complement equals A"
+  - (A ∩ B) ∪ (A ∩ B̄)
+  - A ∩ (B ∪ B̄)  distributive law
+  - A ∪ U        complement law
+    - set union set-complement is universal set
+  - A            identity law
+    - original proof is correct
+
+### Power sets
+
+* Definition
+  - set of all subsets for particular set (including empty)
+  - cardinality of power set is 2<sup>n</sup> where n is cardinality of
+    original set
+  - e.g. if |A| = 3, then |<em>P</em>(A)| = 8
+    - because 2<sup>3</sup> = 8
+* Given the Set A = { 1, 2, 3 }
+  - example of the power set A:
+  - <em>P</em>(A) = { {}, {1}, {2}, {3} {1,2}, {1,3}, {2,3}, {1,2,3} }
+    - know there are 3 items, thus 8 sets
+    - start with empty set
+* Family Photos
+  - _LEFT OFF HERE 10-May 2021, time index `01:38`_
