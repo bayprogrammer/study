@@ -1,37 +1,38 @@
-if false then
-  love.draw = function()
-    love.graphics.print("Hello, Love 2D world!", 100, 100)
-    love.graphics.circle("fill", 10, 10, 100, 25)
-    love.graphics.rectangle("line", 200, 30, 120, 100)
-    return love.graphics.rectangle("fill", 100, 200, 50, 80)
+local rect = {dx = 200, dy = 100, h = 150, w = 200, x = 0, y = 0}
+rect["update!"] = function(self, dt)
+  if self["invert-dx?"](self) then
+    self["invert-dx!"](self)
   end
-end
-local x = 0
-local y = 0
-local dx = 200
-local dy = 100
-local W = 600
-local H = 450
-love.load = function()
-  x = 0
+  if self["invert-dy?"](self) then
+    self["invert-dy!"](self)
+  end
+  self["x"] = (self.x + (self.dx * dt))
+  self["y"] = (self.y + (self.dy * dt))
   return nil
+end
+rect["draw!"] = function(self)
+  return love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
+end
+rect["invert-dx?"] = function(self)
+  return ((self.x < 0) or (self.x > (love.graphics.getWidth() - self.w)))
+end
+rect["invert-dy?"] = function(self)
+  return ((self.y < 0) or (self.y > (love.graphics.getHeight() - self.h)))
+end
+rect["invert-dx!"] = function(self)
+  self["dx"] = (-1 * self.dx)
+  return nil
+end
+rect["invert-dy!"] = function(self)
+  self["dy"] = (-1 * self.dy)
+  return nil
+end
+love.load = function()
 end
 love.update = function(dt)
-  if (x > W) then
-    dx = -200
-  elseif (x < 0) then
-    dx = 200
-  end
-  if (y > H) then
-    dy = -100
-  elseif (y < 0) then
-    dy = 100
-  end
-  x = (x + (dx * dt))
-  y = (y + (dy * dt))
-  return nil
+  return rect["update!"](rect, dt)
 end
 love.draw = function()
-  return love.graphics.rectangle("line", x, y, 200, 150)
+  return rect["draw!"](rect)
 end
 return love.draw
