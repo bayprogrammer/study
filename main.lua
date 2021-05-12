@@ -6,8 +6,8 @@ rect["update!"] = function(self, dt)
   if self["invert-dy?"](self) then
     self["invert-dy!"](self)
   end
-  self["x"] = (self.x + (self.dx * dt))
-  self["y"] = (self.y + (self.dy * dt))
+  self.x = (self.x + (self.dx * dt))
+  self.y = (self.y + (self.dy * dt))
   return nil
 end
 rect["draw!"] = function(self)
@@ -20,11 +20,11 @@ rect["invert-dy?"] = function(self)
   return ((self.y < 0) or (self.y > (love.graphics.getHeight() - self.h)))
 end
 rect["invert-dx!"] = function(self)
-  self["dx"] = (-1 * self.dx)
+  self.dx = (-1 * self.dx)
   return nil
 end
 rect["invert-dy!"] = function(self)
-  self["dy"] = (-1 * self.dy)
+  self.dy = (-1 * self.dy)
   return nil
 end
 love.load = function()

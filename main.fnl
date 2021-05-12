@@ -3,8 +3,8 @@
 (fn rect.update! [self dt]
   (if (self:invert-dx?) (self:invert-dx!))
   (if (self:invert-dy?) (self:invert-dy!))
-  (tset self :x (+ self.x (* self.dx dt)))
-  (tset self :y (+ self.y (* self.dy dt))))
+  (set self.x (+ self.x (* self.dx dt)))
+  (set self.y (+ self.y (* self.dy dt))))
 
 (fn rect.draw! [self]
   (love.graphics.rectangle :line self.x self.y self.w self.h))
@@ -17,9 +17,9 @@
   (or (< self.y 0)
       (> self.y (- (love.graphics.getHeight) self.h))))
 
-(fn rect.invert-dx! [self] (tset self :dx (* -1 self.dx)))
+(fn rect.invert-dx! [self] (set self.dx (* -1 self.dx)))
 
-(fn rect.invert-dy! [self] (tset self :dy (* -1 self.dy)))
+(fn rect.invert-dy! [self] (set self.dy (* -1 self.dy)))
 
 (fn love.load [])
 
