@@ -4,4 +4,4 @@ run: main.lua
 	love .
 
 %.lua: %.fnl fennel
-	./fennel --compile $< > $@
+	vendor/fennel --compile $< > $@
