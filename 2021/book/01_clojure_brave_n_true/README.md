@@ -21,7 +21,7 @@ By Daniel Higginbotham
 
 ### [Part I: Environment Setup](#part-i-environment-setup-1)
 
-* [ ] [Chapter 1: Building, Running, and the REPL](#chapter-1-building-running-and-the-repl)
+* [X] [Chapter 1: Building, Running, and the REPL](#chapter-1-building-running-and-the-repl)
 * [ ] [Chapter 2: How to Use Emacs, an Excellent Clojure Editor](#chapter-2-how-to-use-emacs-an-excellent-clojure-editor)
 
 ### [Part II: Language Fundamentals](#part-ii-language-fundamentals-1)
