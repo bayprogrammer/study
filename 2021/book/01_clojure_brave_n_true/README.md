@@ -67,6 +67,10 @@ By Daniel Higginbotham
 
 ### Chapter 3: Do Things: A Clojure Crash Course
 
+> It is better to have 100 functions operate on one data structure
+> than 10 functions on 10 data structures.
+> —Alan Perlis
+
 ### Chapter 4: Core Functions in Depth
 
 ### Chapter 5: Functional Programming
