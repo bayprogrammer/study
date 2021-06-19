@@ -72,8 +72,8 @@ By Daniel Higginbotham
 >
 > —Alan Perlis
 
-> <em>Regular expressions</em> are tools for performing pattern matching on
-> text. The literal notation for a regular expression is to place the
+> <em>Regular expressions</em> are tools for performing pattern matching
+> on text. The literal notation for a regular expression is to place the
 > expression in quotes after a hash mark:
 >
 > ```clojure
@@ -81,6 +81,45 @@ By Daniel Higginbotham
 > ```
 
 ### Chapter 4: Core Functions in Depth
+
+* Programming to abstractions
+  * Sequence and collection abstractions
+  * Sequences
+  * Lazy Sequences
+* Sequences: vectors, maps, and sets
+* Functions to work with sequences:
+  * `concat`
+  * `conj`
+  * `distinct`
+  * `drop`
+  * `filter`
+  * `group-by`
+  * `identity`
+  * `into`
+  * `map`
+  * `reduce`
+  * `some`
+  * `sort-by`
+  * `sort`
+  * `take`
+* Functions to create new functions:
+  * `apply`
+  * `complement`
+  * `partial`
+* Clojure defines core collection functions in terms of *sequence
+  abstraction*, not of specific data structures
+  * Core sequence operations:
+    * `first`
+    * `rest`
+    * `cons`
+  * data structures *implement* the sequence abstraction
+
+> ...it's powerful to focus on what we can *do* with a data structure
+> and ignore, as much as possible, its implementation.
+
+> If you want an exercise that will really blow your hair back, try
+> implementing `map` using `reduce`, and then do the same for `filter`
+> and `some` after you read about them later in this chapter.
 
 ### Chapter 5: Functional Programming
 
