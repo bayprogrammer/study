@@ -1,4 +1,4 @@
-(ns clojure-noob.snippets)
+(ns clojure-noob.ch3-snippets)
 
 1
 "a string"

@@ -1,7 +1,7 @@
 (ns clojure-noob.ch3-exercises)
 
 
-;; chapter 3, exercise 1
+;; ===== chapter 3, exercise 1 =====
 
 (str "Hello, " "world")
 
@@ -14,7 +14,7 @@
 (hash-set 1 2 3 1 2 3 0 9 8 0 1 2 3)
 
 
-;; chapter 3, exercise 2
+;; ===== chapter 3, exercise 2 =====
 
 (defn add100
   "Add 100 to any number n"
@@ -24,7 +24,7 @@
 (add100 50)
 
 
-;; chapter 3, exercise 3
+;; ===== chapter 3, exercise 3 =====
 
 (defn dec-maker
   "Make a decrementer function that decrements by n"
@@ -35,7 +35,7 @@
 (dec9 10)
 
 
-;; chapter 3, exercise 4
+;; ===== chapter 3, exercise 4 =====
 
 (defn mapset
   "Map over sequence s using function f returning set of unique results"
@@ -45,7 +45,7 @@
 (mapset inc [1 1 2 2])
 
 
-;; chapter 4, exercise 5
+;; ===== chapter 3, exercise 5 =====
 
 ;; (/ 360 5)  ;=> 72
 ;; (range 0 360 72)  ;=> (0 72 144 216 288)
@@ -70,12 +70,12 @@
                             {:name "*-achilles" :size 1}
                             {:name "*-foot" :size 2}])
 
-(def part-name-glob-regex #"^\*-")
+(def +part-name-glob-regex+ #"^\*-")
 
 (defn part-name-glob?
   "Determine if part-name is a part-name-glob"
   [part-name]
-  (boolean (re-find part-name-glob-regex part-name)))
+  (boolean (re-find +part-name-glob-regex+ part-name)))
 
 ;; (part-name-glob? "*-knee")
 ;; (part-name-glob? "nose")
@@ -85,7 +85,7 @@
   [part-name-glob]
   (let [sides (range 1 6)]
     (map #(clojure.string/replace part-name-glob
-                                  part-name-glob-regex
+                                  +part-name-glob-regex+
                                   (str % "-"))
          sides)))
 
@@ -105,13 +105,40 @@
 (defn symmetrize-body-parts
   "Symmetrize a 5-sized alien's body parts"
   [parts]
-  ;; TODO(zmd): should we convert to vector?
-  (mapcat expand-part parts))
+  ;; @Question(): how does the performance of this look compaured to using loop
+  ;; and into?
+  (vec (mapcat expand-part parts)))
 
 ;; (symmetrize-body-parts asym-alien-body-parts)
 
 
-;; chapter 3, exercise 6
+;; ===== chapter 3, exercise 6 =====
 
-;; TODO(zmd): do this exercise
+(defn part-name-glob->part-names-generalized
+  "Expand a part-name-glob to a list of n-sides parts"
+  [part-name-glob n-sides]
+  (let [sides (range 1 (+ n-sides 1))]
+    (map #(clojure.string/replace part-name-glob
+                                  +part-name-glob-regex+
+                                  (str % "-"))
+         sides)))
 
+;; (part-name-glob->part-names-generalized "*-knee" 12)
+
+(defn expand-part-generalized
+  "Expand a part into a list of (where appropriate, n-sides) parts"
+  [{:keys [name size] :as part} n-sides]
+  (if (part-name-glob? name)
+      (map #(hash-map :name % :size size)
+           (part-name-glob->part-names-generalized name n-sides))
+      (list part)))
+
+;; (expand-part-generalized {:name "*-knee" :size 2} 12)
+;; (expand-part-generalized {:name "nose" :size 2} 12)
+
+(defn symmetrize-body-parts-generalized
+  "Symmetrize a n-sides sided creature body parts"
+  [parts n-sides]
+  (vec (mapcat #(expand-part-generalized % n-sides) parts)))
+
+;; (symmetrize-body-parts-generalized asym-alien-body-parts 12)

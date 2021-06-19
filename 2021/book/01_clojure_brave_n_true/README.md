@@ -26,7 +26,7 @@ By Daniel Higginbotham
 
 ### [Part II: Language Fundamentals](#part-ii-language-fundamentals-1)
 
-* [ ] [Chapter 3: Do Things: A Clojure Crash Course](#chapter-3-do-things-a-clojure-crash-course)
+* [X] [Chapter 3: Do Things: A Clojure Crash Course](#chapter-3-do-things-a-clojure-crash-course)
 * [ ] [Chapter 4: Core Functions in Depth](#chapter-4-core-functions-in-depth)
 * [ ] [Chapter 5: Functional Programming](#chapter-5-functional-programming)
 * [ ] [Chapter 6: Organizing Your Project: A Librarian’s Tale](#chapter-6-organizing-your-project-a-librarians-tale)
@@ -69,7 +69,8 @@ By Daniel Higginbotham
 
 > > It is better to have 100 functions operate on one data structure
 > > than 10 functions on 10 data structures.
-> > —Alan Perlis
+>
+> —Alan Perlis
 
 > <em>Regular expressions</em> are tools for performing pattern matching on
 > text. The literal notation for a regular expression is to place the
