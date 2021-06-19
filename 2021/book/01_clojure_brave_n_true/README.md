@@ -67,9 +67,17 @@ By Daniel Higginbotham
 
 ### Chapter 3: Do Things: A Clojure Crash Course
 
-> It is better to have 100 functions operate on one data structure
-> than 10 functions on 10 data structures.
-> —Alan Perlis
+> > It is better to have 100 functions operate on one data structure
+> > than 10 functions on 10 data structures.
+> > —Alan Perlis
+
+> <em>Regular expressions</em> are tools for performing pattern matching on
+> text. The literal notation for a regular expression is to place the
+> expression in quotes after a hash mark:
+>
+> ```clojure
+> #"regular-expression"
+> ```
 
 ### Chapter 4: Core Functions in Depth
 
