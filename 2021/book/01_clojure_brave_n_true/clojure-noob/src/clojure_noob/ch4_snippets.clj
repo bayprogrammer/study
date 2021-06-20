@@ -109,3 +109,33 @@
             (drop-while #(< (:month %) 2) food-journal))
 
 (filter #(< (:human %) 5) food-journal)
+
+;; depending on the shape of the data, filter may have to visit more elements
+;; than a combination of take-while and drop-while (no doubt this is dependent
+;; on things such as the sorting of the data and the nature of the
+;; datastructure being processing)
+(filter #(< (:month %) 3) food-journal)
+
+(some #(> (:critter %) 5) food-journal)
+(some #(> (:critter %) 3) food-journal)
+(#(do [%1 %2 %3]) 1 2 3)
+(some #(and (> (:critter %) 3) %) food-journal)
+(some #(and (> (:critter %) 5) %) food-journal)
+
+(sort [3 2 1])
+(sort [3 6 2 4 1 5 8 9 2 3 7])
+(sort (set [3 6 2 4 1 5 8 9 2 3 7]))
+(reverse (sort (set [3 6 2 4 1 5 8 9 2 3 7])))
+(sort ["aaa" "c" "bb"])
+(sort-by count ["aaa" "c" "bb"])
+(reverse (sort-by count ["aaa" "c" "bb"]))
+(sort-by count [[1 56 2] [1 2 3 4 5] [0]])
+(reverse (sort-by count [[1 56 2] [1 2 3 4 5] [0]]))
+
+(def reverse-sort-by-count #(reverse (sort-by count %)))
+(reverse-sort-by-count [[1 56 2] [1 2 3 4 5] [0]])
+
+(concat [1 2] [3 4])
+(concat '(1 2) [3 4])
+(sort (concat '(1 2) #{3 4}))
+

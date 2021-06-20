@@ -121,6 +121,8 @@ By Daniel Higginbotham
 > implementing `map` using `reduce`, and then do the same for `filter`
 > and `some` after you read about them later in this chapter.
 
+Accessing a lazy seq's members is knon as *realizing* the seq.
+
 ### Chapter 5: Functional Programming
 
 ### Chapter 6: Organizing Your Project: A Librarian’s Tale
