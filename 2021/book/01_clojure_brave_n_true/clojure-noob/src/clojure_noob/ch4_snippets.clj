@@ -160,3 +160,140 @@
                  (map vampire-related-details social-security-numbers))))
 
 (time (vampire-related-details 0))
+
+(time (def mapped-details (map vampire-related-details (range 0 1000000))))
+
+(time (first mapped-details))
+
+(time (identify-vampire (range 0 1000000)))
+
+(concat (take 8 (repeat "na")) ["Batman!"])
+
+(take 3 (repeatedly (fn [] (rand-int 10))))
+(take 3 (repeatedly #(rand-int 10)))
+
+;; huh, does this consume stack space? I assume not; I assume lazy-seq wraps up
+;; the call in an implicit lambda which just calls the even-numbers function
+;; with the incrementor incrementing... but, hmmm...
+(defn even-numbers
+  ([] (even-numbers 0))
+  ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))
+
+(take 10 (even-numbers))
+(take 1000000 (even-numbers))
+(take 1000000000 (even-numbers))
+(take 1000000000000 (even-numbers))  ; so absurb, but very cool!
+
+(cons 0 '(2 4 6))
+
+(empty? [])
+(empty? ["no!"])
+
+(map identity {:sunlight-reaction "Glitter!"})
+(into {} (map identity {:sunlight-reaction "Glitter!"}))
+(into {} (list [:a "apples"]
+               [:b "blueberries"]
+               [:c "cherries"]
+               [:d "durians"]
+               [:e "elderberries"]))
+
+;;(into {} (list '(:a "apples")             ; NOPE!
+;;               '(:b "blueberries")
+;;               '(:c "cherries")
+;;               '(:d "durians")
+;;               '(:e "elderberries")))
+
+(map identity [:garlic :sesame-oil :fried-eggs])
+(into [] (map identity [:garlic :sesame-oil :fried-eggs]))
+
+(map identity [:garlic-clove :garlic-clove])
+(into #{} (map identity [:garlic-clove :garlic-clove]))
+
+(into {:favorite-emotion "gloomy"} [[:sunlight-reaction "Glitter!"]])
+(into ["cherry"] '("pine" "spruce"))
+
+(into {:favorite-animal "kitty"} {:least-favorite-smell "dog"
+                                  :relationship-with-teenager "creepy"})
+
+(conj [0] [1])
+(into [0] [1])
+(conj [0] 1)
+
+(conj [0] 1 2 3 4)
+(conj [] :apple :blueberry :cherry :durian :elderberry)
+(conj {:time "midnight"} [:place "ye olde cemetarium"])
+
+(defn my-conj [target & additions]
+  (into target additions))
+
+(my-conj [0] 1 2 3 4)
+(my-conj [] :apple :blueberry :cherry :durian :elderberry)
+(my-conj {:time "midnight"} [:place "ye olde cemetarium"])
+
+(max 0 1 2)
+(max [0 1 2])
+(apply max [0 1 2])
+
+(defn my-into [target additions]
+  (apply conj target additions))
+
+(my-into [0] [1 2 3])
+
+(def add10 (partial + 10))
+(def my-add10 #(+ 10 %))
+(def my-my-add10 (fn [n] (+ 10 n)))
+
+(add10 3)
+(add10 5)
+(my-add10 3)
+(my-add10 5)
+(my-my-add10 3)
+(my-my-add10 5)
+
+(def add-missing-elements
+  (partial conj ["water" "earth" "air"]))
+
+(add-missing-elements "unobtainium" "adamantium")
+(add-missing-elements "handwavium")
+(add-missing-elements "fire")
+
+(defn my-partial [partialized-fn & args]
+  (fn [& more-args]
+    (apply partialized-fn (into args more-args))))
+
+(def add20 (my-partial + 20))
+(add20 3)
+
+(defn lousy-logger [log-level message]
+  (condp = log-level
+    :warn (clojure.string/lower-case message)
+    :emergency (clojure.string/upper-case message)))
+
+(def warn (partial lousy-logger :warn))
+(def emergency (partial lousy-logger :emergency))
+
+(warn "Red light ahead")
+(lousy-logger :warn "Red light ahead")
+(emergency "Cultural revolutionaries ahead")
+(lousy-logger :emergency "Cultural revolutionaries ahead")
+
+;;(defn identify-humans [social-security-numbers]
+;;  (filter #(not (vampire? %))
+;;          (map vampire-related-details social-security-numbers)))
+(def not-vampire? (complement vampire?))
+(defn identify-humans [social-security-numbers]
+  (filter not-vampire?
+          (map vampire-related-details social-security-numbers)))
+
+(def my-neg? (complement pos?))
+(my-neg? 1)
+(my-neg? -1)
+
+(defn my-complement [fun]
+  (fn [& args]
+    (not (apply fun args))))
+
+(def my-pos? (my-complement neg?))
+(my-pos? 1)
+(my-pos? -1)
+

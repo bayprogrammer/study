@@ -84,6 +84,11 @@ By Daniel Higginbotham
 
 * Programming to abstractions
   * Sequence and collection abstractions
+    * Sequence abstraction
+      - About operating on members individually
+    * Collection abstraction
+      - About data structures as whole
+    * vectors, maps, lists, and sets all take part in both abstractions.
   * Sequences
   * Lazy Sequences
 * Sequences: vectors, maps, and sets
@@ -122,6 +127,14 @@ By Daniel Higginbotham
 > and `some` after you read about them later in this chapter.
 
 Accessing a lazy seq's members is knon as *realizing* the seq.
+
+> You can think of a lazy seq as consisting of two parts: a recipe for
+> how to realize the elements of a sequence and the elements that have
+> been realized so far.
+
+> You'll often see two functions [(e.g. `into` & `conj`)] that do the
+> same thing, except one takes a rest parameter (`conj`) and opne takes
+> a seqable data structure (`into`)
 
 ### Chapter 5: Functional Programming
 
