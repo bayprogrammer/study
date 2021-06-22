@@ -153,6 +153,8 @@ Accessing a lazy seq's members is knon as *realizing* the seq.
   * `comp` (compose)
   * `memoize` (cache)
 
+Downloaded `pegthing` from: https://github.com/flyingmachine/pegthing
+
 ### Chapter 6: Organizing Your Project: A Librarian’s Tale
 
 ### Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
