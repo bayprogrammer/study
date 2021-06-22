@@ -144,6 +144,9 @@ great-baby-name
 (take 10 (range 6 100000))
 (last (range 1000000000))
 
+;; "Elapsed time: 67943.430915 msecs"
+(time (last (range 1000000000)))
+
 (defn my-range
   ([upper]
     (my-range 0 upper))
@@ -162,17 +165,6 @@ great-baby-name
 (take 10 (my-range 6 100000))
 (last (my-range 1000000000))
 
-;; "Elapsed time: 67943.430915 msecs"
-(time (last (range 1000000000)))
-
 ;; "Elapsed time: 196770.194994 msecs"
 (time (last (my-range 1000000000)))
-
-;;
-;; Yikes! My implementation of range is far slower than the built in one; I
-;; wonder why that is?
-;;
-;; But, I've at least learned enough here, especially how lazy-seq works, to
-;; continue reading through the pegthing game code.
-;;
 

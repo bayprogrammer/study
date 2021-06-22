@@ -153,6 +153,8 @@ Accessing a lazy seq's members is knon as *realizing* the seq.
   * `comp` (compose)
   * `memoize` (cache)
 
+Suggested article on Clojure's persistent vector data structure: https://hypirion.com/musings/understanding-persistent-vector-pt-1
+
 Downloaded `pegthing` from: https://github.com/flyingmachine/pegthing
 
 ### Chapter 6: Organizing Your Project: A Librarian’s Tale
