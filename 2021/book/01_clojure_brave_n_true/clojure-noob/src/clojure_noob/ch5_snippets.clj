@@ -122,5 +122,15 @@ great-baby-name
 (my-sum-inc-sq 1 2 3 4 5)  ; (sq (inc (sum-varargs 1 2 3 4 5)))
 ;; ============================================================================
 
+(defn sleepy-identity
+  "Returns the given value after 1 second"
+  [x]
+  (Thread/sleep 1000)
+  x)
 
+(sleepy-identity "Mr. Fantastico")
+
+(def memo-sleepy-identity (memoize sleepy-identity))
+
+(memo-sleepy-identity "Mr. Fantastico")
 
