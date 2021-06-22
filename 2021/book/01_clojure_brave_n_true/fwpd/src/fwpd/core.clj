@@ -63,5 +63,74 @@
 
 ;; ===== chapter 4, exercise 2 =====
 
-;
+;; hmmm, appending to a list is not efficient; but a list is what we have...?
+(defn append [suspects suspect]
+  (reverse (cons suspect (reverse suspects))))
+
+;;(let [suspects (mapify (parse (slurp filename)))]
+;;  (append suspects {:name "Bob MacBig" :glitter-index 2}))
+
+
+;; ===== chapter 4, exercise 3 =====
+
+(defn name-valid? [name]
+  (and
+    (string? name)
+    (not (clojure.string/blank? name))))
+
+;;(name-valid? "Bob MacBig")
+;;(name-valid? "")
+;;(name-valid? :foo)
+;;(name-valid? 1337)
+;;(name-valid? nil)
+
+(defn glitter-valid? [glitter-index]
+  (and
+    (integer? glitter-index)
+    (>= glitter-index 0)))
+
+;;(glitter-valid? 0)
+;;(glitter-valid? 2)
+;;(glitter-valid? "2")
+;;(glitter-valid? "")
+;;(glitter-valid? nil)
+
+(def validations {:name name-valid?
+                  :glitter-index glitter-valid?})
+
+(let [suspect {:name "Bob MacBig" :glitter-index 2}]
+  (map (fn [[field validator]]
+         (validator (field suspect)))
+       validations))
+
+(def none (complement some))
+
+(defn validate [validations suspect]
+  (none #(false? %)
+        (map (fn [[field validator]]
+               (validator (field suspect)))
+             validations))))
+
+(validate validations {:name "Bob MacBig" :glitter-index 2})
+(validate validations {:name "" :glitter-index 2})
+(validate validations {:name "Bob MacBig" :glitter-index "2"})
+(validate validations {:name "Bob MacBig"})
+(validate validations {:glitter-index 2})
+
+
+;; ===== chapter 4, exercise 4 =====
+
+(defn suspect->csv [{:keys [name glitter-index]}]
+  (clojure.string/join "," [name glitter-index]))
+
+(suspect->csv {:name "Bob MacBig" :glitter-index 2})
+
+(defn suspects->csv [suspects]
+  (clojure.string/join "\n"
+                       (map suspect->csv suspects)))
+
+;;(let [suspects (mapify (parse (slurp filename)))
+;;      new-suspect {:name "Bob MacBig" :glitter-index 2}]
+;;  (if (validate validations new-suspect)
+;;    (suspects->csv (append suspects new-suspect))))
 

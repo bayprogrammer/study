@@ -27,7 +27,7 @@ By Daniel Higginbotham
 ### [Part II: Language Fundamentals](#part-ii-language-fundamentals-1)
 
 * [X] [Chapter 3: Do Things: A Clojure Crash Course](#chapter-3-do-things-a-clojure-crash-course)
-* [ ] [Chapter 4: Core Functions in Depth](#chapter-4-core-functions-in-depth)
+* [X] [Chapter 4: Core Functions in Depth](#chapter-4-core-functions-in-depth)
 * [ ] [Chapter 5: Functional Programming](#chapter-5-functional-programming)
 * [ ] [Chapter 6: Organizing Your Project: A Librarian’s Tale](#chapter-6-organizing-your-project-a-librarians-tale)
 * [ ] [Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros](#chapter-7-clojure-alchemy-reading-evaluation-and-macros)

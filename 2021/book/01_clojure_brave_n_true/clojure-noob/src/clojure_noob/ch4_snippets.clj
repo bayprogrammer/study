@@ -122,6 +122,11 @@
 (some #(and (> (:critter %) 3) %) food-journal)
 (some #(and (> (:critter %) 5) %) food-journal)
 
+;; complement of some is not all, but rather none:
+((complement some) #(not (nil? %)) '(true true false true))
+((complement some) #(not (nil? %)) '(true true false true))
+(and true true false true)
+
 (sort [3 2 1])
 (sort [3 6 2 4 1 5 8 9 2 3 7])
 (sort (set [3 6 2 4 1 5 8 9 2 3 7]))
