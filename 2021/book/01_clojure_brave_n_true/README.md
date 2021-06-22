@@ -138,6 +138,21 @@ Accessing a lazy seq's members is knon as *realizing* the seq.
 
 ### Chapter 5: Functional Programming
 
+* pure function:
+  * *referential transparency:* function that returns the same result
+    for the same input (which is why `rand` is not pure)
+  * causes no (externally observable) side-effects (which is why
+    `println` is not pure)
+* function composition:
+  * combining functions such that the value from one is passed to the
+    next as an argument
+  * fp encouraging building up more complex functions in terms of
+    combining simple ones
+* functions can derive from functions
+  * `partial` (partially apply)
+  * `comp` (compose)
+  * `memoize` (cache)
+
 ### Chapter 6: Organizing Your Project: A Librarian’s Tale
 
 ### Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
