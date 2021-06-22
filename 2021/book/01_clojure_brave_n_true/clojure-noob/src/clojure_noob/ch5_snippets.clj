@@ -92,11 +92,35 @@ great-baby-name
 (def trim-upper (two-comp s/trim s/upper-case))
 (trim-upper "  Why, hello there!!     ")
 
-;; TODO(zmd): try reimplementing Clojure's comp function (for composing n
-;;   functions)
+;; ============================================================================
+;; Exercise: try reimplementing Clojure's comp function (for composing n
+;; functions)
 (defn my-comp [& fns]
-  (fn [& args]))
+  (let [fns-reversed (reverse fns)]
+    (fn [& args]
+      (reduce (fn [value current-fn]
+                (current-fn value))
+              (apply (first fns-reversed) args)
+              (rest fns-reversed)))))
 
 (def spell-slots-my-comp (my-comp int inc #(/ % 2) c-int))
 (spell-slots-my-comp character)
+
+(defn sum-varargs [& nums]
+  (loop [nums-remaining nums
+         total 0]
+    (if (empty? nums-remaining)
+      total
+      (recur (rest nums-remaining) (+ total (first nums-remaining))))))
+
+(defn sq [n] (* n n))
+
+(def sum-inc-sq (comp sq inc sum-varargs))
+(sum-inc-sq 1 2 3 4 5)  ; (sq (inc (sum-varargs 1 2 3 4 5)))
+
+(def my-sum-inc-sq (my-comp sq inc sum-varargs))
+(my-sum-inc-sq 1 2 3 4 5)  ; (sq (inc (sum-varargs 1 2 3 4 5)))
+;; ============================================================================
+
+
 
