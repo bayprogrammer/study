@@ -80,6 +80,15 @@ By Daniel Higginbotham
 > #"regular-expression"
 > ```
 
+`loop` makes it easy to create and immediately invoke a (potentially
+recursive) anonymous lambda with initial bindings; `loop` with `recur`
+is pretty nifty.
+
+```
+((fn   [n  ] n) 8)  ;=> 8
+ (loop [n 8] n)     ;=> 8
+```
+
 ### Chapter 4: Core Functions in Depth
 
 * Programming to abstractions
