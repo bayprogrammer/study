@@ -176,3 +176,10 @@ great-baby-name
 ;; continue reading through the pegthing game code.
 ;;
 
+;; ----------------------------------------------------------------------------
+
+(assoc-in {} [:cookie :monster :vocals] "Finntroll")
+(get-in {:cookie {:monster {:vocals "Finntroll"}}} [:cookie :monster])
+(get-in {:cookie {:monster {:vocals "Finntroll"}}} [:cookie :monster :vocals])
+(get-in (assoc-in {} [:cookie :monster :vocals] "Finntroll") [:cookie :monster :vocals])
+
