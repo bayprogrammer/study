@@ -84,7 +84,14 @@
 
 ;; ===== chapter 5, exercise 4 =====
 
-;; TODO(zmd): complete me!
+;; https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/update-in
+;; (update-in m ks f & args)
+(let [my-map { 1 {:name "george johnson"
+                  :age 23}}]
+  [(update-in my-map [1 :name] (fn [old-v & args] (clojure.string/upper-case old-v)))
+   (update-in my-map [1 :name] (fn [old-v & args] (clojure.string/join " " args)) "bob" "smith")
+   (update-in my-map [1 :favorites :languages] (fn [old-v & args] args) :scheme :common-lisp :clojure :lfe)
+   (update-in my-map [2 :favorites :languages] (fn [old-v & args] args) :scheme :common-lisp :clojure :lfe)])
 
 ;; ===== chapter 5, exercise 5 =====
 
