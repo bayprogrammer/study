@@ -218,7 +218,7 @@
   (println "Move from where to where? Enter two letters:")
   (let [input (map letter->pos (characters-as-strings (get-input)))]
     (if-let [new-board (make-move board (first input) (second input))]
-      (successful-move new-board)
+      (trampoline successful-move new-board)
       (do
         (println "\n!!! That was an invalid move :(\n")
         (recur board)))))
@@ -226,7 +226,7 @@
 (defn successful-move
   [board]
   (if (can-move? board)
-    (prompt-move board)
+    (trampoline prompt-move board)
     (game-over board)))
 
 (defn game-over
