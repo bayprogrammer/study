@@ -83,6 +83,7 @@
     (reduce (fn [board pos] (add-pos board max-pos pos))
             initial-board
             (range 1 (inc max-pos)))))
+
 ;;;;
 ;; Move pegs
 ;;;;
@@ -220,7 +221,7 @@
       (successful-move new-board)
       (do
         (println "\n!!! That was an invalid move :(\n")
-        (prompt-move board)))))
+        (recur board)))))
 
 (defn successful-move
   [board]
