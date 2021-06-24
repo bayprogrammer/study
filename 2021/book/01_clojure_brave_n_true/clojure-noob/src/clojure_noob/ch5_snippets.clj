@@ -58,10 +58,19 @@ great-baby-name
 (require '[clojure.string :as s])
 (defn clean [text]
   (s/replace (s/trim text) #"lol" "LOL"))
-
 (clean "My boa constrictor is so sassy lol!  ")
 
 ((comp inc *) 2 3)
+
+(defn clean-via-comp [text]
+  ((comp #(s/replace % #"lol" "LOL") s/trim) text))
+(clean-via-comp "My boa constrictor is so sassy lol!  ")
+
+(defn clean-via-reduce [text]
+  (reduce (fn [string string-fn] (string-fn string))
+          text
+          [s/trim #(s/replace % #"lol" "LOL")]))
+(clean-via-reduce "My boa constrictor is so sassy lol!  ")
 
 
 (def character
@@ -103,6 +112,8 @@ great-baby-name
               (apply (first fns-reversed) args)
               (rest fns-reversed)))))
 
+((my-comp inc *) 2 3)
+
 (def spell-slots-my-comp (my-comp int inc #(/ % 2) c-int))
 (spell-slots-my-comp character)
 
@@ -143,6 +154,7 @@ great-baby-name
 (range 1 10 2)
 (take 10 (range 6 100000))
 (last (range 1000000000))
+(range 1 (inc 15))
 
 (defn my-range
   ([upper]
@@ -161,6 +173,7 @@ great-baby-name
 (my-range 1 10 2)
 (take 10 (my-range 6 100000))
 (last (my-range 1000000000))
+(my-range 1 (inc 15))
 
 ;; "Elapsed time: 67943.430915 msecs"
 (time (last (range 1000000000)))
@@ -182,4 +195,42 @@ great-baby-name
 (get-in {:cookie {:monster {:vocals "Finntroll"}}} [:cookie :monster])
 (get-in {:cookie {:monster {:vocals "Finntroll"}}} [:cookie :monster :vocals])
 (get-in (assoc-in {} [:cookie :monster :vocals] "Finntroll") [:cookie :monster :vocals])
+
+;; oooooh, partial is neat!
+(sum-varargs 2 2)
+(def add-two (partial sum-varargs 2))
+(add-two 2)
+(add-two 40)
+
+
+;; huh, take seems to take the ceiling of the fraction, rather than truncate...
+(let [pos-chars 3
+      row-num 2
+      rows 5]
+  (let [pad-length (/ (* (- rows row-num) pos-chars) 2)]
+    [pad-length
+     (int pad-length)
+     (float pad-length)
+     (take pad-length (repeat "."))]))
+
+;; doseq is like Ruby's .each, I think? (really only useful for side-effects,
+;; like printing to the screen, eh?)
+(let [fav-langs ["scheme"
+                 "clojure"
+                 "common lisp"
+                 "lfe"
+                 "c/c++"
+                 "javascript"
+                 "java"
+                 "erlang"]]
+  (doseq [lang fav-langs]
+    (println lang)))
+
+
+(first "f")
+(int (first "f"))
+
+(let [alpha-start 97]
+  [{:f (inc (- (int (first "f")) alpha-start))}
+   {:a (inc (- (int (first "a")) alpha-start))}])
 

@@ -166,6 +166,9 @@ Suggested article on Clojure's persistent vector data structure: https://hypirio
 
 Downloaded `pegthing` from: https://github.com/flyingmachine/pegthing
 
+> When you take the time to construct a rich data structure, it's easier
+> to perform useful operations.
+
 ### Chapter 6: Organizing Your Project: A Librarian’s Tale
 
 ### Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
