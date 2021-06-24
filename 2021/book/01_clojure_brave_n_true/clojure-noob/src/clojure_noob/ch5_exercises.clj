@@ -68,5 +68,25 @@
 (def my-sum-inc-sq (my-comp sq inc sum-varargs))
 (my-sum-inc-sq 1 2 3 4 5)
 
-;; ===== chapter 5, exercise 2 =====
+;; ===== chapter 5, exercise 3 =====
+
+(assoc {} :a "apples")                    ;=> {:a "apples"}
+(assoc-in {} [:foo] "berries")            ;=> {:foo "berries"}
+(assoc-in {} [:foo :bar :baz] "berries")  ;=> {:foo {:bar {:baz "berries"}}}
+
+(defn my-assoc-in [m [k & ks] v]
+  (if (empty? ks)
+    (assoc m k v)
+    (assoc m k (my-assoc-in m ks v))))
+
+(my-assoc-in {} [:foo] "berries")
+(my-assoc-in {} [:foo :bar :baz] "berries")
+
+;; ===== chapter 5, exercise 4 =====
+
+;; TODO(zmd): complete me!
+
+;; ===== chapter 5, exercise 5 =====
+
+;; TODO(zmd): complete me!
 
