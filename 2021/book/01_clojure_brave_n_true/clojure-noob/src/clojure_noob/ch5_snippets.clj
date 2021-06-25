@@ -1,7 +1,5 @@
 (ns clojure-noob.ch5-snippets)
 
-(+ 1 2)
-
 ;; referentially transparent
 (defn wisdom [words]
   (str words ", Daniel-san"))

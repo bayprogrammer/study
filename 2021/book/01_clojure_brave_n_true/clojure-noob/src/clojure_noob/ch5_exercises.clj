@@ -90,7 +90,10 @@
 
 (my-assoc-in {} [:foo] "berries")
 (my-assoc-in {} [:foo :bar :baz] "berries")
-(my-assoc-in {:foo {:bar {:baz "grain" } :quux "gameboys"}} [:foo :bar :baz] "berries")
+(my-assoc-in {:foo {:bar {:baz "grain"}
+                    :quux "gameboys"}}
+             [:foo :bar :baz]
+             "berries")
 
 ;; (my-assoc-in {:foo {:bar "baloon"}} [:foo :bar :baz] "berries")
 
