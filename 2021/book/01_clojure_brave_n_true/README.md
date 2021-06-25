@@ -29,7 +29,7 @@ By Daniel Higginbotham
 * [X] [Chapter 3: Do Things: A Clojure Crash Course](#chapter-3-do-things-a-clojure-crash-course)
 * [X] [Chapter 4: Core Functions in Depth](#chapter-4-core-functions-in-depth)
 * [X] [Chapter 5: Functional Programming](#chapter-5-functional-programming)
-* [ ] [Chapter 6: Organizing Your Project: A Librarian’s Tale](#chapter-6-organizing-your-project-a-librarians-tale)
+* [X] [Chapter 6: Organizing Your Project: A Librarian’s Tale](#chapter-6-organizing-your-project-a-librarians-tale)
 * [ ] [Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros](#chapter-7-clojure-alchemy-reading-evaluation-and-macros)
 * [ ] [Chapter 8: Writing Macros](#chapter-8-writing-macros)
 
@@ -237,6 +237,8 @@ is equivilant to:
 ```
 
 Like using `:as` to `alias` a namespace, etc.
+
+`ns` cheat sheet: https://gist.github.com/ghoseb/287710/
 
 ### Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
 

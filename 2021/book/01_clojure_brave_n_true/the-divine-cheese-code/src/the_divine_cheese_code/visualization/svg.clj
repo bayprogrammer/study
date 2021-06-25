@@ -49,7 +49,7 @@
   [width height locations]
   (str "<svg height=\"" height "\" width=\"" width "\">"
     ;; These to <g> tags flip the coordinate system
-    "<g transform=\"translat(0," height ")\">"
+    "<g transform=\"translate(0," height ")\">"
     "<g transform=\"scale(1,-1)\">"
     (-> (transform width height locations)
         points
