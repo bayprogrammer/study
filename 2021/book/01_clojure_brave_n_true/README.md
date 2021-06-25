@@ -171,6 +171,9 @@ Downloaded `pegthing` from: https://github.com/flyingmachine/pegthing
 
 ### Chapter 6: Organizing Your Project: A Librarian’s Tale
 
+Can get to a private variable via teh `@#'some/private-var` syntax; not
+advisable most of the time.
+
 ### Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
 
 ### Chapter 8: Writing Macros

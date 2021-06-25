@@ -53,4 +53,16 @@ great-books
 ;; > (clojure.core/refer 'cheese.taxonomy)
 ;; > bries
 ;; > cheddars
+;;
+;; > (clojure.core/get (clojure.core/ns-map clojure.core/*ns*) 'bries)
+;; > (clojure.core/get (clojure.core/ns-map clojure.core/*ns*) 'cheddars)
+
+;; private function, only visible to current namespace:
+(defn- private-function
+  "Just an example function that does nothing"
+  [])
+
+(private-function)
+
+;; > (clojure.core/alias 'taxonomy 'cheese.taxonomy)
 
