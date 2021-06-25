@@ -174,6 +174,70 @@ Downloaded `pegthing` from: https://github.com/flyingmachine/pegthing
 Can get to a private variable via teh `@#'some/private-var` syntax; not
 advisable most of the time.
 
+The following:
+
+```clojure
+(require '[the-divine-cheese-code.visualization.svg :as svg])
+```
+
+is equivilant to:
+
+```clojure
+(require 'the-divine-cheese-code.visualization.svg)
+(alias 'svg 'the-divine-cheese-code.visualization.svg)
+```
+
+both leading to our ability to do the following later:
+
+```clojure
+(svg/points heists)
+```
+
+`use` (which is not recommended for production) does a `require` and
+`refer` on the same namespace at once, and optionally can also use the
+`:as` keyword to do an `alias`:
+
+```clojure
+(use '[the-divine-cheese-code.visualization.svg :as svg])
+(= svg/points points)  ;=> true
+
+(= svg/latlng->point latlng->point)  ;=> true
+```
+
+`use` accepts the same options as `refer`: `:only`, `:exclude`, `:as`,
+and `:rename`.
+
+For all the deets on `require` and friends:
+https://clojure.org/reference/libs
+
+With the `ns` macro, which automatically refers `clojure.core`, you can
+exclude functions from `clojure.core` like so:
+
+```clojure
+(ns the-divine-cheese-code.core
+  (:refer-clojure :exclude [println]))
+```
+
+The `ns` _references_ you can use are: `(:refer-clojure)`, `(:require)`,
+`(:use)`, `(:import)`, `(:load)`, `(:gen-class)`; these correspond more
+or less to the associated functions (`:require` for `require`, etc.)
+
+The following:
+
+```clojure
+(ns the-divine-cheese-code.core
+  (:require the-divine-cheese-code.visualization.svg))
+```
+
+is equivilant to:
+
+```clojure
+(ns the-divine-cheese-code.core)
+(require 'the-divine-cheese-code.visualization.svg)
+```
+
+Like using `:as` to `alias` a namespace, etc.
+
 ### Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
 
 ### Chapter 8: Writing Macros
