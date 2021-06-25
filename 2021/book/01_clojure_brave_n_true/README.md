@@ -242,6 +242,14 @@ Like using `:as` to `alias` a namespace, etc.
 
 ### Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros
 
+Elements of Clojure's evaluation model: _reader_, _evaluator_, _macro
+expander_.
+
+> Homoiconic languages empower you to reason about your code as a set of
+> data structures that you can manipulate programatically.
+
+**LEFT OFF:** _25-June 2021_ pg. 153 "The Reader".
+
 ### Chapter 8: Writing Macros
 
 ## Part III: Advanced Topics
