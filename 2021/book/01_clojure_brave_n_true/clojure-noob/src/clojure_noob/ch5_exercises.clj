@@ -19,6 +19,7 @@
 (c-str character)
 (c-dex character)
 
+
 ;; ===== chapter 5, exercise 2 =====
 
 ;;
@@ -68,32 +69,64 @@
 (def my-sum-inc-sq (my-comp sq inc sum-varargs))
 (my-sum-inc-sq 1 2 3 4 5)
 
+
 ;; ===== chapter 5, exercise 3 =====
 
 (assoc {} :a "apples")                    ;=> {:a "apples"}
 (assoc-in {} [:foo] "berries")            ;=> {:foo "berries"}
 (assoc-in {} [:foo :bar :baz] "berries")  ;=> {:foo {:bar {:baz "berries"}}}
+(assoc-in {:foo {:bar {:baz "grain" }
+                 :quux "gameboys"}}
+          [:foo :bar :baz]
+          "berries")                      ;=> {:foo {:bar {:baz "berries"}
+                                          ;          :quux "gameboys"}}
+
+;; (assoc-in {:foo {:bar "baloon"}} [:foo :bar :baz] "berries")  ;=> ERROR
 
 (defn my-assoc-in [m [k & ks] v]
   (if (empty? ks)
     (assoc m k v)
-    (assoc m k (my-assoc-in m ks v))))
+    (assoc m k (my-assoc-in (get m k) ks v))))
 
 (my-assoc-in {} [:foo] "berries")
 (my-assoc-in {} [:foo :bar :baz] "berries")
+(my-assoc-in {:foo {:bar {:baz "grain" } :quux "gameboys"}} [:foo :bar :baz] "berries")
+
+;; (my-assoc-in {:foo {:bar "baloon"}} [:foo :bar :baz] "berries")
+
 
 ;; ===== chapter 5, exercise 4 =====
 
 ;; https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/update-in
 ;; (update-in m ks f & args)
-(let [my-map { 1 {:name "george johnson"
-                  :age 23}}]
+(let [my-map {1 {:name "george johnson"
+                 :age 23}}]
   [(update-in my-map [1 :name] (fn [old-v & args] (clojure.string/upper-case old-v)))
    (update-in my-map [1 :name] (fn [old-v & args] (clojure.string/join " " args)) "bob" "smith")
    (update-in my-map [1 :favorites :languages] (fn [old-v & args] args) :scheme :common-lisp :clojure :lfe)
    (update-in my-map [2 :favorites :languages] (fn [old-v & args] args) :scheme :common-lisp :clojure :lfe)])
 
+
 ;; ===== chapter 5, exercise 5 =====
 
-;; TODO(zmd): complete me!
+;; make sure I understand how apply works:
+(defn foo [a b & args]
+  [a b args])
+(foo "apple" "blueberry" "oranges" "cherries")
+(apply foo "apple" "blueberry" '("oranges" "cherries"))
 
+;; make sure I understand how update works
+(update {} :a (fn [old-v & args] (first args)) "apple")
+(update {:a "albacore tuna"} :a (fn [old-v & args] (first args)) "apple")
+
+(defn my-update-in [m [k & ks] f & args]
+  (if (empty? ks)
+    (apply update m k f args)
+    (assoc m k (apply my-update-in (get m k) ks f args))))
+
+(let [my-map {1 {:name "george johnson"
+                 :age 23}}]
+  [(my-update-in my-map [1 :name] (fn [old-v & args] (clojure.string/upper-case old-v)))
+   (my-update-in my-map [1 :name] (fn [old-v & args] (clojure.string/join " " args)) "bob" "smith")
+   (my-update-in my-map [1 :favorites :languages] (fn [old-v & args] args) :scheme :common-lisp :clojure :lfe)
+   (my-update-in my-map [2 :favorites :languages] (fn [old-v & args] args) :scheme :common-lisp :clojure :lfe)])
