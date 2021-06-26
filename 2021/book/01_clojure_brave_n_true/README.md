@@ -248,7 +248,30 @@ expander_.
 > Homoiconic languages empower you to reason about your code as a set of
 > data structures that you can manipulate programatically.
 
-**LEFT OFF:** _25-June 2021_ pg. 153 "The Reader".
+*Reader form*: textual representation of Clojure data structures.
+
+Reading and evaluating are independent functions that can occur separately.
+
+*Reader macro*: set of rules for transforming text into data structures.
+
+*Macro characters*: `'`, `#`, and `@`.
+
+Reader macros are different from regular macros.
+
+> Special forms, like `if`, are always used in the context of an operation;
+> they're always teh first element in a list
+
+> A *local binding* is any association between a symbol and a value that wasn't
+> created by `def`.
+
+*Special forms*: fundamental behavior provided by Clojure which cannot be
+implemented with functions (they don't follow the same evaluation rules).
+
+Some special forms include: `if`, `quote`, `def`, `let`, `loop`, `fn`, `do`,
+and `recur`.
+
+**LEFT OFF:** _26-June 2021_ pg. 161 "This is cool, but it's also quite
+clunky."
 
 ### Chapter 8: Writing Macros
 
