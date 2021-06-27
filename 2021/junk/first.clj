@@ -58,3 +58,44 @@
 
 (let [action [:del "super woke employer!"]]
   (dispatch-action action))
+
+;; can we match directly on regex?
+;; option flags: https://practical.li/clojure/reference/standard-library/regular-expressions/#option-flags
+
+(let [statement "Hello, world."]
+  (cond
+    (re-find #"(?i)^hello" statement) :hi
+    (re-find #"(?i)^goodbye" statement) :bye
+    :else :???))
+
+(let [statement "Goodbye, cruel world."]
+  (cond
+    (re-find #"(?i)^hello" statement) :hi
+    (re-find #"(?i)^goodbye" statement) :bye
+    :else :???))
+
+(let [statement "Hot dang, peanut butter is better on Tuesday!"]
+  (cond
+    (re-find #"(?i)^hello" statement) :hi
+    (re-find #"(?i)^goodbye" statement) :bye
+    :else :???))
+
+;; condp
+
+(let [statement "Hello, world."]
+  (condp re-find statement
+    #"(?i)^hello" :hi
+    #"(?i)^goodbye" :bye
+    :???))
+
+(let [statement "Goodbye, cruel world."]
+  (condp re-find statement
+    #"(?i)^hello" :hi
+    #"(?i)^goodbye" :bye
+    :???))
+
+(let [statement "Hot dang, peanut butter is better on Tuesday!"]
+  (condp re-find statement
+    #"(?i)^hello" :hi
+    #"(?i)^goodbye" :bye
+    :???))
