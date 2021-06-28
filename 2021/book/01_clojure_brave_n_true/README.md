@@ -270,8 +270,9 @@ implemented with functions (they don't follow the same evaluation rules).
 Some special forms include: `if`, `quote`, `def`, `let`, `loop`, `fn`, `do`,
 and `recur`.
 
-**LEFT OFF:** _26-June 2021_ pg. 161 "This is cool, but it's also quite
-clunky."
+> ...macros enable *syntactic abstraction*.
+
+`->` is known as _threading_ or _stabby_ macro.
 
 ### Chapter 8: Writing Macros
 

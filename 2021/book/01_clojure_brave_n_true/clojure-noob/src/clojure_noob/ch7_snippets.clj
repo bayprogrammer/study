@@ -88,3 +88,34 @@ false
 (eval (let [infix (read-string "(1 + 1)")]
         (list (second infix) (first infix) (last infix))))
 
+(defmacro ignore-last-operand [function-call]
+  (butlast function-call))
+
+(ignore-last-operand (+ 1 2 10))
+
+(ignore-last-operand (+ 1 2 (println "look at me!!!")))
+
+(macroexpand '(ignore-last-operand (+ 1 2 10)))
+(macroexpand '(ignore-last-operand (+ 1 2 (println "look at me!!!"))))
+
+(defmacro infix [infixed]
+  (list (second infixed)
+        (first infixed)
+        (last infixed)))
+
+(infix (1 + 2))
+
+
+;;;;
+;;
+;;  (defn read-resource
+;;    "Read a resource into a string"
+;;    [path]
+;;    (read-string (slurp (clojure.java.io/resource path))))
+;;
+(defn read-resource [path]
+  (-> path
+      clojure.java.io/resource
+      slurp
+      read-string))
+
