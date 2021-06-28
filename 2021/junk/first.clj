@@ -99,3 +99,28 @@
     #"(?i)^hello" :hi
     #"(?i)^goodbye" :bye
     :???))
+
+;; -- reduce ------------------------------------------------------------------
+
+;; reduce to summarize a collection
+;;
+;;   (but note here that + is n-ary, and can accept a single arg, which our
+;;   lambdas here do not support)
+
+(reduce + [1 2 3])
+(reduce (fn [n, m] (+ n m)) [1 2 3])
+
+(reduce + 0 [1 2 3])
+(reduce (fn [n, m] (+ n m)) 0 [1 2 3])
+
+;; ruduce to build up collection
+
+(reduce (fn [coll n] (conj coll n (inc n))) [] [1 2 3])
+
+(reduce (fn [coll n] (conj coll n (* n n))) [] [1 2 3])
+
+(into {}
+  (reduce
+    (fn [coll n] (conj coll [n (* n n)]))  ;; reducing function; args: initial, current
+    []                                     ;; initial value
+    (range 1 10)))                         ;; collection to reduce
