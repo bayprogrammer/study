@@ -1,3 +1,14 @@
+;; -- destructuring list and vector -------------------------------------------
+
+(def seven-letters-vec '[a b c d e f g])
+(def seven-letters-lst '(a b c d e f g))
+
+(let [[fst & rst] seven-letters-vec]
+  [fst rst])                          ;=> [a (b c d e f g)]
+
+(let [[fst & rst] seven-letters-lst]
+  (list fst rst))                     ;=> (a (b c d e f g))
+
 ;; -- -> threading macro? -----------------------------------------------------
 
 (-> 5
