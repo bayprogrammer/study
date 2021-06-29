@@ -119,12 +119,12 @@
 ;;   lambdas here do not support)
 
 (reduce + [1 2 3])
-(reduce (fn [n, m] (+ n m)) [1 2 3])
+(reduce (fn [n m] (+ n m)) [1 2 3])
 
 (reduce + 0 [1 2 3])
-(reduce (fn [n, m] (+ n m)) 0 [1 2 3])
+(reduce (fn [n m] (+ n m)) 0 [1 2 3])
 
-;; ruduce to build up collection
+;; reduce to build up collection
 
 (reduce (fn [coll n] (conj coll n (inc n))) [] [1 2 3])
 
@@ -135,3 +135,20 @@
     (fn [coll n] (conj coll [n (* n n)]))  ;; reducing function; args: initial, current
     []                                     ;; initial value
     (range 1 10)))                         ;; collection to reduce
+
+;; -- recursive grouping experiments ------------------------------------------
+
+;; does not care about operator precedence
+(defn group-left [[expr1 op expr2 & exprs]]
+  (cond
+    (nil? op) expr1
+    :else (group-left (cons (list expr1 op expr2) exprs))))
+
+;; does not care about operator precedence
+(defn group-right [[expr op & exprs]]
+  (cond
+    (nil? op) expr
+    :else (list expr op (group-right exprs))))
+
+(group-left '(1 + 2 - 3 + 4 - 5))
+(group-right '(1 + 2 * 3 + 4 / 5))
