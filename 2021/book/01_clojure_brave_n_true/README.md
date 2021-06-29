@@ -30,7 +30,7 @@ By Daniel Higginbotham
 * [X] [Chapter 4: Core Functions in Depth](#chapter-4-core-functions-in-depth)
 * [X] [Chapter 5: Functional Programming](#chapter-5-functional-programming)
 * [X] [Chapter 6: Organizing Your Project: A Librarian’s Tale](#chapter-6-organizing-your-project-a-librarians-tale)
-* [ ] [Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros](#chapter-7-clojure-alchemy-reading-evaluation-and-macros)
+* [X] [Chapter 7: Clojure Alchemy: Reading, Evaluation, and Macros](#chapter-7-clojure-alchemy-reading-evaluation-and-macros)
 * [ ] [Chapter 8: Writing Macros](#chapter-8-writing-macros)
 
 ### [Part III: Advanced Topics](#part-iii-advanced-topics-1)

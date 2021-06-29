@@ -10,6 +10,31 @@
 
 ;; ===== chapter 7, exercise 2 =====
 
+(def op-score {'+ 0
+                + 0
+               '- 0
+                - 0
+               '* 1
+                * 1
+               '/ 1
+                / 1})
+
+(defn op>= [op1 op2]
+  (if (nil? op2)
+    true
+    (>= (get op-score op1) (get op-score op2))))
+
+;; (op>= '+ '+)
+;; (op>= '+ '-)
+;; (op>= '- '+)
+;; (op>= '* '+)
+;; (op>= '+ '*)
+;; (op>= '* '/)
+;; (op>= '/ '*)
+;; (op>= '- '*)
+;; (op>= '* '-)
+;; (op>= '+ nil)
+
 (def op-sym-map
   { + '+
    '+ '+
@@ -20,58 +45,49 @@
     / '/
    '/ '/})
 
-(def op-precedence
-  { + :weak
-   '+ :weak
-    - :weak
-   '- :weak
-    * :strong
-   '* :strong
-    / :strong
-   '/ :strong})
+(defn normalize-op [op]
+  (get op-sym-map op))
 
+;; (normalize-op +)
+;; (normalize-op '+)
 
+(defn infix-right [[x op1 y op2 z & exprs]]
+  (let [op1 (normalize-op op1)
+        op2 (normalize-op op2)]
+    (cons (list op1 x (list op2 y z)) exprs)))
 
+;; (infix-right '(1 + 2 - 3 + 4 - 5))
+;; (infix-right '(1 / 2 * 3 * 4 / 5))
+;; (infix-right '(1 + 2 * 3 + 4 / 5))
 
+(defn infix-left [[x op y & exprs]]
+  (let [op (normalize-op op)]
+    (cons (list op x y) exprs)))
 
-;; TODO(zmd): grouping not working correctly yet for higher precedence
-;;   operators; we're grouping left too eagerly (we need to check the next op
-;;   first?)
-(defn group [[expr op :as exprs]]
-  (cond
-    (nil? op)
-      expr
-    :else
-      (let [precedence (get op-precedence op)]
-        (case precedence
-          :weak   (group-left exprs)
-          :strong (group-right exprs)))))
+;; (infix-left '(1 + 2 - 3 + 4 - 5))
+;; (infix-left '(1 / 2 * 3 * 4 / 5))
+;; (infix-left '(1 + 2 * 3 + 4 / 5))
 
-;;
-;; TODO(zmd): normalize ops to syms
-;;
+(defn infix-current [[_ op1 _ op2 :as exprs]]
+  (if (op>= op1 op2)
+    (infix-left exprs)
+    (infix-right exprs)))
 
-(defn group-left [[expr1 op expr2 & exprs]]
-  (cond
-    (nil? op) expr1
-    :else (group (cons (list expr1 op expr2) exprs))))
+;; (infix-current '(1 + 2 - 3 + 4 - 5))
+;; (infix-current '(1 / 2 * 3 * 4 / 5))
+;; (infix-current '(1 + 2 * 3 + 4 / 5))
 
-(defn group-right [[expr op & exprs]]
-  (cond
-    (nil? op) expr
-    :else (list expr op (group exprs))))
+(defn infix->prefix [[expr op :as exprs]]
+  (println [expr op :--> exprs])
+  (if (nil? op)
+    expr
+    (recur (infix-current exprs))))
 
-;; (group '(1 + 2 - 3 + 4 - 5))
-;; (group '(1 + 2 * 3 + 4 / 5))
-;; (group '(1 / 2 * 3 * 4 / 5))
-
-
-
-
-
-(defn infix->prefix []
-  ;; TODO(zmd): implement me
-  )
+;; (infix->prefix ())
+;; (infix->prefix '(1))
+;; (infix->prefix '(1 + 2 - 3 + 4 - 5))
+;; (infix->prefix '(1 / 2 * 3 * 4 / 5))
+;; (infix->prefix '(1 + 2 * 3 + 4 / 5))
 
 ;; (infix->prefix '(1 + 3 * 4 - 5))
 ;; (eval (infix->prefix '(1 + 3 * 4 - 5)))
