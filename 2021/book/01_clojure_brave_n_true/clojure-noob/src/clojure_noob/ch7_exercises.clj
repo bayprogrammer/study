@@ -78,7 +78,6 @@
 ;; (infix-current '(1 + 2 * 3 + 4 / 5))
 
 (defn infix->prefix [[expr op :as exprs]]
-  (println [expr op :--> exprs])
   (if (nil? op)
     expr
     (recur (infix-current exprs))))
