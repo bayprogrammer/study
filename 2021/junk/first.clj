@@ -9,6 +9,14 @@
 (let [[fst & rst] seven-letters-lst]
   (list fst rst))                     ;=> (a (b c d e f g))
 
+(let [[a b & c :as foo] '("hot" "dog" "diggity" "dog")]
+  [a b c foo])                             ;=> ["hot" "dog" ("diggity" "dog")
+                                           ;    ("hot" "dog" "diggity" "dog")]
+
+(let [[a b c :as foo] '("hot" "dog" "diggity" "dog")]
+  [a b c foo])                             ;=> ["hot" "dog" "diggity"
+                                           ;    ("hot" "dog" "diggity" "dog")]
+
 ;; -- -> threading macro? -----------------------------------------------------
 
 (-> 5
