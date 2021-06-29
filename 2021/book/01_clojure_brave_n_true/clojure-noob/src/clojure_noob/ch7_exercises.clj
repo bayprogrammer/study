@@ -37,7 +37,7 @@
 ;; TODO(zmd): grouping not working correctly yet for higher precedence
 ;;   operators; we're grouping left too eagerly (we need to check the next op
 ;;   first?)
-(defn group [[expr op & rst-exprs :as exprs]]
+(defn group [[expr op :as exprs]]
   (cond
     (nil? op)
       expr
@@ -45,7 +45,7 @@
       (let [precedence (get op-precedence op)]
         (case precedence
           :weak   (group-left exprs)
-          :strong (list expr op (group-right rst-exprs))))))
+          :strong (group-right exprs)))))
 
 ;;
 ;; TODO(zmd): normalize ops to syms
@@ -63,6 +63,7 @@
 
 ;; (group '(1 + 2 - 3 + 4 - 5))
 ;; (group '(1 + 2 * 3 + 4 / 5))
+;; (group '(1 / 2 * 3 * 4 / 5))
 
 
 
