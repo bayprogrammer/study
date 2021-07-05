@@ -19,8 +19,8 @@ By Sam Ruby, David Bryan Copeland (with Dave Thomas).
 
 ### [Part I: Getting Started](#part-i-getting-started-1)
 
-* [ ] [Chapter 1: Installing Rails](#chapter-1-installing-rails)
-* [ ] [Chapter 2: Instant Gratification](#chapter-2-instant-gratification)
+* [X] [Chapter 1: Installing Rails](#chapter-1-installing-rails)
+* [X] [Chapter 2: Instant Gratification](#chapter-2-instant-gratification)
 * [ ] [Chapter 3: The Architecture of Rails Applications](#chapter-3-the-architecture-of-rails-applications)
 * [ ] [Chapter 4: Introduction to Ruby](#chapter-4-introduction-to-ruby)
 
@@ -65,7 +65,46 @@ By Sam Ruby, David Bryan Copeland (with Dave Thomas).
 
 ### Chapter 1: Installing Rails
 
+https://api.rubyonrails.org
+
+```
+$ asdf install ruby 2.6.5
+$ asdf shell ruby 2.6.5
+$ rehash
+$ gem install rails --version=6.0.1 --no-document
+$ asdf install nodejs 12.22.3
+$ asdf shell nodejs 12.22.3
+$ rehash
+$ npm install -g yarn
+$ sudo apt install chromium-chromedriver
+```
+
+WARNING: On Ubuntu 20.04 LTS, the above `apt` command ends up installing
+Chromium via `snap`, which is crap.
+
+```
+$ rails _6.0.1_ --version
+```
+
 ### Chapter 2: Instant Gratification
+
+```
+$ rails _6.0.1_ new demo
+$ cd demo
+$ asdf local ruby 2.6.5
+$ asdf local nodejs 12.22.3
+$ asdf reshim ; rehash
+$ bin/rails about
+$ bin/rails server
+```
+
+Generate a controller and some actions:
+
+```
+$ bin/rails generate controller Say hello goodbye
+```
+
+_Helpers_: methods which make it easier to write templates.
 
 ### Chapter 3: The Architecture of Rails Applications
 
