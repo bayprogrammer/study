@@ -15,7 +15,7 @@ By Sam Ruby, David Bryan Copeland (with Dave Thomas).
 * [X] [Foreward to the Rails 5 Edition](#forward-to-the-rails-5-edition)
 * [X] [Preface to the Rails 6 Edition](#preface-to-the-rails-6-edition)
 * [X] [Acknowledgements](#acknowledgements)
-* [ ] [Introduction](#introduction)
+* [X] [Introduction](#introduction)
 
 ### [Part I: Getting Started](#part-i-getting-started-1)
 
