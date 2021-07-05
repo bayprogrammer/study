@@ -21,8 +21,8 @@ By Sam Ruby, David Bryan Copeland (with Dave Thomas).
 
 * [X] [Chapter 1: Installing Rails](#chapter-1-installing-rails)
 * [X] [Chapter 2: Instant Gratification](#chapter-2-instant-gratification)
-* [ ] [Chapter 3: The Architecture of Rails Applications](#chapter-3-the-architecture-of-rails-applications)
-* [ ] [Chapter 4: Introduction to Ruby](#chapter-4-introduction-to-ruby)
+* [X] [Chapter 3: The Architecture of Rails Applications](#chapter-3-the-architecture-of-rails-applications)
+* [X] [Chapter 4: Introduction to Ruby](#chapter-4-introduction-to-ruby)
 
 ### [Part II: Building an Application](#part-ii-building-an-application-1)
 
