@@ -26,8 +26,8 @@ By Sam Ruby, David Bryan Copeland (with Dave Thomas).
 
 ### [Part II: Building an Application](#part-ii-building-an-application-1)
 
-* [ ] [Chapter 5: The Depot Application](#chapter-5-the-depot-application)
-* [ ] [Chapter 6: Task A: Creating the Application](#chapter-6-task-a-creating-the-application)
+* [X] [Chapter 5: The Depot Application](#chapter-5-the-depot-application)
+* [X] [Chapter 6: Task A: Creating the Application](#chapter-6-task-a-creating-the-application)
 * [ ] [Chapter 7: Task B: Validation and Unit Testing](#chapter-7-task-b-validation-and-unit-testing)
 * [ ] [Chapter 8: Task C: Catalog Display](#chapter-8-task-c-catalog-display)
 * [ ] [Chapter 9: Task D: Cart Creation](#chapter-9-task-d-cart-creation)
@@ -115,6 +115,25 @@ _Helpers_: methods which make it easier to write templates.
 ### Chapter 5: The Depot Application
 
 ### Chapter 6: Task A: Creating the Application
+
+```
+$ asdf shell ruby 2.6.5
+$ asdf shell nodejs 12.22.3
+$ rails _6.0.1_ new depot
+$ cd depot
+$ asdf local ruby 2.6.5
+$ asdf local nodejs 12.22.3
+$ bin/rails generate scaffold Product \
+    title:string \
+    description:text \
+    image_url:string \
+    price:decimal
+$ : ...
+$ bin/rails db:migrate
+$ bin/rails server
+$ bin/rails test
+$ bin/rails db:seed
+```
 
 ### Chapter 7: Task B: Validation and Unit Testing
 
