@@ -29,7 +29,7 @@ By Sam Ruby, David Bryan Copeland (with Dave Thomas).
 * [X] [Chapter 5: The Depot Application](#chapter-5-the-depot-application)
 * [X] [Chapter 6: Task A: Creating the Application](#chapter-6-task-a-creating-the-application)
 * [X] [Chapter 7: Task B: Validation and Unit Testing](#chapter-7-task-b-validation-and-unit-testing)
-* [ ] [Chapter 8: Task C: Catalog Display](#chapter-8-task-c-catalog-display)
+* [X] [Chapter 8: Task C: Catalog Display](#chapter-8-task-c-catalog-display)
 * [ ] [Chapter 9: Task D: Cart Creation](#chapter-9-task-d-cart-creation)
 * [ ] [Chapter 10: Task E: A Smarter Cart](#chapter-10-task-e-a-smarter-cart)
 * [ ] [Chapter 11: Task F: Add a Dash of Ajax](#chapter-11-task-f-add-a-dash-of-ajax)
@@ -146,6 +146,15 @@ $ bin/rails test test/controllers/products_controller_test.rb:19
 ```
 
 ### Chapter 8: Task C: Catalog Display
+
+- https://github.com/rails/rails-dom-testing
+- https://guides.rubyonrails.org/caching_with_rails.html
+
+```
+$ bin/rails generate controller Store index
+$ bin/rails test:controllers
+$ bin/rails dev:cache
+```
 
 ### Chapter 9: Task D: Cart Creation
 
