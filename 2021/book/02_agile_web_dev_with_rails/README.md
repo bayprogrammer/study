@@ -133,6 +133,7 @@ $ bin/rails db:migrate
 $ bin/rails server
 $ bin/rails test
 $ bin/rails db:seed
+$ bin/rails dbconsole
 ```
 
 ### Chapter 7: Task B: Validation and Unit Testing
