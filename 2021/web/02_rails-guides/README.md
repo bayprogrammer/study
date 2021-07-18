@@ -16,8 +16,8 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [4 Hello, Rails](#hello-rails)
 * [X] [5 MVC and You](#5-mvc-and-you)
 * [X] [6 CRUDit Where CRUDit is Due](#6-crudit-where-crudit-is-due)
-* [ ] [7 Adding a Second Model](#7-adding-a-second-model)
-* [ ] [8 Refactoring](#8-refactoring)
+* [X] [7 Adding a Second Model](#7-adding-a-second-model)
+* [X] [8 Refactoring](#8-refactoring)
 * [ ] [9 Deleting Comments](#9-deleting-comments)
 * [ ] [10 Security](#10-security)
 * [ ] [11 What's Next?](#11-whats-next)
@@ -215,7 +215,28 @@ $ bin/rails routes -c articles
 
 #### 7 Adding a Second Model
 
+```
+$ bin/rails generate model Comment commenter:string body:text article:references
+$ bin/rails db:migrate
+$ bin/rails generate controller Comments
+```
+
 #### 8 Refactoring
+
+```
+$ bin/rails generate migration AddStatusToArticles status:string
+$ bin/rails generate migration AddStatusToComments status:string
+$ bin/rails db:migrate
+```
+
+We'll need to add the following to the Articles and Comments models:
+
+```ruby
+  attribute :status, :string, default: 'public'
+```
+
+Note that setting a default value for Rails model is suprising convoluted, see:
+https://stackoverflow.com/questions/328525/rails-how-can-i-set-default-values-in-activerecord
 
 #### 9 Deleting Comments
 
