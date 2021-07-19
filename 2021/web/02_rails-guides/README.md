@@ -18,10 +18,10 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [6 CRUDit Where CRUDit is Due](#6-crudit-where-crudit-is-due)
 * [X] [7 Adding a Second Model](#7-adding-a-second-model)
 * [X] [8 Refactoring](#8-refactoring)
-* [ ] [9 Deleting Comments](#9-deleting-comments)
-* [ ] [10 Security](#10-security)
-* [ ] [11 What's Next?](#11-whats-next)
-* [ ] [12 Configuration Gotchas](#12-configuration-gotchas)
+* [X] [9 Deleting Comments](#9-deleting-comments)
+* [X] [10 Security](#10-security)
+* [X] [11 What's Next?](#11-whats-next)
+* [X] [12 Configuration Gotchas](#12-configuration-gotchas)
 
 ### [Models](#models-1)
 
@@ -241,6 +241,10 @@ https://stackoverflow.com/questions/328525/rails-how-can-i-set-default-values-in
 #### 9 Deleting Comments
 
 #### 10 Security
+
+- https://github.com/heartcombo/devise
+- https://github.com/binarylogic/authlogic
+- https://guides.rubyonrails.org/security.html
 
 #### 11 What's Next?
 
