@@ -170,6 +170,36 @@ $ bin/rails db:migrate
 
 ### Chapter 10: Task E: A Smarter Cart
 
+```
+$ bin/rails generate migration add_quantity_to_line_items quantity:integer
+$ bin/rails db:migrate
+$ bin/rails generate migration combine_items_in_cart
+$ bin/rails db:migrate
+$ bin/rails db:rollback
+$ bin/rails db:migrate:status
+```
+
+Could modify and re-run migration; move out of way temporarily to see effect
+(else Rails will notice the now un-applied migration and refuse to operate).
+
+```
+$ mv db/migrate/20210719221522_combine_items_in_cart.rb db/migrate/20210719221522_combine_items_in_cart.rb_DISABLE
+```
+
+Then we can move it back and re-apply it:
+
+```
+$ mv db/migrate/20210719221522_combine_items_in_cart.rb_DISABLE db/migrate/20210719221522_combine_items_in_cart.rb
+$ bin/rails db:migrate
+$ bin/rails db:migrate:status
+```
+
+We can clear logs using task:
+
+```
+$ bin/rails log:clear LOGS=test
+```
+
 ### Chapter 11: Task F: Add a Dash of Ajax
 
 ### Chapter 12: Task G: Check Out!
