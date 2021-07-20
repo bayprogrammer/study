@@ -1,5 +1,7 @@
 class StoreController < ApplicationController
   include Metrics
+  include CurrentCart
+  before_action :set_cart
 
   def index
     increment_counter!
