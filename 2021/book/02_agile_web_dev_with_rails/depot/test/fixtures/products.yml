@@ -21,3 +21,17 @@ ruby:
     delivered fast, you should add Ruby to your toolbox.
   price:     49.50
   image_url: ruby.jpg
+
+crystal:
+  title:     Programming Crystal
+  description:
+    Crystal is for Ruby programmers who want more performance or for developers
+    who enjoy working in a high-level scripting environment. Crystal combines
+    native execution speed and concurrency with Ruby-like syntax, so you will
+    feel right at home. This book, the first available on Crystal, shows you
+    how to write applications that have the beauty and elegance of a modern
+    language, combined with the power of types and modern concurrency tooling.
+    Now you can write beautiful code that runs faster, scales better, and is a
+    breeze to deploy.
+  price:     40.00
+  image_url: crystal.jpg

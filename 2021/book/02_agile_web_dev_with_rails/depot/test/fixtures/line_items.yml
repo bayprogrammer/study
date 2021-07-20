@@ -2,8 +2,12 @@
 
 one:
   product: two
-  cart: one
+  cart: bob_cart
+  quantity: 1
+  product_price: 9.99
 
 two:
   product: two
-  cart: two
+  cart: alice_cart
+  quantity: 1
+  product_price: 9.99

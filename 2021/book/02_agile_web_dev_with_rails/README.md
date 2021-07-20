@@ -200,6 +200,12 @@ We can clear logs using task:
 $ bin/rails log:clear LOGS=test
 ```
 
+```
+$ bin/rails generate migration add_product_price_to_line_items product_price:decimal
+$ bin/rails db:migrate
+$ bin/rails generate migration copy_prices_for_items_in_cart
+```
+
 ### Chapter 11: Task F: Add a Dash of Ajax
 
 ### Chapter 12: Task G: Check Out!

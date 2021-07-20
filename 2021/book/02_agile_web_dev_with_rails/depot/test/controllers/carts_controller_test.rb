@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CartsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @cart = carts(:one)
+    @cart = carts(:bob_cart)
   end
 
   test "should get index" do
