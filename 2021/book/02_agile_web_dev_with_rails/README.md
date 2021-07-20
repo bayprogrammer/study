@@ -31,7 +31,7 @@ By Sam Ruby, David Bryan Copeland (with Dave Thomas).
 * [X] [Chapter 7: Task B: Validation and Unit Testing](#chapter-7-task-b-validation-and-unit-testing)
 * [X] [Chapter 8: Task C: Catalog Display](#chapter-8-task-c-catalog-display)
 * [X] [Chapter 9: Task D: Cart Creation](#chapter-9-task-d-cart-creation)
-* [ ] [Chapter 10: Task E: A Smarter Cart](#chapter-10-task-e-a-smarter-cart)
+* [X] [Chapter 10: Task E: A Smarter Cart](#chapter-10-task-e-a-smarter-cart)
 * [ ] [Chapter 11: Task F: Add a Dash of Ajax](#chapter-11-task-f-add-a-dash-of-ajax)
 * [ ] [Chapter 12: Task G: Check Out!](#chapter-12-task-g-check-out)
 * [ ] [Chapter 13: Task H: Entering Additional Payment Details](#chapter-13-task-h-entering-additional-payment-details)
