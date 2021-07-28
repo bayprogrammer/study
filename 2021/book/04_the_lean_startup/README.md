@@ -21,7 +21,8 @@ By Eric Ries.
 
 ### Part Two STEER
 
-* [ ] Chapter 5. Leap
+* [X] How Vision Leads to Steering
+* [X] Chapter 5. Leap
 * [ ] Chapter 6. Test
 * [ ] Chapter 7. Measure
 * [ ] Chapter 8. Pivot (or Persevere)
