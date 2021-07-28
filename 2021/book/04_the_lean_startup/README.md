@@ -17,7 +17,7 @@ By Eric Ries.
 * [X] Chapter 1. Start
 * [X] Chapter 2. Define
 * [X] Chapter 3. Learn
-* [ ] Chapter 4. Experiment
+* [X] Chapter 4. Experiment
 
 ### Part Two STEER
 
