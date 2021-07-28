@@ -16,43 +16,43 @@ By Steven Pressfield.
 
 ### Book One - Resistance _Defining the Enemy_
 
-* [ ] Resistance's Greatest Hits
-* [ ] Resistance is Invisible
-* [ ] Resistance is Internal
-* [ ] Resistance is Insidious
-* [ ] Resistance is Implacable
-* [ ] Resistance is Impersonal
-* [ ] Resistance is Infallible
-* [ ] Resistance is Universal
-* [ ] Resistance Never Sleeps
-* [ ] Resistance Plays for Keeps
-* [ ] Resistance is Fueled by Fear
-* [ ] Resistance Only Opposes in One Direction
-* [ ] Resistance is Most Powerful at the Finish Line
-* [ ] Resistance Recruits Allies
-* [ ] Resistance and Procrastination
-* [ ] Resistance and Procrastination, Part Two
-* [ ] Resistance and Sex
-* [ ] Resistance and Trouble
-* [ ] Resistance and Self-Dramatization
-* [ ] Resistance and Self-Medication
-* [ ] Resistance and Victimhood
-* [ ] Resistance and the Choice of a Mate
-* [ ] Resistance and This Book
-* [ ] Resistance and Unhappiness
-* [ ] Resistance and Fundamentalism
-* [ ] Resistance and Criticism
-* [ ] Resistance and Self-Doubt
-* [ ] Resistance and Fear
-* [ ] Resistance and Love
-* [ ] Resistance and Being A Star
-* [ ] Resistance and Isolation
-* [ ] Resistance and Isolation, Part Two
-* [ ] Resistance and Healing
-* [ ] Resistance and Support
-* [ ] Resistance and Rationalization
-* [ ] Resistance and Rationalization, Part Two
-* [ ] Resistance can be Beaten
+* [X] Resistance's Greatest Hits
+* [X] Resistance is Invisible
+* [X] Resistance is Internal
+* [X] Resistance is Insidious
+* [X] Resistance is Implacable
+* [X] Resistance is Impersonal
+* [X] Resistance is Infallible
+* [X] Resistance is Universal
+* [X] Resistance Never Sleeps
+* [X] Resistance Plays for Keeps
+* [X] Resistance is Fueled by Fear
+* [X] Resistance Only Opposes in One Direction
+* [X] Resistance is Most Powerful at the Finish Line
+* [X] Resistance Recruits Allies
+* [X] Resistance and Procrastination
+* [X] Resistance and Procrastination, Part Two
+* [X] Resistance and Sex
+* [X] Resistance and Trouble
+* [X] Resistance and Self-Dramatization
+* [X] Resistance and Self-Medication
+* [X] Resistance and Victimhood
+* [X] Resistance and the Choice of a Mate
+* [X] Resistance and This Book
+* [X] Resistance and Unhappiness
+* [X] Resistance and Fundamentalism
+* [X] Resistance and Criticism
+* [X] Resistance and Self-Doubt
+* [X] Resistance and Fear
+* [X] Resistance and Love
+* [X] Resistance and Being A Star
+* [X] Resistance and Isolation
+* [X] Resistance and Isolation, Part Two
+* [X] Resistance and Healing
+* [X] Resistance and Support
+* [X] Resistance and Rationalization
+* [X] Resistance and Rationalization, Part Two
+* [X] Resistance can be Beaten
 
 ### Book Two - Combatting Resistance _Turning Pro_
 
