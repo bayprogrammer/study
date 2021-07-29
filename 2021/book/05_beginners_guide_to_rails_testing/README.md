@@ -34,7 +34,8 @@ By [Jason Swett](https://www.jasonswett.net).
 * [X] Chapter 3. [Which test framework should I learn, RSpec or Minitest?](https://www.codewithjason.com/test-framework-learn-rspec-minitest/)
 * [X] Chapter 4. [How do I make testing a habitual part of my design work?](https://www.codewithjason.com/make-testing-habit/)
 * [X] Chapter 5. [What level of test coverage should I shoot for?](https://www.codewithjason.com/test-coverage/)
-* [ ] Chapter 6. How do I set up a new Rails project for testing?
+* [X] Chapter 6. How do I set up a new Rails project for testing?
+  * [ ] [A Rails testing “hello world” using RSpec and Capybara](https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/)
 * [ ] Chapter 7. How do I add tests to an existing Rails project?
 * [ ] Chapter 8. Should I be doing test-driven development?
 
