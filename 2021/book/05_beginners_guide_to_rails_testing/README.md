@@ -30,7 +30,7 @@ By [Jason Swett](https://www.jasonswett.net).
     * [X] [How to get started with Rails testing](https://www.codewithjason.com/start-testing-rails/)
       * [X] [Factories and fixtures in Rails](https://www.codewithjason.com/factories-fixtures-rails/)
     * [X] [Beware of “service objects” in Rails](https://www.codewithjason.com/rails-service-objects/)
-* [ ] Chapter 2. What are all the Rails testing tools and how do I use them?
+* [X] Chapter 2. What are all the Rails testing tools and how do I use them?
 * [X] Chapter 3. [Which test framework should I learn, RSpec or Minitest?](https://www.codewithjason.com/test-framework-learn-rspec-minitest/)
 * [X] Chapter 4. [How do I make testing a habitual part of my design work?](https://www.codewithjason.com/make-testing-habit/)
 * [X] Chapter 5. [What level of test coverage should I shoot for?](https://www.codewithjason.com/test-coverage/)
