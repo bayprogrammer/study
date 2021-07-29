@@ -38,5 +38,5 @@ By [Jason Swett](https://www.jasonswett.net).
   * [ ] [A Rails testing “hello world” using RSpec and Capybara](https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/)
 * [X] Chapter 7. How do I add tests to an existing Rails project?
   * [ ] [Using tests as a tool to wrangle legacy projects](https://www.codewithjason.com/using-tests-tool-wrangle-legacy-projects/)
-* [ ] Chapter 8. Should I be doing test-driven development?
+* [X] Chapter 8. Should I be doing test-driven development?
 
