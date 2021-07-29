@@ -36,6 +36,7 @@ By [Jason Swett](https://www.jasonswett.net).
 * [X] Chapter 5. [What level of test coverage should I shoot for?](https://www.codewithjason.com/test-coverage/)
 * [X] Chapter 6. How do I set up a new Rails project for testing?
   * [ ] [A Rails testing “hello world” using RSpec and Capybara](https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/)
-* [ ] Chapter 7. How do I add tests to an existing Rails project?
+* [X] Chapter 7. How do I add tests to an existing Rails project?
+  * [ ] [Using tests as a tool to wrangle legacy projects](https://www.codewithjason.com/using-tests-tool-wrangle-legacy-projects/)
 * [ ] Chapter 8. Should I be doing test-driven development?
 
