@@ -77,6 +77,22 @@ https://guides.rubyonrails.org/getting_started.html
 
 #### [Testing Rails Applications](#testing-rails-applications-1)
 
+* [X] [1 Why Write Tests for your Rails Applications?](#1-why-write-tests-for-your-rails-applications)
+* [X] [2 Introduction to Testing](#2-introduction-to-testing)
+* [ ] [3 Parallel Testing](#3-parallel-testing)
+* [ ] [4 The Test Database](#4-the-test-database)
+* [ ] [5 Model Testing](#5-model-testing)
+* [ ] [6 System Testing](#6-system-testing)
+* [ ] [7 Integration Testing](#7-integration-testing)
+* [ ] [8 Functional Tests for Your Controllers](#8-functional-tests-for-your-controllers)
+* [ ] [9 Testing Routes](#9-testing-routes)
+* [ ] [10 Testing Views](#10-testing-views)
+* [ ] [11 Testing Helpers](#11-testing-helpers)
+* [ ] [12 Testing Your Mailers](#12-testing-your-mailers)
+* [ ] [13 Testing Jobs](#13-testing-jobs)
+* [ ] [14 Testing Action Cable](#14-testing-action-cable)
+* [ ] [15 Additional Testing Resources](#15-additional-testing-resources)
+
 #### [Securing Rails Applications](#securing-rails-applications-1)
 
 #### [Debugging Rails Applications](#debugging-rails-applications-1)
@@ -303,6 +319,87 @@ https://stackoverflow.com/questions/328525/rails-how-can-i-set-default-values-in
 ### Rails Internationalization (I18n) API
 
 ### Testing Rails Applications
+
+#### 1 Why Write Tests for your Rails Applications?
+
+#### 2 Introduction to Testing
+
+Run all tests (other than system tests):
+
+```
+$ bin/rails test
+```
+
+Run all tests of a particular kind:
+
+```
+$ bin/rails test models
+```
+
+Run tests in specific directory:
+
+```
+$ bin/rails test test/controllers
+```
+
+Run specific test:
+
+```
+$ bin/rails test test/models/article_test.rb:4
+$ bin/rails test test/models/article_test.rb -n test_the_truth
+```
+
+Display backtrace for errors encountered:
+
+```
+$ bin/rails test -b test/models/article_test.rb
+```
+
+Test base classes provided by Rails:
+
+* `ActiveSupport::TestCase`
+* `ActionMailer::TestCase`
+* `ActionView::TestCase`
+* `ActiveJob::TestCase`
+* `ActionDispatch::IntegrationTest`
+* `ActionDispatch::SystemTestCase`
+* `Rails::Generators::TestCase`
+
+Minitest documentation can be found here:
+
+* http://docs.seattlerb.org/minitest/
+
+See `-h` for more information on available test subcommand options:
+
+```
+$ bin/rails test -h
+```
+
+#### 3 Parallel Testing
+
+#### 4 The Test Database
+
+#### 5 Model Testing
+
+#### 6 System Testing
+
+#### 7 Integration Testing
+
+#### 8 Functional Tests for Your Controllers
+
+#### 9 Testing Routes
+
+#### 10 Testing Views
+
+#### 11 Testing Helpers
+
+#### 12 Testing Your Mailers
+
+#### 13 Testing Jobs
+
+#### 14 Testing Action Cable
+
+#### 15 Additional Testing Resources
 
 ### Securing Rails Applications
 
