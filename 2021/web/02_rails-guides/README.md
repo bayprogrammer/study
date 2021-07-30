@@ -80,7 +80,7 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [1 Why Write Tests for your Rails Applications?](#1-why-write-tests-for-your-rails-applications)
 * [X] [2 Introduction to Testing](#2-introduction-to-testing)
 * [X] [3 Parallel Testing](#3-parallel-testing)
-* [ ] [4 The Test Database](#4-the-test-database)
+* [X] [4 The Test Database](#4-the-test-database)
 * [ ] [5 Model Testing](#5-model-testing)
 * [ ] [6 System Testing](#6-system-testing)
 * [ ] [7 Integration Testing](#7-integration-testing)
@@ -395,6 +395,16 @@ $ PARALLEL_WORKERS=15 bin/rails test
 ```
 
 #### 4 The Test Database
+
+Use `bin/rails db:test:prepare` to rebuild test db if migrations have been
+edited (vs. just having unapplied migrations).
+
+Fixtures API docs can be found here:
+
+* https://api.rubyonrails.org/v6.1.4/classes/ActiveRecord/FixtureSet.html
+
+Can use ERB within fixture YAML files to do preprocessing and ahead of time
+dynamic fixture generation.
 
 #### 5 Model Testing
 
