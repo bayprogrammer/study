@@ -56,9 +56,9 @@ By Steven Pressfield.
 
 ### Book Two - Combatting Resistance _Turning Pro_
 
-* [ ] Professionals and Amateurs
-* [ ] A Professional
-* [ ] What a Writer's Day Feels Like
+* [X] Professionals and Amateurs
+* [X] A Professional
+* [X] What a Writer's Day Feels Like
 * [ ] How to be Miserable
 * [ ] We're All Pros Already
 * [ ] For Love of the Game
