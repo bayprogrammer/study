@@ -48,8 +48,14 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
+
+  #
+  # NOTE(zmd): The `webdrivers` gem actually breaks things for Chrome on Ubuntu
+  #   -- `capybara` and `selenium-webdriver` is all we need for Ubuntu 20.04
+  #   LTS.
+  #
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  #gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

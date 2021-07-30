@@ -82,7 +82,7 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [3 Parallel Testing](#3-parallel-testing)
 * [X] [4 The Test Database](#4-the-test-database)
 * [X] [5 Model Testing](#5-model-testing)
-* [ ] [6 System Testing](#6-system-testing)
+* [X] [6 System Testing](#6-system-testing)
 * [ ] [7 Integration Testing](#7-integration-testing)
 * [ ] [8 Functional Tests for Your Controllers](#8-functional-tests-for-your-controllers)
 * [ ] [9 Testing Routes](#9-testing-routes)
@@ -333,7 +333,7 @@ $ bin/rails test
 Run all tests of a particular kind:
 
 ```
-$ bin/rails test models
+$ bin/rails test:models
 ```
 
 Run tests in specific directory:
@@ -412,6 +412,84 @@ Model tests don't have a special superclass, they inherit directly from
 ActiveSupport::TestCase.
 
 #### 6 System Testing
+
+```
+$ bin/rails generate system_test users
+```
+
+All system test configuration should go in
+`test/application_system_test_case.rb`.
+
+Change the backend to Cabybara using `driven_by`:
+
+```ruby
+require 'test_helper'
+require 'capybara/poltergeist'
+
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  driven_by :poltergeist
+end
+```
+
+Other examples:
+
+```ruby
+driven_by :selenium, using: :chrome  # the default
+driven_by :selenium, using: :headless_chrome
+driven_by :selenium, using: :firefox
+driven_by :selenium, using: :headless_firefox
+```
+
+Capybara documentation can be found here:
+
+* https://github.com/teamcapybara/capybara#setup
+
+```
+$ bin/rails generate system_test articles
+```
+
+Run system tests:
+
+```
+bin/rails test:system
+bin/rails test:all
+```
+
+*Ubuntu-specific note from Zeb*: comment out the `webdrivers` gem in the
+`Gemfile`; that gem actually makes things break with Chromium installed via
+Snap. Things "just work" without it (at least for Selenium + Chromium)! For the
+same for Firefox, just install the `firefox-geckodriver` package via `apt`.
+
+Can create a special `test/module_system_test_case.rb` like so for full stack
+testing in the mobile context:
+
+```ruby
+require 'test_helper'
+
+class MobileSystemTestCase < ActionDispatch::SystemTestCase
+  driven_by :selenium, using: :chrome, screen_size: [375, 667]
+end
+```
+
+And then create a test case based on this mobile-specific system test
+baseclass:
+
+```ruby
+require 'mobile_system_test_case'
+
+class PostsTest < MobileSystemTestCase
+  test "visiting the index" do
+    visit posts_url
+    assert_selector "h1", text: "Posts"
+  end
+end
+```
+
+> ...you can test anything that the user [himself] would do in your application
+> such as commenting, deleting articles, publishing draft articles, etc.
+
+*Note from Zeb*: yes, but we need to figure out auth! Basic auth wasn't working
+with these system tests and I had to disable it to complete this tutorial.
 
 #### 7 Integration Testing
 
