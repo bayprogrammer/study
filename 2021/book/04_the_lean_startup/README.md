@@ -24,7 +24,7 @@ By Eric Ries.
 * [X] How Vision Leads to Steering
 * [X] Chapter 5. Leap
 * [X] Chapter 6. Test
-* [ ] Chapter 7. Measure
+* [X] Chapter 7. Measure
 * [ ] Chapter 8. Pivot (or Persevere)
 
 ### Part Three ACCELERATE
