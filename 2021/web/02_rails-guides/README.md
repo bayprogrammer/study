@@ -81,7 +81,7 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [2 Introduction to Testing](#2-introduction-to-testing)
 * [X] [3 Parallel Testing](#3-parallel-testing)
 * [X] [4 The Test Database](#4-the-test-database)
-* [ ] [5 Model Testing](#5-model-testing)
+* [X] [5 Model Testing](#5-model-testing)
 * [ ] [6 System Testing](#6-system-testing)
 * [ ] [7 Integration Testing](#7-integration-testing)
 * [ ] [8 Functional Tests for Your Controllers](#8-functional-tests-for-your-controllers)
@@ -407,6 +407,9 @@ Can use ERB within fixture YAML files to do preprocessing and ahead of time
 dynamic fixture generation.
 
 #### 5 Model Testing
+
+Model tests don't have a special superclass, they inherit directly from
+ActiveSupport::TestCase.
 
 #### 6 System Testing
 
