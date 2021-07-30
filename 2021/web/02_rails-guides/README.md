@@ -83,7 +83,7 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [4 The Test Database](#4-the-test-database)
 * [X] [5 Model Testing](#5-model-testing)
 * [X] [6 System Testing](#6-system-testing)
-* [ ] [7 Integration Testing](#7-integration-testing)
+* [X] [7 Integration Testing](#7-integration-testing)
 * [ ] [8 Functional Tests for Your Controllers](#8-functional-tests-for-your-controllers)
 * [ ] [9 Testing Routes](#9-testing-routes)
 * [ ] [10 Testing Views](#10-testing-views)
@@ -492,6 +492,17 @@ end
 with these system tests and I had to disable it to complete this tutorial.
 
 #### 7 Integration Testing
+
+Integration tests (which inherit from `ActionDispatch::IntegrationTest`) come
+with the standard testing helpers plus the ones from these modules:
+
+* [`ActionDispatch::Integration::Runner`](https://api.rubyonrails.org/v6.1.4/classes/ActionDispatch/Integration/Runner.html)
+* [`ActionDispatch::Integration::RequestHelper`](https://api.rubyonrails.org/v6.1.4/classes/ActionDispatch/Integration/RequestHelpers.html)
+* [`ActionDispatch::Integration::Session`](https://api.rubyonrails.org/v6.1.4/classes/ActionDispatch/Integration/Session.html)
+
+```
+$ bin/rails generate integration_test blog_flow
+```
 
 #### 8 Functional Tests for Your Controllers
 
