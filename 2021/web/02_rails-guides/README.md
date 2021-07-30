@@ -79,7 +79,7 @@ https://guides.rubyonrails.org/getting_started.html
 
 * [X] [1 Why Write Tests for your Rails Applications?](#1-why-write-tests-for-your-rails-applications)
 * [X] [2 Introduction to Testing](#2-introduction-to-testing)
-* [ ] [3 Parallel Testing](#3-parallel-testing)
+* [X] [3 Parallel Testing](#3-parallel-testing)
 * [ ] [4 The Test Database](#4-the-test-database)
 * [ ] [5 Model Testing](#5-model-testing)
 * [ ] [6 System Testing](#6-system-testing)
@@ -376,6 +376,23 @@ $ bin/rails test -h
 ```
 
 #### 3 Parallel Testing
+
+Specify the number of workers with `parallelize`. By default the test harness
+uses forking. Specify `with: threads` option to use threads. Threads option
+will be set automatically for Rails apps generated using JRuby or TruffleRuby,
+but forking is default otherwise (e.g. when using YARV and not othering adding
+the option).
+
+Use `parallelize_setup` and `parallelize_teardown` to specify blocks of code to
+work on each worker when relying on forking for test parallelization. These are
+not applicatable when using threads instead of process forking.
+
+Specify the number of workers via an environment var (such as for CI/CD
+overrides):
+
+```
+$ PARALLEL_WORKERS=15 bin/rails test
+```
 
 #### 4 The Test Database
 
