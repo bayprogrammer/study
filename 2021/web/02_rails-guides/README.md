@@ -87,11 +87,11 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [8 Functional Tests for Your Controllers](#8-functional-tests-for-your-controllers)
 * [X] [9 Testing Routes](#9-testing-routes)
 * [X] [10 Testing Views](#10-testing-views)
-* [ ] [11 Testing Helpers](#11-testing-helpers)
-* [ ] [12 Testing Your Mailers](#12-testing-your-mailers)
-* [ ] [13 Testing Jobs](#13-testing-jobs)
-* [ ] [14 Testing Action Cable](#14-testing-action-cable)
-* [ ] [15 Additional Testing Resources](#15-additional-testing-resources)
+* [X] [11 Testing Helpers](#11-testing-helpers)
+* [X] [12 Testing Your Mailers](#12-testing-your-mailers)
+* [X] [13 Testing Jobs](#13-testing-jobs)
+* [X] [14 Testing Action Cable](#14-testing-action-cable)
+* [X] [15 Additional Testing Resources](#15-additional-testing-resources)
 
 #### [Securing Rails Applications](#securing-rails-applications-1)
 
@@ -548,11 +548,24 @@ end
 
 #### 12 Testing Your Mailers
 
+Mail testing-related documentation can be found here:
+
+* https://api.rubyonrails.org/v6.1.4/classes/ActionMailer/TestHelper.html
+
 #### 13 Testing Jobs
+
+* [ActiveJob::TestHelper](https://api.rubyonrails.org/v6.1.4/classes/ActiveJob/TestHelper.html)
 
 #### 14 Testing Action Cable
 
+* [ActionCable::Connection::TestCase](https://api.rubyonrails.org/v6.1.4/classes/ActionCable/Connection/TestCase.html)
+* [ActionCable::Channel::TestCase](https://api.rubyonrails.org/v6.1.4/classes/ActionCable/Channel/TestCase.html)
+* [ActionCable::TestHelper](https://api.rubyonrails.org/v6.1.4/classes/ActionCable/TestHelper.html)
+
 #### 15 Additional Testing Resources
+
+* [`travel_to`](https://api.rubyonrails.org/v6.1.4/classes/ActiveSupport/Testing/TimeHelpers.html#method-i-travel_to)
+* [`ActiveSupport::Testing::TimeHelpers`](https://api.rubyonrails.org/v6.1.4/classes/ActiveSupport/Testing/TimeHelpers.html)
 
 ### Securing Rails Applications
 
