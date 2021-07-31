@@ -25,10 +25,11 @@ By Eric Ries.
 * [X] Chapter 5. Leap
 * [X] Chapter 6. Test
 * [X] Chapter 7. Measure
-* [ ] Chapter 8. Pivot (or Persevere)
+* [X] Chapter 8. Pivot (or Persevere)
 
 ### Part Three ACCELERATE
 
+* [ ] Start Your Engines
 * [ ] Chapter 9. Batch
 * [ ] Chapter 10. Grow
 * [ ] Chapter 11. Adapt
