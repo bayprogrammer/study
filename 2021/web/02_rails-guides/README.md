@@ -77,6 +77,8 @@ https://guides.rubyonrails.org/getting_started.html
 
 #### [Testing Rails Applications](#testing-rails-applications-1)
 
+https://guides.rubyonrails.org/testing.html
+
 * [X] [1 Why Write Tests for your Rails Applications?](#1-why-write-tests-for-your-rails-applications)
 * [X] [2 Introduction to Testing](#2-introduction-to-testing)
 * [X] [3 Parallel Testing](#3-parallel-testing)
