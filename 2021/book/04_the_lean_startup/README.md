@@ -29,16 +29,16 @@ By Eric Ries.
 
 ### Part Three ACCELERATE
 
-* [ ] Start Your Engines
+* [X] Start Your Engines
 * [ ] Chapter 9. Batch
 * [ ] Chapter 10. Grow
 * [ ] Chapter 11. Adapt
 * [ ] Chapter 12. Innovate
+* [ ] Chapter 13. Epilogue: Waste Not
+* [ ] Chapter 14. Join the Movement
 
 ### End Matter
 
-* [ ] Chapter 13. Epilogue: Waste Not
-* [ ] Chapter 14. Join the Movement
 * [ ] Endnotes
 * [ ] Disclosures
 * [ ] Acknowledgements
