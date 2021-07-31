@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
+  title: My First Blog Post
+  body: My super long text.
+  status: public
 
 two:
-  title: MyString
-  body: MyText
+  title: My Second Blog Post
+  body: My super long text.
+  status: public

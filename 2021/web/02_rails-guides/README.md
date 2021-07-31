@@ -84,9 +84,9 @@ https://guides.rubyonrails.org/getting_started.html
 * [X] [5 Model Testing](#5-model-testing)
 * [X] [6 System Testing](#6-system-testing)
 * [X] [7 Integration Testing](#7-integration-testing)
-* [ ] [8 Functional Tests for Your Controllers](#8-functional-tests-for-your-controllers)
-* [ ] [9 Testing Routes](#9-testing-routes)
-* [ ] [10 Testing Views](#10-testing-views)
+* [X] [8 Functional Tests for Your Controllers](#8-functional-tests-for-your-controllers)
+* [X] [9 Testing Routes](#9-testing-routes)
+* [X] [10 Testing Views](#10-testing-views)
 * [ ] [11 Testing Helpers](#11-testing-helpers)
 * [ ] [12 Testing Your Mailers](#12-testing-your-mailers)
 * [ ] [13 Testing Jobs](#13-testing-jobs)
@@ -506,9 +506,43 @@ $ bin/rails generate integration_test blog_flow
 
 #### 8 Functional Tests for Your Controllers
 
+```
+$ bin/rails generate test_unit:scaffold article
+```
+
 #### 9 Testing Routes
 
+Route tests are stored in `test/controllers` either as separate tests are
+integrated into the controller tests.
+
+Special routing assertions can be found here:
+
+* [`ActionDispatch::Assertions::RoutingAssertions`](https://api.rubyonrails.org/v6.1.4/classes/ActionDispatch/Assertions/RoutingAssertions.html)
+
 #### 10 Testing Views
+
+View tests also are stored in `test/controllers` either as separate tests are
+integrated into the controller tests.
+[`assert_select`](https://github.com/rails/rails-dom-testing/blob/master/lib/rails/dom/testing/assertions/selector_assertions.rb)
+will be your friend:
+
+```ruby
+assert_select "title", "Welcome to Rails Testing Guide"
+
+assert_select "ul.navigation" do
+  assert_select "li.menu_item"
+end
+
+assert_select "ol" do |elements|
+  elements.each do |element|
+    assert_select element, "li", 4
+  end
+end
+
+assert_select "ol" do
+  assert_select "li", 8
+end
+```
 
 #### 11 Testing Helpers
 
