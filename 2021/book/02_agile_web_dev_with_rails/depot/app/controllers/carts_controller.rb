@@ -61,7 +61,7 @@ class CartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
-      invalid_cart unless valid_cart?
+      # invalid_cart unless valid_cart?
       @cart = Cart.find(params[:id])
     end
 
@@ -70,9 +70,9 @@ class CartsController < ApplicationController
       params.fetch(:cart, {})
     end
 
-    def valid_cart?
-      params[:id] == session[:cart_id].to_s
-    end
+    # def valid_cart?
+    #   params[:id] == session[:cart_id].to_s
+    # end
 
     def invalid_cart
       logger.error "Attempt to access invalid cart #{params[:id]}"
