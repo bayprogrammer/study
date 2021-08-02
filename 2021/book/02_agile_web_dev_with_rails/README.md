@@ -208,6 +208,10 @@ $ bin/rails generate migration copy_prices_for_items_in_cart
 
 ### Chapter 11: Task F: Add a Dash of Ajax
 
+- https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+- https://developer.mozilla.org/en-US/docs/Web/API/Document
+- https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+
 ### Chapter 12: Task G: Check Out!
 
 ### Chapter 13: Task H: Entering Additional Payment Details
