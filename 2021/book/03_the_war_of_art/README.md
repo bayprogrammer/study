@@ -59,29 +59,29 @@ By Steven Pressfield.
 * [X] Professionals and Amateurs
 * [X] A Professional
 * [X] What a Writer's Day Feels Like
-* [ ] How to be Miserable
-* [ ] We're All Pros Already
-* [ ] For Love of the Game
-* [ ] A Professional Patient
-* [ ] A Professional Seeks Order
-* [ ] A Professional Demystifies
-* [ ] A Professional Acts in the Face of Fear
-* [ ] A Professional Accepts No Excuses
-* [ ] A Professional Plays it as it Lays
-* [ ] A Professional is Prepared
-* [ ] A Professional Does Not Show Off
-* [ ] A Professional Dedicates Himself to Mastering Technique
-* [ ] A Professional Does Not Hesistate to Ask for Help
-* [ ] A Professional Distances Herself from Her Instrument
-* [ ] A Professional Does Not Take Failure (or Success) Personally
-* [ ] A Professional Endures Adversity
-* [ ] A Professional Self-Validates
-* [ ] A Professional Recognizes Her Limitations
-* [ ] A Professional Reinvents Himself
-* [ ] A Professional is Recognized by Other Professionals
-* [ ] You, Inc.
-* [ ] A Critter that Keeps Coming
-* [ ] No Mystery
+* [X] How to be Miserable
+* [X] We're All Pros Already
+* [X] For Love of the Game
+* [X] A Professional Patient
+* [X] A Professional Seeks Order
+* [X] A Professional Demystifies
+* [X] A Professional Acts in the Face of Fear
+* [X] A Professional Accepts No Excuses
+* [X] A Professional Plays it as it Lays
+* [X] A Professional is Prepared
+* [X] A Professional Does Not Show Off
+* [X] A Professional Dedicates Himself to Mastering Technique
+* [X] A Professional Does Not Hesistate to Ask for Help
+* [X] A Professional Distances Herself from Her Instrument
+* [X] A Professional Does Not Take Failure (or Success) Personally
+* [X] A Professional Endures Adversity
+* [X] A Professional Self-Validates
+* [X] A Professional Recognizes Her Limitations
+* [X] A Professional Reinvents Himself
+* [X] A Professional is Recognized by Other Professionals
+* [X] You, Inc.
+* [X] A Critter that Keeps Coming
+* [X] No Mystery
 
 ### Book Three - Beyond Resistance _The Higher Realm_
 
