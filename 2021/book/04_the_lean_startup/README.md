@@ -30,7 +30,7 @@ By Eric Ries.
 ### Part Three ACCELERATE
 
 * [X] Start Your Engines
-* [ ] Chapter 9. Batch
+* [X] Chapter 9. Batch
 * [ ] Chapter 10. Grow
 * [ ] Chapter 11. Adapt
 * [ ] Chapter 12. Innovate
