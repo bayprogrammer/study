@@ -213,6 +213,12 @@ $ bin/rails generate migration copy_prices_for_items_in_cart
 - https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
 - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations
 - xhr: XMLHttpRequest
+- https://www.w3.org/TR/websockets/
+- https://tools.ietf.org/html/rfc6455
+
+```
+$ bin/rails generate channel products
+```
 
 ### Chapter 12: Task G: Check Out!
 
