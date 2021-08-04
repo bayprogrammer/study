@@ -31,7 +31,7 @@ By Eric Ries.
 
 * [X] Start Your Engines
 * [X] Chapter 9. Batch
-* [ ] Chapter 10. Grow
+* [X] Chapter 10. Grow
 * [ ] Chapter 11. Adapt
 * [ ] Chapter 12. Innovate
 * [ ] Chapter 13. Epilogue: Waste Not
