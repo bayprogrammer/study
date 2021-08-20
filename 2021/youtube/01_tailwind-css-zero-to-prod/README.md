@@ -7,32 +7,59 @@
 
 ## Table of Contents
 
-* [ ] [Course Intro](#course-intro)
-* [ ] [Setting Up Tailwind CSS](#setting-up-tailwind-css)
-* [ ] [The Utility First Workflow](#the-utility-first-workflow)
-* [ ] [Responsive Design](#responsive-design)
-* [ ] [Hover, Focus and Other States](#hover-focus-and-other-states)
-* [ ] [Composing Utilities with @apply](#composing-utilities-with-apply)
-* [ ] [Extracting Reusable Components](#extracting-reusable-components)
-* [ ] [Customizing Your Design System](#customizing-your-design-system)
-* [ ] [Optimizing for Production](#optimizing-for-production)
+* [X] [00: Course Intro](#01-course-intro)
+* [X] [01: Setting Up Tailwind CSS](#02-setting-up-tailwind-css)
+* [ ] [02: The Utility First Workflow](#03-the-utility-first-workflow)
+* [ ] [03: Responsive Design](#04-responsive-design)
+* [ ] [04: Hover, Focus and Other States](#05-hover-focus-and-other-states)
+* [ ] [05: Composing Utilities with @apply](#06-composing-utilities-with-apply)
+* [ ] [06: Extracting Reusable Components](#07-extracting-reusable-components)
+* [ ] [07: Customizing Your Design System](#08-customizing-your-design-system)
+* [ ] [08: Optimizing for Production](#09-optimizing-for-production)
 
 -----
 
-## Course Intro
+## 00: Course Intro
 
-## Setting Up Tailwind CSS
+## 01: Setting Up Tailwind CSS
 
-## The Utility-First Workflow
+e.g. `@tailwind base` - Tailwind relies on custom directives implemented via
+[PostCSS](https://postcss.org/). We call these the Tailwind "layers" (`base`,
+`components`, `utilities`).
 
-## Responsive Design
+```
+$ cd up-and-running
+$ asdf install nodejs 16.7.0
+$ asdf local nodejs 16.7.0
+$ asdf reshim ; hash -r
+$ npm init -y
+$ npm install -D tailwindcss@latest autoprefixer@latest postcss@latest
+$ npx tailwind -i ./css/tailwind.css -o ./build/tailwind.css
+$ npm install -D vite@latest
+$ npx tailwind init -p
+```
 
-## Hover, Focus and Other States
+`tailwind.config.js` is the file we'll use to customize Tailwind CSS. We can
+control PostCSS via the `postcss.config.js`.
 
-## Composing Utilities with @apply
+With vive and PostCSS set up we can replace the original CDN link with
+`/css/tailwind.css` directly, and no longer need the build/ directory:
 
-## Extracting Reusable Components
+```
+$ rm -r build/
+$ npm run dev
+```
 
-## Customizing Your Design System
+## 02: The Utility-First Workflow
 
-## Optimizing for Production
+## 03: Responsive Design
+
+## 04: Hover, Focus and Other States
+
+## 05: Composing Utilities with @apply
+
+## 06: Extracting Reusable Components
+
+## 07: Customizing Your Design System
+
+## 08: Optimizing for Production
