@@ -7,15 +7,15 @@
 
 ## Table of Contents
 
-* [X] [00: Course Intro](#01-course-intro)
-* [X] [01: Setting Up Tailwind CSS](#02-setting-up-tailwind-css)
-* [ ] [02: The Utility First Workflow](#03-the-utility-first-workflow)
-* [ ] [03: Responsive Design](#04-responsive-design)
-* [ ] [04: Hover, Focus and Other States](#05-hover-focus-and-other-states)
-* [ ] [05: Composing Utilities with @apply](#06-composing-utilities-with-apply)
-* [ ] [06: Extracting Reusable Components](#07-extracting-reusable-components)
-* [ ] [07: Customizing Your Design System](#08-customizing-your-design-system)
-* [ ] [08: Optimizing for Production](#09-optimizing-for-production)
+* [X] [00: Course Intro](#00-course-intro)
+* [X] [01: Setting Up Tailwind CSS](#01-setting-up-tailwind-css)
+* [X] [02: The Utility First Workflow](#02-the-utility-first-workflow)
+* [ ] [03: Responsive Design](#03-responsive-design)
+* [ ] [04: Hover, Focus and Other States](#04-hover-focus-and-other-states)
+* [ ] [05: Composing Utilities with @apply](#05-composing-utilities-with-apply)
+* [ ] [06: Extracting Reusable Components](#06-extracting-reusable-components)
+* [ ] [07: Customizing Your Design System](#07-customizing-your-design-system)
+* [ ] [08: Optimizing for Production](#08-optimizing-for-production)
 
 -----
 
