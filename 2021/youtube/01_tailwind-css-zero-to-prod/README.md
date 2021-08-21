@@ -10,7 +10,7 @@
 * [X] [00: Course Intro](#00-course-intro)
 * [X] [01: Setting Up Tailwind CSS](#01-setting-up-tailwind-css)
 * [X] [02: The Utility First Workflow](#02-the-utility-first-workflow)
-* [ ] [03: Responsive Design](#03-responsive-design)
+* [X] [03: Responsive Design](#03-responsive-design)
 * [ ] [04: Hover, Focus and Other States](#04-hover-focus-and-other-states)
 * [ ] [05: Composing Utilities with @apply](#05-composing-utilities-with-apply)
 * [ ] [06: Extracting Reusable Components](#06-extracting-reusable-components)
@@ -53,6 +53,14 @@ $ npm run dev
 ## 02: The Utility-First Workflow
 
 ## 03: Responsive Design
+
+Default breakpoints:
+
+* sm: 640px
+* md: 768px
+* lg: 1024px
+* xl: 1280px
+* 2xl: 1536px
 
 ## 04: Hover, Focus and Other States
 
