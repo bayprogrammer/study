@@ -11,7 +11,7 @@
 * [X] [01: Setting Up Tailwind CSS](#01-setting-up-tailwind-css)
 * [X] [02: The Utility First Workflow](#02-the-utility-first-workflow)
 * [X] [03: Responsive Design](#03-responsive-design)
-* [ ] [04: Hover, Focus and Other States](#04-hover-focus-and-other-states)
+* [X] [04: Hover, Focus and Other States](#04-hover-focus-and-other-states)
 * [ ] [05: Composing Utilities with @apply](#05-composing-utilities-with-apply)
 * [ ] [06: Extracting Reusable Components](#06-extracting-reusable-components)
 * [ ] [07: Customizing Your Design System](#07-customizing-your-design-system)
