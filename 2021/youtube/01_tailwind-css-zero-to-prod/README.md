@@ -13,8 +13,8 @@
 * [X] [03: Responsive Design](#03-responsive-design)
 * [X] [04: Hover, Focus and Other States](#04-hover-focus-and-other-states)
 * [X] [05: Composing Utilities with @apply](#05-composing-utilities-with-apply)
-* [ ] [07: Customizing Your Design System](#07-customizing-your-design-system)
 * [X] [06: Extracting Reusable Components](#06-extracting-reusable-components)
+* [X] [07: Customizing Your Design System](#07-customizing-your-design-system)
 * [ ] [08: Optimizing for Production](#08-optimizing-for-production)
 
 -----
@@ -69,5 +69,9 @@ Default breakpoints:
 ## 06: Extracting Reusable Components
 
 ## 07: Customizing Your Design System
+
+```
+$ npx tailwind init tailwind-full.config.js --full
+```
 
 ## 08: Optimizing for Production
