@@ -1,0 +1,3 @@
+https://laracasts.com/series/php-for-beginners
+https://laracasts.com/series/php8-crash-course
+https://laracasts.com/series/laravel-8-from-scratch
