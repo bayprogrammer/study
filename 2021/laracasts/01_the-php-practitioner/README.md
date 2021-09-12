@@ -10,7 +10,7 @@
 * [X] [01 Step 1: Get PHP Installed](#01-step-1-get-php-installed)
 * [X] [02 Step 2: Install a Proper Code Editor](#02-step-2-install-a-proper-code-editor)
 * [X] [03 Step 3: Variables](#03-step-3-variables)
-* [ ] [04 Step 4: PHP and HTML](#04-step-4-php-and-html)
+* [X] [04 Step 4: PHP and HTML](#04-step-4-php-and-html)
 * [ ] [05 Step 5: Separate PHP Logic From Presentation](#05-step-5-separate-php-logic-from-presentation)
 * [ ] [06 Step 6: Understanding Arrays](#06-step-6-understanding-arrays)
 * [ ] [07 Step 7: Associative Arrays](#07-step-7-associative-arrays)
