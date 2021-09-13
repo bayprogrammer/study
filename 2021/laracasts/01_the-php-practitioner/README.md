@@ -13,7 +13,7 @@
 * [X] [04 Step 4: PHP and HTML](#04-step-4-php-and-html)
 * [X] [05 Step 5: Separate PHP Logic From Presentation](#05-step-5-separate-php-logic-from-presentation)
 * [X] [06 Step 6: Understanding Arrays](#06-step-6-understanding-arrays)
-* [ ] [07 Step 7: Associative Arrays](#07-step-7-associative-arrays)
+* [X] [07 Step 7: Associative Arrays](#07-step-7-associative-arrays)
 * [ ] [08 Step 8: Booleans](#08-step-8-booleans)
 * [ ] [09 Step 9: Conditionals](#09-step-9-conditionals)
 * [ ] [10 Step 10: Functions](#10-step-10-functions)
@@ -58,7 +58,121 @@ $ php -S localhost:8888
 
 ## 06 Step 6: Understanding Arrays
 
+```php
+<?php
+
+$fruits = [
+    'apple',
+    'blueberry',
+    'cherry'
+];
+```
+
+Loop through an array:
+
+```php
+<?php
+
+foreach ($fruits as $fruit) {
+    // ...
+}
+```
+
+Alternative syntax useful for a template-like context:
+
+```php
+<?php foreach ($fruits as $fruit): ?>
+  <!-- ... -->
+<?php endforeach; ?>
+```
+
+Push new value on to the array:
+
+```php
+<?php
+
+$fruits[] = 'durian';
+```
+
+Remove an element from the array using unset:
+
+```php
+<?php
+
+unset($fruits[0]);
+```
+
 ## 07 Step 7: Associative Arrays
+
+Associative arrays consist of any number of key-value pairs separated by `=>`:
+
+```php
+<?php
+
+$fruits = [
+    'a' => 'apple',
+    'b' => 'blueberry',
+    'c' => 'cherry'
+];
+```
+
+We can loop through the array like before, which extracts just the values:
+
+```php
+<?php
+
+foreach ($fruits as $fruit) {
+    // ...
+}
+```
+
+Or we can loop through key and value using `=>` syntax which mirrors the
+associative array literal, assigning names to each as we see fit:
+
+```php
+<?php
+
+foreach ($fruits as $letter => $name) {
+    // ...
+}
+```
+
+Push a new key-value pair on to the array:
+
+```php
+<?php
+
+$fruits['d'] = 'durian';
+```
+
+Remove a key-value pair using `unset()` like so:
+
+```php
+<?php
+
+unset($fruits['a']);
+```
+
+To output a representation a non-scalar value (e.g. an array), use the
+`var_dump()` function:
+
+```php
+<?php
+
+var_dump($fruits);
+```
+
+You can wrap that in `<pre>` to retain indentation when displaying in a browser
+(vs. console).
+
+Use `die()` in conjunction with `var_dump()` to immediately exit with the debug
+output without further processing of your program:
+
+```php
+<?php
+
+die(var_dump($fruits));
+```
 
 ## 08 Step 8: Booleans
 
