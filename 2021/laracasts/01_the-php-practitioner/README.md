@@ -17,7 +17,7 @@
 * [X] [08 Step 8: Booleans](#08-step-8-booleans)
 * [X] [09 Step 9: Conditionals](#09-step-9-conditionals)
 * [X] [10 Step 10: Functions](#10-step-10-functions)
-* [ ] [11 MySQL 101](#11-mysql-101)
+* [X] [11 MySQL 101](#11-mysql-101)
 * [ ] [12 Classes 101](#12-classes-101)
 * [ ] [13 Intro to PDO](#13-intro-to-pdo)
 * [ ] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
@@ -252,6 +252,31 @@ name('foo', 'bar');
 ```
 
 ## 11 MySQL 101
+
+```
+mysql> show databases;
+mysql> create database mytodo;
+mysql> use mytodo;
+mysql> show tables;
+mysql> create table todos (description text, completed boolean);
+mysql> show tables;
+mysql> describe todos;
+mysql> drop table todos;
+mysql> show tables;
+mysql> create table todos (description text NOT NULL, completed boolean NOT NULL);
+mysql> show tables;
+mysql> describe todos;
+mysql> drop table todos;
+mysql> create table todos (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL, completed boolean NOT NULL);
+mysql> show tables;
+mysql> describe todos;
+mysql> insert into todos (description, completed) values('Go to the store', false);
+mysql> select * from todos;
+mysql> insert into todos (description, completed) values('finish up screencast', false);
+mysql> update todos set completed=1 where id=1;
+mysql> select * from todos;
+mysql> select * from todos where id=1;
+```
 
 ## 12 Classes 101
 
