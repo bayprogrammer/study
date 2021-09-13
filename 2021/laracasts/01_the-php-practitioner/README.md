@@ -19,7 +19,7 @@
 * [X] [10 Step 10: Functions](#10-step-10-functions)
 * [X] [11 MySQL 101](#11-mysql-101)
 * [X] [12 Classes 101](#12-classes-101)
-* [ ] [13 Intro to PDO](#13-intro-to-pdo)
+* [X] [13 Intro to PDO](#13-intro-to-pdo)
 * [ ] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
 * [ ] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
 * [ ] [16 Make a Router](#16-make-a-router)
@@ -317,6 +317,77 @@ $apple->deliciousnessScore;  //=> 7
 ```
 
 ## 13 Intro to PDO
+
+_PDO_ stands for "PHP Data Objects", and is a built-in class provided by PHP
+for working with databases.
+
+_DSN_: the connection string needed by `PDO` to know how to connect to the
+database.
+
+In PHP we can use `try` blocks to run code and catch exceptions thrown in that
+context.
+
+```php
+<?php
+
+try {
+  $pdo = new PDO(...)
+} catch (PDOException $e) {
+  // handle exception $e
+}
+```
+
+**NOTE(zmd):** _LEFT OFF:_ time index `3:30`.
+
+### Notes on MariaDB Connection Troubleshooting
+
+Could not connect at first. MariaDB says it's socket is at
+`/run/mysqld/mysqld.sock`:
+
+```
+$ mysql -e 'select @@socket`
+/run/mysqld/mysqld.sock
+```
+
+The default according to the
+[relevant docs](https://www.php.net/manual/en/ref.pdo-mysql.php#pdo-mysql.configuration)
+is `/tmp/mysql.sock`.
+
+Since I'm using PHP from Homebrew, but MariaDB from the system package manager,
+it looks like I need to specify the socket path via configuration system-wide.
+`phpinfo()` says the system `php.ini` file for this instance of PHP is located
+at `/home/linuxbrew/.linuxbrew/etc/php/8.0`.
+
+```
+$ nvim /home/linuxbrew/.linuxbrew/etc/php/8.0/php.ini
+```
+
+Updated `php.ini`:
+
+```
+# ...
+
+[Pdo_mysql]
+; Default socket name for local MySQL connects.  If empty, uses the built-in
+; MySQL defaults.
+pdo_mysql.default_socket=/run/mysqld/mysqld.sock
+
+# ...
+```
+
+Since I'm using a custom unit file to manage `php-fpm`, I also need to restart
+it after updating the `php.ini` config:
+
+```
+$ sudo systemctl restart homebrew-php-fpm
+```
+
+These links were handy in figuring this out:
+
+* https://www.php.net/manual/en/configuration.changes.modes.php
+* https://www.php.net/manual/en/pdo.construct.php
+* https://www.php.net/manual/en/ref.pdo-mysql.php
+* https://stackoverflow.com/questions/39791715/mysql-connection-via-unix-socket-works-with-mysqli-but-not-with-pdo
 
 ## 14 PDO Refactoring and Collaborators
 

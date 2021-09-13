@@ -2,38 +2,10 @@
 
 require 'functions.php';
 
-class Task {
-    public $description;
-
-    public $completed = false;
-
-    public function __construct($description)
-    {
-        $this->description = $description;
-    }
-
-    public function complete()
-    {
-        $this->completed = true;
-    }
-
-    public function isComplete()
-    {
-        return $this->completed;
-    }
-
-    public function description()
-    {
-        return $this->description;
-    }
+try {
+  $pdo = new PDO('mysql:host=localhost;dbname=mytodo', 'zebdeos', '');
+} catch (PDOException $e) {
+  die('Could not connect.');
 }
-
-$tasks = [
-    new Task('Go to the store'),
-    new Task('Finish my screencast'),
-    new Task('Clean my room')
-];
-
-$tasks[1]->complete();
 
 require 'index.view.php';
