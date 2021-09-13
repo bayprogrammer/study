@@ -12,7 +12,7 @@
 * [X] [03 Step 3: Variables](#03-step-3-variables)
 * [X] [04 Step 4: PHP and HTML](#04-step-4-php-and-html)
 * [X] [05 Step 5: Separate PHP Logic From Presentation](#05-step-5-separate-php-logic-from-presentation)
-* [ ] [06 Step 6: Understanding Arrays](#06-step-6-understanding-arrays)
+* [X] [06 Step 6: Understanding Arrays](#06-step-6-understanding-arrays)
 * [ ] [07 Step 7: Associative Arrays](#07-step-7-associative-arrays)
 * [ ] [08 Step 8: Booleans](#08-step-8-booleans)
 * [ ] [09 Step 9: Conditionals](#09-step-9-conditionals)
