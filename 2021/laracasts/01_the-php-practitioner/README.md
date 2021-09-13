@@ -16,7 +16,7 @@
 * [X] [07 Step 7: Associative Arrays](#07-step-7-associative-arrays)
 * [X] [08 Step 8: Booleans](#08-step-8-booleans)
 * [X] [09 Step 9: Conditionals](#09-step-9-conditionals)
-* [ ] [10 Step 10: Functions](#10-step-10-functions)
+* [X] [10 Step 10: Functions](#10-step-10-functions)
 * [ ] [11 MySQL 101](#11-mysql-101)
 * [ ] [12 Classes 101](#12-classes-101)
 * [ ] [13 Intro to PDO](#13-intro-to-pdo)
@@ -239,6 +239,17 @@ if (!$condition) {
 ```
 
 ## 10 Step 10: Functions
+
+```php
+<?php
+
+function name($param1, $param2) {
+    // function body
+}
+
+// call function with arguments
+name('foo', 'bar');
+```
 
 ## 11 MySQL 101
 

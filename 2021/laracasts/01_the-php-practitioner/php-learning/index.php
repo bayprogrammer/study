@@ -1,11 +1,14 @@
 <?php
 
-$task = [
-    'title' => 'pick up the milk',
-    'due' => '13-Sept 2021',
-    'assigned_to' => 'Zeb',
-    'completed' => false,
-    'boring' => true
-];
+require 'functions.php';
+
+$customerOneAge = 15;
+$customerTwoAge = 51;
+
+if (eligableForNightclub($customerOneAge)) {
+    echo "Welcome!";
+} else {
+    echo "Go away kid!";
+}
 
 require 'index.view.php';
