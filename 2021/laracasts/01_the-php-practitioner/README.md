@@ -14,7 +14,7 @@
 * [X] [05 Step 5: Separate PHP Logic From Presentation](#05-step-5-separate-php-logic-from-presentation)
 * [X] [06 Step 6: Understanding Arrays](#06-step-6-understanding-arrays)
 * [X] [07 Step 7: Associative Arrays](#07-step-7-associative-arrays)
-* [ ] [08 Step 8: Booleans](#08-step-8-booleans)
+* [X] [08 Step 8: Booleans](#08-step-8-booleans)
 * [ ] [09 Step 9: Conditionals](#09-step-9-conditionals)
 * [ ] [10 Step 10: Functions](#10-step-10-functions)
 * [ ] [11 MySQL 101](#11-mysql-101)
@@ -175,6 +175,14 @@ die(var_dump($fruits));
 ```
 
 ## 08 Step 8: Booleans
+
+`ucwords()` function capitalizes its input:
+
+```php
+<?php
+
+ucwords('foo');  //=> Foo
+```
 
 ## 09 Step 9: Conditionals
 

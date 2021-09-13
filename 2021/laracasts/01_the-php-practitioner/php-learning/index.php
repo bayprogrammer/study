@@ -1,10 +1,10 @@
 <?php
 
 $task = [
-    'title' => 'pick up the milk',
-    'due' => '13-Sept 2021',
-    'assigned_to' => 'Zeb',
-    'completed' => 'no'
+    'title' => 'Finish homework',
+    'due' => 'today',
+    'assigned_to' => 'Jeffrey',
+    'completed' => false
 ];
 
 require 'index.view.php';
