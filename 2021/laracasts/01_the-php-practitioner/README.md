@@ -15,7 +15,7 @@
 * [X] [06 Step 6: Understanding Arrays](#06-step-6-understanding-arrays)
 * [X] [07 Step 7: Associative Arrays](#07-step-7-associative-arrays)
 * [X] [08 Step 8: Booleans](#08-step-8-booleans)
-* [ ] [09 Step 9: Conditionals](#09-step-9-conditionals)
+* [X] [09 Step 9: Conditionals](#09-step-9-conditionals)
 * [ ] [10 Step 10: Functions](#10-step-10-functions)
 * [ ] [11 MySQL 101](#11-mysql-101)
 * [ ] [12 Classes 101](#12-classes-101)
@@ -185,6 +185,58 @@ ucwords('foo');  //=> Foo
 ```
 
 ## 09 Step 9: Conditionals
+
+Boolean literals:
+
+```php
+<?php
+
+$condition = true
+// ...
+$condition = false
+```
+
+`if`/`else` conditional (else optional if unneeded):
+
+```php
+<?php
+
+if ($condition) {
+    // do things if $condition is truthy value
+else {
+    // do things if $condition is falsy
+}
+```
+
+Alternative `if` syntax (useful for template-like PHP):
+
+```php
+<?php if ($condition): ?>
+  <!-- ... -->
+<?php else: ?>
+  <!-- ... -->
+<?php endif; ?>
+```
+
+Ternary operator:
+
+```php
+<?php
+
+echo $condition ? 'truthy' : 'falsy';
+```
+
+Invert truthy value:
+
+```php
+<?php
+
+if (!$condition) {
+    // do if $condition was falsy
+} else {
+    // do if $conditoin was truthy
+}
+```
 
 ## 10 Step 10: Functions
 

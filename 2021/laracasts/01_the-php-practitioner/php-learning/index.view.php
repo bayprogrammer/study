@@ -23,7 +23,15 @@
     </li>
     <li>
       <strong>Status: </strong>
-      <?= $task['completed'] ? 'Complete' : 'Incomplete'; ?>
+      <?php if ($task['completed']): ?>
+        <span class="icon">&#9989;</span>
+      <?php else: ?>
+        Incomplete
+      <?php endif; ?>
+    </li>
+    <li>
+      <strong>Priority: </strong>
+      <?= $task['boring'] ? 'low' : 'high' ?>
     </li>
   </ul>
 
