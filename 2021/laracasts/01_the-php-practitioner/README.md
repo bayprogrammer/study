@@ -18,7 +18,7 @@
 * [X] [09 Step 9: Conditionals](#09-step-9-conditionals)
 * [X] [10 Step 10: Functions](#10-step-10-functions)
 * [X] [11 MySQL 101](#11-mysql-101)
-* [ ] [12 Classes 101](#12-classes-101)
+* [X] [12 Classes 101](#12-classes-101)
 * [ ] [13 Intro to PDO](#13-intro-to-pdo)
 * [ ] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
 * [ ] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
@@ -279,6 +279,42 @@ mysql> select * from todos where id=1;
 ```
 
 ## 12 Classes 101
+
+Function within a class is a method. The special `__construct()` method defines
+the class' constructor method. The `$this` special variable refers to the
+current instance of the class. We can use that instance variable to set and
+access member properties.
+
+```php
+<?php
+
+class Fruit {
+    protected $name;
+    public $deliciousnessScore;
+
+    public function __construct($name, $deliciousnessScore)
+    {
+        $this->name = $name;
+        $this->deliciousnessScore = $deliciousnessScore;
+    }
+
+    // can have method with same name as property
+    public function name()
+    {
+        return $this->name;
+    }
+
+    public function formattedName()
+    {
+        return ucwords($this->name);
+    }
+}
+
+$apple = new Fruit('apple', 7);
+$apple->name();  //=> 'apple'
+$apple->formattedName();  //=> 'Apple'
+$apple->deliciousnessScore;  //=> 7
+```
 
 ## 13 Intro to PDO
 
