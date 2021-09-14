@@ -21,7 +21,7 @@
 * [X] [12 Classes 101](#12-classes-101)
 * [X] [13 Intro to PDO](#13-intro-to-pdo)
 * [X] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
-* [ ] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
+* [X] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
 * [ ] [16 Make a Router](#16-make-a-router)
 * [ ] [17 Dry Up Your Views](#17-dry-up-your-views)
 * [ ] [18 Array Filtering](#18-array-filtering)
