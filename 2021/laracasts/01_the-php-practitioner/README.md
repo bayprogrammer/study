@@ -25,7 +25,7 @@
 * [X] [16 Make a Router](#16-make-a-router)
 * [X] [17 Dry Up Your Views](#17-dry-up-your-views)
 * [X] [18 Array Filtering](#18-array-filtering)
-* [ ] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
+* [X] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
 * [ ] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
 * [ ] [21 Composer Autoloading](#21-composer-autoloading)
 * [ ] [22 Your First DI Container](#22-your-first-di-container)
@@ -535,6 +535,11 @@ A handful will be used very frequently:
 - [`array_column`](https://www.php.net/manual/en/function.array-column.php)
 
 ## 19 Forms, Request Types, and Routing
+
+- [`parse_url`](https://www.php.net/manual/en/function.parse-url.php)
+- `$_REQUEST` superglobal gives all params (GET or POST not differentiated)
+- `$_GET` superglobal provides access to query parameters
+- `$_POST` superglobal provides access to POST parameters
 
 ## 20 Dynamic Inserts With PDO
 
