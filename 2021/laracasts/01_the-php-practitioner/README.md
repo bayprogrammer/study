@@ -24,7 +24,7 @@
 * [X] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
 * [X] [16 Make a Router](#16-make-a-router)
 * [X] [17 Dry Up Your Views](#17-dry-up-your-views)
-* [ ] [18 Array Filtering](#18-array-filtering)
+* [X] [18 Array Filtering](#18-array-filtering)
 * [ ] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
 * [ ] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
 * [ ] [21 Composer Autoloading](#21-composer-autoloading)
@@ -523,6 +523,16 @@ $f2->name;                //=> "Sally"
 ## 17 Dry Up Your Views
 
 ## 18 Array Filtering
+
+There are a multitude of array-related functions in the PHP core library:
+
+- https://www.php.net/manual/en/ref.array.php
+
+A handful will be used very frequently:
+
+- [`array_filter`](https://www.php.net/manual/en/function.array-filter.php)
+- [`array_map`](https://www.php.net/manual/en/function.array-map.php)
+- [`array_column`](https://www.php.net/manual/en/function.array-column.php)
 
 ## 19 Forms, Request Types, and Routing
 
