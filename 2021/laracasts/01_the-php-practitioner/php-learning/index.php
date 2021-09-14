@@ -1,11 +1,10 @@
 <?php
 
 require 'functions.php';
+require 'Task.php';
 
-try {
-  $pdo = new PDO('mysql:host=localhost;dbname=mytodo', 'zebdeos', '');
-} catch (PDOException $e) {
-  die('Could not connect.');
-}
+$pdo = connectToDb();
+
+$tasks = fetchAllTasks($pdo);
 
 require 'index.view.php';

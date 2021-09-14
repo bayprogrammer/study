@@ -331,13 +331,47 @@ context.
 <?php
 
 try {
-  $pdo = new PDO(...)
+  $pdo = new PDO('mysql:host=localhost;dbname=mytodo', 'zebdeos', '');
 } catch (PDOException $e) {
   // handle exception $e
+  die("Could not connect to database: {$e->getMessage()}");
 }
 ```
 
-**NOTE(zmd):** _LEFT OFF:_ time index `3:30`.
+```
+$ mysql
+mysql> use mytodo;
+mysql> show tables;
+mysql> describe todos;
+mysql> insert into todos (description, completed) values('Clean house', false);
+mysql> insert into todos (description, completed) values('Contribute to open source project', false);
+mysql> update todos set completed=1 where id=4;
+```
+
+We can prepare a statement, execute it, then fetch the results:
+
+```php
+<?php
+
+$statement = $pdo->prepare('select * from todos');
+
+$statement->execute();
+
+// fetch as combined indexed array and associative array
+dd($statement->fetchAll());
+
+// fetch results into a generic object
+dd($statement->fetchAll(PDO::FETCH_OBJ));
+
+// fetch results into instances of a specific class
+dd($statement->fetchAll(PDO::FETCH_CLASS, 'Task');
+```
+
+Do not use deprecated DB functions such as `mysql_connect()`. Best practice is
+to use PDO.
+
+Be careful with `fetchAll()`; use alternatives to fetch individual results or
+to page through results using a cursor to avoid out-of-memory issues.
 
 ### Notes on MariaDB Connection Troubleshooting
 
