@@ -203,7 +203,7 @@ $condition = false
 
 if ($condition) {
     // do things if $condition is truthy value
-else {
+} else {
     // do things if $condition is falsy
 }
 ```
@@ -345,7 +345,7 @@ Could not connect at first. MariaDB says it's socket is at
 `/run/mysqld/mysqld.sock`:
 
 ```
-$ mysql -e 'select @@socket`
+$ mysql -e 'select @@socket'
 /run/mysqld/mysqld.sock
 ```
 
