@@ -20,7 +20,7 @@
 * [X] [11 MySQL 101](#11-mysql-101)
 * [X] [12 Classes 101](#12-classes-101)
 * [X] [13 Intro to PDO](#13-intro-to-pdo)
-* [ ] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
+* [X] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
 * [ ] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
 * [ ] [16 Make a Router](#16-make-a-router)
 * [ ] [17 Dry Up Your Views](#17-dry-up-your-views)
@@ -424,6 +424,53 @@ These links were handy in figuring this out:
 * https://stackoverflow.com/questions/39791715/mysql-connection-via-unix-socket-works-with-mysqli-but-not-with-pdo
 
 ## 14 PDO Refactoring and Collaborators
+
+_Refactoring_: improving the structure of the code without changing it's
+observable behavior.
+
+We can use the `static` modifier for a new method to make it accessible via the
+class directly, rather than through a specific instance. (This would be a
+"class method" in Ruby parlance.) We all such static methods directly on the
+class, like so:
+
+```php
+<?php
+
+class Foo
+{
+    public static function bar()
+    {
+        return 'baz';
+    }
+}
+
+Foo::bar();  //=> 'baz'
+```
+
+Can optionally provide _type hints_ in PHP.
+
+You can return a value from a file which is required, and then assign that
+returned value to a variable in another file (still in global scope until we
+get to namespaces, but it's centralizing the global defines to the entry point
+file).
+
+`array_map()` allows you to pass a lambda and array and process each array
+element as an argument to that lambda (c.f. Ruby's `Array#map`, etc.).
+
+```php
+<?php
+
+$fruits = [
+    'apple',
+    'blueberry',
+    'cherry',
+    'durian'
+];
+
+array_map(function ($fruit) {
+    return ucwords($fruit);
+}, $fruits)
+```
 
 ## 15 Hide Your Secret Passwords
 
