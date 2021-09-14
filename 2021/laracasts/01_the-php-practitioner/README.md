@@ -23,7 +23,7 @@
 * [X] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
 * [X] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
 * [X] [16 Make a Router](#16-make-a-router)
-* [ ] [17 Dry Up Your Views](#17-dry-up-your-views)
+* [X] [17 Dry Up Your Views](#17-dry-up-your-views)
 * [ ] [18 Array Filtering](#18-array-filtering)
 * [ ] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
 * [ ] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
