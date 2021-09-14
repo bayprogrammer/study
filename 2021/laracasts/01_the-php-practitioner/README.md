@@ -22,7 +22,7 @@
 * [X] [13 Intro to PDO](#13-intro-to-pdo)
 * [X] [14 PDO Refactoring and Collaborators](#14-pdo-refactoring-and-collaborators)
 * [X] [15 Hide Your Secret Passwords](#15-hide-your-secret-passwords)
-* [ ] [16 Make a Router](#16-make-a-router)
+* [X] [16 Make a Router](#16-make-a-router)
 * [ ] [17 Dry Up Your Views](#17-dry-up-your-views)
 * [ ] [18 Array Filtering](#18-array-filtering)
 * [ ] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
@@ -475,6 +475,50 @@ array_map(function ($fruit) {
 ## 15 Hide Your Secret Passwords
 
 ## 16 Make a Router
+
+The `$_SERVER` superglobal has a key, `REQUEST_URI`, whose value we can use to
+route URIs to controllers.
+
+```php
+<?php
+
+echo $_SERVER['REQUEST_URI'];
+```
+
+The `trim()` function can be passed an optional second argument to specify
+which character to trim from the beginning and end of string (by default it
+trims whitespace).
+
+Write code, see it fail, make it work. _(This is what SICP calls "the power of
+wishful thinking", and is closely related to TDD.)_
+
+We can instance a class from a static method using `self` or `static`:
+
+```php
+<?php
+
+// is it Ruby? Is it Perl? No... it's PHP!
+class Foo
+{
+    public $name;
+
+    public static function new($name)
+    {
+        return new static($name);
+    }
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+}
+
+$f1 = new Foo("Bob");     //=> Foo {#... +name: "Bob", }
+$f2 = Foo::new("Sally");  //=> Foo {#... +name: "Sally", }
+
+$f1->name;                //=> "Bob"
+$f2->name;                //=> "Sally"
+```
 
 ## 17 Dry Up Your Views
 
