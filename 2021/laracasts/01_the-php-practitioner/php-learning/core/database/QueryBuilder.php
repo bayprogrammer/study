@@ -18,15 +18,54 @@ class QueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 
-    // TODO(zmd): implement insertOne!
     public function insertOne($table, $data)
     {
-        // TODO(zmd): calculate $fields, $placeholders, and $values from $data
+        $fields = $this->fieldList($data);
+        $placeholders = $this->placeholderList($data);
+        $values = array_values($data);
 
-        $statement = $this->pdo->prepare(
-            "insert into {$table} (${fields}) values (${placeholders})"
-        );
+        $sql = "insert into {$table} (${fields}) values (${placeholders})";
 
-        $statement->execute($data);
+        $statement = $this->pdo->prepare($sql);
+        $this->bindValues($statement, $values);
+        $statement->execute();
+    }
+
+    protected function fieldList($data)
+    {
+        $fieldKeys = array_keys($data);
+        return implode(',', $fieldKeys);
+    }
+
+    protected function placeholderList($data)
+    {
+        $fieldPlaceholders = array_map(fn ($_) => '?', $data);
+        return implode(',', $fieldPlaceholders);
+    }
+
+    protected function bindValues($statement, $values)
+    {
+        $index = 0;
+        foreach ($values as $value) {
+            $type = $this->pdoType($value);
+            ++$index;
+
+            $statement->bindValue($index, $value, $type);
+        }
+    }
+
+    protected function pdoType($value)
+    {
+        $pdoType = PDO::PARAM_STR;
+        switch (gettype($value)) {
+            case 'boolean':
+                $pdoType = PDO::PARAM_BOOL;
+                break;
+            case 'integer':
+                $pdoType = PDO::PARAM_INT;
+                break;
+        }
+
+        return $pdoType;
     }
 }

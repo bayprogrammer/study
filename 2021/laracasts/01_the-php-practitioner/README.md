@@ -541,6 +541,21 @@ A handful will be used very frequently:
 - `$_GET` superglobal provides access to query parameters
 - `$_POST` superglobal provides access to POST parameters
 
+### Helpful links
+
+Referred to these while completing exercise.
+
+- https://phpdelusions.net/pdo_examples/insert
+- https://www.hostinger.com/tutorials/php-redirect
+- https://www.php.net/manual/en/pdostatement.execute.php
+- https://www.php.net/manual/en/pdostatement.bindvalue.php
+- https://www.php.net/manual/en/pdo.constants.php
+- https://www.php.net/manual/en/ref.array.php
+- https://www.php.net/manual/en/ref.strings.php
+- https://www.php.net/manual/en/function.gettype.php
+- https://www.php.net/manual/en/control-structures.switch.php
+- https://www.php.net/manual/en/control-structures.foreach.php
+
 ## 20 Dynamic Inserts With PDO
 
 ## 21 Composer Autoloading

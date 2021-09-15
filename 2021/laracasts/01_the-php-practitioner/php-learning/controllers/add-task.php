@@ -1,3 +1,9 @@
 <?php
 
-var_dump($_POST);
+$app['database']->insertOne('todos', [
+    'description' => $_POST['description'],
+    'completed' => false
+]);
+
+header('Location: /');
+die();

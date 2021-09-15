@@ -15,7 +15,7 @@
 </ul>
 
 <form method="POST" action="/tasks">
-  <input name="name"></input>
+  <input name="description"></input>
   <input value="Add Task" type="submit"></input>
 </form>
 
