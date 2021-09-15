@@ -29,7 +29,7 @@
 * [X] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
 * [X] [21 Composer Autoloading](#21-composer-autoloading)
 * [X] [22 Your First DI Container](#22-your-first-di-container)
-* [ ] [23 Refactoring to Controller Classes](#23-refactoring-to-controller-classes)
+* [X] [23 Refactoring to Controller Classes](#23-refactoring-to-controller-classes)
 * [ ] [24 Switch to Namespaces](#24-switch-to-namespaces)
 * [ ] [25 Meet Your Batteries Included Framework: Laravel](#25-meet-your-batteries-included-framework-laravel)
 
@@ -620,6 +620,77 @@ FruitBasket::members();  //=> ['apple', 'blueberry', 'cherry']
 **TODO(zmd):** _why couldn't I enter the previous snippets in `psysh`?_
 
 ## 23 Refactoring to Controller Classes
+
+- [`explode`](https://www.php.net/manual/en/function.explode.php)
+- [`method_exists`](https://www.php.net/manual/en/function.method-exists.php)
+- [`compact`](https://www.php.net/manual/en/function.compact.php)
+- [`extract`](https://www.php.net/manual/en/function.extract.php)
+
+Controller is responsible for receiving a request, delegating processing in
+some form, then returning a response.
+
+We can refer to classes and functions/methods indirectly via strings; this
+allows dynamic runtime message passing and dispatch. This is similar to the way
+dynamic Perl package interaction works. Also, wrt runtime dispatch of a method,
+this is similar to Ruby's `Object#send(:method_name)`; message passing is
+awesome!
+
+```php
+<?php
+
+class Foo {
+    public function bar() {
+        return 'baz';
+    }
+}
+
+$class = 'Foo';
+$method = 'bar';
+
+$foo = new $class;
+$foo->$method();  //=> 'baz"
+```
+
+We can use
+[`method_exists`](https://www.php.net/manual/en/function.method-exists.php)
+to see if a method is available on an instance.
+
+```php
+<?php
+
+method_exists($object, $method_name);
+```
+
+PHP supports multiple assignment or destructuring bind of a kind. Excellent.
+
+```php
+<?php
+
+[$controller, $action] = explode('@', 'PagesController@home')
+$controller  //=> "PagesController"
+$action  //=> "home"
+```
+
+It also supports a splat `...` operator (spread/rest, etc)! See
+https://www.php.net/manual/en/functions.arguments.php.
+
+`compact` allows us to create an associative array with each variable name as
+the key with the variable value as the new associated value.
+
+```php
+<php
+
+$a = 'apple';
+$b = 'blueberry';
+$c = 'cherry';
+
+compact('a', 'b', 'c');  //=> ['a' => 'apple',
+                         //    'b' => 'blueberry',
+                         //    'c' => 'cherry']
+```
+
+`extract` does the inverse: it allows us to import key-value pairs from an
+associative array into the sybmol table for the current scope.
 
 ## 24 Switch to Namespaces
 
