@@ -26,7 +26,7 @@
 * [X] [17 Dry Up Your Views](#17-dry-up-your-views)
 * [X] [18 Array Filtering](#18-array-filtering)
 * [X] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
-* [ ] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
+* [X] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
 * [ ] [21 Composer Autoloading](#21-composer-autoloading)
 * [ ] [22 Your First DI Container](#22-your-first-di-container)
 * [ ] [23 Refactoring to Controller Classes](#23-refactoring-to-controller-classes)
@@ -557,6 +557,14 @@ Referred to these while completing exercise.
 - https://www.php.net/manual/en/control-structures.foreach.php
 
 ## 20 Dynamic Inserts With PDO
+
+```
+mysql> use mytodo;
+mysql> create table users (id integer PRIMARY KEY AUTO_INCREMENT, name varchar(100) NOT NULL);
+mysql> select * from users;
+```
+
+- [`sprintf`](https://www.php.net/manual/en/function.sprintf.php)
 
 ## 21 Composer Autoloading
 
