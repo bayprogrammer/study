@@ -28,7 +28,7 @@
 * [X] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
 * [X] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
 * [X] [21 Composer Autoloading](#21-composer-autoloading)
-* [ ] [22 Your First DI Container](#22-your-first-di-container)
+* [X] [22 Your First DI Container](#22-your-first-di-container)
 * [ ] [23 Refactoring to Controller Classes](#23-refactoring-to-controller-classes)
 * [ ] [24 Switch to Namespaces](#24-switch-to-namespaces)
 * [ ] [25 Meet Your Batteries Included Framework: Laravel](#25-meet-your-batteries-included-framework-laravel)
@@ -571,7 +571,53 @@ mysql> select * from users;
 - https://getcomposer.org/
 - https://www.php-fig.org/psr/psr-4/
 
+Composer provides autoloading facilities. You can load the classes it manages
+autoloaded via `vendor/autoload.php`, which you can require from your
+entrpoint. Autloads aren't dynamically calculated at runtime. The autoloads are
+mapped in `vendor/composer/autoload_classmap.php`; running `composer
+dump-autoload` re-inspects and re-builds that autloads class map file as
+needed. Running `composer install` does this by default as well.
+
 ## 22 Your First DI Container
+
+- DI (Dependency Injection) Container
+- [`array_key_exists`](https://www.php.net/manual/en/function.array-key-exists.php)
+
+Can delcare a property as `static` as well, then access it via `static::` from
+static methods.
+
+```php
+<?php
+
+class FruitBasket
+{
+    protected static $fruits;
+
+    public static function push($fruit)
+    {
+        static::$fruits[] = $fruit;
+    }
+
+    public static function pop()
+    {
+        return array_pop(static::$fruits);
+    }
+
+    public static function members()
+    {
+        return static::$fruits;
+    }
+}
+
+FruitBasket::push('apple');
+FruitBasket::push('blueberry');
+FruitBasket::push('cherry');
+FruitBasket::push('dorian');
+FruitBasket::pop('dorian');  //=> 'dorian'
+FruitBasket::members();  //=> ['apple', 'blueberry', 'cherry']
+```
+
+**TODO(zmd):** _why couldn't I enter the previous snippets in `psysh`?_
 
 ## 23 Refactoring to Controller Classes
 
