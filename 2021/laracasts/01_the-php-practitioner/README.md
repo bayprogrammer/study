@@ -27,7 +27,7 @@
 * [X] [18 Array Filtering](#18-array-filtering)
 * [X] [19 Forms, Request Types, and Routing](#19-forms-request-types-and-routing)
 * [X] [20 Dynamic Inserts With PDO](#20-dynamic-inserts-with-pdo)
-* [ ] [21 Composer Autoloading](#21-composer-autoloading)
+* [X] [21 Composer Autoloading](#21-composer-autoloading)
 * [ ] [22 Your First DI Container](#22-your-first-di-container)
 * [ ] [23 Refactoring to Controller Classes](#23-refactoring-to-controller-classes)
 * [ ] [24 Switch to Namespaces](#24-switch-to-namespaces)
@@ -567,6 +567,9 @@ mysql> select * from users;
 - [`sprintf`](https://www.php.net/manual/en/function.sprintf.php)
 
 ## 21 Composer Autoloading
+
+- https://getcomposer.org/
+- https://www.php-fig.org/psr/psr-4/
 
 ## 22 Your First DI Container
 
