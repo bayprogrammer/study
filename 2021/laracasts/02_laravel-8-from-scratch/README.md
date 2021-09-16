@@ -10,7 +10,7 @@
 ### [Section 1, Prerequisites and Setup](#section-1-prerequisites-and-setup-1)
 
 * [X] [01 An Animated Introduction to MVC](#01-an-animated-introduction-to-mvc)
-* [ ] [02 Initial Environment Setup and Composer](#02-initial-environmental-setup-and-composer)
+* [X] [02 Initial Environment Setup and Composer](#02-initial-environmental-setup-and-composer)
 * [ ] [03 The Laravel Installer Tool](#03-the-laravel-installer-tool)
 * [ ] [04 Why Do We Use Tools](#04-why-do-we-use-tools)
 
@@ -123,6 +123,16 @@
 ### 01 An Animated Introduction to MVC
 
 ### 02 Initial Environment Setup and Composer
+
+We have PHP, MariaDB (MySQL), Composer, and Laravel already installed and ready
+to go. We're ready!
+
+```
+$ laravel new blog
+$ cd blog
+$ valet link
+$ xdg-open 'http://blog.test'
+```
 
 ### 03 The Laravel Installer Tool
 
