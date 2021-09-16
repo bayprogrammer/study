@@ -17,7 +17,7 @@
 ### [Section 2, The Basics](#section-2-The-basics-1)
 
 * [X] [05 How a Route Loads a View](#05-how-a-route-loads-a-view)
-* [ ] [06 Include CSS and JavaScript](#06-include-css-and-javascript)
+* [X] [06 Include CSS and JavaScript](#06-include-css-and-javascript)
 * [ ] [07 Make a Route and Link to it](#07-make-a-route-and-link-to-it)
 * [ ] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
 * [ ] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
@@ -148,6 +148,16 @@ through on core Laravel for now as the higher priority.
 ### 05 How a Route Loads a View
 
 ### 06 Include CSS and JavaScript
+
+The `resources/css` and `resources/js` directories are intended to be used with
+a bundling tool. For our early experiments, we will place our `js` and `css`
+assets (which do not require a resource bundler or compilation step) direclty
+in the `public` directory. They are just static resources.
+
+```
+$ touch public/app.css
+$ touch public/app.js
+```
 
 ### 07 Make a Route and Link to it
 
