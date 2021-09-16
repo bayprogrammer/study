@@ -12,7 +12,7 @@
 * [X] [01 An Animated Introduction to MVC](#01-an-animated-introduction-to-mvc)
 * [X] [02 Initial Environment Setup and Composer](#02-initial-environmental-setup-and-composer)
 * [X] [03 The Laravel Installer Tool](#03-the-laravel-installer-tool)
-* [ ] [04 Why Do We Use Tools](#04-why-do-we-use-tools)
+* [X] [04 Why Do We Use Tools](#04-why-do-we-use-tools)
 
 ### [Section 2, The Basics](#section-2-The-basics-1)
 
@@ -139,6 +139,9 @@ $ xdg-open 'http://blog.test'
 This is what I use. This is what I used in the previous section. :-D
 
 ### 04 Why Do We Use Tools
+
+Optional HTML and CSS Workshop detour is very tempting, but we must push
+through on core Laravel for now as the higher priority.
 
 ## Section 2, The Basics
 
