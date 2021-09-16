@@ -16,7 +16,7 @@
 
 ### [Section 2, The Basics](#section-2-The-basics-1)
 
-* [ ] [05 How a Route Loads a View](#05-how-a-route-loads-a-view)
+* [X] [05 How a Route Loads a View](#05-how-a-route-loads-a-view)
 * [ ] [06 Include CSS and JavaScript](#06-include-css-and-javascript)
 * [ ] [07 Make a Route and Link to it](#07-make-a-route-and-link-to-it)
 * [ ] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
