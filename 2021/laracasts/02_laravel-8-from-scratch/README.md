@@ -19,7 +19,7 @@
 * [X] [05 How a Route Loads a View](#05-how-a-route-loads-a-view)
 * [X] [06 Include CSS and JavaScript](#06-include-css-and-javascript)
 * [X] [07 Make a Route and Link to it](#07-make-a-route-and-link-to-it)
-* [ ] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
+* [X] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
 * [ ] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
 * [ ] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
 * [ ] [11 Use the Filesystem Class to Read a Directory](#11-use-the-filesystem-class-to-read-a-directory)
@@ -162,6 +162,17 @@ $ touch public/app.js
 ### 07 Make a Route and Link to it
 
 ### 08 Store Blog Posts as HTML Files
+
+- [Filesystem Functions](https://www.php.net/manual/en/ref.filesystem.php)
+  - [`file_get_contents`](https://www.php.net/manual/en/function.file-get-contents.php)
+  - [`file_exists`](https://www.php.net/manual/en/function.file-exists.php)
+- `__DIR__`: path to directory containing current file
+- We specify path parameters in a route as Laravel "wildcards", e.g.
+  `'/post/{post}'`
+- `dd`: Dump, Die
+- `ddd`: Dump, Die, Debug (Laravel-style)
+- `abort`: Laravel-provided helper, can pass status code integer: `abort(404)`
+- `redirect`: Laravel-provided helper, return a redirect: `return redirect('/path')`
 
 ### 09 Route Wildcard Constraints
 
