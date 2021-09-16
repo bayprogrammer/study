@@ -22,7 +22,7 @@
 * [X] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
 * [X] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
 * [X] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
-* [ ] [11 Use the Filesystem Class to Read a Directory](#11-use-the-filesystem-class-to-read-a-directory)
+* [X] [11 Use the Filesystem Class to Read a Directory](#11-use-the-filesystem-class-to-read-a-directory)
 * [ ] [12 Find a Composer Package for Post Metadata](#12-find-a-composer-package-for-post-metadata)
 * [ ] [13 Collection Sorting and Caching Refresher](#13-collection-sorting-and-caching-refresher)
 
@@ -223,6 +223,13 @@ Now, PHP, all you need to give me are multi-expression arrow functions, and I
 shall be very _very_ happy. :)
 
 ### 11 Use the Filesystem Class to Read a Directory
+
+- `base_path` - return base path for the project
+- `app_path`
+- `resource_path`
+- `ModelNotFoundException` - these are not the droids you're looking for
+
+**NOTE(zmd):** _LEFT OFF:_ time index `06:00`.
 
 ### 12 Find a Composer Package for Post Metadata
 
