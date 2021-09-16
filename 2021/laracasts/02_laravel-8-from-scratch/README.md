@@ -20,7 +20,7 @@
 * [X] [06 Include CSS and JavaScript](#06-include-css-and-javascript)
 * [X] [07 Make a Route and Link to it](#07-make-a-route-and-link-to-it)
 * [X] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
-* [ ] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
+* [X] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
 * [ ] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
 * [ ] [11 Use the Filesystem Class to Read a Directory](#11-use-the-filesystem-class-to-read-a-directory)
 * [ ] [12 Find a Composer Package for Post Metadata](#12-find-a-composer-package-for-post-metadata)
@@ -28,7 +28,7 @@
 
 ### [Section 3, Blade](#section-3-blade-1)
 
-* [ ] [14 Blade: The Absolute Basics](#14-blade:-the-absolute-basics)
+* [ ] [14 Blade: The Absolute Basics](#14-blade-the-absolute-basics)
 * [ ] [15 Blade Layouts Two Ways](#15-blade-layouts-two-ways)
 * [ ] [16 A Few Tweaks and Consideration](#16-a-few-tweaks-and-consideration)
 
@@ -175,6 +175,13 @@ $ touch public/app.js
 - `redirect`: Laravel-provided helper, return a redirect: `return redirect('/path')`
 
 ### 09 Route Wildcard Constraints
+
+- `where` constraint can be applied to a route to constrain the wildcard to a
+  specific validation or pattern, passing it the param you want to constrain
+  and a regular expression to use as the constraint.
+- `whereAlpha`
+- `whereAlphaNumeric`
+- `whereNumber`
 
 ### 10 Use Caching for Expensive Operations
 
