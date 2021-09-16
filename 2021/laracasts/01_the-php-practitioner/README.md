@@ -30,7 +30,7 @@
 * [X] [21 Composer Autoloading](#21-composer-autoloading)
 * [X] [22 Your First DI Container](#22-your-first-di-container)
 * [X] [23 Refactoring to Controller Classes](#23-refactoring-to-controller-classes)
-* [ ] [24 Switch to Namespaces](#24-switch-to-namespaces)
+* [X] [24 Switch to Namespaces](#24-switch-to-namespaces)
 * [ ] [25 Meet Your Batteries Included Framework: Laravel](#25-meet-your-batteries-included-framework-laravel)
 
 -----
@@ -693,5 +693,22 @@ compact('a', 'b', 'c');  //=> ['a' => 'apple',
 associative array into the sybmol table for the current scope.
 
 ## 24 Switch to Namespaces
+
+Common practice is to have namespace structure mirror folder structure.
+
+References PSR-2 coding style, but that has been superseded by PSR-12 (both of
+which build upon PSR-1); we should study these carefully:
+
+- [PSR-1](https://www.php-fig.org/psr/psr-1/)
+- [PSR-12](https://www.php-fig.org/psr/psr-12/)
+
+Models are specific to your business domain; controllers delegate to the model
+layer then render the result using a view. MVC: Model, View Controller. FTW!
+
+The `index.php` entrypoint would normally go under `public/` in a real
+application, and your server would be configured to run that entrpoint and not
+allow direct access to any other files of your application. Undoutedly
+frameworks like Laravel will help us keep that all straight so we can focus on
+our application and not reinventing well-established best practices.
 
 ## 25 Meet Your Batteries Included Framework: Laravel
