@@ -8,7 +8,7 @@
 = data =
 
 **https://laracasts.com/series/php-for-beginners
-+https://laracasts.com/series/php7-up-and-running
+*https://laracasts.com/series/php7-up-and-running
 https://laracasts.com/series/whats-new-in-php-74
 https://laracasts.com/series/php8-crash-course
 
