@@ -16,4 +16,5 @@ https://laracasts.com/series/object-oriented-principles-in-php
 https://laracasts.com/series/solid-principles-in-php
 https://laracasts.com/series/design-patterns-in-php
 
+https://laracasts.com/series/html-and-css-workshop
 https://laracasts.com/series/laravel-8-from-scratch
