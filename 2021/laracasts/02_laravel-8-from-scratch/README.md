@@ -18,7 +18,7 @@
 
 * [X] [05 How a Route Loads a View](#05-how-a-route-loads-a-view)
 * [X] [06 Include CSS and JavaScript](#06-include-css-and-javascript)
-* [ ] [07 Make a Route and Link to it](#07-make-a-route-and-link-to-it)
+* [X] [07 Make a Route and Link to it](#07-make-a-route-and-link-to-it)
 * [ ] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
 * [ ] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
 * [ ] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
