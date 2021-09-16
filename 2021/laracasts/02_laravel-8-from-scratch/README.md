@@ -9,7 +9,7 @@
 
 ### [Section 1, Prerequisites and Setup](#section-1-prerequisites-and-setup-1)
 
-* [ ] [01 An Animated Introduction to MVC](#01-an-animated-introduction-to-mvc)
+* [X] [01 An Animated Introduction to MVC](#01-an-animated-introduction-to-mvc)
 * [ ] [02 Initial Environment Setup and Composer](#02-initial-environmental-setup-and-composer)
 * [ ] [03 The Laravel Installer Tool](#03-the-laravel-installer-tool)
 * [ ] [04 Why Do We Use Tools](#04-why-do-we-use-tools)
