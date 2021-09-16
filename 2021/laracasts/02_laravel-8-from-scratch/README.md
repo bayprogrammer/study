@@ -21,7 +21,7 @@
 * [X] [07 Make a Route and Link to it](#07-make-a-route-and-link-to-it)
 * [X] [08 Store Blog Posts as HTML Files](#08-store-blog-posts-as-html-files)
 * [X] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
-* [ ] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
+* [X] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
 * [ ] [11 Use the Filesystem Class to Read a Directory](#11-use-the-filesystem-class-to-read-a-directory)
 * [ ] [12 Find a Composer Package for Post Metadata](#12-find-a-composer-package-for-post-metadata)
 * [ ] [13 Collection Sorting and Caching Refresher](#13-collection-sorting-and-caching-refresher)
@@ -43,7 +43,7 @@
 * [ ] [23 Route Model Binding](#23-route-model-binding)
 * [ ] [24 Your First Eloquent Relationship](#24-your-first-eloquent-relationship)
 * [ ] [25 Show All Posts Associated With a Category](#25-show-all-posts-associated-with-a-category)
-* [ ] [26 Clockwork, and the N+1 Problem](#26-clockwork-and-the-n-1-problem)
+* [ ] [26 Clockwork, and the N+1 Problem](#26-clockwork-and-the-n1-problem)
 * [ ] [27 Database Seeding Saves Time](#27-database-seeding-saves-time)
 * [ ] [28 Turbo Boost With Factories](#28-turbo-boost-with-factories)
 * [ ] [29 View All Posts By An Author](#29-view-all-posts-by-an-author)
@@ -184,6 +184,43 @@ $ touch public/app.js
 - `whereNumber`
 
 ### 10 Use Caching for Expensive Operations
+
+- `cache()->remember("uniq.key", 3600, function () { /* ... */ })`
+  - second arg is time in seconds
+  - third arg calculates the data (which will only be re-calculated when the
+    cache expires for this key)
+  - `use ($var)` allows closure made with `function () {}` to capture a
+    variable from the outer scope
+    - _side note: why do we call them closures if they don't close over their
+      containing evironment?_ :zany-face:
+- `now()->addMinutes(20)` - cool!
+  - See also `addMinute`, `addHour`, `addHours`, `addDay`, `addDays`, etc.
+  - https://carbon.nesbot.com/docs/#api-addsub
+
+Using traditional anonymous function ("closure"):
+
+```php
+<?php
+
+$path = ...;
+$post = cache()->remember("posts.{$slug}", 3600, function () use ($path) {
+    return file_get_contents($path);
+});
+```
+
+Using arrow function (single expression lambda, a proper closure in a way that
+makes my Scheming heart sing):
+
+```php
+<?php
+
+$path = ...;
+$post = cache()
+    ->remember("posts.{$slug}", 3600, fn() => file_get_contents($path));
+```
+
+Now, PHP, all you need to give me are multi-expression arrow functions, and I
+shall be very _very_ happy. :)
 
 ### 11 Use the Filesystem Class to Read a Directory
 
