@@ -31,7 +31,7 @@
 * [X] [22 Your First DI Container](#22-your-first-di-container)
 * [X] [23 Refactoring to Controller Classes](#23-refactoring-to-controller-classes)
 * [X] [24 Switch to Namespaces](#24-switch-to-namespaces)
-* [ ] [25 Meet Your Batteries Included Framework: Laravel](#25-meet-your-batteries-included-framework-laravel)
+* [X] [25 Meet Your Batteries Included Framework: Laravel](#25-meet-your-batteries-included-framework-laravel)
 
 -----
 
@@ -712,3 +712,53 @@ frameworks like Laravel will help us keep that all straight so we can focus on
 our application and not reinventing well-established best practices.
 
 ## 25 Meet Your Batteries Included Framework: Laravel
+
+```
+$ laravel new users
+$ cd users
+$ valet link
+$ php artisan migrate
+$ : php artisan migrate:rollback
+$ : php artisan migrate
+$ php artisan help make:controller
+$ php artisan make:controller UsersController
+$ : php artisan serve
+$ php artisan tinker
+>>> App\Models\User::all()
+=> Illuminate\Database\Eloquent\Collection {#4374
+     all: [],
+   }
+>>> $user = new App\Models\User
+>>> $user->name = 'Zeb'
+>>> $user->email = 'zebdeos@bayprogrammer.com'
+>>> $user->password = bcrypt("can't guess me!")
+>>> $user->save()
+>>> App\Models\User::all()
+=> Illuminate\Database\Eloquent\Collection {#4164
+     all: [
+       App\Models\User {#4163
+         id: "1",
+         name: "Zeb",
+         email: "zebdeos@bayprogrammer.com",
+         email_verified_at: null,
+         #password: "...",
+         #remember_token: null,
+         created_at: "2021-09-16 01:14:33",
+         updated_at: "2021-09-16 01:14:33",
+       },
+     ],
+   }
+```
+
+I like how things are more explicitly hooked up than in Rails.
+
+Aparently the instructions for this module are for an older version of Laravel;
+I was able to follow things on my own, but the routing hook up didn't work as
+shown. Followed this SO answer to get things working (will learn more no doubt
+in the Laravel 8 From Scratch training):
+
+- https://stackoverflow.com/questions/67150072/laravel-error-controller-not-found-but-it-is-there/67150203#67150203
+
+If we return the model resultset, instead of rendering a view, we will emit
+JSON instead. This is useful for API endpoints.
+
