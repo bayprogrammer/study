@@ -24,7 +24,7 @@
 * [X] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
 * [X] [11 Use the Filesystem Class to Read a Directory](#11-use-the-filesystem-class-to-read-a-directory)
 * [X] [12 Find a Composer Package for Post Metadata](#12-find-a-composer-package-for-post-metadata)
-* [ ] [13 Collection Sorting and Caching Refresher](#13-collection-sorting-and-caching-refresher)
+* [X] [13 Collection Sorting and Caching Refresher](#13-collection-sorting-and-caching-refresher)
 
 ### [Section 3, Blade](#section-3-blade-1)
 
@@ -352,6 +352,34 @@ nice. I'm partial to the Collections way of doing things already though, as
 it's very similar to the way we do things in Ruby.
 
 ### 13 Collection Sorting and Caching Refresher
+
+- `cache()->rememberForever('posts.all')`
+- `cache('posts.all')`, `cache()->get('posts.all')`
+- `cache()->forget('posts.all')`
+
+We can manage the cache directly
+
+```php
+<?php
+
+cache()->put('foo', 'bar');
+cache()->get('foo');  //=> 'bar'
+cache('foo');         //=> 'bar'
+
+cache(['foo' => 'baz']);
+cache()->get('foo');  //=> 'baz'
+cache('foo');         //=> 'baz'
+
+cache(['foo' => 'buzz'], now()->addSeconds(3));
+// 1 second later:
+cache('foo');         //=> 'buzz'
+// 4 seconds later:
+cache('foo');         //=> null
+```
+
+The next logical step for improvement is to begin using "service providers" to
+delgate bootstrapping various components and systems within our app; see
+`app/Providers`.
 
 ## Section 3, Blade
 
