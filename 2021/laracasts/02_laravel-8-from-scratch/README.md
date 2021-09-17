@@ -23,7 +23,7 @@
 * [X] [09 Route Wildcard Constraints](#09-route-wildcard-constraints)
 * [X] [10 Use Caching for Expensive Operations](#10-use-caching-for-expensive-operations)
 * [X] [11 Use the Filesystem Class to Read a Directory](#11-use-the-filesystem-class-to-read-a-directory)
-* [ ] [12 Find a Composer Package for Post Metadata](#12-find-a-composer-package-for-post-metadata)
+* [X] [12 Find a Composer Package for Post Metadata](#12-find-a-composer-package-for-post-metadata)
 * [ ] [13 Collection Sorting and Caching Refresher](#13-collection-sorting-and-caching-refresher)
 
 ### [Section 3, Blade](#section-3-blade-1)
@@ -233,6 +233,123 @@ shall be very _very_ happy. :)
   - `Illuminate\Support\Facades\File`
 
 ### 12 Find a Composer Package for Post Metadata
+
+- yaml frontmatter
+- https://github.com/spatie/yaml-front-matter
+- https://spatie.be/open-source?search=&sort=-downloads
+- `Spatie\YamlFrontMatter\YamlFrontMatter`
+- Laravel Collections - more fluent OO interface for working with arrays
+  - `collect` - collect an array and wrap it in an Collection object
+  - wrapper class provides many useful methods for interacting with a
+    collection in clean way (c.f. Ruby's `Enumerable`)
+
+```
+$ composer require spatie/yaml-front-matter
+```
+
+Wrapping the results from an underlying tech (like `YamlFrontMatter`) in your
+own domain model class; creating a useful layer of abstraction that you can
+mould to the needs of your application.
+
+Processing posts using `foreach`:
+
+```php
+<?php
+
+$files = File::files(resource_path('posts'));
+
+$posts = [];
+foreach ($files as $file) {
+    $document = YamlFrontMatter::parseFile($file);
+    $posts[] = new Post(
+        $document->title,
+        $document->excerpt,
+        $document->date,
+        $document->body(),
+        $document->slug
+    );
+}
+```
+
+Processing posts using `array_map`:
+
+```php
+<?php
+
+$files = File::files(resource_path('posts'));
+
+$posts = array_map(function ($file) {
+    $document = YamlFrontMatter::parseFile($file);
+    return new Post(
+        $document->title,
+        $document->excerpt,
+        $document->date,
+        $document->body(),
+        $document->slug
+    );
+}, $files);
+```
+
+Processing posts using Collections:
+
+```php
+<?php
+
+$files = File::files(resource_path('posts'));
+
+$posts = collect($files)->map(function ($file) {
+    $document = YamlFrontMatter::parseFile($file);
+    return new Post(
+        $document->title,
+        $document->excerpt,
+        $document->date,
+        $document->body(),
+        $document->slug
+    );
+});
+```
+
+We can then use Collections and method chaining to clean things up even
+further:
+
+```php
+<?php
+
+$posts = collect(File::files(resource_path('posts')))
+    ->map(function ($file) {
+        return YamlFrontMatter::parseFile($file);
+    })
+    ->map(function ($document) {
+        return new Post(
+            $document->title,
+            $document->excerpt,
+            $document->date,
+            $document->body(),
+            $document->slug
+        );
+    });
+```
+
+And once we're at that point, we no longer need more than a single expression
+per closure, and thus can switch to the arrow functions:
+
+```php
+<?php
+
+$posts = collect(File::files(resource_path('posts')))
+    ->map(fn ($file) => YamlFrontMatter::parseFile($file))
+    ->map(fn ($document) => new Post(
+        $document->title,
+        $document->excerpt,
+        $document->date,
+        $document->body(),
+        $document->slug
+    ));
+```
+
+This progression of improvement in how to process a collection is really quite
+nice. I'm partial to the Collections way of doing things already though, as
+it's very similar to the way we do things in Ruby.
 
 ### 13 Collection Sorting and Caching Refresher
 
