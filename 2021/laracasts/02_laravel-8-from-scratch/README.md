@@ -28,7 +28,7 @@
 
 ### [Section 3, Blade](#section-3-blade-1)
 
-* [ ] [14 Blade: The Absolute Basics](#14-blade-the-absolute-basics)
+* [X] [14 Blade: The Absolute Basics](#14-blade-the-absolute-basics)
 * [ ] [15 Blade Layouts Two Ways](#15-blade-layouts-two-ways)
 * [ ] [16 A Few Tweaks and Consideration](#16-a-few-tweaks-and-consideration)
 
@@ -384,6 +384,54 @@ delgate bootstrapping various components and systems within our app; see
 ## Section 3, Blade
 
 ### 14 Blade: The Absolute Basics
+
+Blade is Laravel's templating engine; it is a superset of baseic PHP, adding
+convenient template-friendly sugar on top of the facilities of raw PHP.
+
+Echoing out an HTML-escaped string:
+
+```
+{{ $post->title }}
+```
+
+Echoing out a raw string:
+
+```
+{!! $post->body !!}
+```
+
+Which is equivalent to:
+
+```php
+<?php echo $post->title; ?>
+
+<!-- and -->
+
+<?= $post->title; ?>
+```
+
+The following Blade directive...
+
+```
+@foreach ($posts as $post)
+    <!-- ... -->
+@endforeach
+```
+
+...can replace the following vanilla PHP:
+
+```php
+<?php foreach ($posts as $post): ?>
+    <!-- ... -->
+<?php endforeach; ?>
+```
+
+There are many other directives, including other equivalents for standard PHP
+control structures (as with `@foreach` above), as well as convenient short cuts
+for calling functions like `@dd`.
+
+Logs can be found under `storage/logs/laravel.log`. The compiled blade views
+can be found under `storage/framework/views`.
 
 ### 15 Blade Layouts Two Ways
 
