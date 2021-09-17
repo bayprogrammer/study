@@ -228,8 +228,9 @@ shall be very _very_ happy. :)
 - `app_path`
 - `resource_path`
 - `ModelNotFoundException` - these are not the droids you're looking for
-
-**NOTE(zmd):** _LEFT OFF:_ time index `06:00`.
+  - `Illuminate\Database\Eloquent\ModelNotFoundException`
+- `File` facade
+  - `Illuminate\Support\Facades\File`
 
 ### 12 Find a Composer Package for Post Metadata
 
