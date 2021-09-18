@@ -29,7 +29,7 @@
 ### [Section 3, Blade](#section-3-blade-1)
 
 * [X] [14 Blade: The Absolute Basics](#14-blade-the-absolute-basics)
-* [ ] [15 Blade Layouts Two Ways](#15-blade-layouts-two-ways)
+* [X] [15 Blade Layouts Two Ways](#15-blade-layouts-two-ways)
 * [ ] [16 A Few Tweaks and Consideration](#16-a-few-tweaks-and-consideration)
 
 ### [Section 4, Working With Databases](#section-4-working-with-databases-1)
@@ -434,6 +434,73 @@ Logs can be found under `storage/logs/laravel.log`. The compiled blade views
 can be found under `storage/framework/views`.
 
 ### 15 Blade Layouts Two Ways
+
+- Way #1: Layouts:
+  - `@yield('content')` directive - similar to that of Ruby on Rails usage,
+    specifies named section that another layout may render into
+  - `@extends('layout')` directive - allow view to "inherit" from layout
+    (coresponds to `layout.blade.php`)
+    - inject content into yielded id block with `@section('content')` and
+      `@endsection` directives.
+  - You yield and more than one named section (not restricted to just one)
+- Way #2: Blade Components:
+  - `views/components`
+    - Any files added to this directory will be automatically avaialable to
+      your views as a Blade component.
+    - `views/components/layout.blade.php` can be used as a tag in views:
+      `<x-layout>...</x-layout>`.
+    - The `$slot` variable defines the default slot; otherwise you can name
+      slots anything you want and refer to them either via tag attributes or
+      via the `<x-slot name="...">` tag.
+
+This Blade component...
+
+```php
+<div>
+    {{ $content }}
+</div>
+```
+
+...can be used like this:
+
+```php
+<x-layout content="Hello, world.">
+</x-layout>
+
+<x-layout>
+    <x-slot name="content">
+        Hello, world.
+    </x-slot>
+</x-layout>
+```
+
+Whereas using `$slot`...
+
+```php
+<div>
+    {{ $slot }}
+</div>
+```
+
+...we can just use it like so:
+
+```php
+<x-layout>
+    Hello, world.
+</x-layout>
+```
+
+Both layouts and components are equally valid ways to structure views in
+Laravel; one is no better than the other. Use whichever best fits your needs.
+
+#### Cloning Laravel App to New System
+
+I needed to run the following to boot my Laravel app on a new system:
+
+```
+$ cp .env.example .env
+$ php artisan key:generate
+```
 
 ### 16 A Few Tweaks and Consideration
 
