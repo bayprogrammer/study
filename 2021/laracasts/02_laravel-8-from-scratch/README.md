@@ -34,7 +34,7 @@
 
 ### [Section 4, Working With Databases](#section-4-working-with-databases-1)
 
-* [ ] [17 Environment Files and Database Connections](#17-environment-files-and-database-connections)
+* [X] [17 Environment Files and Database Connections](#17-environment-files-and-database-connections)
 * [ ] [18 Migrations: The Absolute Basics](#18-migrations-the-absolute-basics)
 * [ ] [19 Eloquent and the Active Record Pattern](#19-eloquent-and-the-active-record-pattern)
 * [ ] [20 Make a Post Model and Migration](#20-make-a-post-model-and-migration)
@@ -508,6 +508,33 @@ $ php artisan key:generate
 ## Section 4, Working With Databases
 
 ### 17 Environment Files and Database Connections
+
+- `.env` allows us to set secrets via the environment
+- `env('VAR', 'fallback value')`, allows us to pull settings from environment
+
+For local dev for how I have things setup:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=blog
+DB_USERNAME=zebdeos
+DB_PASSWORD=
+```
+
+Create & run intial migrations for our app's database:
+
+```
+$ mysql
+mysql> create database blog;
+mysql> ^D
+$ php artisan migrate
+$ mysql
+mysql> use blog;
+mysql> show tables;
+mysql> describe users;
+```
 
 ### 18 Migrations: The Absolute Basics
 
