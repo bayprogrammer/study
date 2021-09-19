@@ -453,7 +453,8 @@ can be found under `storage/framework/views`.
       slots anything you want and refer to them either via tag attributes or
       via the `<x-slot name="...">` tag.
 
-This Blade component...
+This Blade component (defined in
+`resources/views/components/layout.blade.php`)...
 
 ```php
 <div>
