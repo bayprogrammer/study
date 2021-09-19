@@ -30,7 +30,7 @@
 
 * [X] [14 Blade: The Absolute Basics](#14-blade-the-absolute-basics)
 * [X] [15 Blade Layouts Two Ways](#15-blade-layouts-two-ways)
-* [ ] [16 A Few Tweaks and Consideration](#16-a-few-tweaks-and-consideration)
+* [X] [16 A Few Tweaks and Consideration](#16-a-few-tweaks-and-consideration)
 
 ### [Section 4, Working With Databases](#section-4-working-with-databases-1)
 
