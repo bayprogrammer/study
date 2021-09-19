@@ -36,7 +36,7 @@
 
 * [X] [17 Environment Files and Database Connections](#17-environment-files-and-database-connections)
 * [X] [18 Migrations: The Absolute Basics](#18-migrations-the-absolute-basics)
-* [ ] [19 Eloquent and the Active Record Pattern](#19-eloquent-and-the-active-record-pattern)
+* [X] [19 Eloquent and the Active Record Pattern](#19-eloquent-and-the-active-record-pattern)
 * [ ] [20 Make a Post Model and Migration](#20-make-a-post-model-and-migration)
 * [ ] [21 Eloquent Updates and HTML Escaping](#21-eloquent-updates-and-html-escaping)
 * [ ] [22 3 Ways to Mitigate Mass Assignment Vulnerabilities](#22-3-ways-to-mitigate-mass-assignment-vulnerabilities)
@@ -550,6 +550,69 @@ $ php artisan migrate:fresh
 ```
 
 ### 19 Eloquent and the Active Record Pattern
+
+```
+$ php artisan migrate:fresh
+$ php artisan tinker
+>>> $user = new App\Models\User
+>>> $user->name = 'bayprogrammer'
+>>> $user->email = 'zebdeos@bayprogrammer.com'
+>>> $user->password = bcrypt('!password')
+>>> ^Z
+$ mysql
+mysql> select name from users;
+Empty set (0.001 sec)
+mysql> ^Z
+$ fg %1
+>>> $user->save()
+>>> ^Z
+$ fg %2
+mysql> select name from users;
++---------------+
+| name          |
++---------------+
+| bayprogrammer |
++---------------+
+1 row in set (0.000 sec)
+mysql> ^Z
+$ fg %1
+>>> $user->name = 'johndoe'
+>>> $user->save()
+>>> ^Z
+$ fg %2
+mysql> select name from users;
++---------+
+| name    |
++---------+
+| johndoe |
++---------+
+1 row in set (0.001 sec)
+mysql> ^Z
+$ fg %1
+>>> User::find(1)
+>>> User::find(1000)  //=> null
+>>> User::findOrFail(1000)  //=> BANG!
+>>> User::all()
+>>> $user = new User;
+>>> $user->name = 'Sally'
+>>> $user->email = 'sally@example.com'
+>>> $user->password = bcrypt('sally!')
+>>> $user->save()
+>>> $users = User::all()
+>>> $users->pluck('name')
+=> Illuminate\Support\Collection {#4128
+     all: [
+       "johndoe",
+       "Sally",
+     ],
+   }
+>>> $users->map(function ($user) { return $user->name; })
+>>> $users->map(fn($user) => $user->name)
+>>> $users->first()
+>>> $users->last()
+>>> $users[0]
+>>> $users[1]
+```
 
 ### 20 Make a Post Model and Migration
 
