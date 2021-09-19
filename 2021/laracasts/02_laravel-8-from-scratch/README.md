@@ -35,7 +35,7 @@
 ### [Section 4, Working With Databases](#section-4-working-with-databases-1)
 
 * [X] [17 Environment Files and Database Connections](#17-environment-files-and-database-connections)
-* [ ] [18 Migrations: The Absolute Basics](#18-migrations-the-absolute-basics)
+* [X] [18 Migrations: The Absolute Basics](#18-migrations-the-absolute-basics)
 * [ ] [19 Eloquent and the Active Record Pattern](#19-eloquent-and-the-active-record-pattern)
 * [ ] [20 Make a Post Model and Migration](#20-make-a-post-model-and-migration)
 * [ ] [21 Eloquent Updates and HTML Escaping](#21-eloquent-updates-and-html-escaping)
@@ -537,6 +537,17 @@ mysql> describe users;
 ```
 
 ### 18 Migrations: The Absolute Basics
+
+```
+$ php artisan migrate:rollback
+$ php artisan migrate
+$ php artisan migrate:fresh
+$ mysql -c blog
+mysql> insert into users (username, email, password)
+         values ('bayprogrammer', 'zebdeos@bayprogrammer.com', 'asldkjfalsdfj');
+mysql> ^D
+$ php artisan migrate:fresh
+```
 
 ### 19 Eloquent and the Active Record Pattern
 
