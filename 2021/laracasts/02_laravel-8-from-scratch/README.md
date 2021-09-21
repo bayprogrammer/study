@@ -38,7 +38,7 @@
 * [X] [18 Migrations: The Absolute Basics](#18-migrations-the-absolute-basics)
 * [X] [19 Eloquent and the Active Record Pattern](#19-eloquent-and-the-active-record-pattern)
 * [X] [20 Make a Post Model and Migration](#20-make-a-post-model-and-migration)
-* [ ] [21 Eloquent Updates and HTML Escaping](#21-eloquent-updates-and-html-escaping)
+* [X] [21 Eloquent Updates and HTML Escaping](#21-eloquent-updates-and-html-escaping)
 * [ ] [22 3 Ways to Mitigate Mass Assignment Vulnerabilities](#22-3-ways-to-mitigate-mass-assignment-vulnerabilities)
 * [ ] [23 Route Model Binding](#23-route-model-binding)
 * [ ] [24 Your First Eloquent Relationship](#24-your-first-eloquent-relationship)
@@ -669,6 +669,24 @@ $ php artisan tinker
 ```
 
 ### 21 Eloquent Updates and HTML Escaping
+
+```
+$ php artisan tinker
+>>> $post = App\Models\Post::first()
+>>> $post->body = '<p>' . $post->body . '</p>'
+>>> $post->save()
+>>> $post = App\Models\Post::find(2)
+>>> $post->body = '<p>' . $post->body . '</p>'
+>>> $post->save()
+>>> use App\Models\Post
+>>> $post = Post::first()
+>>> $post->title = 'My <strong>First</strong> Post'
+>>> $post->save()
+>>> $post->title = 'My <script>alert("hello")</script> Post'
+>>> $post->save()
+```
+
+Beware trusting untrusted data!
 
 ### 22 3 Ways to Mitigate Mass Assignment Vulnerabilities
 
