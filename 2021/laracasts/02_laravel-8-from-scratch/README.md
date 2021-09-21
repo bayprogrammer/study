@@ -37,7 +37,7 @@
 * [X] [17 Environment Files and Database Connections](#17-environment-files-and-database-connections)
 * [X] [18 Migrations: The Absolute Basics](#18-migrations-the-absolute-basics)
 * [X] [19 Eloquent and the Active Record Pattern](#19-eloquent-and-the-active-record-pattern)
-* [ ] [20 Make a Post Model and Migration](#20-make-a-post-model-and-migration)
+* [X] [20 Make a Post Model and Migration](#20-make-a-post-model-and-migration)
 * [ ] [21 Eloquent Updates and HTML Escaping](#21-eloquent-updates-and-html-escaping)
 * [ ] [22 3 Ways to Mitigate Mass Assignment Vulnerabilities](#22-3-ways-to-mitigate-mass-assignment-vulnerabilities)
 * [ ] [23 Route Model Binding](#23-route-model-binding)
@@ -615,6 +615,58 @@ $ fg %1
 ```
 
 ### 20 Make a Post Model and Migration
+
+```
+$ php artisan make:migration
+$ php artisan make:migration create_posts_table
+$ php artisan migrate
+$ mysql
+mysql> describe posts;
++--------------+---------------------+------+-----+---------+----------------+
+| Field        | Type                | Null | Key | Default | Extra          |
++--------------+---------------------+------+-----+---------+----------------+
+| id           | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| title        | varchar(255)        | NO   |     | NULL    |                |
+| excerpt      | text                | NO   |     | NULL    |                |
+| body         | text                | NO   |     | NULL    |                |
+| created_at   | timestamp           | YES  |     | NULL    |                |
+| updated_at   | timestamp           | YES  |     | NULL    |                |
+| published_at | timestamp           | YES  |     | NULL    |                |
++--------------+---------------------+------+-----+---------+----------------+
+7 rows in set (0.003 sec)
+```
+
+As a general rule of thumb, your migration name should describe what the
+migration does.
+
+The model name is the singular version of the table name (`posts -> Post`).
+
+```
+$ php artisan make:model Post
+$ php artisan tinker
+>>> App\Models\Post::all()
+>>> App\Models\Post::all()->isEmpty()  //=> true
+>>> App\Models\Post::count()           //=> 0
+>>> new App\Models\Post
+>>> $post = $_
+>>> $post->title = 'My First Post'
+>>> $post->excerpt = 'Lorem ipsum dolar sit amet.'
+>>> $post->body = 'Suscipit omnis accusantium incidunt eum et sunt. Et quod adipisci magni ad ut omnis sint. Dolorum aut eum accusamus et vitae. Ea et sit ut. Magnam quod quo cum reiciendis consequatur eveniet. Voluptatum perferendis sunt natus ea tenetur voluptatem.'
+>>> $post->save()
+>>> ^D
+$ mysql -c blog -e 'select * from posts'
+$ php artisan tinker
+>>> use App\Models\Post
+>>> Post::count()  //=> 1
+>>> Post::all()
+>>> Post::first()
+>>> Post::find(1)
+>>> $post = new App\Models\Post
+>>> $post->title = 'Eloquent is Amazing'
+>>> $post->excerpt = 'Lorem ipsum dolar sit amet.'
+>>> $post->body = 'Ut dolorem reprehenderit similique a deleniti. Accusamus delectus quia quia magnam. Enim aut non nostrum eos tempora. Hic est maxime quis ut ducimus. Alias ratione ut fugit exercitationem. Officia rerum quas consequuntur.'
+>>> $post->save()
+```
 
 ### 21 Eloquent Updates and HTML Escaping
 
