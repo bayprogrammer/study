@@ -39,7 +39,7 @@
 * [X] [19 Eloquent and the Active Record Pattern](#19-eloquent-and-the-active-record-pattern)
 * [X] [20 Make a Post Model and Migration](#20-make-a-post-model-and-migration)
 * [X] [21 Eloquent Updates and HTML Escaping](#21-eloquent-updates-and-html-escaping)
-* [ ] [22 3 Ways to Mitigate Mass Assignment Vulnerabilities](#22-3-ways-to-mitigate-mass-assignment-vulnerabilities)
+* [X] [22 3 Ways to Mitigate Mass Assignment Vulnerabilities](#22-3-ways-to-mitigate-mass-assignment-vulnerabilities)
 * [ ] [23 Route Model Binding](#23-route-model-binding)
 * [ ] [24 Your First Eloquent Relationship](#24-your-first-eloquent-relationship)
 * [ ] [25 Show All Posts Associated With a Category](#25-show-all-posts-associated-with-a-category)
@@ -689,6 +689,66 @@ $ php artisan tinker
 Beware trusting untrusted data!
 
 ### 22 3 Ways to Mitigate Mass Assignment Vulnerabilities
+
+```
+$ php artisan tinker
+>>> use App\Models\Post
+>>> $post = new Post
+>>> $post->title = 'My Third Post'
+>>> $post->excerpt = 'excerpt of post'
+>>> $post->body = 'Ut dolorem reprehenderit similique a deleniti. Accusamus delectus quia quia magnam. Enim aut non nostrum eos tempora. Hic est maxime quis ut ducimus. Alias ratione ut fugit exercitationem. Officia rerum quas consequuntur.'
+>>> $post->save()
+>>> $post = Post::first()
+>>> $post->title = 'My <strong>First</strong> Post'
+>>> $post->save()
+>>> Post::create(['title' => 'My Fourth Post', 'excerpt' => 'excerpt of post', 'body' => 'Ut dolorem reprehenderit similique a deleniti. Accusamus delectus quia quia magnam. Enim aut non nostrum eos tempora. Hic est maxime quis ut ducimus. Alias ratione ut fugit exercitationem. Officia rerum quas consequuntur.'])
+=> BANG!
+```
+
+**NOTE(zmd):** _LEFT OFF_ time index`01:11`
+
+#### Setup app on yet another computer
+
+```
+$ composer install
+$ mysql
+mysql> create database blog;
+mysql> ^D
+$ cp .env.example .env
+$ nvim .env
+$ php artisan key:generate
+$ grep '^DB_' .env
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=blog
+DB_USERNAME=zebdeos
+DB_PASSWORD=
+$ php artisan migrate
+$ php artisan tinker
+>>> $post = new App\Models\Post
+>>> $post->title = 'My First Post'
+>>> $post->excerpt = 'Lorem ipsum dolar sit amet.'
+>>> $post->body = 'Suscipit omnis accusantium incidunt eum et sunt. Et quod adipisci magni ad ut omnis sint. Dolorum aut eum accusamus et vitae. Ea et sit ut. Magnam quod quo cum reiciendis consequatur eveniet. Voluptatum perferendis sunt natus ea tenetur voluptatem.'
+>>> $post->save()
+>>> $post = new App\Models\Post
+>>> $post->title = 'Eloquent is Amazing'
+>>> $post->excerpt = 'Lorem ipsum dolar sit amet.'
+>>> $post->body = 'Ut dolorem reprehenderit similique a deleniti. Accusamus delectus quia quia magnam. Enim aut non nostrum eos tempora. Hic est maxime quis ut ducimus. Alias ratione ut fugit exercitationem. Officia rerum quas consequuntur.'
+>>> $post->save()
+>>> $post = App\Models\Post::first()
+>>> $post->body = '<p>' . $post->body . '</p>'
+>>> $post->save()
+>>> $post = App\Models\Post::find(2)
+>>> $post->body = '<p>' . $post->body . '</p>'
+>>> $post->save()
+>>> $post = Post::first()
+>>> $post->title = 'My <strong>First</strong> Post'
+>>> $post->save()
+>>> $post->title = 'My <script>alert("hello")</script> Post'
+>>> $post->save()
+>>> ^D
+```
 
 ### 23 Route Model Binding
 

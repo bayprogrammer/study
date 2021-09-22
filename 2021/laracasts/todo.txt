@@ -2,6 +2,7 @@
 
 +watching
 *watched
+++watching+completing
 *+watched+completing
 **watched+completed
 
@@ -15,6 +16,7 @@
 https://laracasts.com/series/object-oriented-principles-in-php
 https://laracasts.com/series/solid-principles-in-php
 https://laracasts.com/series/design-patterns-in-php
+https://laracasts.com/series/write-a-composer-package-with-me
 
 https://laracasts.com/series/html-and-css-workshop
-https://laracasts.com/series/laravel-8-from-scratch
+++https://laracasts.com/series/laravel-8-from-scratch
