@@ -15,6 +15,8 @@ function read_lines(fh)
   return lines
 end
 
+-- TODO(zmd): I'm not sure my map is general enough yet, probably better to
+-- switch existing use to using a generalized for
 function map(tbl, cb)
   local new_tbl = {}
 
@@ -30,6 +32,8 @@ function map(tbl, cb)
   return new_tbl
 end
 
+-- TODO(zmd): have window accept optional second param that specifies the
+--   window frame_size (generalizing so we don't need e.g. window_three())
 function window(tbl)
   local curr_i = 1
   local next_i = 2
@@ -42,6 +46,27 @@ function window(tbl)
 
            if n and m then
              return n, m
+           else
+             return nil
+           end
+         end
+end
+
+function window_three(tbl)
+  local x_i = 1
+  local y_i = 2
+  local z_i = 3
+
+  return function ()
+           local x = tbl[x_i]
+           local y = tbl[y_i]
+           local z = tbl[z_i]
+           x_i = x_i + 1
+           y_i = y_i + 1
+           z_i = z_i + 1
+
+           if x and y and z then
+             return x, y, z
            else
              return nil
            end
@@ -67,4 +92,10 @@ local numbers = map(
   end
 )
 
+local rolling_sums = {}
+for x, y, z in window_three(numbers) do
+  table.insert(rolling_sums, x + y + z)
+end
+
 print(count_increases(numbers))
+print(count_increases(rolling_sums))
