@@ -58,3 +58,28 @@ function slice(tbl, i, n)
   end_i = i - 1 + n
   return {unpack(tbl, i, end_i)}
 end
+
+function count(tbl)
+  counter = 0
+  for _, _ in pairs(tbl) do
+    counter = counter + 1
+  end
+
+  return counter
+end
+
+function window(tbl, size)
+  size = size or 2
+  local curr_i = 1
+
+  return function ()
+           local subset = slice(tbl, curr_i, size)
+           curr_i = curr_i + 1
+
+           if count(subset) == size then
+             return unpack(subset)
+           else
+             return nil
+           end
+         end
+end
