@@ -15,23 +15,6 @@ function read_lines(fh)
   return lines
 end
 
--- TODO(zmd): I'm not sure my map is general enough yet, probably better to
--- switch existing use to using a generalized for
-function map(tbl, cb)
-  local new_tbl = {}
-
-  local i = 1
-  local curr = tbl[i]
-  while curr do
-    table.insert(new_tbl, cb(curr))
-
-    i = i+1
-    curr = tbl[i]
-  end
-
-  return new_tbl
-end
-
 -- TODO(zmd): have window accept optional second param that specifies the
 --   window frame_size (generalizing so we don't need e.g. window_three())
 function window(tbl)
@@ -85,12 +68,10 @@ function count_increases(numbers)
   return count
 end
 
-local numbers = map(
-  read_lines(io.stdin),
-  function (e)
-    return tonumber(e)
-  end
-)
+local numbers = {}
+for _, input in ipairs(read_lines(io.stdin)) do
+  table.insert(numbers, tonumber(input))
+end
 
 local rolling_sums = {}
 for x, y, z in window_three(numbers) do
