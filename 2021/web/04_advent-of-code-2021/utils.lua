@@ -53,3 +53,8 @@ function inspect(data, final_char)
 
   io.write(final_char)
 end
+
+function slice(tbl, i, n)
+  end_i = i - 1 + n
+  return {unpack(tbl, i, end_i)}
+end
