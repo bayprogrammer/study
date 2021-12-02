@@ -1,19 +1,9 @@
 #!/usr/bin/env lua
 
+require 'utils'
+
 -- count depth increases
 --   $ ./01_sonar_sweep.lua <01_input.txt
-
-function read_lines(fh)
-  local lines = {}
-
-  local curr = fh:read("*line")
-  while curr do
-    table.insert(lines, curr)
-    curr = fh:read("*line")
-  end
-
-  return lines
-end
 
 -- TODO(zmd): have window accept optional second param that specifies the
 --   window frame_size (generalizing so we don't need e.g. window_three())
