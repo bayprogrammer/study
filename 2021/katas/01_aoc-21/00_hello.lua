@@ -1,19 +1,17 @@
 #!/usr/bin/env lua
 
+require 'utils'
+
 -- smoke test, are we ready for advent of code 2021?
 
 -- NOTES:
 --   * require
 --   * dofile (will be useful in repl)
 
-function printf(str, ...)
-  print(string.format(str, ...))
-end
-
 function make_greeter(greeting, punctuation)
   punctuation = punctuation or "."
   return function (name)
-           printf("%s, %s%s", greeting, name, punctuation)
+           printf("%s, %s%s\n", greeting, name, punctuation)
          end
 end
 
