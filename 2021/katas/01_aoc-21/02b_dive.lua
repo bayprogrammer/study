@@ -6,7 +6,7 @@ require 'dive_utils'
 function reload()
   dofile('utils.lua')
   dofile('dive_utils.lua')
-  dofile('02a_dive.lua')
+  dofile('02b_dive.lua')
 end
 
 -- post-RTFM dive calculator
