@@ -14,6 +14,30 @@ function read_lines(fh)
   return lines
 end
 
+function gets(fh)
+  return function ()
+           local curr = fh:read("*line")
+           if curr then
+             return curr
+           end
+         end
+end
+
+function split(str, split_char, acc)
+  acc = acc or {}
+  split_char = split_char or " "
+  local i, _ = string.find(str, split_char)
+  if not i then
+    table.insert(acc, str)
+    return acc
+  else
+    segment = string.sub(str, 1, i-1)
+    remainder = string.sub(str, i+1)
+    table.insert(acc, segment)
+    return split(remainder, split_char, acc)
+  end
+end
+
 function inspect(data, final_char)
   final_char = final_char or '\n'
 
@@ -51,20 +75,23 @@ function inspect(data, final_char)
     end
   elseif type(data) == 'nil' then
     io.write('nil')
+  elseif type(data) == 'function' then
+    io.write('<function>')
   else
     io.write(data)
   end
 
   io.write(final_char)
 end
+p = inspect
 
 function slice(tbl, i, n)
-  end_i = i - 1 + n
+  local end_i = i - 1 + n
   return {unpack(tbl, i, end_i)}
 end
 
 function count(tbl)
-  counter = 0
+  local counter = 0
   for _, _ in pairs(tbl) do
     counter = counter + 1
   end
@@ -82,8 +109,6 @@ function window(tbl, size)
 
            if count(subset) == size then
              return unpack(subset)
-           else
-             return nil
            end
          end
 end
