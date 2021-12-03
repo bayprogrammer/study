@@ -1,5 +1,6 @@
 #!/usr/bin/env lua
 
+--
 -- x: -left | right
 -- y: -down | up
 -- z: -forward | backward
@@ -13,58 +14,67 @@
 --        +z'  |
 --             V -y
 --
-function make_position()
-  return { x = 0, y = 0, z = 0, r = 0 }
+Position = { x = 0, y = 0, z = 0, r = 0 }
+
+function Position:new(o)
+  o = o or {}
+  setmetatable(o, self)
+  self.__index = self
+  return o
 end
 
-function inc_x(pos, by)
-  pos.x = pos.x + by
+function Position:send(method, ...)
+  self[method](self, ...)
 end
 
-function dec_x(pos, by)
-  pos.x = pos.x - by
+function Position:inc_x(by)
+  self.x = self.x + by
 end
 
-function inc_y(pos, by)
-  pos.y = pos.y + by
+function Position:dec_x(by)
+  self.x = self.x - by
 end
 
-function dec_y(pos, by)
-  pos.y = pos.y - by
+function Position:inc_y(by)
+  self.y = self.y + by
 end
 
-function inc_z(pos, by)
-  pos.z = pos.z + by
+function Position:dec_y(by)
+  self.y = self.y - by
 end
 
-function dec_z(pos, by)
-  pos.z = pos.z - by
+function Position:inc_z(by)
+  self.z = self.z + by
 end
 
-function inc_r(pos, by)
-  pos.r = pos.r + by
+function Position:dec_z(by)
+  self.z = self.z - by
 end
 
-function dec_r(pos, by)
-  pos.r = pos.r - by
+function Position:inc_r(by)
+  self.r = self.r + by
 end
 
-function horizontal(pos)
-  return -pos.z
+function Position:dec_r(by)
+  self.r = self.r - by
 end
 
-function depth(pos)
-  return -pos.y
+function Position:horizontal()
+  return -self.z
 end
 
-function aim(pos)
-  return pos.r
+function Position:depth()
+  return -self.y
 end
 
-function status_report(pos)
-  local d = depth(pos)
-  local h = horizontal(pos)
-  local a = aim(pos)
+function Position:aim()
+  return self.r
+end
+
+function Position:status_report()
+  local d = self:depth()
+  local h = self:horizontal()
+  local a = self:aim()
 
   return {depth = d, horizontal = h, aim = a, product = d * h}
 end

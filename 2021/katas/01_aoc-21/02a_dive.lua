@@ -12,22 +12,24 @@ end
 -- pre-RTFM dive calculator
 --   $ ./02a_dive.lua <02_input.txt
 
-function forward(pos, by)
-  dec_z(pos, by)
+BorkedAutopilot = Position:new()
+
+function BorkedAutopilot:forward(by)
+  self:dec_z(by)
 end
 
-function down(pos, by)
-  dec_y(pos, by)
+function BorkedAutopilot:down(by)
+  self:dec_y(by)
 end
 
-function up(pos, by)
-  inc_y(pos, by)
+function BorkedAutopilot:up(by)
+  self:inc_y(by)
 end
 
-local pos = make_position()
+local pilot = BorkedAutopilot:new()
 for command_pair in gets(io.stdin) do
   command, by = unpack(split(command_pair))
-  _G[command](pos, by)
+  pilot:send(command, by)
 end
 
-p(status_report(pos))
+p(pilot:status_report())
