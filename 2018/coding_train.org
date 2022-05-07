@@ -1,0 +1,35 @@
+#+FILETAGS: :coding_train:p5:p5js:processing:visualization:physics:math:java:javascript:tech_studies
+
+* WATCHING Live Stream #144: Map Visualization of 500k Subscribers!
+
+:PROPERTIES:
+:published: [2018-06-06 Wed]
+:source:    https://www.youtube.com/watch?v=UI5c1te1MjI
+:archive:   DOWNLOAD IN PROGRESS
+:END:
+
+:DESCRIPTION:
+Celebrating 500k subscribers!
+
+24:55 - Subscribers Visualization
+
+- TensorFlow.js: https://js.tensorflow.org/
+- ml5.js: https://ml5js.org
+- Adjacent: https://itp.nyu.edu/adjacent/issue-3/
+- Mappa.js Simple Map: https://mappa.js.org/docs/simple-map.html
+- Maps, Maps, Maps! By Cristobal Valenzuela: https://medium.com/processing-foundation/maps-maps-maps-f0914218c87b
+- Countries latitude and longitude: https://gist.github.com/sindresorhus/1341699
+- TensorFlow.js playlist: https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YIeVA3dNxbR9PYj4wV31oQ
+- Website: http://thecodingtrain.com/
+- Patreon: https://patreon.com/codingtrain
+- Store: https://codingtrain.storenvy.com
+- Books: https://www.amazon.com/shop/thecodingtrain
+- https://github.com/CodingTrain/website
+- For an Introduction to Programming: https://www.youtube.com/watch?v=8j0UDiN7my4&list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA
+- To watch archived Live Streams: https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bxnFR6no70vlxxuxDEzflz
+- For more Coding Challenges: https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH
+- https://p5js.org/
+- https://processing.org
+:END:
+
+** TBD

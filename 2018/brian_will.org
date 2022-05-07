@@ -1,0 +1,21 @@
+#+FILETAGS: :brian_will:comp_sci:op_sys:tech_studies
+
+* [[https://www.youtube.com/channel/UCseUQK4kC3x2x543nHtGpzw][Youtube Channel]]
+
+
+* TODO Unix system calls
+
+** DONE [[https://www.youtube.com/watch?v=xHu7qI1gDPA][Unix system calls (1/2) (Brian Will)]]
+CLOSED: [2018-06-30 Sat 12:33]
+:PROPERTIES:
+:PUBLISHED: Mar 23, 2011
+:END:
+
+Valuable overview of Unix system calls and processes. Covers fork and exec, user and group permissions (and how they relate to processes), and memory allocation basics.
+
+
+** TODO [[https://www.youtube.com/watch?v=2DrjQBL5FMU][Unix system calls (2/2) (Brian Will)]]
+
+:PROPERTIES:
+:PUBLISHED: Mar 23, 2011
+:END:

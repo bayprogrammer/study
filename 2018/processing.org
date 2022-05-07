@@ -1,0 +1,41 @@
+#+FILETAGS: :processing:visualization:tech_studies
+
+* Books                                                                :book:
+
+** The Nature of Code
+
+Daniel Shiffman
+Self Published
+2012 Version
+
+[[file:0_reading.org::*The%20Nature%20of%20Code][Technical Reading List Entry]]
+
+*** Frontmatter
+
+* Versions
+
+** Processing (Java)
+
+https://processing.org/
+
+** JavaScript (p5js)
+
+https://p5js.org/
+
+** Ruby Processing
+
+https://ruby-processing.github.io/
+
+** Python
+
+http://py.processing.org/
+
+** Scala
+
+http://www.mostlymaths.net/2018/03/processing-and-scala.html
+
+** Quil (Clojure)
+
+http://quil.info/
+
+http://www.tylerlhobbs.com/writings/using-quil-for-artwork

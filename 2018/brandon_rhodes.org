@@ -1,0 +1,15 @@
+#+FILETAGS: :brandon_rhodes:python:comp_sci:terminal:unix:tech_studies
+
+* Brandon Rhodes
+
+[[https://www.youtube.com/results?search_query=Brandon+Rhodes][Brandon Rhodes (YT Search)]]
+
+Brandon Rhodes is a Python hacker who made some very interesting videos on Unix, Terminal Drawing, and Hashtables (Python Dicts).
+
+*** DONE [[https://www.youtube.com/watch?v=K_6peGEsq0U][Animations In The TERMINAL (Animating With ASCII)]]          :zcurses:
+
+
+*** DONE [[https://www.youtube.com/watch?v=zFMdhXYlFfY][Pycon UK 2016: Python and the Glories of the UNIX Tradition]]
+
+
+*** DONE [[https://www.youtube.com/watch?v=66P5FMkWoVU][The Dictionary Even Mightier PyCon 2017]]

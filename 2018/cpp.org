@@ -1,0 +1,69 @@
+#+FILETAGS: :cpp:tech_studies
+
+* Books
+
+** Principles and Practice using C++
+
+Bjarne Stroustrup
+Addison-Wesley
+
+*** Frontmatter
+
+- [X] Table of Contents
+
+- [X] Preface
+
+*** Chapter 0 Preface
+
+**** 0.1 The structure of this book
+
+***** 0.1.1 General approach
+
+***** 0.1.2 Drills, exercises, etc.
+
+***** 0.1.3 What comes after this book?
+
+**** 0.2 A philosophy of teaching and learning
+
+- programming :: "the ideals, techniques, and tools of expressing
+                 ideas in code"
+
+#+BEGIN_QUOTE
+We insist that craftsmen must understand their tools,
+not just consider them “magical.”
+#+END_QUOTE
+
+***** 0.2.1 The order of topics
+
+***** 0.2.2 Programming and programming language
+
+***** 0.2.3 Portability
+
+#+BEGIN_QUOTE
+If you have trouble with one of the popular, but rather elaborate, IDEs (in-
+tegrated development environments), we suggest you try working from the com-
+mand line; it’s surprisingly simple.
+#+END_QUOTE
+
+**** 0.3 Programming and computer science
+
+**** 0.4 Creativity and problem solving
+
+**** 0.5 Request for feedback
+
+**** 0.6 References
+
+**** 0.7 Biographies
+
+***** Bjarne Stroustrup
+
+***** Lawrence "Pete" Petersen
+
+**** Postscript
+
+*** Chapter 1 Computers, People, and Programming
+
+**** 1.1 Introduction
+
+LEFT OFF HERE: [2018-07-21 Sat]
+RETURNED HERE: TBD

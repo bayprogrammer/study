@@ -1,0 +1,279 @@
+#+FILETAGS: :reading:tech_studies
+
+* Current
+
+** Introduction to Programming and Problem Solving using Scala       :scala:
+
+:PROPERTIES:
+:title:     Introduction to Programming and Problem Solving using Scala
+:subtitle:
+:edition:   2nd
+:authors:   Mark C. Lewis, Lisa L. Lacher
+:publisher: CRC Press
+:city:      Boca Raton, FL
+:date:      2017
+:location:  Personal Library (Paper)
+:current_chapter: 2
+:current_page:    51
+:reading:         first
+:n_times_read:    0
+:END:
+
+[[file:scala.org::*Introduction%20to%20Programming%20and%20Problem%20Solving%20using%20Scala][Notes]]
+
+Current: [[file:scala.org::*2.11.4%20Exercises][2.11.4 Exercises]]
+
+** Programming, Principles and Practice using C++                      :cpp:
+
+:PROPERTIES:
+:title:     Programming
+:subtitle:  Principles and Practice using C++
+:edition:   2nd
+:authors:   Bjarne Stroustrup
+:publisher: Addison-Wesley
+:city:      Upper Saddle River, NJ
+:date:      2014
+:location:  [[file:~/Downloads/Books/c/programming_principles_and_practice_using_cpp.pdf][PDF eBook: ~/Downloads/Books/c]]
+:current_chapter: 1
+:current_page:    18
+:reading:         first
+:n_times_read:    0
+:END:
+
+[[file:cpp.org::*Principles%20and%20Practice%20using%20C%2B%2B][Notes]]
+
+Current: [[file:cpp.org::*1.1%20Introduction][1.1 Introduction]]
+
+** Practical Algebra
+
+:PROPERTIES:
+:title:     Practical Algebra
+:subtitle:  A Self-Teaching Guide
+:edition:   2nd
+:authors:   Peter Selby & Steve Slavin
+:publisher: John Wiley & Sons, Inc.
+:city:      New York
+:date:      1991
+:location:  Paper Book
+:current_chapter: 0
+:current_page:    0
+:reading:         first
+:n_times_read:    0
+:END:
+
+Notes (TODO)
+
+Current: TBD
+
+* Read Next
+
+** Programming in Scala                                              :scala:
+
+:PROPERTIES:
+:title:     Programming in Scala
+:subtitle:
+:edition:   3rd
+:authors:   Martin Odersky, Lex Sppon, Bill Venners
+:publisher: Artima Press
+:city:      Walnut Creek, California
+:date:      2016
+:location:  [[file:///home/zebdeos/Downloads/Books/scala/ProgInScala3ed.pdf][PDF eBook: ~/Downloads/Books/scala]]
+:current_chapter: 0
+:current_page:    0
+:reading:         first
+:n_times_read:    0
+:END:
+
+[[file:scala.org::*Programming%20in%20Scala][Notes]]
+
+** The Nature of Code                                      :java:processing:
+
+:PROPERTIES:
+:title:     The Nature of Code
+:subtitle:  Simulating Natural Systems With Processing
+:edition:   1st
+:authors:   Daniel Shiffman
+:publisher: Self Published
+:city:      N/A
+:date:      2012
+:location:  Personal Library (Paper)
+:location:  Online: https://natureofcode.com/book/
+:current_chapter: 0
+:current_page:    0
+:reading:         first
+:n_times_read:    0
+:END:
+
+[[file:processing.org::*The%20Nature%20of%20Code][Notes]]
+
+I bought the paper version, but I'll probably read the online version
+(because it's a bit easier given my workspace to read digital editions
+than physical ones, especially when I want to type a lot on my
+computer (for notes and code).
+
+** Core Java: Volume 1--Fundamentals                                  :java:
+
+:PROPERTIES:
+:title:     Core Java
+:subtitle:  Volume 1--Fundamentals
+:edition:   10th
+:authors:   Cay S. Horstmann
+:publisher: Prentice Hall
+:city:      Boston
+:date:      2016
+:location:  [[file:///home/zebdeos/Downloads/Books/java/core_java_volume_1_fundamentals_10e.pdf][PDF eBook: ~/Downloads/Books/java]]
+:current_chapter: 0
+:current_page:    0
+:reading:         first
+:n_times_read:    0
+:END:
+
+[[file:java.org::*Core%20Java:%20Volume%201--Fundamentals][Notes]]
+
+* On Hold
+
+** Agile Web Development with Rails 5.1
+
+*** [[file:///home/zebdeos/Downloads/Books/ruby/agile-web-development-with-rails-5-1_p1_0.pdf][PDF eBook]]
+
+*** [[file:///home/zebdeos/Code/0_STUDY/0001_agile-rails-5-1/notes.md][Old Notes (Markdown)]]
+
+* Backlog
+
+** Lisp
+
+*** Scheme
+
+**** https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html
+
+**** http://www.htdp.org/
+
+**** http://ds26gte.github.io/tyscheme/index.html
+
+**** https://people.eecs.berkeley.edu/~bh/ss-toc2.html
+
+**** http://groups.csail.mit.edu/mac/users/gjs/6946/sicm-html/
+
+**** https://gustavus.edu/mcs/max/concrete-abstractions-pdfs/index.html
+
+**** https://www.scheme.com/tspl4/
+
+*** Common Lisp
+
+**** Paradigms of Artificial Intelligence Programming
+
+By Peter Norvig
+
+https://github.com/norvig/paip-lisp
+
+**** Common Lisp, The Language (2nd. Ed.)
+
+by Guy L. Steele Jr.
+
+http://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html
+
+Amazon: https://www.amazon.com/Common-LISP-Language-Second-Steele/dp/1555580416/ref=pd_sim_14_3?_encoding=UTF8&pd_rd_i=1555580416&pd_rd_r=e69f5169-8208-11e8-8055-c563715e95aa&pd_rd_w=rhsaU&pd_rd_wg=QkKei&pf_rd_i=desktop-dp-sims&pf_rd_m=ATVPDKIKX0DER&pf_rd_p=7967298517161621930&pf_rd_r=H1B2ZNHR6TCT05VFPHGF&pf_rd_s=desktop-dp-sims&pf_rd_t=40701&psc=1&refRID=H1B2ZNHR6TCT05VFPHGF
+
+**** Practical Common Lisp
+
+By Peter Seibel
+
+http://www.gigamonkeys.com/book/
+
+The page has the full text, as well as links to where the paper copy
+can be purchased. Apress has an eBook (DRM free, watermarked PDF) as
+well, which would probably be my preferred format to acquire the book.
+
+**** Common Lisp, An Interactive Approach
+
+Online: https://cse.buffalo.edu/~shapiro/Commonlisp/
+
+Downloaded: [[file:~/Downloads/Books/lisp/cl-an-interactive-approach.pdf][file:~/Downloads/Books/lisp/cl-an-interactive-approach.pdf]]
+
+**** Common Lisp: A Gentle Introduction to Symbolic Computation
+
+Online: http://www.cs.cmu.edu/afs/cs.cmu.edu/user/dst/www/LispBook/index.html
+
+Downloaded: [[file:~/Downloads/Books/lisp/cl-a-gentle-intro-to-symbolic-computation.pdf][file:~/Downloads/Books/lisp/cl-a-gentle-intro-to-symbolic-computation.pdf]]
+
+**** Paul Graham's Lisp Books & Bibliography
+
+Bibliography: http://paulgraham.com/booklinks.html
+
+***** ANSI Common Lisp
+
+By Paul Graham
+
+http://paulgraham.com/acl.html
+
+***** On Lisp
+
+By Paul Graham
+
+http://paulgraham.com/onlisptext.html
+
+**** Lisp 1.5 Programmer's Manual
+
+by Michael I. Levin, John McCarthy
+
+Amazon: https://www.amazon.com/exec/obidos/ASIN/0262130114
+
+* Completed
+
+* Study Plans
+
+** C++
+
+https://isocpp.org/
+
+https://en.cppreference.com/w/
+
+1. Programming, Principles and Practice using C++, 2nd ed. (Bjarne
+   Stroustrup)
+
+2. A Tour of C++, 1st ed. (Bjarn Stroustrup)
+
+3. C++ Primer, 5th ed. (Stanley B. Lippman, et al.)
+
+4. C++ Annotations, Version 10.9.3+ (Frank B. Brokken)
+
+5. C++11 for Programmers, 2nd ed. (Deitel & Deitel)
+
+6. Discovering Modern C++ (Peter Gottschling)
+
+7. C++ Templates, The Complete Guide, 2nd ed. (David Vandevoorde, et
+   al.)
+
+8. Practical C++ Programming (Steve Oualline)
+
+9. Effective C++: 55 Specific Ways to Improve Your Programs and
+   Designs, 3rd ed. (Scott Meyers)
+
+10. Effective Modern C++: 42 Specific Ways to Improve Your Use of
+    C++11 and C++14 (Scott Meyers)
+
+11. C++ Concurrency In Action, 2nd ed. (Anthony Williams)
+
+12. Real-Time C++, Efficient Object-Oriented and Template
+    Microcontroller Programming (Christopher Kormanyos)
+
+13. The C++ Programming Language, 4th ed. (Bjarne Stroustrup)
+
+*** Cancelled
+
+- Learn C++ Tutorial
+
+  [2018-07-13 Fri]
+
+  http://www.learncpp.com/
+
+  Very good looking content, but way too many ads. I can kill them
+  with an ad blocker, but ads how are the dude keeps the site running.
+  I could donate something via PayPal, but I'm out of book cash for
+  now, so I'm just shelving this. The ads aren't just annoying,
+  they're intrusive, deceptive ("Download PDF" links right below the
+  text, deceptively injected so people click it thinking they get a
+  PDF of the text rather than going to some external ad site), and
+  unethical (trackers abound). I'd rather not use the resource (at
+  least until I can donate something) than be subjected to abusive
+  advertisements.

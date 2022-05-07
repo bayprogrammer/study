@@ -1,0 +1,258 @@
+#+FILETAGS: :radar:tech_studies
+
+* INBOX
+
+* Math
+
+** http://people.math.gatech.edu/~cain/textbooks/onlinebooks.html
+
+* Languages
+
+** Ruby                                                               :ruby:
+
+*** https://github.com/somaticio/tensorflow.rb
+
+** JavaScript                                                   :javascript:
+
+*** Implementations
+
+**** http://duktape.org/
+
+*** https://ml5js.org/
+
+*** https://mappa.js.org/
+
+*** https://js.tensorflow.org/
+
+** C/C++                                                               :cpp:
+
+*** https://www.bazel.build/
+
+*** https://cmake.org/
+
+** Carp                                                          :lisp:rust:
+
+*** https://github.com/carp-lang/carp
+
+** Ferret                                                     :lisp:clojure:
+
+*** https://ferret-lang.org/
+
+*** [[https://nakkaya.com/2016/06/10/ferret-a-hard-real-time-clojure-for-lisp-machines/][Ferret - A Hard Real-time Clojure for Lisp Machines]]
+
+*** [[https://nakkaya.com/2017/06/24/ferret-lisp-ffi-notes/][Ferret Lisp FFI Notes]]
+
+** Common Lisp                                             :lisp:commonlisp:
+
+* Processing
+
+** LibFreenect
+
+Open source driver to use MS Kinect on Linux (or Mac or Windows).
+
+https://github.com/OpenKinect/libfreenect
+
+** Ebay search for Microsoft Kinect
+
+https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2047675.m570.l1313.TR10.TRC0.A0.H0.Xmicrosoft+kinect.TRS0&_nkw=microsoft+kinect&_sacat=0
+
+* Industry
+
+Not applying for jobs right now, but keeping an eye on job openings to
+calibrate somewhat my focus on technical studies (forward thinking,
+not flighty).
+
+** Data Monsters
+
+http://datamonsters.com/
+
+- Scala
+- Python
+- Spark
+- Mesos
+- Akka
+- Cassandra
+- Kafka
+
+** Findify
+
+https://remoteok.io/remote-jobs/67771-remote-mid-senior-scala-developer-findify
+
+- Scala
+- PostgreSQL
+- Akka
+  - Akka Stream
+  - Akka HTTP
+- Linux/Unix
+- AWS
+- Data Mining / Machine Learning
+- Cassandra
+- Node
+
+** Numbrs Personal Finance AG
+
+https://remoteok.io/remote-jobs/67328-remote-software-engineer-backend-numbrs-personal-finance-ag
+
+- large scale distributed systems
+- highly concurrent production grade systems
+
+- Go / Java (C++, Scala)
+
+- Kubernetes, Mesos
+
+- Kafka
+- Spark
+- Storm
+- Flink
+- Cassandra
+
+- Encryption, Cryptography Standards
+
+** Cake Solutions (Bamtech Media)
+
+https://remoteok.io/remote-jobs/67415-remote-senior-scala-engineer-cake-solutions-a-bamtech-media-company
+
+"We want to talk with talented engineers who are either practising
+functional programming or interested in being functional (but some
+self-exploration with Haskell, Lisp, Clojure, or F# is necessary)."
+
+- Scala
+- Akka
+- Kafka
+- Kinesis
+- Dynamo
+
+- Lightbend Reactive Platform
+  - Scala
+  - Akka
+  - Play
+
+- Modern frameworks:
+  - Play
+  - ScalaJS
+  - AngularJS
+  - ReactJS
+
+"Knowledge of applying object-oriented and functional programming
+styles to real-world software engineering problems."
+
+"A keen interest in technology and self-improvement.  Examples include
+having an active Github account or completion of relevant Coursera
+courses."
+
+"Contributions to the technical community, either through blogs,
+internal workshops, meetups or conferences."
+
+** Wasphi
+
+https://remoteok.io/remote-jobs/66087-remote-scala-backend-developer-wasphi
+
+- Scala (APIs & Services)
+- Functional Programming
+- JVM/Scala Frameworks
+  - Akka
+  - Kafka
+  - Sangria
+- Ops work
+- PostgreSQL, Cassandra
+
+** Dropsource (Queue Software Inc)
+
+https://www.dropsource.com/blog/careers/scala-developer/
+
+- Scala
+- Akka
+- AWS Lambda
+- Event Sourcing
+- CS fundamentals
+  - data structures
+  - algorithms
+  - patterns
+  - complexity [big-o notation]
+- NoSQL DBs
+- AWS Suite
+  - EC2
+  - Lambda
+  - S3
+  - Cloudwatch
+  - IAM
+- Unit Testing
+
+** Navis (Portland/Bend OR)
+
+https://stackoverflow.com/jobs/191971/senior-software-developer-full-stack-navis
+
+- Java
+- AWS
+- React+Redux, Angular2
+- PostgreSQL, MySQL
+- C#/.NET
+- Expert w/ Design Patterns
+- SDLC
+- OO Analysis & Design
+- Agile
+- TDD
+
+- Linux
+- Git
+- OpenID
+- PostgreSQL
+- Docker
+- Voip
+- VB.NET
+- HTML5
+- CSS3
+
+** DataStax
+
+Cassandra-focused company, using Java, Scala, etc.
+
+allows remote
+
+Pretty sure that's where Tim Berglund ended up after GitHub (he's the
+guy that made The Maven video)
+
+https://www.youtube.com/watch?v=mBmExt184vc
+
+
+*** Senior Software Engineer (Java)
+
+https://datastax.wd5.myworkdayjobs.com/en-US/DataStaxCareers/job/Anywhere---World/Senior-Software-Engineer-Java_1649
+
+**** BA/BS degree in Computer Science or equivalent practical experience.
+
+**** 4+ years of experience in software engineering
+
+**** Expertise in Java development
+
+**** Command of asynchronous and concurrent programming concepts
+
+**** Strong knowledge of network programming
+
+**** Good verbal and written communication skills
+
+**** Experience with Java reactive programming
+
+**** Effective technical experience with Git and GitHub
+
+**** Experience with other languages such as Scala, Python, C#, Node.js, or C++
+
+**** Experience with distributed databases (DataStax Enterprise or Cassandra in particular)
+
+**** Experience with Jenkins or other CI systems
+
+**** Experience with cloud environments for build and deployment
+
+**** Proven ability to collaborate well in a globally distributed team environment
+
+**** Self starting: identifies problems and areas for improvement; takes ownership of projects
+
+**** Easy to work with but has high expectations of self and others
+
+**** Provides and receives constructive feedback well
+
+**** Leads with positive attitude and assumes positive intent
+
+**** Competitive streak: wants the win personally and be part of the companies win
+
+**** Customer fanatic: willing to jump in and do anything to help customers

@@ -1,0 +1,7 @@
+#+FILETAGS: :opengl:tech_studies
+
+* thinmatrix opengl tutorial
+
+** DONE tutorial 1 get window open
+
+** TODO tutorial 2 get quad rendered

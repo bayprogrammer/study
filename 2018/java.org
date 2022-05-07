@@ -1,0 +1,7 @@
+#+FILETAGS: :java:tech_studies
+
+* Books
+
+** Core Java: Volume 1--Fundamentals
+
+[[file:0_reading.org::*Core%20Java:%20Volume%201--Fundamentals][Technical Reading List Entry]]

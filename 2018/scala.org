@@ -1,0 +1,886 @@
+#+FILETAGS: :scala:tech_studies
+
+* Videos
+
+*** WATCHED [[https://www.youtube.com/watch?v=xCmHKzYXoko][Scala in Action (Heiko Seeberger)]]
+CLOSED: [2018-06-30 Sat 21:06]
+
+Really enjoyed this talk. Was a nice overview of Scala, and makes me excited to continue learning and to use the language.
+
+
+*** CANC [[https://www.youtube.com/watch?v=vWsWoAUjjck][Rethinking Scala (Bruce Eckel, SF Scala)]]
+CLOSED: [2018-07-01 Sun 14:39]
+
+Not finishing this video. Eckel's talk was not really about anything technical, and mostly just him babeling on about his history trying to help people find leverage with languages. This reminds me of a talk I saw him give in person at OSCON some years back-- not really interesting if you want to learn about somthing actually technical. I watched about half of the video which was his talk proper, and I'm giving up during the QA session (which is about as long as his proper talk and so far is just as worthless).
+
+
+*** WATCHED [[https://www.youtube.com/watch?v=AIdBBMVrRLQ][Make a Little Game (Mark Lewis)]]
+CLOSED: [2018-07-01 Sun 15:32]
+
+Not a bad video, but it was one in a series so I was missing quite a bit of context. I like Lewis (bought his not-cheap college textbooks on Scala), and I think he's a good teacher.
+
+
+*** WATCH [[https://www.youtube.com/watch?v=YuYSvoFY0dM][Serious Fun with Scala (Shadaj Laddad)]]
+
+
+*** WATCH [[https://www.youtube.com/watch?v=AAMncMqpOds][Cats -- A fresh look at Pure Functional Programming in Scala (Stew O'Connor)]]
+
+
+*** WATCH [[https://www.youtube.com/watch?v=B72a1D2xvFs][Experiment: A Reactive 3D Game Engine in Scala (Alexandar Prokopec)]]
+
+
+*** WATCH [[https://www.youtube.com/watch?v=Mw_Jnn_Y5iA][Scala Monads: Declutter Your Code With Monadic Design (Dan Rosen)]]
+
+* Books
+
+** Programming in Scala
+
+[[file:0_reading.org::*Programming%20in%20Scala][Technical Reading List Entry]]
+
+Martin Odersky, et al.
+Atrima Press
+3rd Edition
+
+*** Frontmatter
+
+*** Chapter 1
+
+** Introduction to Programming and Problem Solving using Scala
+
+Mark C. Lewis, Lisa L. Lacher
+CRC Press
+
+[[file:0_reading.org::*Introduction%20to%20Programming%20and%20Problem%20Solving%20using%20Scala][Technical Reading List Entry]]
+
+*** Frontmatter
+
+*** Chapter 1 Basics of Computers, Computing, and Programming
+
+FINISHED: [2018-07-06 Fri]
+
+**** 1.1 History
+
+- Kurt Godel :: incompleteness theorim
+
+- Alan Turing, Alonzo Church :: first models of computation, fathers of
+modern computer science as a field of study & discipline.
+
+  - Alan Turing :: Turing Machine
+
+  - Alonzo Church :: Lambda Calculus
+
+- Church-Turing Thesis :: Anything that can be computed can be
+     computed via a Turing machine or the lambda calculus (or anything
+     which is equivalent to them).
+
+**** 1.2 Hardware
+
+Basic elements of a computer:
+
+- central processing unit (CPU)
+
+- memory [RAM]
+
+- input/output [I/O]
+
+***** 1.2.1 Central Processing Unit
+
+- von Neumann architecture :: program instructions are themselves data
+     and can be stored and processed in the same place as operational
+     data
+
+- John von Neumann :: another forefather of modern computing
+
+- Address :: Memory location that the CPU reads from and writes to
+             (can hold both program executable data and the data the
+             program operates upon).
+
+- cycle :: process of the CPU reading an address and executing the
+           operation is called a cycle
+
+- bus :: mechanism by which data is carried between the CPU and memory
+
+- gigaherz :: billion cycles in a second
+
+***** 1.2.2 Memory
+
+- parallel processing :: mutliple cores in modern CPUs allow them to
+     do multiple operation in parallel
+
+- multithreaded :: when a single program drives multiple parallel
+                   operations (multiple cores)
+
+  - Scala has strengths for multi-threaded programs; this book will
+    cover it briefly in chapter introducing OO, and the second volume
+    will cover it extensively
+
+- RAM is much faster to access than permanant storage, but even that
+  isn't fast enough for modern CPUs, which have their own caches (at
+  various levels, L1, L2, L3, etc.) which are even closer and faster
+  to access than main memory.
+
+- certain types of programmers need to be concerned with details of
+  ensuring their programs can stay within a certain level of cache
+  (not the type of code this book will be concerned with)
+
+***** 1.2.3 Input/Output Devices
+
+- input device is needed to enter data and instructions into a computer
+
+- output device is needed to display results of computation/processing
+  of data
+
+- keyboard is the standard input device
+
+- terminal is the standard output device
+
+**** 1.3 Software
+
+#+BEGIN_QUOTE
+...without some type of software, the hardware is useless. It is the
+running of a program that makes hardware useful to people.
+#+END_QUOTE
+
+- BIOS :: Basic Input/Output System, immutable memory (distinct from
+          primary or secondary memory or storage) which loads
+          fundamental software enabling higher layers to boot
+
+  - Such read-only memory used to drive the hardware at the lowest
+    level is often referred to as firmware.
+
+  - "firmness" implies this intermediate purpose bridging the hardware
+    and the normal idea of software; strictly firmware itself really
+    is software, however
+
+- OS :: Operating System
+
+  - serves as interface to input/output devices
+
+  - provides means to user to load software into memory and have the
+    CPU execute it
+
+**** 1.4 Nature of Programming
+
+LEFT OFF HERE: [2018-07-05 Thu]
+RETURNED HERE: [2018-07-06 Fri]
+
+- Machine Language :: Binary (often represented as hexedecimal)
+     instructions directly usable by a CPU
+
+  - Very error prone for humans to write by hand
+
+- Assembly :: More user friendly representation of the machine
+              language employing mnenomics and helping track memory
+              locations automatically.
+
+- Assembler :: Program that converts assembly to machine language.
+
+- High Level Languages :: Languages which help humans express and
+     organize code in far higher level vocabularies than assembly
+
+  - Compiler :: Converts high level language code into assembly (then
+                down to machine code)
+
+  - Interpreter :: Interprets and executes a program written in a high
+                   level language directly, without boiling down to
+                   machine language.
+
+#+BEGIN_QUOTE
+The true benefits of programming are not seen in the ability to tell a
+computer how to do something. The real benefits come from learning how
+to break problems down.
+#+END_QUOTE
+
+This section is rich in thoughts and ideas that resonate with
+me. Lewis' views on programming as an artform is exactly spot on.
+
+#+BEGIN_QUOTE
+Programming itself is a creative task. When you are programming, you
+are taking an idea that exists in your head and giving it a
+manifestation that is visible to others.
+#+END_QUOTE
+
+**** 1.5 Programming Paradigms
+
+***** 1.5.1 Imperative Programming
+
+Tell the computer how to solve the problem. Inverse of declarative
+programming (telling the computer what to compute, without prescribing
+the how).
+
+Imperative is the native language of the computer's machine
+language. Fundamentally that's how a computer computes at the hardware
+level.
+
+***** 1.5.2 Functional Programming
+
+***** 1.5.3 Object-Oriented Programming
+
+***** 1.5.4 Logic Programming
+
+***** 1.5.5 Nature of Scala
+
+**** 1.6 End of Chapter Material
+
+***** 1.6.1 Summary of Concepts
+
+***** 1.6.2 Exercises
+
+Not coding exercises, I'll pass.
+
+http://www.top500.org
+
+***** 1.6.3 Projects
+
+Not coding projects, I'll pass.
+
+*** Chapter 2 Scala Basics
+
+FINISHED: TBD
+
+**** 2.1 Scala Tools
+
+**** 2.2 Expressions, Types, and Basic Math
+
+- Token :: Smallest unit of a programming language that carries
+           meaning (like English words and punctuation).
+
+- Statement :: Complete executable instruction (like English sentence).
+
+- Expression :: Group of tokens which resolve to a typed value (like
+                English phrase).
+
+  - Some expresssions are made up from a single token.
+
+    - Literal :: One such single-token expresssion (a literal value that
+                 evaluates to itself).
+
+      - String Literal
+
+      - Numeric Literal
+
+- Type :: specifications of the values and operations that are valid
+          for them.
+
+**** 2.3 Objects and Methods
+
+LEFT OFF HERE: [2018-07-06 Fri]
+RETURNED HERE: [2018-07-07 Sat]
+
+- Object :: Data grouped with operations that work on that data
+
+- Method :: The operations an object knows how to perform
+
+- Argument :: When needed, extra information given to an object's
+              method to complete it's job
+
+Methods that behave as infix operaters may be defined for an object;
+such a method accepts a single argument (the thing to the right of the
+"operator"), and the receiver is the object the method is invoked on
+(the thing to the left side of the "operator").
+
+DSLs FTW!
+
+**** 2.4 Other Basic Types
+
+- Unit :: type for value which carries no information (sort of like
+          null/void, though it /is/ a value.
+
+- Tuple :: sequence of a specific number of specific types in a
+           specific order (strict combination of types)
+
+  - Tuples have a special syntax, "this" -> "that", that constructs
+    two-tuples. Looks like it's this special syntax is useful for
+    specifying key-value pairs.
+
+Specify Tuple type like so
+
+#+BEGIN_SRC
+val x: (Int, Int, String) = (5, 5, "Foo")
+#+END_SRC
+
+The type is specified the same way the literal tuple is entered, just
+instead of values between the parens you use the types.
+
+Dereference fields of a tuple via ._1, ._2, etc. special methods:
+
+#+BEGIN_SRC
+x._1  //=> 5
+x._3  //=> "Foo"
+#+END_SRC
+
+Silly Scala, using 1-based indexing for Tuples (but not everything
+else!).
+
+**** 2.5 Back to the Numbers
+
+***** 2.5.1 Binary Arithmetic
+
+***** 2.5.2 Negative Numbers in Binary
+
+- Unsigned Integer :: Number represented in binary which has no sign
+     (always positive in this representation).
+
+- Signed Integer :: Number representing signed integer via
+                    twos-complement
+
+In Scala, all numeric types (other than Char) are signed. Char is
+unsigned 16 bit integer.
+
+| Type  | Bits |                  Min |                 Max |
+|-------+------+----------------------+---------------------|
+| Byte  |    8 |                 -128 |                 127 |
+| Short |   16 |               -32768 |               32767 |
+| Int   |   32 |          -2147483648 |          2147483647 |
+| Long  |   64 | -9223372036854775808 | 9223372036854775807 |
+
+These, I presume, are the Java types (shared by Scala). With C/C++ the
+meanings of things like Int are platform defined (as I recall). Also,
+as I read earlier, with the Scala (and the JVM I presume) all the
+numeric types are signed (save Char). With C/C++ you have the ability
+to use both signed and unsigned (I think because there are times you
+want the larger integers in less memory when you know you won't have
+negative numbers).
+
+- Twos Complement :: the system by which the representation of
+     negative numbers on modern systems
+
+#+BEGIN_SRC
+    01111111
++   10000001
+------------
+=  100000000
+    \______/
+       |
+       V
+only bits kept in 8 bit signed integer
+#+END_SRC
+
+So the negative of a positive number is that which is added to it to
+cause it to be zero (after truncating to the bit width), which is
+always going to be the flip of the positive number plus 1:
+
+#+BEGIN_SRC
+    01101011
++   10010101
+------------
+=  100000000
+#+END_SRC
+
+#+BEGIN_SRC ruby
+# the negation of a positive number is the negative number which,
+# when added to it, results in 0. For an 8 bit integer,
+#
+# 10000001 is the negation of 01111111
+#
+# because once added, the 8 bits are all 0 (because the 1 carried
+# to the 9th bit is discarded)
+(0b10000001 + 0b01111111) & 0b11111111  #=> 0
+#+END_SRC
+
+The negation of a positive integer is found by taking the inverted bit
+pattern and then adding one to it (for that is the number which will
+cause the overflow from the carry into the next bit up which is
+discarded, leaving you with 0).
+
+Converting the negative integer into decimal is done the exact same
+way. Flipping the bits, adding one, and wham.
+
+#+BEGIN_SRC ruby
+(0b01111111 + 0b10000001) & 0b11111111  #=> 0
+#+END_SRC
+
+Then we are back to our original value, except we "remember" that we
+just converted from a negative, and thus apply the sign:
+
+-127
+
+There are some properties of this system, which are understood
+mathematically by others (but not really by myself at this point)
+which means you don't have to convert when adding the numbers together
+or do any special handling. If you add a negative two's complement to
+a positive two's complement you get the right answer (keeping in mind
+overflow and truncation).
+
+Useful supplemental reading (for me):
+
+- https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html
+
+- https://stackoverflow.com/questions/1049722/what-is-2s-complement
+
+****** DEFICIENT Two's Complement            :deficient:twos_complement:
+As of [2018-07-07 Sat] my understanding of two's complement numbers is
+still deficient (though better than it was). I should revisit the
+topic and try to better understand the mathematical underpinnings of
+the concept at some point (not enough to merely understand the
+mechanics of how the CPU uses it).
+
+***** 2.5.3 Other Integer Types
+
+LEFT OFF HERE: [2018-07-07 Sat]
+RETURNED HERE: [2018-07-08 Sun]
+
+Literal Long is entered by appending "L" to number.
+
+***** 2.5.4 Octal and Hexadecimal
+
+***** 2.5.5 Non-Integer Numbers
+
+- Double :: Double-precision floating point number.
+
+  - Can use to represent floating point numbers
+
+  - Can also be created using scientific notation literal numbers
+
+  - Uses 64 bits
+
+- Float :: Single-precision floating point number.
+
+  - Uses 32 bits
+
+- Floating point format :: binary representing using three parts: sign
+     bit, exponent, and mantissa (s, e, & m)
+
+  - Used by both Double & Float types
+
+  - Mantissa :: normalized binary for fractional component
+
+  - "comparisons between floating point values can be done with the
+    same logic used for integer values with the same number of bits"
+    thanks to the use of "bias"
+
+  - limited precision
+
+    - can be overflowed like int types
+
+    - the numbers are not perfectly precise represetations of the real
+      numbers, but rather imprecise representations; they are
+      approximations
+
+    - floating point numbers created with arithetic cannot be
+      guaranteed to be accurately comparable for equality
+
+    - floating point numbers are not suitable for representing money
+      values (use integers representing cents rather than floats
+      representing dollars)
+
+**** 2.6 The math Object
+
+**** Syntax versus Semantics
+
+- Syntax :: the form the tokens of a language requires to make
+            well-formed programs (does not imply meaningful programs)
+- Semantics :: meaning of the program, what it /is/
+
+**** 2.7 Naming Values and Variables
+
+- Declaration :: binding a name to a reference to an object (value)
+
+  - `val` and `var` are keywords used to bind names to refs to values
+
+- valid names start with letter or underscore, and are followed by
+  zero or more letters, underscores, and numbers
+
+  - valid names must not be reserved keywords of the Scala langauge
+
+  - Scala variable names are case sensitive
+
+  - Scala programmers generally adopt the same conventions of Java
+    programmers, using camelcased variable names
+
+    - the first letter of the variable is not capitalized
+
+    - but the first letter of a class name is capitalized
+
+- following the variable name is a colon then the type of the value
+  the named reference may used to refer to (it's type)
+
+  - the type of variables often can be inferred automatically by Scala
+    upon initialization (based on what the variable is being initialized
+    to)
+
+  - therefore you often can omit the type declaration
+
+- following the variable name and type is an equals sign and then an
+  expression (for the value to be referred to by the named reference)
+
+  - initializing a variable on creation is mandatory in Scala (unlike
+    many other languages)
+
+- variables are named references to values, not the values themselves
+
+  - the variable "holds" the reference, not the value itself; it's the
+    reference that refers to the value
+
+- Assignment :: changing what a variable's reference is referring to
+
+  - you do not perform assignment with the val or var keywords, you
+    just use the equals sign with the name and the new value/reference
+
+  - if you do use val or var with the same name, you are creating a
+    new variable, not changing what the old one refers to
+
+- val :: give a name to a reference to a value that can never be
+         changed; the reference can't be changed to point to something
+         else
+
+  - val can be used again, reusing the same name, to create a new
+    value reference, but the original reference has not be changed,
+    only a new one created shadowing the original one's name
+
+  - vals do not make the thing being referred to immutable; the
+    referenced object itself may mutate (depending on what it is), but
+    the named val's reference can never be reused to point to any
+    other object (mutable or otherwise)
+
+- var :: give a name to a reference to a value that can be changed;
+         the reference can be changed to point to something else
+
+- vals are to be preferred over vars whenever they can be used; the
+  fewer things that can change the easier it is to work with them
+
+#+BEGIN_QUOTE
+As a general rule, you should prefer val declarations over var
+declarations. Try to make everything a val, and only convert it to a
+var if you find that you truly need to do so. The reason for this is
+that it simplifies the logic of your program and makes it less likely
+that you will mess things up. Things that change are harder to reason
+about than things that stay the same.
+#+END_QUOTE
+
+***** 2.7.1 Patterns in Declarations
+
+- Pattern Matching :: more complete coverage in chapter 5; for now
+     think of them as ways of using tuples on the left side of a
+     declaration or assignment to bind muliple values to multiple
+     named references
+
+- You can assign a tuple to one name, which does what you'd expect
+
+- But you can specify multiple names in parentheses on the left hand
+  side of the equals sign, which unpacks the tuple used on the right
+  hand side
+
+  - You can do this with literals or with a previously created
+    variable referring to a tuple
+
+- This is an alternative way of deferencing the values of a tuple
+  (compared to their ._1, ._2, etc. index).
+
+***** 2.7.2 Using Variables
+
+**** 2.8 Details of Char and String
+
+In Scala a string cannot contain a literal newline character (breaking
+accros lines the way that is valid in some languages, such as Ruby).
+
+***** 2.8.1 Escape Characters
+
+More or less like C-style escapes. You can input a Unicode using the
+`\uNNNN` where NNNN is the numeric code for the Unicode value to be
+inserted.
+
+***** 2.8.2 Raw Strings
+
+Scala has a triple-equals raw string that is similar to Pythons. You
+can include literal characters (such as newline) that you'd otherwise
+have to escape.
+
+- Raw String :: such a string literal entered using the triple-quote
+                syntax (and not requiring additional escaping within).
+
+***** 2.8.3 String Interpolation
+
+- String Interpolation :: alternative way to inserting expression
+     values into a string aside from using `+` String concatenation.
+
+String interpolation is enabled for a string by prefixing the string
+with an "s" or "f" (before the quotes), and then entering the
+expression and formatting options inside the quoted string. Use a
+$variable to insert a variable, or ${expression} to insert a more
+complex expresssion. The curly braces can also help disambiguate
+between the variable and parts of the string adjacent to it which are
+not part of the variable name.
+
+The use of the "f" prefix enables C's printf-style format options to
+be used (which are out of scope for this book).
+
+Scala's concept of string interpolation can be extended by the
+programmers using the language.
+
+String interpolation is more efficient than string concatenation.
+
+***** 2.8.4 String Methods
+
+Scala Strings are Java Strings, and thus have the standard Java String
+methods. Additional methods are available on strings in Scala by way
+of a Scala feature known as "implicit conversions".
+
+- Indexing (into a string) :: getting a specific member out of the
+     string through Scala's indexing syntax
+
+Scala indexes things using parentheses (unlike many other languages
+which use square brackets).
+
+***** 2.8.5 Immutability of Strings
+
+- Immutable (strings) :: string objects cannot be changed in place
+     after they are created (modifications are done by creating new
+     strings derived from the original, leaving the original
+     unchanged)
+
+Most types we will work with will be immutable, in the same way as
+String.
+
+**** 2.9 Sequential Execution
+
+LEFT OFF HERE: [2018-07-08 Sun]
+RETURNED HERE: [2018-07-23 Mon]
+
+- script :: small program designed to perform a specific task
+
+  - next logical step for learning after initial REPL usage
+
+[[file:~/Code/0_STUDY/0002_intro_prog_prob_solving_using_scala_2e/ch02/TimeConvert.scala][Listing 2.1: TimeConvert.scala]]
+
+[[file:~/Code/0_STUDY/0002_intro_prog_prob_solving_using_scala_2e/ch02/TimeConvert2.scala][Listing 2.1: TimeConvert2.scala]]
+
+***** 2.9.1 Comments
+
+**** 2.10 A Tip for Learning to Program
+
+Embrace immersion, as with natural language, through constant
+application and usage of programming.
+
+**** 2.11 End of Chapter Material
+
+***** 2.11.1 Problem Solving Approach
+
+***** 2.11.2 Summary of Concepts
+
+***** 2.11.3 Self-Directed Study
+
+What is cosin anyway? I know it's a mathematical function, but have
+never studied it. I was suprised when going through the self-directed
+study using the REPL that
+
+math.cos(math.Pi) == -1.0
+
+Scala (and programming in general) can be a fun way to study math
+(esp. higher math). Scheme with the numeric tower too. C/C++ too
+probably for experimenting with mathematical algorithms.
+
+***** 2.11.4 Exercises
+
+1. What are the types of the following expressions?
+
+   (a) 1            //=> Int
+
+   (b) 1.7          //=> Double
+
+   (c) 1.0          //=> Double
+
+   (d) 'h'          //=> Char
+
+   (e) "hi"         //=> String
+
+   (f) 5/8          //=> Int
+
+   (g) 1 + 0.5      //=> Double
+
+   (h) 7 * 0.5      //=> Double
+
+   (i) "hi".length  //=> Int
+
+2. Which of the following are valid Scala variable names?
+
+   (a) 1stName      // invalid
+
+   (b) exam_1       // valid
+
+   (c) Four         // valid
+
+   (d) H            // valid
+
+   (e) 4July        // invalid
+
+   (f) _MIXUP       // valid
+
+   (g) GO!          // invalid
+
+   (h) last name    // invalid
+
+   (i) May4Meeting  // valid
+
+   (j) sEcTiOn1     // valid
+
+   (k) version.2    // invalid
+
+3. Do the following 8-bit binary arithmetic by hand.
+
+   LEFT OFF HERE: [2018-07-23 Mon]
+   RETURNED HERE: [2018-07-24 Tue]
+
+   (a) 10101101 + 11010100 = 110000001
+
+       I don't know if I'm supposed to truncate... I'm guessing we
+       are, otherwise it wouldn't just be 8-bit binary arithmetic...
+
+   (b) 00111110 + 00111011 = 01111001
+
+   (c) 01001010 + 00110010 = 01111100
+
+4. Convert the following decimal values to binary (8-bit), hex
+   (2-digit), and octal (3-digit) by hand.
+
+   (a) 7
+
+     binary: 0b00000111
+
+     hex:    007
+
+     octal:  0007
+
+   (b) 18
+
+     binary: 0b00010010
+
+     hex:    0x12
+
+     octal:  0022
+
+   (c) 57
+
+     binary: 0b00111001
+
+     hex:    0x39
+
+     octal:  0071
+
+   (d) 93
+
+     binary: 0b01011101
+
+     hex:    0x5D
+
+     octal:  0135
+
+   LEFT OFF HERE: [2018-07-24 Tue]
+   RETURNED HERE: [2018-07-25 Wed]
+
+   (e) 196
+
+     binary: 0b11000100
+
+     hex:    0xC4
+
+     octal:  0304
+
+5. Convert the following hex value to binary and decimal by hand.
+
+   (a) 0x35
+
+     binary:  0b00110101
+
+     decimal: 53
+
+   (b) 0x96
+
+     binary:  0b10010110
+
+     decimal: 150
+
+   (c) 0xA8
+
+     binary:  0b10101000
+
+     decimal: 168
+
+   (d) 0x7F
+
+     binary:  0b01111111
+
+     decimal: 127
+
+6. Convert the following decimal values to binary (8-bit) and hex
+   (2-digit) by hand.
+
+   (a) -87
+
+     binary: 0b10101001
+
+     hex:    0x-61  (or 0xA9 for twos complement conversion)
+
+   I don't know if he wants the hex values for twos complement or if I
+   can use actual negative signs as with decimal. The book exercises
+   aren't clear, and it's also not clear looking at the relevant parts
+   of the text or supplemental videos what exactly he's looking for
+   with the hex. (Note, I'm doing exercise 6 before doing 5.)
+
+   LEFT OFF HERE: [2018-07-25 Wed]
+   RETURNED HERE: [2018-07-26 Thu]
+
+   (b) -32
+
+     binary: 0b11100000
+
+     hex:    0x-20  (or 0xE0 for twos complement repr.)
+
+   (c) -105
+
+     binary: 0b10010111
+
+     hex:    0x-69  (or 0x97 for twos complement repr.)
+
+   (d) -1
+
+     binary: 0b11111111
+
+     hex:    0x-01  (or 0xFF for twos complement repr.)
+
+The rest of the exercises I will do over time, and just log start and
+stop here:
+
+LEFT OFF HERE: [2018-07-26 Thu]
+RETURNED HERE: TBD
+
+7. Write a script that will calculate the cost of a fast food order
+   for a burger stand that sells hamburgers, french fries, and
+   milkshakes. Hamburgers cost $2.00, french fries cost $1.00, and
+   milkshakes cost $3.00. The tax rate is 8%. Ask the customer how
+   many of each item they would like, then display a receipt that
+   shows the price of each item, how many of each item was ordered,
+   the extension (i.e. price * quantity), the subtotal, the amount of
+   tax, and then the total due.
+
+8. Kyle is really hungry for pizza and wants to get the best pizza
+   deal. He is not sure if it is a better deal to get two cheaper
+   medium sized pizzas or one large pizza. Write a script that will
+   help him figure out which to order. He can get two 12 inch pizzas
+   for $12.00 or one 14 inch pizza for $9.00. Hint: Use the formula
+   "(* Pi (sq r))" [converted from messed up format in book to Lisp]
+   to find the area of a pizza in inches.
+
+9. Bryn just started a new job, but is already thinking of retirement.
+   She wants to retire as a millionaire. She plans on saving $700 per
+   month and expects to receive an annual return of 7%. Will she be a
+   millionaire if she retires in 30 years? Write a script to figure
+   this out.
+
+10. A town administrator in west Texas is trying to decide if she
+    should build a larger water tower. The town has a water tower that
+    contains 20,000 gallons of water. If there is no rain, write a
+    script that will calculate the number of weeks the water will last
+    based on the town's usage (provided by the town administrator).
+    The weekly usage does not exceed 20,000 gallons.
+
+11. Write a script that will calculate how far a projectile will go
+    given a launch speed and an angle ignoring friction. Assume that
+    the projectile is launched from ground level with a certain speed
+    in m/s and at a certain angle in radians. Use the fact that
+    acceleration due to gravity is (/ (meters 9.8) (sq s)). The steps
+    in doing this would be to calculate the speed parallel and
+    perpendicular to the ground with math.sin and math.cos, then
+    figure out how long it takes for the projectile to slow to a
+    vertical speed of zero (= v (- (sub v 0) (* a t)), and use double that
+    time as how long it stays in the air.

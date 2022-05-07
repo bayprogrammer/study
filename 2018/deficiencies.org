@@ -1,0 +1,12 @@
+#+FILETAGS: :tech_studies:deficiencies
+
+* Two's Complement Numbers
+
+I don't actually understand two's complement number's way to
+operation. I know they are used to effectively divide up the bitspace
+for a number into a positive half and a negative half, but how it
+works I do not know. As of [2018-07-07 Sat].
+
+I was confronted by my ignorance while trying to understand the
+material in [[file:scala.org::*2.5.2%20Negative%20Numbers%20in%20Binary][2.5.2 Negative Numbers in Binary]] of [[file:0_reading.org::*Introduction%20to%20Programming%20and%20Problem%20Solving%20using%20Scala][Introduction to
+Programming and Problem Solving using Scala]].

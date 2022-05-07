@@ -1,0 +1,28 @@
+#+FILETAGS: :clojure:lisp:tech_studies
+
+* Libraries, Tools, & Frameworks
+
+** sbt
+
+*** [[https://github.com/sbt/sbt-groll][sbt-groll]]
+
+SBT plugin for navigating git repo from within SBT console.
+
+
+
+* Videos
+
+** WATCHING [[https://www.youtube.com/watch?v=dGVqrGmwOAw][Clojure Concurrency (Rich Hickey)]]             :video_downloaded:
+
+There is an alternative version of the video here that combines the original video with slides synchronized: https://www.youtube.com/watch?v=nDAfZK8m5_8.
+
+I need to archive this locally.
+
+- [X] download video
+
+- Bagwell:
+  - https://infoscience.epfl.ch/search?f=author&p=Bagwell%2C%20Phil&ln=en
+  - https://infoscience.epfl.ch/record/64398/files/idealhashtrees.pdf
+
+
+** WATCH [[https://www.youtube.com/watch?v=vFbaUhCYO3Y][Functional Game Development (Zachary Oakes)]]

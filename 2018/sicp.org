@@ -1,0 +1,1 @@
+#+FILETAGS: :sicp:scheme:lisp:comp_sci:tech_studies

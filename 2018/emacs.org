@@ -1,0 +1,34 @@
+#+FILETAGS: :emacs:lisp:tech_studies
+
+* Registers
+
+- C-x r SPC  store current point in register (like bookmark)
+- C-x r w    store window arrangement in register
+- C-x r j    recall window arrangement (or whatever) from register
+
+
+* Org Mode
+
+
+** Finding Stuff
+
+- C-[ pushes current org buffer into search stack
+- C-a t shows all todos in search stack buffers
+- C-a T shows all todos, based on selectable keyword, in stack
+
+
+** Scheduling Stuff
+
+- C-u C-c .   to schedule heading
+- C-c a a     (org-agenda-list)
+
+
+** Capturing Stuff
+
+- C-c c
+
+
+** Hyperlinks
+
+- TODO how do we insert hyperlink?
+- TODO how do we follow a hyperlink?
