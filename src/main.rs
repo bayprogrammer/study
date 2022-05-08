@@ -1,5 +1,5 @@
-const GRID_STRIDE: usize = 10;
-const GRID_ROWS:   usize = 10;
+const GRID_STRIDE: usize = 40;
+const GRID_ROWS:   usize = 24;
 const GRID_SIZE:   usize = GRID_ROWS * GRID_STRIDE;
 
 fn main() {
@@ -38,7 +38,7 @@ impl GameGrid {
         let mut i = 0;
         for x in self.grid.iter() {
             if *x {
-                print!("# ")
+                print!(" o")
             } else {
                 print!("  ")
             }
