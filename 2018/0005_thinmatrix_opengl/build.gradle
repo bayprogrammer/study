@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'engineTester/MainGameLoop'
+
+dependencies {
+    compile fileTree('lib/jar')
+}
+
+tasks.withType(JavaExec) {
+    systemProperty "java.library.path", "lib/native"
+}
