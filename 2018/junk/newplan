@@ -1,0 +1,93 @@
+#!/bin/sh
+
+TODAY=$(date +%Y-%m-%d)
+HOSTNAME=$(hostname -s | sed 's/-\(alpha\|beta\|gamma\|delta\|epsilon\)$//')
+
+main() {
+  if ! today_log; then
+    header_log
+  fi
+
+  if ! today_plan; then
+    header_plan
+  fi
+}
+
+today_log() {
+  today_x log
+}
+
+today_plan() {
+  today_x plan
+}
+
+today_x() {
+  if ! [ -f $HOME/Documents/Plan/current.$1 ]; then
+    init_$1
+  fi
+
+  grep "=== .* $TODAY" $HOME/Documents/Plan/current.$1 1>/dev/null 2>&1
+}
+
+rotate_x() {
+  file=$HOME/Documents/Plan/current.$1
+  if [ -f $file ]; then
+    mv $file $HOME/Documents/Plan/$(filename_for $file $1)
+  fi
+}
+
+filename_for() {
+  file_date=$(grep '^=== ' $1 | cut -d'/' -f2)
+  echo ${file_date}_zmd.$2
+}
+
+init_plan() {
+  init_x plan
+  [ -f $HOME/.plan ] || ln $HOME/.plan $HOME/Documents/Plan/current.plan
+}
+
+init_log() {
+  init_x log
+}
+
+init_x() {
+  mkdir -p $HOME/Documents/Plan/
+  header_$1 > $HOME/Documents/current.$1
+}
+
+header_plan() {
+  header_x plan
+}
+
+header_log() {
+  header_x log
+}
+
+header_x() {
+  echo "=== $(date +%A) .$1 / $TODAY / $(date +UTC%:z) / zmd@$(find_context) =======\n\n"
+}
+
+find_context() {
+  case $HOSTNAME in
+    ceres)
+      echo "home"
+      ;;
+    skylab)
+      echo "home"
+      ;;
+    mir)
+      echo "home"
+      ;;
+    lab)
+      echo "la"
+      ;;
+    bayprogrammer)
+      echo "bayprogrammer"
+      ;;
+    datastorm)
+      echo "datastorm"
+      ;;
+  esac
+}
+
+main
