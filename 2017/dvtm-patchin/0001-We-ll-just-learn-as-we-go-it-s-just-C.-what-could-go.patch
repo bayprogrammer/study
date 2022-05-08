@@ -1,0 +1,49 @@
+From 3b41fa88a8e880255337f1e1c7c0abbe64569077 Mon Sep 17 00:00:00 2001
+From: Zeb DeOs <zebdeos@bayprogrammer.com>
+Date: Fri, 10 Nov 2017 21:20:48 -0800
+Subject: [PATCH 1/5] We'll just learn as we go, it's just C... what could go
+ wrong??
+
+---
+ dvtm.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/dvtm.c b/dvtm.c
+index 2b7ebdc..0ccce65 100644
+--- a/dvtm.c
++++ b/dvtm.c
+@@ -193,6 +193,7 @@ static void focusleft(const char *args[]);
+ static void focusright(const char *args[]);
+ static void killclient(const char *args[]);
+ static void paste(const char *args[]);
++static void ext_cmd_paste(const char *args[]);
+ static void quit(const char *args[]);
+ static void redraw(const char *args[]);
+ static void scrollback(const char *args[]);
+@@ -1298,6 +1299,23 @@ paste(const char *args[]) {
+ 		vt_write(sel->term, copyreg.data, copyreg.len);
+ }
+ 
++
++// Don't judge me!
++static void
++ext_cmd_paste(const char *args[]) {
++	// TODO(zmd): populate cmdreg with the output from a command (if
++	//     and as specified by the end user)
++	// TODO(zmd): probably should allocate memory on the heap for the
++	// output of an external command...
++	Register cmdreg = {
++ 		.data = "foo bar baz quux",
++		.len  = 16,
++		.size = 0,  // TODO(zmd): this is a bs number, don't need it for this yet, but I need to figure out what this actually represents!
++	};
++	if (sel && cmdreg.data)
++		vt_write(sel->term, cmdreg.data, cmdreg.len);
++}
++
+ static void
+ quit(const char *args[]) {
+ 	cleanup();
+-- 
+2.25.1
+

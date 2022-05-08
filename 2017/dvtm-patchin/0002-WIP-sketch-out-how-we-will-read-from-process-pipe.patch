@@ -1,0 +1,124 @@
+From 119c51cad8a9b5003c6e03a502a28e7dc817af1a Mon Sep 17 00:00:00 2001
+From: Zeb DeOs <zebdeos@bayprogrammer.com>
+Date: Sat, 11 Nov 2017 19:12:04 -0800
+Subject: [PATCH 2/5] WIP - sketch out how we will read from process' pipe
+
+---
+ dvtm.c | 89 ++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 80 insertions(+), 9 deletions(-)
+
+diff --git a/dvtm.c b/dvtm.c
+index 0ccce65..5947970 100644
+--- a/dvtm.c
++++ b/dvtm.c
+@@ -1301,17 +1301,85 @@ paste(const char *args[]) {
+ 
+ 
+ // Don't judge me!
++/* TODO(zmd): delete comment when done with referring to this
++typedef struct {
++	char *data;
++	size_t len;
++	size_t size;
++} Register;
++*/
++
++// TODO(zmd): move to global declarations
++// TODO(zmd): free in global cleanup routine (see where clipreg gets freed)
++static Register cmdreg; // TODO(zmd): move to global declarations
++
++// TODO(zmd): generalize the function for reading data from external command's
++//     stdout?
+ static void
+ ext_cmd_paste(const char *args[]) {
+-	// TODO(zmd): populate cmdreg with the output from a command (if
+-	//     and as specified by the end user)
+-	// TODO(zmd): probably should allocate memory on the heap for the
+-	// output of an external command...
+-	Register cmdreg = {
+- 		.data = "foo bar baz quux",
+-		.len  = 16,
+-		.size = 0,  // TODO(zmd): this is a bs number, don't need it for this yet, but I need to figure out what this actually represents!
+-	};
++	// TODO(zmd): is Cmd something I can use here?
++	const char *cmd = "xsel -ob"; // TODO(zmd): read from user config
++
++	// TODO(zmd): figure out how to fork off a process correctly to run
++	//     our command, retaining a file handle to its stdout pipe
++	// TODO(zmd): figure out how to get the file handle from the forked
++	//     process' stdout (cmd_stdout_fd below)
++
++	cmdreg.size = 500;  // number of bytes to allocate for our buffer
++	cmdreg.len = 0;  // how much of our buffer we've used so far
++	cmdreg.data = malloc(cmdreg.size);  // store pointer to allocated buffer
++
++	// exit if we couldn't allocate our buffer
++	// TODO(zmd): any other cleanup, or a better return value to use, if the allocation failed?
++	if !cmdreg.data {
++		cmdreg.size = 0;
++		cmdreg.len = 0;
++		return false;
++	}
++
++	// loop as long as our file descriptor is valid and we've not used up
++	// our allocated buffer size
++	char *buf_cursor;
++	size_t nbyte;
++	ssize_t len;
++	// TODO(zmd): in handle_editor fd could be -1 because it's tied to a
++	//     persistent struct -- we need to double-check error conditions in
++	//     this function after we allocate a file handle locally, and
++	//     update this loop accordingly
++	while (*cmd_stdout_fd != -1 && cmdreg.len < cmdreg.size) {
++		buf_cursor = cmdreg.data + cmdreg.len;  // advance buffer pointer
++		nbyte      = cmdreg.size - cmdreg.len;  // calculate how much to read
++
++		// read in a nbyte's worth of data from command's stdout into buf
++		len = read(*cmd_stdout_fd, buf_cursor, nbyte);
++
++		// if the read wasn't a success just because of a signal
++		// interruption, try again, otherwise stop
++		if (len == -1) {
++			if (errno == EINTR)
++				continue;
++			break;
++		}
++
++		// if we got nothing more from our file, stop
++		if (len == 0)
++			break;
++
++		// update our output register's length to account for the
++		// amount of data we just read into it's data buffer
++		cmdreg.len += len;
++
++		// check if our buffer is big enough to store more data, and
++		// increase it's allocation if not
++		if (cmdreg.len == cmdreg.size) {
++			cmdreg.size += 2;
++			if (!(cmdreg.data = realloc(cmdreg.data, cmdreg.size))) {
++				cmdreg.size = 0;
++				cmdreg.len = 0;
++			}
++		}
++	}
++
+ 	if (sel && cmdreg.data)
+ 		vt_write(sel->term, cmdreg.data, cmdreg.len);
+ }
+@@ -1803,9 +1871,12 @@ parse_args(int argc, char *argv[]) {
+ 				else if (ESCDELAY > 1000)
+ 					set_escdelay(1000);
+ 				break;
++
++			// -h Set the scrollback history buffer size at runtime.
+ 			case 'h':
+ 				screen.history = atoi(argv[++arg]);
+ 				break;
++
+ 			case 't':
+ 				title = argv[++arg];
+ 				break;
+-- 
+2.25.1
+

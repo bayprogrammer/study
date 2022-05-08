@@ -1,0 +1,271 @@
+From 2be992a2c0f8317dec6523416e74fc33544a6725 Mon Sep 17 00:00:00 2001
+From: Zeb DeOs <zebdeos@bayprogrammer.com>
+Date: Sat, 18 Nov 2017 16:53:59 -0800
+Subject: [PATCH 3/5] Pasting from dvtm via external command: first working
+ version! \o/
+
+---
+ dvtm.c | 223 ++++++++++++++++++++++++++++++++++++++-------------------
+ 1 file changed, 150 insertions(+), 73 deletions(-)
+
+diff --git a/dvtm.c b/dvtm.c
+index 5947970..bb5b62e 100644
+--- a/dvtm.c
++++ b/dvtm.c
+@@ -46,6 +46,9 @@ int ESCDELAY;
+ # define set_escdelay(d) (ESCDELAY = (d))
+ #endif
+ 
++#define PRD 0
++#define PWR 1
++
+ typedef struct {
+ 	float mfact;
+ 	unsigned int nmaster;
+@@ -267,6 +270,97 @@ error(const char *errstr, ...) {
+ 	exit(EXIT_FAILURE);
+ }
+ 
++#define Register_bytes_avail(reg) (reg->size - reg->len)
++#define Register_append_addr(reg) (reg->data + reg->len)
++
++Register*
++Register_new(size_t initial_size) {
++	Register* reg = (Register *)malloc(sizeof(Register));
++	if (reg) {
++		reg->data = (char *)malloc(initial_size);
++		if (reg->data) {
++			reg->len = 0;
++			reg->size = initial_size;
++		} else {
++			// malloc for data failed, reg->data == NULL
++			free(reg);
++			reg = NULL;
++		}
++	} // else malloc failed, reg == NULL
++
++	return reg;
++}
++
++void
++Register_free(Register* reg) {
++	if (reg) {
++		if (reg->data)
++			free(reg->data);
++
++		free(reg);
++	}
++}
++
++Register*
++Register_embiggen(Register *reg) {
++	if (reg) {
++		// TODO(zmd): @Robustness: don't overflow sizes
++		size_t old_size = reg->size;
++		size_t new_size = old_size *= 2;
++
++		char *data = (char *)realloc(reg->data, new_size);
++
++		if (data) {
++			reg->data = data;
++			reg->size = new_size;
++		} else {
++			free(reg->data);
++			free(reg);
++			reg = NULL;
++		}
++	} else {
++		return NULL;
++	}
++
++	return reg;
++}
++
++Register*
++Register_maybe_embiggen(Register *reg) {
++	if (reg) {
++		if (reg->len == reg->size)
++			reg = Register_embiggen(reg);
++	} else {
++		return NULL;
++	}
++
++	return reg;
++}
++
++Register*
++Register_read(Register *reg, int filedes_r) {
++	if (reg) {
++		ssize_t nbytes_read;
++		while (nbytes_read = read(filedes_r, Register_append_addr(reg), Register_bytes_avail(reg))) {
++			if (nbytes_read == -1) {
++				if (errno == EINTR) {
++					continue;  // signal interrupted us, try again
++				}
++
++				break;
++			}
++
++			reg->len += nbytes_read;
++			if ( !(reg = Register_maybe_embiggen(reg)) )
++				break;
++		}
++	} else {
++		return NULL;
++	}
++
++	return reg;
++}
++
+ static bool
+ isarrange(void (*func)()) {
+ 	return func == layout->arrange;
+@@ -1299,89 +1393,72 @@ paste(const char *args[]) {
+ 		vt_write(sel->term, copyreg.data, copyreg.len);
+ }
+ 
++Register*
++ext_cmd(char *args[]) {
++	// TODO(zmd): validate args
++	int filedes[2];
++	int pipe_status;
++	int child_status;
++	Register *cmd_output = NULL;
+ 
+-// Don't judge me!
+-/* TODO(zmd): delete comment when done with referring to this
+-typedef struct {
+-	char *data;
+-	size_t len;
+-	size_t size;
+-} Register;
+-*/
++	pipe_status = pipe(filedes);
++	if (pipe_status == -1) {
++		// couldn't open pipe
++		return NULL;
++	}
+ 
+-// TODO(zmd): move to global declarations
+-// TODO(zmd): free in global cleanup routine (see where clipreg gets freed)
+-static Register cmdreg; // TODO(zmd): move to global declarations
++	pid_t pid = fork();
++	if (pid == -1) {
++		// fork fail
++		return NULL;
++	} else if (pid == 0) {
++		// child process
++		close(filedes[PRD]);
++		dup2(filedes[PWR], STDOUT_FILENO);
++		close(filedes[PWR]);
+ 
+-// TODO(zmd): generalize the function for reading data from external command's
+-//     stdout?
+-static void
+-ext_cmd_paste(const char *args[]) {
+-	// TODO(zmd): is Cmd something I can use here?
+-	const char *cmd = "xsel -ob"; // TODO(zmd): read from user config
+-
+-	// TODO(zmd): figure out how to fork off a process correctly to run
+-	//     our command, retaining a file handle to its stdout pipe
+-	// TODO(zmd): figure out how to get the file handle from the forked
+-	//     process' stdout (cmd_stdout_fd below)
+-
+-	cmdreg.size = 500;  // number of bytes to allocate for our buffer
+-	cmdreg.len = 0;  // how much of our buffer we've used so far
+-	cmdreg.data = malloc(cmdreg.size);  // store pointer to allocated buffer
+-
+-	// exit if we couldn't allocate our buffer
+-	// TODO(zmd): any other cleanup, or a better return value to use, if the allocation failed?
+-	if !cmdreg.data {
+-		cmdreg.size = 0;
+-		cmdreg.len = 0;
+-		return false;
+-	}
++		// TODO(zmd): @Robustness: close other inherited file descriptors
+ 
+-	// loop as long as our file descriptor is valid and we've not used up
+-	// our allocated buffer size
+-	char *buf_cursor;
+-	size_t nbyte;
+-	ssize_t len;
+-	// TODO(zmd): in handle_editor fd could be -1 because it's tied to a
+-	//     persistent struct -- we need to double-check error conditions in
+-	//     this function after we allocate a file handle locally, and
+-	//     update this loop accordingly
+-	while (*cmd_stdout_fd != -1 && cmdreg.len < cmdreg.size) {
+-		buf_cursor = cmdreg.data + cmdreg.len;  // advance buffer pointer
+-		nbyte      = cmdreg.size - cmdreg.len;  // calculate how much to read
+-
+-		// read in a nbyte's worth of data from command's stdout into buf
+-		len = read(*cmd_stdout_fd, buf_cursor, nbyte);
+-
+-		// if the read wasn't a success just because of a signal
+-		// interruption, try again, otherwise stop
+-		if (len == -1) {
+-			if (errno == EINTR)
+-				continue;
+-			break;
+-		}
++		// TODO(zmd): suppress stderr before exec call
++		// TODO(zmd): error handling for this open and dup business...
++		int devnull = open("/dev/null", O_WRONLY);
++		dup2(devnull, STDERR_FILENO);
++		close(devnull);
+ 
+-		// if we got nothing more from our file, stop
+-		if (len == 0)
+-			break;
++		execvp(args[0], args);
++
++		exit(EXIT_SUCCESS);
++	} else {
++		// parent process
++		close(filedes[PWR]);
++		cmd_output = Register_read(Register_new(500), filedes[PRD]);
++		close(filedes[PRD]);
++
++		wait(&child_status);
+ 
+-		// update our output register's length to account for the
+-		// amount of data we just read into it's data buffer
+-		cmdreg.len += len;
+-
+-		// check if our buffer is big enough to store more data, and
+-		// increase it's allocation if not
+-		if (cmdreg.len == cmdreg.size) {
+-			cmdreg.size += 2;
+-			if (!(cmdreg.data = realloc(cmdreg.data, cmdreg.size))) {
+-				cmdreg.size = 0;
+-				cmdreg.len = 0;
++		if ( !(cmd_output && cmd_output->len > 0) ) {
++			if (cmd_output) {
++				Register_free(cmd_output);
+ 			}
++
++			cmd_output = NULL;
+ 		}
+ 	}
+ 
+-	if (sel && cmdreg.data)
+-		vt_write(sel->term, cmdreg.data, cmdreg.len);
++	return cmd_output;
++}
++
++static void
++ext_cmd_paste(const char *args[]) {
++	// TODO(zmd): read from user config
++	char *cmd[] = { "xsel", "-ob", NULL };
++
++	Register *cmd_output = ext_cmd(cmd);
++
++	if (sel && cmd_output) {
++		vt_write(sel->term, cmd_output->data, cmd_output->len);
++		Register_free(cmd_output);
++	}
+ }
+ 
+ static void
+-- 
+2.25.1
+

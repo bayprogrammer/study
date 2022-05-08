@@ -1,0 +1,314 @@
+From 86f3d33d7c9cc33de95b9b773cc03d2dc3ddde43 Mon Sep 17 00:00:00 2001
+From: Zeb DeOs <zebdeos@bayprogrammer.com>
+Date: Thu, 23 Nov 2017 00:45:15 -0800
+Subject: [PATCH 4/5] Corrections based on @jeremy-w's code review
+
+---
+ config.def.h |   1 +
+ dvtm.c       | 201 +++++++++++++++++++++++++++------------------------
+ 2 files changed, 109 insertions(+), 93 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 513c734..d01402d 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -120,6 +120,7 @@ static KeyBinding bindings[] = {
+ 	{ { MOD, 'E',          }, { copymode,       { "dvtm-pager" }            } },
+ 	{ { MOD, '/',          }, { copymode,       { "dvtm-pager", "/" }       } },
+ 	{ { MOD, 'p',          }, { paste,          { NULL }                    } },
++//	{ { MOD, 'p',          }, { ext_cmd_paste,  { "xsel", "-ob" }           } },
+ 	{ { MOD, KEY_PPAGE,    }, { scrollback,     { "-1" }                    } },
+ 	{ { MOD, KEY_NPAGE,    }, { scrollback,     { "1"  }                    } },
+ 	{ { MOD, '?',          }, { create,         { "man dvtm", "dvtm help" } } },
+diff --git a/dvtm.c b/dvtm.c
+index bb5b62e..5f217e6 100644
+--- a/dvtm.c
++++ b/dvtm.c
+@@ -33,6 +33,7 @@
+ #include <stdbool.h>
+ #include <errno.h>
+ #include <pwd.h>
++#include <assert.h>
+ #if defined __CYGWIN__ || defined __sun
+ # include <termios.h>
+ #endif
+@@ -46,9 +47,6 @@ int ESCDELAY;
+ # define set_escdelay(d) (ESCDELAY = (d))
+ #endif
+ 
+-#define PRD 0
+-#define PWR 1
+-
+ typedef struct {
+ 	float mfact;
+ 	unsigned int nmaster;
+@@ -270,92 +268,101 @@ error(const char *errstr, ...) {
+ 	exit(EXIT_FAILURE);
+ }
+ 
+-#define Register_bytes_avail(reg) (reg->size - reg->len)
+-#define Register_append_addr(reg) (reg->data + reg->len)
++size_t
++Register_bytes_avail(Register *reg) {
++	return reg->size - reg->len;
++}
++
++char*
++Register_append_addr(Register *reg) {
++	return reg->data + reg->len;
++}
+ 
+ Register*
+ Register_new(size_t initial_size) {
+-	Register* reg = (Register *)malloc(sizeof(Register));
+-	if (reg) {
+-		reg->data = (char *)malloc(initial_size);
+-		if (reg->data) {
+-			reg->len = 0;
+-			reg->size = initial_size;
+-		} else {
+-			// malloc for data failed, reg->data == NULL
+-			free(reg);
+-			reg = NULL;
+-		}
+-	} // else malloc failed, reg == NULL
++	Register *reg = malloc(sizeof(*reg));
++	if (!reg) return NULL;
++
++	reg->data = malloc(initial_size);
++	if (!reg->data) {
++		// malloc for data failed, reg->data == NULL
++		free(reg);
++		return NULL;
++	}
+ 
++	reg->len = 0;
++	reg->size = initial_size;
+ 	return reg;
+ }
+ 
+ void
+-Register_free(Register* reg) {
++Register_free(Register *reg) {
+ 	if (reg) {
+-		if (reg->data)
+-			free(reg->data);
+-
+-		free(reg);
++		free(reg->data);
+ 	}
++
++	free(reg);
+ }
+ 
+ Register*
+-Register_embiggen(Register *reg) {
+-	if (reg) {
+-		// TODO(zmd): @Robustness: don't overflow sizes
+-		size_t old_size = reg->size;
+-		size_t new_size = old_size *= 2;
++Register_embiggen(Register *reg, size_t how_much) {
++	assert(reg);
+ 
+-		char *data = (char *)realloc(reg->data, new_size);
++	char *data;
++	size_t new_size = reg->size + how_much;
+ 
+-		if (data) {
+-			reg->data = data;
+-			reg->size = new_size;
+-		} else {
+-			free(reg->data);
+-			free(reg);
+-			reg = NULL;
+-		}
+-	} else {
++	int size_ok = (SIZE_MAX > new_size) && (new_size > reg->size);
++	if (size_ok)
++		data = realloc(reg->data, new_size);
++
++	if (!data) {
++		// data couldn't be allocated, or target size was invalid
++		Register_free(reg);
+ 		return NULL;
+ 	}
+ 
++	reg->data = data;
++	reg->size = new_size;
+ 	return reg;
+ }
+ 
++// errno set per read(2) if read failure encountered, partial read will be
++// returned
+ Register*
+-Register_maybe_embiggen(Register *reg) {
+-	if (reg) {
+-		if (reg->len == reg->size)
+-			reg = Register_embiggen(reg);
+-	} else {
+-		return NULL;
+-	}
++Register_read(Register *reg, int filedes_r, size_t amount_to_read) {
++	if (!reg)  return NULL;
++	if (amount_to_read == 0)  return reg;
+ 
+-	return reg;
+-}
++	ssize_t nbytes_read;
++	size_t how_much = 1024;
+ 
+-Register*
+-Register_read(Register *reg, int filedes_r) {
+-	if (reg) {
+-		ssize_t nbytes_read;
+-		while (nbytes_read = read(filedes_r, Register_append_addr(reg), Register_bytes_avail(reg))) {
+-			if (nbytes_read == -1) {
+-				if (errno == EINTR) {
+-					continue;  // signal interrupted us, try again
+-				}
++	while (amount_to_read) {
++		if (!Register_bytes_avail(reg)) {
++			if (how_much > amount_to_read)
++				how_much = amount_to_read;
+ 
+-				break;
+-			}
++			reg = Register_embiggen(reg, how_much);
++
++			if (!reg)  return NULL;
++		}
+ 
+-			reg->len += nbytes_read;
+-			if ( !(reg = Register_maybe_embiggen(reg)) )
++		nbytes_read = read(
++			filedes_r,
++			Register_append_addr(reg),
++			Register_bytes_avail(reg)
++		);
++
++		if (nbytes_read == -1) {
++			if (!errno == EINTR)
+ 				break;
++			continue;  // signal interrupted us, try again
++		} else if (nbytes_read == 0) {
++			break;
++		} else {
++			// got some data, may be more to read
++			reg->len += (size_t)nbytes_read;
++			amount_to_read -= (size_t)nbytes_read;
+ 		}
+-	} else {
+-		return NULL;
+ 	}
+ 
+ 	return reg;
+@@ -1393,54 +1400,65 @@ paste(const char *args[]) {
+ 		vt_write(sel->term, copyreg.data, copyreg.len);
+ }
+ 
++enum { PIPE_READ, PIPE_WRITE };
++
+ Register*
+-ext_cmd(char *args[]) {
+-	// TODO(zmd): validate args
++ext_cmd(const char *argv[], size_t amount_to_read) {
+ 	int filedes[2];
+-	int pipe_status;
+-	int child_status;
++	int pipe_status, child_status;
+ 	Register *cmd_output = NULL;
+ 
+ 	pipe_status = pipe(filedes);
+ 	if (pipe_status == -1) {
+-		// couldn't open pipe
++		perror("Couldn't open pipe");
+ 		return NULL;
+ 	}
+ 
+ 	pid_t pid = fork();
+ 	if (pid == -1) {
+-		// fork fail
++		perror("Unable to fork process");
+ 		return NULL;
+ 	} else if (pid == 0) {
+ 		// child process
+-		close(filedes[PRD]);
+-		dup2(filedes[PWR], STDOUT_FILENO);
+-		close(filedes[PWR]);
+-
+-		// TODO(zmd): @Robustness: close other inherited file descriptors
++		close(filedes[PIPE_READ]);
++		dup2(filedes[PIPE_WRITE], STDOUT_FILENO);
++		close(filedes[PIPE_WRITE]);
++
++		// close other file handles (code taken from vt.c's vt_forkpty)
++		int maxfd = sysconf(_SC_OPEN_MAX);
++		for (int fd = 3; fd < maxfd; fd++)
++			if (close(fd) == -1 && errno == EBADF)
++				break;
+ 
+-		// TODO(zmd): suppress stderr before exec call
+-		// TODO(zmd): error handling for this open and dup business...
+ 		int devnull = open("/dev/null", O_WRONLY);
+-		dup2(devnull, STDERR_FILENO);
+-		close(devnull);
+-
+-		execvp(args[0], args);
++		if (devnull == -1) {
++			perror("Unable to redirect stderr to /dev/null");
++		} else {
++			dup2(devnull, STDERR_FILENO);
++			close(devnull);
++			execvp(argv[0], (char *const *)argv);
++		}
+ 
+-		exit(EXIT_SUCCESS);
++		// only reach this if fork failed or we couldn't redirect stderr
++		exit(EXIT_FAILURE);
+ 	} else {
+ 		// parent process
+-		close(filedes[PWR]);
+-		cmd_output = Register_read(Register_new(500), filedes[PRD]);
+-		close(filedes[PRD]);
+-
+-		wait(&child_status);
++		close(filedes[PIPE_WRITE]);
++		cmd_output = Register_read(
++			Register_new(500),
++			filedes[PIPE_READ],
++			amount_to_read
++		);
++
++		// Register_read blocks until it's gotten as much data as it wants (or
++		// something went wrong); so tell child process to terminate once we've
++		// reached here (then wait for it to exit before proceeding)
++		kill(pid, SIGTERM);
++		waitpid(pid, &child_status, 0);
++		close(filedes[PIPE_READ]);
+ 
+ 		if ( !(cmd_output && cmd_output->len > 0) ) {
+-			if (cmd_output) {
+-				Register_free(cmd_output);
+-			}
+-
++			Register_free(cmd_output);
+ 			cmd_output = NULL;
+ 		}
+ 	}
+@@ -1449,11 +1467,8 @@ ext_cmd(char *args[]) {
+ }
+ 
+ static void
+-ext_cmd_paste(const char *args[]) {
+-	// TODO(zmd): read from user config
+-	char *cmd[] = { "xsel", "-ob", NULL };
+-
+-	Register *cmd_output = ext_cmd(cmd);
++ext_cmd_paste(const char *argv[]) {
++	Register *cmd_output = ext_cmd(argv, 65536);
+ 
+ 	if (sel && cmd_output) {
+ 		vt_write(sel->term, cmd_output->data, cmd_output->len);
+-- 
+2.25.1
+

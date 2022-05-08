@@ -1,0 +1,28 @@
+From 69dd049299a95f1ce8f5d70724630bcff17f5f96 Mon Sep 17 00:00:00 2001
+From: Zeb DeOs <zebdeos@bayprogrammer.com>
+Date: Thu, 23 Nov 2017 17:39:30 -0800
+Subject: [PATCH 5/5] Always free Regsiter, (in case sel was false for some
+ reason)
+
+---
+ dvtm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/dvtm.c b/dvtm.c
+index 5f217e6..dbe300c 100644
+--- a/dvtm.c
++++ b/dvtm.c
+@@ -1472,8 +1472,9 @@ ext_cmd_paste(const char *argv[]) {
+ 
+ 	if (sel && cmd_output) {
+ 		vt_write(sel->term, cmd_output->data, cmd_output->len);
+-		Register_free(cmd_output);
+ 	}
++
++	Register_free(cmd_output);
+ }
+ 
+ static void
+-- 
+2.25.1
+
