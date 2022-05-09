@@ -1,0 +1,22 @@
+import project.*;
+
+class Project extends HXProject {
+    public function new() {
+        super();
+        meta = {
+            title: "My Project",
+            packageName: "com.bayprogrammer.myproject",
+            version: "1.0.0",
+            company: "Bay Programmer"
+        };
+        app = {
+            main: "Main",
+            path: "Export",
+            file: "MyProject"
+        };
+        sources.push("Source");
+        haxelibs.push(new Haxelib("openfl"));
+        includeAssets("Assets, "assets", [ "*" ], [ "openfl.svg" ]);
+        icons.push(new Icon("Assets/openfl.svg"));
+    }
+}
