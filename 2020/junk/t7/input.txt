@@ -1,0 +1,30 @@
+%% act-01: genesis of stupid
+
+commentary, notes, questions (not part of record)
+
+. karen 29-may-2020 22:22 #sig-antithought image_01.jpg
+
+. phil 3-june-2020 13:23 #{bub} image_02.jpg
+
+foo bar baz
+
+baz bar foo
+
+. bub 3-june-2020 13:33 #{bub} image_03.jpg
+
+bar baz foo
+far bar far
+
+baz foo bar
+
+. phil 3-june-2020 23:23 #general image_04.jpg
+
+lorem ipsum
+
+.. barb 4-june-2020 02:23 #general image_04.jpg
+
+blah blah
+
+.. bob 4-june-2020 05:33 #general image_04.jpg
+
+more blah

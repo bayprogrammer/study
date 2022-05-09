@@ -1,0 +1,69 @@
+h1 {
+  font-family: sans;
+}
+
+.prelude {
+  border: solid 1px lightgray;
+  margin-bottom: .5em;
+  padding: 1em;
+  font-style: italic;
+}
+
+.entry-container {
+}
+
+.entry-container-reply {
+  margin-left: 10em;
+}
+
+/*
+.entry-container-reply .body-wrapper {
+  padding-left: 5em;
+}
+*/
+
+.entry-meta-container {
+  width: 10em;
+  float: left;
+  text-align: right;
+  font-family: sans;
+}
+
+.entry-meta {
+  font-size: 10pt;
+  line-height: 12pt;
+}
+
+.entry-meta-name {
+  font-size: 12pt;
+}
+
+.entry-meta-date {
+  font-size: 8pt;
+  color: #777;
+}
+
+.entry-meta-time {
+  color: #444;
+}
+
+.entry-meta-channel {
+  color: #888;
+}
+
+.entry-meta-image {
+  font-size: 8pt;
+  color: #888;
+}
+
+.body-wrapper {
+  font-size: 12pt;
+  margin-left: 10.75em;
+  border-left: solid 1px gray;
+  min-height: 5em;
+  background-color: #EEE;
+}
+
+.body-wrapper p {
+  padding-left: .5em;
+}
