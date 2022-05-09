@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>HTML Escaper</title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <!-- how to link to js file: http://www.hypergurl.com/jsfiles.html -->
+        <script language="javascript" src="html_encode.js"></script>
+    </head>
+
+    <body>
+        <h1>HTML Escaper</h1>
+        <div id="the_app_form">
+            <!-- onmousedown="return copy_text(document.cruncher.code_box, document.cruncher.output_box);" -->
+            <form id="cruncer" name="cruncher">
+                <div id="code_box_container">
+                    <textarea class="textareacodebox" name="code_box" id="code_box"></textarea>
+                </div>
+                <div id="encodify_container">
+                    <input type="button" name="encodify" id="encodify" value="Encodify" onclick="return convert_text(document.cruncher.code_box, document.cruncher.output_box);" />
+                </div>
+                <div id="output_box_container">
+                    <textarea class="textareacodebox" name="output_box" id="output_box"></textarea>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
