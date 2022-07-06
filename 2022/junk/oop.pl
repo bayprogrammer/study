@@ -29,6 +29,7 @@ package Animal {
 }
 
 package Dog {
+    # see also https://perldoc.perl.org/parent (when in sep. files)
     our @ISA = qw(Animal);
 
     sub new($class, $name, $breed) {
